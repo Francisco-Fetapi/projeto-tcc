@@ -3,7 +3,7 @@ import TemplateModal from "./Template.jsx";
 // import { useNavigate } from "react-router-dom";
 import FormEsqueciAPasse from "../Forms/FormEsqueciAPasse.jsx";
 
-export default function ModalSignUp() {
+export default function ModalEsqueciAPasse() {
   //   const navigate = useNavigate();
   return (
     <TemplateModal

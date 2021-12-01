@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Text } from "../../styles";
 import { ContainerFormSignUp } from "../../styles/pages/LoginAndSignUp";
 import Box from "@material-ui/core/Box";
@@ -16,10 +16,21 @@ import { Link } from "react-router-dom";
 
 export default function FormLogin({ handleClose }) {
   const [value, setValue] = React.useState("female");
+  const img = useRef();
 
   const handleChange = (event) => {
     setValue(event.target.value);
   };
+
+  function alterarFoto(e) {
+    if (e.target.files.length) {
+      const fr = new FileReader();
+      fr.readAsDataURL(e.target.files[0]);
+      fr.onload = function (e) {
+        img.current.src = e.target.result;
+      };
+    }
+  }
 
   return (
     <>
@@ -105,8 +116,8 @@ export default function FormLogin({ handleClose }) {
                 Foto de perfil
               </Text>
               <label className="foto">
-                <img src="./img/user.jpg" alt="Foto perfil" />
-                <input type="file" hidden />
+                <img ref={img} src="./img/user.jpg" alt="Foto perfil" />
+                <input type="file" hidden onChange={alterarFoto} />
                 <div>
                   <FaPlusCircle />
                 </div>
