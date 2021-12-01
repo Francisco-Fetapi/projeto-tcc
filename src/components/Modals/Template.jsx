@@ -29,22 +29,9 @@ const DialogTitle = withStyles(styles)((props) => {
   const { children, classes, onClose, ...other } = props;
   return (
     <MuiDialogTitle disableTypography className={classes.root} {...other}>
-      <Typography variant="h6">{children}</Typography>
+      {children}
       {onClose ? (
-        <Tooltip
-          title={
-            <Text
-              style={{
-                fontSize: "12px",
-                fontWeight: "300",
-                letterSpacing: "1px",
-              }}
-            >
-              Fechar modal
-            </Text>
-          }
-          arrow
-        >
+        <Tooltip title="Fechar modal" arrow>
           <IconButton
             aria-label="close"
             className={classes.closeButton}
@@ -80,14 +67,17 @@ export default function FormDialog({
         onClose={handleClose}
         open={open}
         scroll="body"
-        maxWidth
         disableBackdropClick
       >
         <DialogTitle
           id="customized-dialog-title"
           onClose={() => navigate(navigateToOnClose)}
+          component="div"
         >
-          <Text variant="h4" style={{ fontWeight: "bold" }}>
+          <Text
+            variant="h5"
+            style={{ fontWeight: "bold", marginRight: "60px" }}
+          >
             {titulo}
           </Text>
           <Text variant="subtitle2">{subtitulo}</Text>

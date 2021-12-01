@@ -7,7 +7,6 @@ import { FaEnvelope, FaUserLock } from "react-icons/fa";
 import Checkbox from "@material-ui/core/Checkbox";
 import Button from "@material-ui/core/Button";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import ModalSignUp from "../Modals/ModalSignUp.jsx";
 import { useNavigate } from "react-router-dom";
 
 export default function FormLogin() {
@@ -81,13 +80,17 @@ export default function FormLogin() {
             </Button>
           </Box>
           <Box className="esqueciAPasse">
-            <Button style={{ height: "42px" }} color="primary" fullWidth>
+            <Button
+              style={{ height: "42px" }}
+              color="primary"
+              fullWidth
+              onClick={() => navigate("/esqueci-a-passe")}
+            >
               Esqueci minha palavra-passe
             </Button>
           </Box>
         </Box>
       </ContainerFormLogin>
-      <ModalSignUp />
     </>
   );
 }

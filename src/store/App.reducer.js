@@ -1,6 +1,7 @@
 const initialState = {
   logado: false,
-  modalSignUp: true,
+  modalSignUp: false,
+  modalEsqueciAPasse: false,
   linearProgress: false,
 };
 
