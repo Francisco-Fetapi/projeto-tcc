@@ -1,4 +1,4 @@
-import {createGlobalStyle} from 'styled-components'
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
     form{
@@ -9,5 +9,8 @@ export const GlobalStyles = createGlobalStyle`
         height:45px;
         width:100%;
     }
+    }
+    .MuiDialog-scrollBody:after{
+        height:0px;
     }
 `;
