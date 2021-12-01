@@ -1,7 +1,7 @@
 const initialState = {
   logado: false,
   modalSignUp: true,
-  linearProgress: false,
+  linearProgress: true,
 };
 
 export default function AppReducer(state = initialState, { payload, type }) {
