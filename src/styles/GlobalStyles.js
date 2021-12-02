@@ -13,4 +13,7 @@ export const GlobalStyles = createGlobalStyle`
     .MuiDialog-scrollBody:after{
         height:0px;
     }
+    .MuiDialog-paperWidthSm{
+        max-width:520px;
+    }
 `;

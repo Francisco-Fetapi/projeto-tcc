@@ -1,16 +1,27 @@
 import React from "react";
 import TemplateModal from "./Template.jsx";
-// import { useNavigate } from "react-router-dom";
 import FormEsqueciAPasse from "../Forms/FormEsqueciAPasse.jsx";
+import { useEffect } from "react";
+import { alterarLarguraDoModal } from "../../helpers/LoginAndSignUp.jsx";
+import { useState } from "react";
 
 export default function ModalEsqueciAPasse() {
-  //   const navigate = useNavigate();
+  const [propsModal, setPropsModal] = useState({});
+  useEffect(() => {
+    window.onresize = () => alterarLarguraDoModal(setPropsModal, 410);
+    window.onload = () => alterarLarguraDoModal(setPropsModal, 410);
+    return () => {
+      window.onresize = null;
+      window.onload = null;
+    };
+  }, []);
   return (
     <TemplateModal
       navigateToOnClose="/login"
       nomeModal="modalEsqueciAPasse"
       titulo="Esqueci a palavra-passe"
       subtitulo="Insira seu email e defina uma nova palavra-passe"
+      {...propsModal}
     >
       <FormEsqueciAPasse />
     </TemplateModal>

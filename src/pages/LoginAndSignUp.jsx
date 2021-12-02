@@ -26,12 +26,11 @@ export default function LoginAndSignUp({ page }) {
     }
     if (page === "esqueci-a-passe") {
       abrirModalEsqueciAPasse();
-      console.log("Chegou aqui");
     } else {
       fecharModalEsqueciAPasse();
     }
   }, [page]);
-  console.log(page, abertoModalSignUp, abertoModalEsqueciAPasse);
+
   return (
     <Container background={theme.palette.primary.main}>
       <Paper className="paper" elevation={20}>

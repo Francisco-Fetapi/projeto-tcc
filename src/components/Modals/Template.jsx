@@ -2,7 +2,6 @@ import React from "react";
 import { Text } from "../../styles";
 import Dialog from "@material-ui/core/Dialog";
 import MuiDialogContent from "@material-ui/core/DialogContent";
-import Typography from "@material-ui/core/Typography";
 import withStyles from "@material-ui/styles/withStyles";
 import MuiDialogTitle from "@material-ui/core/DialogTitle";
 import IconButton from "@material-ui/core/IconButton";
@@ -57,6 +56,7 @@ export default function FormDialog({
   subtitulo,
   children,
   navigateToOnClose,
+  ...props
 }) {
   const [open, , handleClose] = useModal(nomeModal);
   const navigate = useNavigate();
@@ -68,6 +68,8 @@ export default function FormDialog({
         open={open}
         scroll="body"
         disableBackdropClick
+        {...props}
+        // fullScreen
       >
         <DialogTitle
           id="customized-dialog-title"

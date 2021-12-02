@@ -18,7 +18,7 @@ export const Container = styled(ContainerBase)`
     width: 100%;
     max-width: 950px;
     border-radius: ${paper_radius}px;
-    margin: 40px auto;
+    margin: 40px 30px;
 
     @media (max-width: 900px) {
       & {
@@ -120,9 +120,6 @@ export const ContainerFormLogin = styled.div`
     .btnCriarConta {
       display: flex;
     }
-    .esqueciAPasse {
-      margin: 0px;
-    }
   }
   @media (max-width: 1050px) {
     form {
@@ -152,9 +149,9 @@ export const ModalSignUp = styled(Paper)`
   }
 `;
 export const ContainerFormSignUp = styled.div`
-  width: 460px;
   display: flex;
   justify-content: center;
+
   form {
     width: 90%;
   }
@@ -200,8 +197,8 @@ export const ContainerFormSignUp = styled.div`
   }
 `;
 export const ContainerFormEsqueciAPasse = styled(ContainerFormLogin)`
-  width: 100%;
   form {
+    width: auto;
     margin: auto 10px;
   }
 `;
