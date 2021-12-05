@@ -14,8 +14,8 @@ import { MdGroup } from "react-icons/md";
 export default function Menu() {
   return (
     <MenuContainer>
-      <MenuItem active={true} icon={<Home style={{ fontSize: 40 }} />} />
-      <MenuItem icon={<FaUser style={{ fontSize: 33 }} />} />
+      <MenuItem active={true} icon={<Home style={{ fontSize: 36 }} />} />
+      <MenuItem icon={<FaUser style={{ fontSize: 28 }} />} />
       <MenuItem badge={3} badgeMax={9} icon={<FaUsers />} />
       <MenuItem badge={12} badgeMax={9} icon={<FaTv />} />
       <MenuItem badge={1} badgeMax={15} icon={<MdGroup />} />

@@ -8,30 +8,37 @@ import MenuSecondary from "./MenuSecondary.jsx";
 
 export default function Header() {
   return (
-    <HeaderContainer>
-      <Box display="flex" alignItems="center">
-        <img src="./img/logo3.svg" alt="logo" />
-        <Box ml={5}>
-          <TextField1
-            icon={<Search />}
-            placeholder="procurar filmes,series e pessoas"
-            id="search"
-            className="field-pesquisar"
-          />
+    <>
+      <HeaderContainer>
+        <Box display="flex" alignItems="center">
+          <img src="./img/logo3.svg" alt="logo" style={{ zoom: "1.2" }} />
+          <Box ml={5}>
+            <TextField1
+              icon={<Search />}
+              placeholder="procurar filmes,series e pessoas"
+              id="search"
+              className="field-pesquisar"
+            />
+          </Box>
         </Box>
-      </Box>
-      <Box
-        flexGrow={1}
-        height="100%"
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
-      >
-        <Menu />
-      </Box>
-      <Box>
-        <MenuSecondary />
-      </Box>
-    </HeaderContainer>
+        <Box
+          flexGrow={1}
+          height="100%"
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+        >
+          <Menu />
+        </Box>
+        <Box>
+          <MenuSecondary />
+        </Box>
+      </HeaderContainer>
+      <div
+        style={{
+          marginBottom: "100px",
+        }}
+      />
+    </>
   );
 }

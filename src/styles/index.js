@@ -7,11 +7,17 @@ export const ContainerBase = styled.main`
 `;
 export const HeaderContainer = styled.div`
   background: #fff;
-  height: 65px;
+  height: 75px;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0 25px;
+  box-shadow: 1px 1px 1px #ccc;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
 
   .MuiOutlinedInput-root {
     height: 45px;
@@ -42,7 +48,7 @@ export const MenuItemContainer = styled.div`
   align-items: center;
 
   svg {
-    font-size: 38px;
+    font-size: 32px;
   }
 `;
 

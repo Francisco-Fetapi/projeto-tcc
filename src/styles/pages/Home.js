@@ -21,6 +21,17 @@ export const MainContainer = styled.div`
     height: 100vh;
     overflow-y: auto;
   }
+  .menu-left::-webkit-scrollbar,
+  .menu-right::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    background: #d4d4d4;
+  }
+  .menu-left::-webkit-scrollbar-thumb,
+  .menu-right::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+  }
   .menu-right {
     .MuiListItem-root {
       padding-top: 9px;

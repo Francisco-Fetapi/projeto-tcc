@@ -17,7 +17,13 @@ export default function MenuSecondary_() {
         <img src="./img/user.jpg" alt="Foto usuario" />
         <Text>NomeUsuario</Text>
       </Box>
-      <Box display="flex" alignItems="center">
+      <Box
+        display="flex"
+        alignItems="center"
+        style={{
+          zoom: ".8",
+        }}
+      >
         <IconButton
           style={{
             margin: "0px 4px",
