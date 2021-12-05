@@ -34,4 +34,12 @@ export const MainContainer = styled.div`
       margin-right: 10px;
     }
   }
+  .main-content {
+    padding: 0px 30px;
+    h5 {
+      text-transform: uppercase;
+      font-size: 22px;
+      font-weight: 500;
+    }
+  }
 `;
