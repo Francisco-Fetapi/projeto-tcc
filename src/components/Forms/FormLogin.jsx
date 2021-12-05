@@ -8,13 +8,20 @@ import Checkbox from "@material-ui/core/Checkbox";
 import Button from "@material-ui/core/Button";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { SET_STATE } from "../../store/App.actions";
 
 export default function FormLogin() {
   const [checked, setChecked] = useState(false);
   const navigate = useNavigate();
+  const Disparar = useDispatch();
 
   function handleChange() {
     setChecked((state) => !state);
+  }
+  function logar() {
+    Disparar(SET_STATE("logado", true));
+    navigate("/");
   }
   return (
     <>
@@ -60,6 +67,7 @@ export default function FormLogin() {
               style={{ height: "42px" }}
               color="primary"
               fullWidth
+              onClick={logar}
             >
               Inciar Sessão
             </Button>
