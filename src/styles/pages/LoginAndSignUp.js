@@ -164,8 +164,13 @@ export const ContainerFormSignUp = styled.div`
       display: block;
       position: relative;
       cursor: pointer;
+      height: 120px;
+      transition: all 0.2s ease-out;
       &:active {
         opacity: 0.8;
+      }
+      img {
+        height: 100%;
       }
       div {
         position: absolute;
@@ -173,20 +178,24 @@ export const ContainerFormSignUp = styled.div`
         right: 0;
         left: 0;
         top: 0;
-        background: rgba(0, 0, 0, 0.5);
+        background: rgba(0, 0, 0, 0.3);
         padding: 5px;
         opacity: 0;
         transition: all 0.5s ease-in-out;
         display: flex;
         justify-content: flex-end;
         align-items: flex-end;
+        height: 100%;
         svg {
           font-size: 30px;
           color: #f0f0f0;
         }
       }
-      &:hover div {
-        opacity: 1;
+      &:hover {
+        transform: scale(1.05);
+        div {
+          opacity: 1;
+        }
       }
     }
 
