@@ -16,8 +16,22 @@ export const MainContainer = styled.div`
     padding-top: 12px;
     padding-bottom: 12px;
   }
-  .menu-left {
+  .menu-left,
+  .menu-right {
     height: 100vh;
     overflow-y: auto;
+  }
+  .menu-right {
+    .MuiListItem-root {
+      padding-top: 9px;
+      padding-bottom: 9px;
+    }
+    img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: block;
+      margin-right: 10px;
+    }
   }
 `;

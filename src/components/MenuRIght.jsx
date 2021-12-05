@@ -5,72 +5,29 @@ import ListItemText from "@material-ui/core/ListItemText";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
 import Divider from "@material-ui/core/Divider";
-import ListSubheader from "@material-ui/core/ListSubheader";
 
 import { Text } from "../styles";
 
-import { FaUsers } from "react-icons/fa";
-import { FaTv } from "react-icons/fa";
 import { MdGroup } from "react-icons/md";
 import { FaChevronDown } from "react-icons/fa";
-import SerieIcon from "@material-ui/icons/OndemandVideo";
-import FilmeIcon from "@material-ui/icons/Videocam";
+
+import series from "../mock/series.json";
 
 export default function MenuLeft() {
-  const grupos = [1, 2, 3, 4];
   return (
-    <div className="menu-left">
+    <div className="menu-right">
       <List>
-        <ListItem button>
-          <ListItemAvatar>
-            <img
-              src="./img/user.jpg"
-              alt="foto usuario"
-              className="item-foto-usuario"
-            />
-          </ListItemAvatar>
-          <ListItemText primary="Nome do usuario" />
-        </ListItem>
-        <ListItem button>
-          <ListItemAvatar>
-            <Avatar>
-              <SerieIcon />
-            </Avatar>
-          </ListItemAvatar>
-          <ListItemText primary="Series" />
-        </ListItem>
-        <ListItem button>
-          <ListItemAvatar>
-            <Avatar>
-              <FilmeIcon />
-            </Avatar>
-          </ListItemAvatar>
-          <ListItemText primary="Filmes" />
-        </ListItem>
-        <ListItem button>
-          <ListItemAvatar>
-            <Avatar>
-              <FaUsers />
-            </Avatar>
-          </ListItemAvatar>
-          <ListItemText primary="Amigos" />
-        </ListItem>
-        {/* <ListItem button>
-        <ListItemAvatar>
-          <Avatar>
-            <FaTv />
-          </Avatar>
-        </ListItemAvatar>
-        <ListItemText primary="Videos" />
-      </ListItem>
-      <ListItem button>
-        <ListItemAvatar>
-          <Avatar>
-            <MdGroup />
-          </Avatar>
-        </ListItemAvatar>
-        <ListItemText primary="Grupos" />
-      </ListItem> */}
+        <Text variant="body1" color="textSecondary">
+          SERIES POPULARES
+        </Text>
+        {series.slice(0, 3).map((item) => (
+          <ListItem button key={item.nome}>
+            <ListItemAvatar>
+              <img src={`./img/${item.img}`} alt={item.nome} />
+            </ListItemAvatar>
+            <ListItemText primary={item.nome} />
+          </ListItem>
+        ))}
         <ListItem button>
           <ListItemAvatar>
             <Avatar>
@@ -79,24 +36,25 @@ export default function MenuLeft() {
           </ListItemAvatar>
           <ListItemText primary="Ver mais" />
         </ListItem>
-        <br />
-        <Divider />
       </List>
-
+      <br />
+      <Divider />
+      <br />
       <List>
-        <ListSubheader>
-          <Text variant="body1">SEUS GRUPOS</Text>
-        </ListSubheader>
-        {grupos.map((item) => (
-          <ListItem button key={item}>
-            <ListItemAvatar>
-              <Avatar>
-                <MdGroup />
-              </Avatar>
-            </ListItemAvatar>
-            <ListItemText primary={`Grupo ${item}`} />
-          </ListItem>
-        ))}
+        <Text variant="body1" color="textSecondary">
+          FILMES POPULARES
+        </Text>
+        {series
+          .slice(2, 5)
+          .reverse()
+          .map((item) => (
+            <ListItem button key={item.nome}>
+              <ListItemAvatar>
+                <img src={`./img/${item.img}`} alt={item.nome} />
+              </ListItemAvatar>
+              <ListItemText primary={item.nome} />
+            </ListItem>
+          ))}
         <ListItem button>
           <ListItemAvatar>
             <Avatar>

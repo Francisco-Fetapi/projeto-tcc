@@ -1,7 +1,7 @@
 import React from "react";
 import { MainContainer } from "../../styles/pages/Home";
 import MenuLeft from "../MenuLeft.jsx";
-import MenuRight from "../MenuLeft.jsx";
+import MenuRight from "../MenuRIght.jsx";
 
 export default function Main() {
   return (
