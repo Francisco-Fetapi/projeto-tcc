@@ -16,7 +16,7 @@ export default function TextField1({ icon, id, type, label, ...props }) {
         <OutlinedInput
           id={id}
           type={type || "text"}
-          endAdornment={
+          startAdornment={
             <InputAdornment position="end">{icon || ""}</InputAdornment>
           }
           {...props}

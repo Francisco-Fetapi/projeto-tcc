@@ -1,18 +1,22 @@
-import React,{useEffect} from 'react'
-import {useSelector} from 'react-redux';
-import {selectAll} from '../store/App.selectors';
-import {useNavigate} from 'react-router-dom'
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { selectAll } from "../store/App.selectors";
+import { useNavigate } from "react-router-dom";
+import { HomeContainer } from "../styles/pages/Home";
+import Header from "../components/Header";
 
 export default function Home() {
-    const {logado} = useSelector(selectAll);
-    const navigate = useNavigate();
+  const { logado } = useSelector(selectAll);
+  const navigate = useNavigate();
 
-    useEffect(()=>{
-        if(!logado) navigate('/login');
-    },[logado])
-    return logado && (
-        <div>
-            Home
-        </div>
+  useEffect(() => {
+    if (!logado) navigate("/login");
+  }, [logado]);
+  return (
+    logado && (
+      <HomeContainer>
+        <Header />
+      </HomeContainer>
     )
+  );
 }

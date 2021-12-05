@@ -1,5 +1,5 @@
 const initialState = {
-  logado: false,
+  logado: true,
   modalSignUp: false,
   modalEsqueciAPasse: false,
   linearProgress: false,

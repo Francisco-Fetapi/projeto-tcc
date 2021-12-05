@@ -16,4 +16,8 @@ export const GlobalStyles = createGlobalStyle`
     .MuiDialog-paperWidthSm{
         max-width:520px;
     }
+    .MuiBadge-badge {
+    background: #e41e3f;
+    color: white;
+  }
 `;
