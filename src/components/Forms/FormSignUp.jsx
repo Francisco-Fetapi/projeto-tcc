@@ -76,7 +76,7 @@ export default function FormLogin({ handleClose }) {
               type="date"
               icon={null}
               id="_data_nascimento"
-              label="Quando você já nasceu?"
+              label="Quando você nasceu?"
             />
           </Box>
           <Box className="genero_e_foto" mt={2.5}>
