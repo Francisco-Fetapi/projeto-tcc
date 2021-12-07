@@ -15,13 +15,19 @@ import { MdGroup } from "react-icons/md";
 import { FaChevronDown } from "react-icons/fa";
 import SerieIcon from "@material-ui/icons/OndemandVideo";
 import FilmeIcon from "@material-ui/icons/Videocam";
+import useTheme from "@material-ui/core/styles/useTheme";
 
 export default function MenuLeft() {
   const grupos = [1, 2, 3, 4];
+  const theme = useTheme();
   return (
     <div className="menu-left">
       <List>
-        <ListItem button>
+        <ListItem
+          button
+          style={{ background: theme.palette.secondary.main, color: "white" }}
+          className="item-usuario"
+        >
           <ListItemAvatar>
             <img
               src="./img/user.jpg"

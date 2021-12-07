@@ -1,7 +1,19 @@
 [
-  { "nome": "Chucky", "img": "chuky.jpg" },
-  { "nome": "Invasion", "img": "invasion.jpg" },
-  { "nome": "Lucifer", "img": "lucifer.jpg" },
-  { "nome": "The Flash", "img": "the flash.jpg" },
-  { "nome": "The Walking Dead", "img": "TWD.jpg" }
+  { "nome": "Chucky", "img": "chuky.jpg", "data": "12 de novembro de 2018" },
+  {
+    "nome": "Invasion",
+    "img": "invasion.jpg",
+    "data": "02 de fevereiro de 2012"
+  },
+  { "nome": "Lucifer", "img": "lucifer.jpg", "data": "14 de setembro de 2020" },
+  {
+    "nome": "The Flash",
+    "img": "the flash.jpg",
+    "data": "23 de Março de 2011"
+  },
+  {
+    "nome": "The Walking Dead",
+    "img": "TWD.jpg",
+    "data": "15 de novembro de 2018"
+  }
 ]

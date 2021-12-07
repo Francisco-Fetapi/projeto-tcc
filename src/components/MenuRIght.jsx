@@ -25,7 +25,7 @@ export default function MenuLeft() {
             <ListItemAvatar>
               <img src={`./img/${item.img}`} alt={item.nome} />
             </ListItemAvatar>
-            <ListItemText primary={item.nome} />
+            <ListItemText primary={item.nome} secondary={item.data} />
           </ListItem>
         ))}
         <ListItem button>
@@ -52,7 +52,7 @@ export default function MenuLeft() {
               <ListItemAvatar>
                 <img src={`./img/${item.img}`} alt={item.nome} />
               </ListItemAvatar>
-              <ListItemText primary={item.nome} />
+              <ListItemText primary={item.nome} secondary={item.data} />
             </ListItem>
           ))}
         <ListItem button>

@@ -4,7 +4,7 @@ export const HomeContainer = styled.div``;
 export const MainContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
-  margin: 0px 20px;
+  margin-top: -30px;
 
   .item-foto-usuario {
     width: 50px;
@@ -20,6 +20,10 @@ export const MainContainer = styled.div`
   .menu-right {
     height: 100vh;
     overflow-y: auto;
+
+    .MuiAvatar-root {
+      background: #303f9f;
+    }
   }
   .menu-left::-webkit-scrollbar,
   .menu-right::-webkit-scrollbar {
@@ -37,7 +41,10 @@ export const MainContainer = styled.div`
     background: rgba(0, 0, 0, 0.2);
     border-radius: 2px;
   }
+  .menu-left {
+  }
   .menu-right {
+    padding-top: 30px;
     .MuiListItem-root {
       padding-top: 9px;
       padding-bottom: 9px;
@@ -51,7 +58,7 @@ export const MainContainer = styled.div`
     }
   }
   .main-content {
-    padding: 0px 30px;
+    padding: 30px;
     h5 {
       text-transform: uppercase;
       font-size: 22px;

@@ -18,7 +18,7 @@ export default function Home() {
     logado && (
       <HomeContainer>
         <Header />
-        <Box mt={3}>
+        <Box>
           <HomeMain />
         </Box>
       </HomeContainer>
