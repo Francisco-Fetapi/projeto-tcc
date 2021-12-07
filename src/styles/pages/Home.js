@@ -26,6 +26,11 @@ export const MainContainer = styled.div`
     width: 6px;
     height: 6px;
     background: #d4d4d4;
+    display: none;
+  }
+  .menu-left:hover::-webkit-scrollbar,
+  .menu-right:hover::-webkit-scrollbar {
+    display: block;
   }
   .menu-left::-webkit-scrollbar-thumb,
   .menu-right::-webkit-scrollbar-thumb {
