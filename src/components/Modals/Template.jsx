@@ -68,6 +68,7 @@ export default function FormDialog({
         open={open}
         scroll="body"
         disableBackdropClick
+        disableEscapeKeyDown
         {...props}
         // fullScreen
       >
