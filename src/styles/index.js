@@ -95,3 +95,18 @@ export const ConfirmarEmail = {
     margin-top: 30px;
   `,
 };
+export const MaisSobreVoce = {
+  Container: styled.div`
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    margin: 90px auto;
+
+    .form {
+      width: 100%;
+      max-width: 550px;
+    }
+  `,
+};
