@@ -21,6 +21,9 @@ export default function ConfirmarEmail_() {
         <Box>
           <img src="./img/user.jpg" alt="Imagem do usuario" />
           <Text variant="h6">Nome Usuario</Text>
+          <Text color="textSecondary" variant="subtitle2">
+            email@gmail.com
+          </Text>
         </Box>
         <FormConfirmarEmail />
       </Box>
