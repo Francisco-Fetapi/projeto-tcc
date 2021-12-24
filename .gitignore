@@ -9,9 +9,11 @@
 /coverage
 
 # production
+/build
 
 # Files
 BASE.zip
+Modelo.drawio
 debug.log
 
 # misc
