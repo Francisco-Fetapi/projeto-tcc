@@ -3,11 +3,15 @@ import { Text } from "../../styles";
 import { ConfirmarEmail } from "../../styles";
 import Box from "@material-ui/core/Box";
 import TextField1 from "../TextField1";
-
+import { useNavigate } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import Security from "@material-ui/icons/Security";
 
 export default function FormConfirmarEmail() {
+  const navigate = useNavigate();
+  function confirmar() {
+    navigate("/mais-sobre-voce");
+  }
   return (
     <ConfirmarEmail.Form>
       <Box component="form" autoComplete="off">
@@ -31,6 +35,7 @@ export default function FormConfirmarEmail() {
             variant="contained"
             style={{ width: "150px", height: "42px" }}
             color="primary"
+            onClick={confirmar}
           >
             Confirmar
           </Button>

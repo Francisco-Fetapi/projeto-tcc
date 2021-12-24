@@ -74,7 +74,7 @@ export const ConfirmarEmail = {
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
-    margin: 90px auto;
+    margin: 50px auto;
 
     .foto-e-form {
       width: 100%;
@@ -102,7 +102,7 @@ export const MaisSobreVoce = {
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
-    margin: 90px auto;
+    margin: 50px auto;
 
     .form {
       width: 100%;

@@ -13,10 +13,12 @@ import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function FormLogin({ handleClose }) {
   const [value, setValue] = React.useState("female");
   const img = useRef();
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     setValue(event.target.value);
@@ -30,6 +32,9 @@ export default function FormLogin({ handleClose }) {
         img.current.src = e.target.result;
       };
     }
+  }
+  function criarConta() {
+    navigate("/confirmar-email");
   }
 
   return (
@@ -139,6 +144,7 @@ export default function FormLogin({ handleClose }) {
               style={{ height: "42px" }}
               color="primary"
               fullWidth
+              onClick={criarConta}
             >
               Criar conta
             </Button>
