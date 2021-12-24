@@ -17,7 +17,7 @@ export default function MaisSobreVoce_() {
           </Text>
         </Box>
       </Box>
-      <Box mt={2} className="form">
+      <Box mt={9} className="form">
         <FormMaisSobreVoce />
       </Box>
     </MaisSobreVoce.Container>

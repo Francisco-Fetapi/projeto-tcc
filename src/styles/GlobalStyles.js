@@ -1,7 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
-    form{
+    form:not(.input-padrao){
         .MuiFormControl-root{
         width:100%;
     }

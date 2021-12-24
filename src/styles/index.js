@@ -106,7 +106,18 @@ export const MaisSobreVoce = {
 
     .form {
       width: 100%;
-      max-width: 550px;
+      max-width: 650px;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-gap: 10px;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 10px;
     }
   `,
+  Form: styled.div``,
 };
