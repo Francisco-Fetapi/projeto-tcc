@@ -66,3 +66,12 @@ export const MenuSecondary = styled.div`
     }
   }
 `;
+
+export const ConfirmarEmail = {
+  Container: styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  `,
+};

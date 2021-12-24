@@ -20,4 +20,9 @@ export const GlobalStyles = createGlobalStyle`
     background: #e41e3f;
     color: white;
   }
+  .IconAndText{
+      svg{
+          font-size: 35px;
+      }
+  }
 `;

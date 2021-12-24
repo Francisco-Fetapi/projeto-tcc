@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import LoginAndSignUp from "./pages/LoginAndSignUp";
+import ConfirmarEmail from "./pages/ConfirmarEmail";
 
 export default function routes() {
   return (
@@ -14,6 +15,7 @@ export default function routes() {
           path="/esqueci-a-passe"
           element={<LoginAndSignUp page="esqueci-a-passe" />}
         />
+        <Route path="/confirmar-email" element={<ConfirmarEmail />} />
       </Routes>
     </BrowserRouter>
   );
