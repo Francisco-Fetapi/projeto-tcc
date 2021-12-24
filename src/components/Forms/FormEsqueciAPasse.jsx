@@ -25,12 +25,11 @@ export default function FormEsqueciAPasse({ handleClose }) {
           </Text>
         </Box>
 
-        <Box mt={4}>
+        <Box mt={4} display="flex" justifyContent="center">
           <Button
             variant="contained"
             style={{ height: "42px" }}
             color="primary"
-            fullWidth
           >
             Redefinir passe
           </Button>

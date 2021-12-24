@@ -71,7 +71,27 @@ export const ConfirmarEmail = {
   Container: styled.div`
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
     min-height: 100vh;
+    margin: 90px auto;
+
+    .foto-e-form {
+      width: 100%;
+      max-width: 550px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+
+      img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+      }
+    }
+  `,
+  Form: styled.div`
+    margin-top: 30px;
   `,
 };

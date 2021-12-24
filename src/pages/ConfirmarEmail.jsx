@@ -3,6 +3,7 @@ import { ConfirmarEmail, Text } from "../styles";
 import Box from "@material-ui/core/Box";
 import { FaEnvelope } from "react-icons/fa";
 import IconAndText from "../components/IconAndText";
+import FormConfirmarEmail from "../components/Forms/FormConfirmarEmail";
 
 export default function ConfirmarEmail_() {
   return (
@@ -15,6 +16,13 @@ export default function ConfirmarEmail_() {
             pertence realmente
           </Text>
         </Box>
+      </Box>
+      <Box mt={2} className="foto-e-form">
+        <Box>
+          <img src="./img/user.jpg" alt="Imagem do usuario" />
+          <Text variant="h6">Nome Usuario</Text>
+        </Box>
+        <FormConfirmarEmail />
       </Box>
     </ConfirmarEmail.Container>
   );
