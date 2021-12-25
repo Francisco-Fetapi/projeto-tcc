@@ -25,9 +25,24 @@ export const MainContainer = styled.div`
       background: #303f9f;
     }
     .lista-atividades {
+      .MuiListItem-root {
+        align-items: flex-start;
+      }
+      .MuiListItemAvatar-root {
+        min-width: auto;
+        padding-right: 8px;
+      }
+      .MuiListItem-gutters {
+        padding-left: 0px;
+      }
+
       .atividade-texto {
         .MuiTypography-body1 {
           font-size: 14px;
+        }
+        .MuiTypography-body2 {
+          text-align: right;
+          font-size: 12px;
         }
       }
       .atvidade-icon {

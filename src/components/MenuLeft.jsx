@@ -12,7 +12,6 @@ import { Text } from "../styles";
 
 import { FaUsers } from "react-icons/fa";
 import { FaTv } from "react-icons/fa";
-import { MdGroup } from "react-icons/md";
 import { FaChevronDown } from "react-icons/fa";
 import SerieIcon from "@material-ui/icons/OndemandVideo";
 import FilmeIcon from "@material-ui/icons/Videocam";
