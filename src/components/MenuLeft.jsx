@@ -5,7 +5,8 @@ import ListItemText from "@material-ui/core/ListItemText";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
 import Divider from "@material-ui/core/Divider";
-import ListSubheader from "@material-ui/core/ListSubheader";
+import Box from "@material-ui/core/Box";
+import IconButton from "@material-ui/core/IconButton";
 
 import { Text } from "../styles";
 
@@ -15,17 +16,19 @@ import { MdGroup } from "react-icons/md";
 import { FaChevronDown } from "react-icons/fa";
 import SerieIcon from "@material-ui/icons/OndemandVideo";
 import FilmeIcon from "@material-ui/icons/Videocam";
+import MoreHoriz from "@material-ui/icons/MoreHoriz";
 import useTheme from "@material-ui/core/styles/useTheme";
 
+import atividades from "../mock/atividades.json";
+
 export default function MenuLeft() {
-  const grupos = [1, 2, 3, 4];
   const theme = useTheme();
   return (
     <div className="menu-left">
       <List>
         <ListItem
           button
-          style={{ background: theme.palette.secondary.main, color: "white" }}
+          style={{ background: theme.palette.primary.main, color: "white" }}
           className="item-usuario"
         >
           <ListItemAvatar>
@@ -61,22 +64,14 @@ export default function MenuLeft() {
           </ListItemAvatar>
           <ListItemText primary="Amigos" />
         </ListItem>
-        {/* <ListItem button>
-        <ListItemAvatar>
-          <Avatar>
-            <FaTv />
-          </Avatar>
-        </ListItemAvatar>
-        <ListItemText primary="Videos" />
-      </ListItem>
-      <ListItem button>
-        <ListItemAvatar>
-          <Avatar>
-            <MdGroup />
-          </Avatar>
-        </ListItemAvatar>
-        <ListItemText primary="Grupos" />
-      </ListItem> */}
+        <ListItem button>
+          <ListItemAvatar>
+            <Avatar>
+              <FaTv />
+            </Avatar>
+          </ListItemAvatar>
+          <ListItemText primary="Videos" />
+        </ListItem>
         <ListItem button>
           <ListItemAvatar>
             <Avatar>
@@ -89,18 +84,26 @@ export default function MenuLeft() {
         <Divider />
       </List>
 
-      <List>
-        <ListSubheader>
-          <Text variant="body1">SEUS GRUPOS</Text>
-        </ListSubheader>
-        {grupos.map((item) => (
-          <ListItem button key={item}>
+      <List className="lista-atividades">
+        <Box px={2} display="flex" alignItems="center">
+          <Text variant="body1">ATIVIDADES RECENTES</Text>
+          <Box flexGrow={1} />
+          <IconButton>
+            <MoreHoriz />
+          </IconButton>
+        </Box>
+        {atividades.map((item, key) => (
+          <ListItem button key={key}>
             <ListItemAvatar>
-              <Avatar>
-                <MdGroup />
+              <Avatar className="atvidade-icon">
+                <img src={`./img/${item.icon}`} alt={item.icon} />
               </Avatar>
             </ListItemAvatar>
-            <ListItemText primary={`Grupo ${item}`} />
+            <ListItemText
+              className="atividade-texto"
+              primary={item.texto}
+              secondary={item.tempo}
+            />
           </ListItem>
         ))}
         <ListItem button>

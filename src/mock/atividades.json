@@ -1,0 +1,22 @@
+[
+  {
+    "icon": "heart.svg",
+    "texto": "Você reagiu ao post relacionado a serie Flash publicado por Pedro Luiz.",
+    "tempo": "Há 1 minuto"
+  },
+  {
+    "icon": "comments.svg",
+    "texto": "Você comentou num post relacionado  a serie Flash publicado por Xavier Paulo",
+    "tempo": "Há 12 minutos"
+  },
+  {
+    "icon": "comment.svg",
+    "texto": "Você publicou um post relacionado  a serie Flash.",
+    "tempo": "Há 2 horas"
+  },
+  {
+    "icon": "comments.svg",
+    "texto": "Você respondeu ao comentário de Carlos Martins a um post publicado por você.",
+    "tempo": "Há 3 dias"
+  }
+]
