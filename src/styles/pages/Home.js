@@ -32,7 +32,7 @@ export const MainContainer = styled.div`
         min-width: auto;
         padding-right: 8px;
       }
-      .MuiListItem-gutters {
+      .MuiListItem-gutters:not(.ver_mais_atividades) {
         padding-left: 0px;
       }
 

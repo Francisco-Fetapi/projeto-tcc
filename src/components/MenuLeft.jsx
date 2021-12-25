@@ -105,7 +105,7 @@ export default function MenuLeft() {
             />
           </ListItem>
         ))}
-        <ListItem button>
+        <ListItem button className="ver_mais_atividades">
           <ListItemAvatar>
             <Avatar>
               <FaChevronDown />
