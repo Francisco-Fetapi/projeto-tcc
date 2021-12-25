@@ -115,6 +115,11 @@ export const MaisSobreVoce = {
     .form {
       width: 100%;
       max-width: 650px;
+      @media (max-width: 675px) {
+        & {
+          padding: 0 50px;
+        }
+      }
     }
     .grid-3 {
       display: grid;
@@ -125,6 +130,13 @@ export const MaisSobreVoce = {
       display: grid;
       grid-template-columns: 1fr 1fr;
       grid-gap: 10px;
+    }
+    @media (max-width: 675px) {
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr;
+        row-gap: 35px;
+      }
     }
   `,
   Form: styled.div``,
