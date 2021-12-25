@@ -3,8 +3,9 @@ import { Text } from "../../styles";
 import { ContainerFormLogin } from "../../styles/pages/LoginAndSignUp";
 import Box from "@material-ui/core/Box";
 import TextField1 from "../TextField1";
-import { FaEnvelope, FaUserLock } from "react-icons/fa";
+import { FaUserLock } from "react-icons/fa";
 import Checkbox from "@material-ui/core/Checkbox";
+import AlternateEmail from "@material-ui/icons/AlternateEmail";
 import Button from "@material-ui/core/Button";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import { useNavigate } from "react-router-dom";
@@ -35,7 +36,7 @@ export default function FormLogin() {
           <Box my={2.5}>
             <TextField1
               placeholder="Insira seu email"
-              icon={<FaEnvelope />}
+              icon={<AlternateEmail style={{ width: 18, height: 18 }} />}
               id="email"
               label="Email"
             />

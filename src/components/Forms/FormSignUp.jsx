@@ -3,7 +3,7 @@ import { Text } from "../../styles";
 import { ContainerFormSignUp } from "../../styles/pages/LoginAndSignUp";
 import Box from "@material-ui/core/Box";
 import TextField1 from "../TextField1";
-import { FaEnvelope, FaUserLock, FaUser, FaPlusCircle } from "react-icons/fa";
+import { FaUserLock, FaUser, FaPlusCircle } from "react-icons/fa";
 import Button from "@material-ui/core/Button";
 
 import Radio from "@material-ui/core/Radio";
@@ -11,6 +11,8 @@ import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
+
+import AlternateEmail from "@material-ui/icons/AlternateEmail";
 
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -52,7 +54,7 @@ export default function FormLogin({ handleClose }) {
           <Box my={2.5}>
             <TextField1
               placeholder="Insira seu email"
-              icon={<FaEnvelope />}
+              icon={<AlternateEmail style={{ width: 18, height: 18 }} />}
               id="_email"
               label="Email"
             />

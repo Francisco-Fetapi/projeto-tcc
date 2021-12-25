@@ -3,9 +3,10 @@ import { Text } from "../../styles";
 import { ContainerFormEsqueciAPasse } from "../../styles/pages/LoginAndSignUp";
 import Box from "@material-ui/core/Box";
 import TextField1 from "../TextField1";
-import { FaEnvelope, FaUserLock } from "react-icons/fa";
+import { FaUserLock } from "react-icons/fa";
 import Button from "@material-ui/core/Button";
 import Fingerprint from "@material-ui/icons/Fingerprint";
+import AlternateEmail from "@material-ui/icons/AlternateEmail";
 
 export default function FormEsqueciAPasse({ handleClose }) {
   const [form2, setForm2] = useState(false);
@@ -33,7 +34,7 @@ function FormInserirEmail({ definirEmail }) {
       <Box mt={-0.5}>
         <TextField1
           placeholder="Insira seu email"
-          icon={<FaEnvelope />}
+          icon={<AlternateEmail style={{ width: 18, height: 18 }} />}
           id="__email"
           label="Email"
         />
@@ -96,7 +97,7 @@ function FormInserirNovaPasse() {
         <TextField1
           placeholder="Insira uma nova palavra-passe"
           icon={<FaUserLock />}
-          id="__nova_senha"
+          id="nova_senha"
           label="Nova palavra-passe"
           type="password"
         />
@@ -111,7 +112,7 @@ function FormInserirNovaPasse() {
         <TextField1
           icon={<FaUserLock />}
           placeholder="Deve ser igual ao campo anterior"
-          id="__conf_nova_senha"
+          id="conf_nova_senha"
           label="Confirmar palavra-passe"
           type="password"
         />
