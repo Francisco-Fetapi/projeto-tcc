@@ -20,7 +20,7 @@ export default function ModalEsqueciAPasse() {
       navigateToOnClose="/login"
       nomeModal="modalEsqueciAPasse"
       titulo="Esqueci a palavra-passe"
-      subtitulo="Insira seu email e defina uma nova palavra-passe"
+      subtitulo="Defina uma nova palavra-passe"
       {...propsModal}
     >
       <FormEsqueciAPasse />
