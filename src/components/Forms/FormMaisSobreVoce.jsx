@@ -25,7 +25,7 @@ export default function FormMaisSobreVoce() {
   }
   return (
     <MaisSobreVoce.Form>
-      <Box component="form" className="input-padrao" autoComplete="off">
+      <Box component="form" autoComplete="off">
         <Box className="grid-3">
           <Box>
             <TextField1 select id="pais" label="Escolha o seu pais">

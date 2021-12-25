@@ -6,7 +6,7 @@ export const GlobalStyles = createGlobalStyle`
         width:100%;
     }
     .MuiOutlinedInput-root{
-        height:45px;
+        height:50px;
         width:100%;
     }
     }
