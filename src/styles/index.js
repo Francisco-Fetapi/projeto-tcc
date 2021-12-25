@@ -90,6 +90,14 @@ export const ConfirmarEmail = {
         border-radius: 50%;
       }
     }
+    @media (max-width: 520px) {
+      .titulo_e_descricao {
+        padding: 0px 10px;
+      }
+      .foto-e-form {
+        padding: 0px 20px;
+      }
+    }
   `,
   Form: styled.div`
     margin-top: 30px;

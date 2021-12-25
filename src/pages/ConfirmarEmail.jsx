@@ -8,7 +8,7 @@ import FormConfirmarEmail from "../components/Forms/FormConfirmarEmail";
 export default function ConfirmarEmail_() {
   return (
     <ConfirmarEmail.Container>
-      <Box>
+      <Box className="titulo_e_descricao">
         <IconAndText Icon={FaEnvelope} label="Confirmar Email" />
         <Box mt={1}>
           <Text align="center" variant="body1" color="textSecondary">

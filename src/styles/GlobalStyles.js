@@ -24,5 +24,24 @@ export const GlobalStyles = createGlobalStyle`
       svg{
           font-size: 35px;
       }
+      @media (max-width: 400px) {
+        .MuiTypography-h4 {
+            font-size: 28px !important;
+        }
+        svg{
+            font-size:30px;
+        }
+    }
+      @media (max-width: 340px) {
+        &{
+            flex-direction: column;
+        }
+        .MuiTypography-h4{
+            margin-top:15px;
+        }
+        svg{
+            font-size:40px;
+        }
+    }
   }
 `;
