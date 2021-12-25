@@ -11,7 +11,7 @@ export default function ConfirmarEmail_() {
       <Box>
         <IconAndText Icon={FaEnvelope} label="Confirmar Email" />
         <Box mt={1}>
-          <Text variant="body1" color="textSecondary">
+          <Text align="center" variant="body1" color="textSecondary">
             Precisamos confirmar se o email inserido para criar essa conta lhe
             pertence realmente
           </Text>

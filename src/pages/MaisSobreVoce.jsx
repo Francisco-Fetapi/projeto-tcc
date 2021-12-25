@@ -11,7 +11,7 @@ export default function MaisSobreVoce_() {
       <Box>
         <IconAndText Icon={FaInfoCircle} label="Mais sobre você" />
         <Box mt={1}>
-          <Text variant="body1" color="textSecondary">
+          <Text align="center" variant="body1" color="textSecondary">
             Os teus amigos precisarão saber mais de você do que apenas o seu
             nome. Preencha os campos segunites para completar o processo
           </Text>
