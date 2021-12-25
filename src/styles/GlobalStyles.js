@@ -5,7 +5,7 @@ export const GlobalStyles = createGlobalStyle`
         .MuiFormControl-root{
         width:100%;
     }
-    .MuiOutlinedInput-root{
+    .MuiOutlinedInput-root:not(.MuiOutlinedInput-multiline){
         height:50px;
         width:100%;
     }
