@@ -27,39 +27,57 @@ export default function FormMaisSobreVoce() {
     <MaisSobreVoce.Form>
       <Box component="form" className="input-padrao" autoComplete="off">
         <Box className="grid-3">
-          <TextField1 select id="pais" label="Escolha o seu pais">
-            {itens}
-          </TextField1>
-          <TextField1 select id="pais" label="Escolha o seu estado">
-            {itens}
-          </TextField1>
-          <TextField1 select id="pais" label="Escolha a sua cidade">
-            {itens}
-          </TextField1>
+          <Box>
+            <TextField1 select id="pais" label="Escolha o seu pais">
+              {itens}
+            </TextField1>
+          </Box>
+          <Box>
+            <TextField1 select id="pais" label="Escolha o seu estado">
+              {itens}
+            </TextField1>
+          </Box>
+          <Box>
+            <TextField1 select id="pais" label="Escolha a sua cidade">
+              {itens}
+            </TextField1>
+          </Box>
         </Box>
         <Box mt={5} className="grid-2">
-          <TextField1
-            select
-            id="genero_favorito"
-            label="Escolha o seu genero favorito"
-          >
-            {itens}
-          </TextField1>
-          <TextField1
-            select
-            id="genero_favorito_porque"
-            label="Gosto mais desse genero porque..."
-          >
-            {itens}
-          </TextField1>
+          <Box>
+            <TextField1
+              select
+              id="genero_favorito"
+              label="Escolha o seu genero favorito"
+            >
+              {itens}
+            </TextField1>
+          </Box>
+          <Box>
+            <TextField1
+              select
+              id="genero_favorito_porque"
+              label="Gosto mais desse genero porque..."
+            >
+              {itens}
+            </TextField1>
+          </Box>
         </Box>
         <Box mt={5} className="grid-2">
-          <TextField1 select id="pior_genero" label="O genero que menos gostas">
-            {itens}
-          </TextField1>
-          <TextField1 select id="pra_que_assistir" label="Assisto para...">
-            {itens}
-          </TextField1>
+          <Box>
+            <TextField1
+              select
+              id="pior_genero"
+              label="O genero que menos gostas"
+            >
+              {itens}
+            </TextField1>
+          </Box>
+          <Box>
+            <TextField1 select id="pra_que_assistir" label="Assisto para...">
+              {itens}
+            </TextField1>
+          </Box>
         </Box>
         <Box mt={5}>
           <TextField1

@@ -15,42 +15,48 @@ export default function TextField1({
   multiline,
   ...props
 }) {
+  const Label = label && (
+    <Text variant="subtitle1" style={{ fontWeight: 500 }}>
+      {label}
+    </Text>
+  );
   if (select) {
     return (
-      <TextField
-        InputLabelProps={{ shrink: true }}
-        variant="outlined"
-        id={id}
-        select
-        label={label}
-        {...props}
-      >
-        {children}
-      </TextField>
+      <>
+        {Label}
+        <TextField
+          InputLabelProps={{ shrink: true }}
+          variant="outlined"
+          id={id}
+          select
+          fullWidth
+          {...props}
+        >
+          {children}
+        </TextField>
+      </>
     );
   }
   if (multiline) {
     return (
-      <TextField
-        InputLabelProps={{ shrink: true }}
-        variant="outlined"
-        id={id}
-        multiline
-        label={label}
-        {...props}
-      >
-        {children}
-      </TextField>
+      <>
+        {Label}
+        <TextField
+          InputLabelProps={{ shrink: true }}
+          variant="outlined"
+          id={id}
+          multiline
+          {...props}
+        >
+          {children}
+        </TextField>
+      </>
     );
   }
 
   return (
     <>
-      {label && (
-        <Text variant="subtitle1" style={{ fontWeight: 500 }}>
-          {label}
-        </Text>
-      )}
+      {Label}
       <FormControl variant="outlined">
         <OutlinedInput
           id={id}
