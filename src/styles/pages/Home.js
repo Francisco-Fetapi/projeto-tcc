@@ -21,8 +21,37 @@ export const MainContainer = styled.div`
     height: 100vh;
     overflow-y: auto;
 
-    .MuiAvatar-root {
+    .MuiAvatar-root:not(.atvidade-icon) {
       background: #303f9f;
+    }
+    .lista-atividades {
+      .MuiListItem-root {
+        align-items: flex-start;
+      }
+      .MuiListItemAvatar-root {
+        min-width: auto;
+        padding-right: 8px;
+      }
+      .MuiListItem-gutters:not(.ver_mais_atividades) {
+        padding-left: 0px;
+      }
+
+      .atividade-texto {
+        .MuiTypography-body1 {
+          font-size: 14px;
+        }
+        .MuiTypography-body2 {
+          text-align: right;
+          font-size: 12px;
+        }
+      }
+      .atvidade-icon {
+        background-color: transparent;
+        img {
+          width: 25px;
+          height: 25px;
+        }
+      }
     }
   }
   .menu-left::-webkit-scrollbar,
@@ -30,9 +59,10 @@ export const MainContainer = styled.div`
     width: 6px;
     height: 6px;
     background: #d4d4d4;
+  }
+  .menu-right::-webkit-scrollbar {
     display: none;
   }
-  .menu-left:hover::-webkit-scrollbar,
   .menu-right:hover::-webkit-scrollbar {
     display: block;
   }
