@@ -14,39 +14,14 @@ import series from "../mock/series.json";
 
 export default function MenuLeft() {
   return (
-    <div className="menu-right">
-      <List>
-        <Text variant="body1" color="textSecondary">
-          SERIES POPULARES
-        </Text>
-        {series.slice(0, 3).map((item) => (
-          <ListItem button key={item.nome}>
-            <ListItemAvatar>
-              <img src={`./img/${item.img}`} alt={item.nome} />
-            </ListItemAvatar>
-            <ListItemText primary={item.nome} secondary={item.data} />
-          </ListItem>
-        ))}
-        <ListItem button>
-          <ListItemAvatar>
-            <Avatar>
-              <FaChevronDown />
-            </Avatar>
-          </ListItemAvatar>
-          <ListItemText primary="Ver mais" />
-        </ListItem>
-      </List>
-      <br />
-      <Divider />
-      <br />
-      <List>
-        <Text variant="body1" color="textSecondary">
-          FILMES POPULARES
-        </Text>
-        {series
-          .slice(2, 5)
-          .reverse()
-          .map((item) => (
+    <>
+      <div />
+      <div className="menu-right">
+        <List>
+          <Text variant="body1" color="textSecondary">
+            SERIES POPULARES
+          </Text>
+          {series.slice(0, 3).map((item) => (
             <ListItem button key={item.nome}>
               <ListItemAvatar>
                 <img src={`./img/${item.img}`} alt={item.nome} />
@@ -54,15 +29,43 @@ export default function MenuLeft() {
               <ListItemText primary={item.nome} secondary={item.data} />
             </ListItem>
           ))}
-        <ListItem button>
-          <ListItemAvatar>
-            <Avatar>
-              <FaChevronDown />
-            </Avatar>
-          </ListItemAvatar>
-          <ListItemText primary="Ver mais" />
-        </ListItem>
-      </List>
-    </div>
+          <ListItem button>
+            <ListItemAvatar>
+              <Avatar>
+                <FaChevronDown />
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText primary="Ver mais" />
+          </ListItem>
+        </List>
+        <br />
+        <Divider />
+        <br />
+        <List>
+          <Text variant="body1" color="textSecondary">
+            FILMES POPULARES
+          </Text>
+          {series
+            .slice(2, 5)
+            .reverse()
+            .map((item) => (
+              <ListItem button key={item.nome}>
+                <ListItemAvatar>
+                  <img src={`./img/${item.img}`} alt={item.nome} />
+                </ListItemAvatar>
+                <ListItemText primary={item.nome} secondary={item.data} />
+              </ListItem>
+            ))}
+          <ListItem button>
+            <ListItemAvatar>
+              <Avatar>
+                <FaChevronDown />
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText primary="Ver mais" />
+          </ListItem>
+        </List>
+      </div>
+    </>
   );
 }

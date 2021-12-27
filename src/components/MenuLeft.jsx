@@ -21,93 +21,96 @@ import atividades from "../mock/atividades.json";
 
 export default function MenuLeft() {
   return (
-    <div className="menu-left">
-      <List>
-        <ListItem button className="item-usuario">
-          <ListItemAvatar>
-            <img
-              src="./img/user.jpg"
-              alt="foto usuario"
-              className="item-foto-usuario"
-            />
-          </ListItemAvatar>
-          <ListItemText primary="Nome do usuario" />
-        </ListItem>
-        <ListItem button>
-          <ListItemAvatar>
-            <Avatar className="avatar_series">
-              <SerieIcon />
-            </Avatar>
-          </ListItemAvatar>
-          <ListItemText primary="Series" />
-        </ListItem>
-        <ListItem button>
-          <ListItemAvatar>
-            <Avatar className="avatar_filmes">
-              <FilmeIcon />
-            </Avatar>
-          </ListItemAvatar>
-          <ListItemText primary="Filmes" />
-        </ListItem>
-        <ListItem button>
-          <ListItemAvatar>
-            <Avatar className="avatar_amigos">
-              <FaUsers />
-            </Avatar>
-          </ListItemAvatar>
-          <ListItemText primary="Amigos" />
-        </ListItem>
-        <ListItem button>
-          <ListItemAvatar>
-            <Avatar className="avatar_videos">
-              <FaTv />
-            </Avatar>
-          </ListItemAvatar>
-          <ListItemText primary="Videos" />
-        </ListItem>
-        <ListItem button>
-          <ListItemAvatar>
-            <Avatar>
-              <FaChevronDown />
-            </Avatar>
-          </ListItemAvatar>
-          <ListItemText primary="Ver mais" />
-        </ListItem>
-        <br />
-        <Divider />
-      </List>
-
-      <List className="lista-atividades">
-        <Box px={2} display="flex" alignItems="center">
-          <Text variant="body1">ATIVIDADES RECENTES</Text>
-          <Box flexGrow={1} />
-          <IconButton>
-            <MoreHoriz />
-          </IconButton>
-        </Box>
-        {atividades.map((item, key) => (
-          <ListItem button key={key}>
+    <>
+      <div />
+      <div className="menu-left">
+        <List>
+          <ListItem button className="item-usuario">
             <ListItemAvatar>
-              <Avatar className="atvidade-icon">
-                <img src={`./img/${item.icon}`} alt={item.icon} />
+              <img
+                src="./img/user.jpg"
+                alt="foto usuario"
+                className="item-foto-usuario"
+              />
+            </ListItemAvatar>
+            <ListItemText primary="Nome do usuario" />
+          </ListItem>
+          <ListItem button>
+            <ListItemAvatar>
+              <Avatar className="avatar_series">
+                <SerieIcon />
               </Avatar>
             </ListItemAvatar>
-            <ListItemText
-              className="atividade-texto"
-              primary={item.texto}
-              secondary={item.tempo}
-            />
+            <ListItemText primary="Series" />
           </ListItem>
-        ))}
-        <ListItem button className="ver_mais_atividades">
-          <ListItemAvatar>
-            <Avatar>
-              <FaChevronDown />
-            </Avatar>
-          </ListItemAvatar>
-          <ListItemText primary="Ver mais" />
-        </ListItem>
-      </List>
-    </div>
+          <ListItem button>
+            <ListItemAvatar>
+              <Avatar className="avatar_filmes">
+                <FilmeIcon />
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText primary="Filmes" />
+          </ListItem>
+          <ListItem button>
+            <ListItemAvatar>
+              <Avatar className="avatar_amigos">
+                <FaUsers />
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText primary="Amigos" />
+          </ListItem>
+          <ListItem button>
+            <ListItemAvatar>
+              <Avatar className="avatar_videos">
+                <FaTv />
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText primary="Videos" />
+          </ListItem>
+          <ListItem button>
+            <ListItemAvatar>
+              <Avatar>
+                <FaChevronDown />
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText primary="Ver mais" />
+          </ListItem>
+          <br />
+          <Divider />
+        </List>
+
+        <List className="lista-atividades">
+          <Box px={2} display="flex" alignItems="center">
+            <Text variant="body1">ATIVIDADES RECENTES</Text>
+            <Box flexGrow={1} />
+            <IconButton>
+              <MoreHoriz />
+            </IconButton>
+          </Box>
+          {atividades.map((item, key) => (
+            <ListItem button key={key}>
+              <ListItemAvatar>
+                <Avatar className="atvidade-icon">
+                  <img src={`./img/${item.icon}`} alt={item.icon} />
+                </Avatar>
+              </ListItemAvatar>
+              <ListItemText
+                className="atividade-texto"
+                primary={item.texto}
+                secondary={item.tempo}
+              />
+            </ListItem>
+          ))}
+          <ListItem button className="ver_mais_atividades">
+            <ListItemAvatar>
+              <Avatar>
+                <FaChevronDown />
+              </Avatar>
+            </ListItemAvatar>
+            <ListItemText primary="Ver mais" />
+          </ListItem>
+        </List>
+      </div>
+    </>
   );
 }

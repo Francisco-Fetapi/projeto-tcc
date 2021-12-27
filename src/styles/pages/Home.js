@@ -26,6 +26,10 @@ export const MainContainer = styled.div`
   .menu-right {
     height: 100vh;
     overflow-y: auto;
+    position: fixed;
+    width: 25%;
+    min-width: 200px;
+    padding-bottom: 70px;
 
     .MuiAvatar-root:not(.atvidade-icon) {
       background: #303f9f;
@@ -90,9 +94,13 @@ export const MainContainer = styled.div`
     border-radius: 2px;
   }
   .menu-left {
+    left: 0;
+    right: auto;
   }
   .menu-right {
     padding-top: 30px;
+    right: 0;
+    left: auto;
     .MuiListItem-root {
       padding-top: 9px;
       padding-bottom: 9px;
@@ -107,6 +115,9 @@ export const MainContainer = styled.div`
   }
   .main-content {
     padding: 30px;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
     h5 {
       text-transform: uppercase;
       font-size: 22px;

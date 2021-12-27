@@ -8,7 +8,9 @@ export default function Main() {
   return (
     <MainContainer>
       <MenuLeft />
-      <MainContent />
+      <div>
+        <MainContent />
+      </div>
       <MenuRight />
     </MainContainer>
   );
