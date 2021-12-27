@@ -8,7 +8,6 @@ import Divider from "@material-ui/core/Divider";
 
 import { Text } from "../styles";
 
-import { MdGroup } from "react-icons/md";
 import { FaChevronDown } from "react-icons/fa";
 
 import series from "../mock/series.json";

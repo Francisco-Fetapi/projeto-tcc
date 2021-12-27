@@ -16,20 +16,14 @@ import { FaChevronDown } from "react-icons/fa";
 import SerieIcon from "@material-ui/icons/OndemandVideo";
 import FilmeIcon from "@material-ui/icons/Videocam";
 import MoreHoriz from "@material-ui/icons/MoreHoriz";
-import useTheme from "@material-ui/core/styles/useTheme";
 
 import atividades from "../mock/atividades.json";
 
 export default function MenuLeft() {
-  const theme = useTheme();
   return (
     <div className="menu-left">
       <List>
-        <ListItem
-          button
-          style={{ background: theme.palette.primary.main, color: "white" }}
-          className="item-usuario"
-        >
+        <ListItem button className="item-usuario">
           <ListItemAvatar>
             <img
               src="./img/user.jpg"
@@ -41,7 +35,7 @@ export default function MenuLeft() {
         </ListItem>
         <ListItem button>
           <ListItemAvatar>
-            <Avatar>
+            <Avatar className="avatar_series">
               <SerieIcon />
             </Avatar>
           </ListItemAvatar>
@@ -49,7 +43,7 @@ export default function MenuLeft() {
         </ListItem>
         <ListItem button>
           <ListItemAvatar>
-            <Avatar>
+            <Avatar className="avatar_filmes">
               <FilmeIcon />
             </Avatar>
           </ListItemAvatar>
@@ -57,7 +51,7 @@ export default function MenuLeft() {
         </ListItem>
         <ListItem button>
           <ListItemAvatar>
-            <Avatar>
+            <Avatar className="avatar_amigos">
               <FaUsers />
             </Avatar>
           </ListItemAvatar>
@@ -65,7 +59,7 @@ export default function MenuLeft() {
         </ListItem>
         <ListItem button>
           <ListItemAvatar>
-            <Avatar>
+            <Avatar className="avatar_videos">
               <FaTv />
             </Avatar>
           </ListItemAvatar>

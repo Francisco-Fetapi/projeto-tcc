@@ -6,6 +6,11 @@ export const MainContainer = styled.div`
   grid-template-columns: 1fr 2fr 1fr;
   margin-top: -30px;
 
+  .item-usuario {
+    background: linear-gradient(150deg, #c5f0f2, #0e257f);
+    color: white;
+  }
+
   .item-foto-usuario {
     width: 50px;
     height: 50px;
@@ -23,6 +28,18 @@ export const MainContainer = styled.div`
 
     .MuiAvatar-root:not(.atvidade-icon) {
       background: #303f9f;
+    }
+    .MuiAvatar-root.avatar_series {
+      background: linear-gradient(121deg, #2ada2a, #2a5a1a);
+    }
+    .MuiAvatar-root.avatar_filmes {
+      background: linear-gradient(121deg, #d140f2, #0e257f);
+    }
+    .MuiAvatar-root.avatar_amigos {
+      background: linear-gradient(121deg, #c5f0f2, #0e257f);
+    }
+    .MuiAvatar-root.avatar_videos {
+      background: linear-gradient(121deg, cyan, #0e257f);
     }
     .lista-atividades {
       .MuiListItem-root {
