@@ -99,4 +99,34 @@ export const GlobalStyles = createGlobalStyle`
   textarea::-webkit-scrollbar{
       display: none;
   }
+  .post{
+      .foto-user{
+          width:45px;
+          height:45px;
+          border-radius:50%;
+      }
+      .imagem-post{
+            width:80%;
+            margin-left:auto;
+            margin-right:auto;
+            img{
+                width:100%;
+                height:210px;
+                object-fit: cover;
+            }
+        }
+      .post-acoes{
+          .MuiButtonBase-root{
+              border:none;
+          }
+          .MuiButton-outlined{
+            padding:10px 15px;
+          }
+          .MuiBadge-badge {
+            font-size:10px;
+            padding:0px 3px;
+        }
+        
+      }
+  }
 `;

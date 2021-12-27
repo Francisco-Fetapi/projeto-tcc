@@ -4,6 +4,7 @@ export const HomeContainer = styled.div``;
 export const MainContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
+  position: relative;
   margin-top: -30px;
 
   .item-usuario {

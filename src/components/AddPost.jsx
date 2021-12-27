@@ -12,7 +12,7 @@ import AddCircle from "@material-ui/icons/AddCircle";
 
 export default function AddPost() {
   return (
-    <Box className="AddPost">
+    <Box className="AddPost" mb={8}>
       <Box display="flex" alignItems="center">
         <Text variant="body1" color="textSecondary">
           Publique algo para:
