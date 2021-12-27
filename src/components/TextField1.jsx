@@ -37,6 +37,7 @@ export default function TextField1({
       </>
     );
   }
+
   if (multiline) {
     return (
       <>
@@ -47,9 +48,7 @@ export default function TextField1({
           id={id}
           multiline
           {...props}
-        >
-          {children}
-        </TextField>
+        />
       </>
     );
   }
