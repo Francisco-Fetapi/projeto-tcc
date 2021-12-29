@@ -3,7 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import LoginAndSignUp from "./pages/LoginAndSignUp";
 import ConfirmarEmail from "./pages/ConfirmarEmail";
-import MaisSobreVoce_ from "./pages/MaisSobreVoce";
+import MaisSobreVoce from "./pages/MaisSobreVoce";
+import Perfil from "./pages/Perfil";
 
 export default function routes() {
   return (
@@ -17,7 +18,8 @@ export default function routes() {
           element={<LoginAndSignUp page="esqueci-a-passe" />}
         />
         <Route path="/confirmar-email" element={<ConfirmarEmail />} />
-        <Route path="/mais-sobre-voce" element={<MaisSobreVoce_ />} />
+        <Route path="/mais-sobre-voce" element={<MaisSobreVoce />} />
+        <Route path="/perfil" element={<Perfil />} />
       </Routes>
     </BrowserRouter>
   );
