@@ -103,6 +103,7 @@ export const Perfil = {
     .fotos,
     .amigos {
       padding: 30px;
+      padding-bottom: 5px;
       width: 100%;
       border-radius: 10px;
       .fotos-grid {
