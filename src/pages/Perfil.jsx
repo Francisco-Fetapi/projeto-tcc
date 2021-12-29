@@ -1,16 +1,15 @@
 import React from "react";
-import { PerfilContainer } from "../styles/pages/Perfil";
 import Header from "../components/Header";
 import PerfilMain from "../components/Perfil/Main";
 import Box from "@material-ui/core/Box";
 
-export default function Perfil() {
+export default function Perfil_() {
   return (
-    <PerfilContainer>
+    <Box>
       <Header />
-      <Box>
+      <Box mt={-3}>
         <PerfilMain />
       </Box>
-    </PerfilContainer>
+    </Box>
   );
 }
