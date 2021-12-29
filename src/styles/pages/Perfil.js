@@ -94,4 +94,38 @@ export const Perfil = {
       }
     }
   `,
+  FotosAmigos: styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    gap: 10px;
+
+    .fotos,
+    .amigos {
+      padding: 30px;
+      width: 100%;
+      border-radius: 10px;
+      .fotos-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 10px;
+        div,
+        figure {
+          width: 100%;
+          height: 130px;
+        }
+        figure {
+          margin-left: 0px;
+          zoom: 0.8;
+          figcaption p {
+            font-weight: bold;
+          }
+        }
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  `,
 };
