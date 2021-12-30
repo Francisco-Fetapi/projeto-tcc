@@ -5,6 +5,7 @@ import LoginAndSignUp from "./pages/LoginAndSignUp";
 import ConfirmarEmail from "./pages/ConfirmarEmail";
 import MaisSobreVoce from "./pages/MaisSobreVoce";
 import Perfil from "./pages/Perfil";
+import Amigos from "./pages/Amigos";
 
 export default function routes() {
   return (
@@ -20,6 +21,7 @@ export default function routes() {
         <Route path="/confirmar-email" element={<ConfirmarEmail />} />
         <Route path="/mais-sobre-voce" element={<MaisSobreVoce />} />
         <Route path="/perfil" element={<Perfil />} />
+        <Route path="/amigos" element={<Amigos />} />
       </Routes>
     </BrowserRouter>
   );
