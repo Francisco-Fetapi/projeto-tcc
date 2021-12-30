@@ -91,7 +91,7 @@ export default function Post({
             </Box>
           )}
           <Divider />
-          <ButtonGroup fullWidth>
+          <ButtonGroup size="small" fullWidth>
             <Button startIcon={<ThumbUpIcon />}>Gostar</Button>
 
             <Button startIcon={<ModeCommentIcon />}>

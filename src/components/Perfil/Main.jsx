@@ -6,6 +6,9 @@ import InfoUsuario from "./InfoUsuario";
 import Box from "@material-ui/core/Box";
 import PublicacoesGuardadas from "./PublicacoesGuardadas";
 import Favoritos from "./Favoritos";
+import MarcadosParaMaisTarde from "./MarcadosParaMaisTarde";
+import AddPost from "../AddPost";
+import Posts from "../Posts";
 
 export default function Main() {
   return (
@@ -19,7 +22,13 @@ export default function Main() {
           <Favoritos />
         </Box>
         <Box>
-          <h1>Ola Mundo</h1>
+          <MarcadosParaMaisTarde />
+          <Box my={10}>
+            <AddPost />
+          </Box>
+          <Box>
+            <Posts />
+          </Box>
         </Box>
       </Box>
     </Perfil.Container>

@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+const colorPrimary = "#303F9F";
+
 export const Perfil = {
   Container: styled.div`
     width: 100%;
@@ -10,6 +12,7 @@ export const Perfil = {
       margin-top: 50px;
       display: grid;
       grid-template-columns: auto 1fr;
+      column-gap: 30px;
 
       .MuiListItem-gutters {
         padding-left: 0px;
@@ -46,6 +49,52 @@ export const Perfil = {
         }
         h6 {
           padding-left: 30px;
+        }
+      }
+    }
+    .movies {
+      width: 100%;
+      max-width: 600px;
+
+      .slick-dots {
+        li button:before {
+          font-size: 14px;
+        }
+        li.slick-active button:before {
+          color: ${colorPrimary};
+        }
+      }
+    }
+    .lista-movies {
+      display: flex !important;
+      flex-flow: row wrap;
+      cursor: grabbing;
+    }
+    .movie {
+      width: 150px;
+      height: 190px;
+      position: relative;
+      margin: 5px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+      }
+      figcaption {
+        position: absolute;
+        bottom: 0px;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.5);
+        color: white;
+        padding: 5px;
+        cursor: pointer;
+        transition: all 0.3s linear;
+
+        :hover {
+          background: rgba(0, 0, 0, 0.8);
         }
       }
     }
