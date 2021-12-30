@@ -55,15 +55,6 @@ export const Perfil = {
     .movies {
       width: 100%;
       max-width: 600px;
-
-      .slick-dots {
-        li button:before {
-          font-size: 14px;
-        }
-        li.slick-active button:before {
-          color: ${colorPrimary};
-        }
-      }
     }
     .lista-movies {
       display: flex !important;

@@ -140,5 +140,13 @@ export const GlobalStyles = createGlobalStyle`
           border: none;
       }
   }
+  .slick-dots {
+        li button:before {
+          font-size: 14px;
+        }
+        li.slick-active button:before {
+          color: ${colorPrimary};
+        }
+      }
   
 `;
