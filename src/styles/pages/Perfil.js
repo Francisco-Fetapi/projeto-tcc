@@ -32,8 +32,8 @@ export const Perfil = {
           border-radius: 50%;
         }
         .img {
-          width: 120px;
-          height: 120px;
+          width: 90px;
+          height: 90px;
         }
         .info {
           margin-left: -20px;
