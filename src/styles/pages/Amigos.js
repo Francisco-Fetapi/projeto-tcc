@@ -12,8 +12,6 @@ export const Amigos = {
       max-width: 370px;
       .dados {
         border-radius: 7px;
-        /* background-color: #303f9fcc; */
-        /* color: white; */
         padding: 20px 25px;
         position: relative;
 
@@ -28,17 +26,6 @@ export const Amigos = {
           }
         }
       }
-      .btn-acoes {
-        .MuiButton-root {
-          color: white;
-        }
-        .aceitar {
-          background: #388e3c;
-        }
-        .rejeitar {
-          background: #fa2f3d;
-        }
-      }
     }
     .slider-pedidos {
       width: 100%;
@@ -49,6 +36,46 @@ export const Amigos = {
       cursor: grabbing;
       .pedido {
         margin: 10px;
+      }
+    }
+    .lista-sugestoes {
+      margin-top: 50px;
+      padding-bottom: 50px;
+      .desc {
+        padding: 40px;
+      }
+      .sugestoes {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin: 0 10px;
+      }
+      .sugestao {
+        width: 100%;
+        max-width: 320px;
+        border-radius: 20px;
+        figure {
+          display: flex;
+          border-top-left-radius: 20px;
+          border-top-right-radius: 20px;
+          width: 100%;
+          justify-content: center;
+          align-items: flex-end;
+          background-color: #dfdfdf;
+          height: 70px;
+          margin: 0px;
+          img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: -30px;
+            border-radius: 50%;
+          }
+        }
+        .info {
+          min-height: 150px;
+          width: 100%;
+          padding-bottom: 20px;
+        }
       }
     }
   `,

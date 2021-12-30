@@ -12,7 +12,7 @@ import Clear from "@material-ui/icons/Clear";
 export default function Pedido({ img }) {
   return (
     <Box className="pedido">
-      <Paper elevation={3} className="dados">
+      <Paper variant="outlined" className="dados">
         <Text variant="h6">Nome Usuario</Text>
         <Box mt={2}>
           <Text variant="subtitle2">
@@ -24,8 +24,8 @@ export default function Pedido({ img }) {
           <img src={`./img/${img}`} alt="foto do usuario" />
         </Box>
       </Paper>
-      <Box mt={4} display="flex" justifyContent="center">
-        <ButtonGroup className="btn-acoes">
+      <Box mt={5} display="flex" justifyContent="center">
+        <ButtonGroup color="primary" className="btn-acoes">
           <Button className="aceitar" startIcon={<Done />}>
             Aceitar
           </Button>
