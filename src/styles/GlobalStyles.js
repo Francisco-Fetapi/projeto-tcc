@@ -129,4 +129,15 @@ export const GlobalStyles = createGlobalStyle`
         
       }
   }
+  .ver_e_remover{
+    .ver{
+          color:#81c784 !important;
+      }
+      .remover{
+          color:#f44336 !important;
+      }
+      .MuiButtonGroup-groupedTextHorizontal{
+          border: none;
+      }
+  }
 `;

@@ -5,6 +5,23 @@ export const Perfil = {
     width: 100%;
     max-width: 1000px;
     margin: 0 auto;
+
+    .grid-2 {
+      margin-top: 50px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+
+      .MuiListItem-gutters {
+        padding-left: 0px;
+      }
+    }
+    .publicacoes-guardadas {
+      width: 100%;
+      max-width: 400px;
+      .MuiListItem-root {
+        flex-direction: column;
+      }
+    }
   `,
   Main: styled.div``,
   Info: styled.div`
