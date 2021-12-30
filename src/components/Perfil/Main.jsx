@@ -14,7 +14,7 @@ export default function Main() {
       <InfoUsuario />
       <FotosEAmigos />
       <Box className="grid-2">
-        <Box className="publicacoes-guardadas favoritos">
+        <Box className="publicacoes-guardadas">
           <PublicacoesGuardadas />
           <Favoritos />
         </Box>

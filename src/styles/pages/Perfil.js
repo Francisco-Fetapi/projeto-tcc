@@ -22,6 +22,33 @@ export const Perfil = {
         flex-direction: column;
       }
     }
+    .favoritos {
+      .favorito-grid {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        img {
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+        }
+        .img {
+          width: 120px;
+          height: 120px;
+        }
+        .info {
+          margin-left: -20px;
+        }
+        figure {
+          img {
+            width: 30px;
+            height: 30px;
+          }
+        }
+        h6 {
+          padding-left: 30px;
+        }
+      }
+    }
   `,
   Main: styled.div``,
   Info: styled.div`
