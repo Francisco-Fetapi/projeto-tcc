@@ -9,25 +9,21 @@ import AlternateEmail from "@material-ui/icons/AlternateEmail";
 import Button from "@material-ui/core/Button";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { SET_STATE } from "../../store/App.actions";
 
 export default function FormLogin() {
   const [checked, setChecked] = useState(false);
   const navigate = useNavigate();
-  const Disparar = useDispatch();
 
   function handleChange() {
     setChecked((state) => !state);
   }
   function logar() {
-    Disparar(SET_STATE("logado", true));
     navigate("/");
   }
   return (
     <>
       <ContainerFormLogin>
-        <Box component="form" autocomplete="off">
+        <Box component="form" autoComplete="off">
           <Box my={2}>
             <Text variant="h4" style={{ fontWeight: "bold" }}>
               Inciar Sessão

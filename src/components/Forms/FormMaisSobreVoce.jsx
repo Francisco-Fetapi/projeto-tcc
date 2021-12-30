@@ -6,9 +6,6 @@ import MenuItem from "@material-ui/core/MenuItem";
 import TextField1 from "../TextField1";
 import { useNavigate } from "react-router-dom";
 
-import { useDispatch } from "react-redux";
-import { SET_STATE } from "../../store/App.actions";
-
 const itens = [1, 2, 3].map((item) => (
   <MenuItem key={item} value={`item${item}`}>
     Item {item}
@@ -17,10 +14,8 @@ const itens = [1, 2, 3].map((item) => (
 
 export default function FormMaisSobreVoce() {
   const navigate = useNavigate();
-  const Disparar = useDispatch();
 
   function concluido() {
-    Disparar(SET_STATE("logado", true));
     navigate("/");
   }
   return (

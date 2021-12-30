@@ -21,22 +21,22 @@ export default function MarcadosParaMaisTarde() {
         <Slider {...settings}>
           <Box className="lista-movies">
             {movies.slice(0, 3).map((movie) => (
-              <Movie nome={movie.nome} img={movie.img} />
+              <Movie key={movie.nome} nome={movie.nome} img={movie.img} />
             ))}
           </Box>
           <Box className="lista-movies">
             {movies.slice(2, 5).map((movie) => (
-              <Movie nome={movie.nome} img={movie.img} />
+              <Movie key={movie.nome} nome={movie.nome} img={movie.img} />
             ))}
           </Box>
           <Box className="lista-movies">
             {movies.slice(1, 4).map((movie) => (
-              <Movie nome={movie.nome} img={movie.img} />
+              <Movie key={movie.nome} nome={movie.nome} img={movie.img} />
             ))}
           </Box>
           <Box className="lista-movies">
             {movies.slice(2, 5).map((movie) => (
-              <Movie nome={movie.nome} img={movie.img} />
+              <Movie key={movie.nome} nome={movie.nome} img={movie.img} />
             ))}
           </Box>
         </Slider>
