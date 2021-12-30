@@ -3,7 +3,7 @@ import { MenuItemContainer } from "../styles";
 import useTheme from "@material-ui/core/styles/useTheme";
 import Badge from "@material-ui/core/Badge";
 
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function MenuItem({
   rota,
