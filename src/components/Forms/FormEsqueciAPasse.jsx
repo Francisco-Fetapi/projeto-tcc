@@ -5,8 +5,8 @@ import Box from "@material-ui/core/Box";
 import TextField1 from "../TextField1";
 import { FaUserLock } from "react-icons/fa";
 import Button from "@material-ui/core/Button";
-import Fingerprint from "@material-ui/icons/Fingerprint";
 import AlternateEmail from "@material-ui/icons/AlternateEmail";
+import Security from "@material-ui/icons/Security";
 
 import { Formik, Form } from "formik";
 import useUsuario from "../../hooks/useUsuario";
@@ -89,7 +89,7 @@ function FormInserirCodigo({ definirCodigo }) {
         <Box mt={-0.5}>
           <TextField1
             placeholder="Insira o codigo"
-            icon={<Fingerprint />}
+            icon={<Security />}
             id="codigo_de_recuperacao"
             label="Código de recuperação"
           />

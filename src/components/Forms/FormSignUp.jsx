@@ -46,7 +46,7 @@ export default function FormLogin({ handleClose }) {
           onSubmit={criarConta}
           style={{ width: 300 }}
         >
-          <Form>
+          <Form autoComplete="off">
             <Box mb={2.5}>
               <TextField1
                 placeholder="Insira seu nome"

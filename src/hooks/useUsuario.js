@@ -35,7 +35,7 @@ export default function useUsuario() {
     },
     setMaisSobreMim(values) {
       console.log(values);
-      // navigate("/");
+      navigate("/");
     },
     exibirFotoASerAlterada(e, img) {
       if (e.target.files.length) {

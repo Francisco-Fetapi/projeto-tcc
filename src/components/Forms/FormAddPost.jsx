@@ -15,8 +15,8 @@ export default function FormAddPost() {
   return (
     <Paper className="paper" elevation={3}>
       <Formik
-        initialValue={{
-          post: "",
+        initialValues={{
+          post: "Ola",
         }}
       >
         <Form autoComplete="off">
