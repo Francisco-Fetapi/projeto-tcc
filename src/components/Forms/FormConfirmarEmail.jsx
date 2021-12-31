@@ -3,23 +3,22 @@ import { Text } from "../../styles";
 import { ConfirmarEmail } from "../../styles";
 import Box from "@material-ui/core/Box";
 import TextField1 from "../TextField1";
-import { useNavigate } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import Security from "@material-ui/icons/Security";
 
 import { Formik, Form } from "formik";
+import useUsuario from "../../hooks/useUsuario";
 
 export default function FormConfirmarEmail() {
-  const navigate = useNavigate();
-  function confirmar() {
-    navigate("/mais-sobre-voce");
-  }
+  const { verificarEmail, reenviarCodigo } = useUsuario();
+
   return (
     <ConfirmarEmail.Form>
       <Formik
         initialValues={{
-          cod_confirmacao: "123",
+          cod_confirmacao: "",
         }}
+        onSubmit={verificarEmail}
       >
         <Form autoComplete="off">
           <Box mt={-0.5}>
@@ -42,7 +41,7 @@ export default function FormConfirmarEmail() {
               variant="contained"
               style={{ width: "150px", height: "42px" }}
               color="primary"
-              onClick={confirmar}
+              type="submit"
             >
               Confirmar
             </Button>
@@ -51,6 +50,7 @@ export default function FormConfirmarEmail() {
               variant="text"
               style={{ width: "250px", height: "42px" }}
               color="primary"
+              onClick={reenviarCodigo}
             >
               Reenviar o código
             </Button>

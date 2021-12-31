@@ -14,6 +14,13 @@ export default function useUsuario() {
       console.log(foto);
       navigate("/confirmar-email");
     },
+    verificarEmail(values) {
+      console.log(values);
+      navigate("/mais-sobre-voce");
+    },
+    reenviarCodigo() {
+      console.log("Codigo reenviado");
+    },
     exibirFotoASerAlterada(e, img) {
       if (e.target.files.length) {
         const fr = new FileReader();
