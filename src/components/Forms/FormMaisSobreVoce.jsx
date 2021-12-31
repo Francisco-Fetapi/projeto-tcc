@@ -7,6 +7,7 @@ import TextField1 from "../TextField1";
 import { useNavigate } from "react-router-dom";
 
 import { Formik, Form } from "formik";
+import useUsuario from "../../hooks/useUsuario";
 
 const itens = [1, 2, 3].map((item) => (
   <MenuItem key={item} value={`item${item}`}>
@@ -16,10 +17,8 @@ const itens = [1, 2, 3].map((item) => (
 
 export default function FormMaisSobreVoce() {
   const navigate = useNavigate();
+  const { setMaisSobreMim } = useUsuario();
 
-  function concluido() {
-    navigate("/");
-  }
   return (
     <MaisSobreVoce.Form>
       <Formik
@@ -33,6 +32,7 @@ export default function FormMaisSobreVoce() {
           pra_que_assistir: "item3",
           biografia: "",
         }}
+        onSubmit={setMaisSobreMim}
       >
         <Form autoComplete="off">
           <Box className="grid-3">
@@ -103,7 +103,7 @@ export default function FormMaisSobreVoce() {
               variant="contained"
               style={{ width: "150px", height: "42px" }}
               color="primary"
-              onClick={concluido}
+              type="submit"
             >
               Concluido
             </Button>

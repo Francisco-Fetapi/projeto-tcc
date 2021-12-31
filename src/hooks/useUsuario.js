@@ -21,6 +21,10 @@ export default function useUsuario() {
     reenviarCodigo() {
       console.log("Codigo reenviado");
     },
+    setMaisSobreMim(values) {
+      console.log(values);
+      navigate("/");
+    },
     exibirFotoASerAlterada(e, img) {
       if (e.target.files.length) {
         const fr = new FileReader();
