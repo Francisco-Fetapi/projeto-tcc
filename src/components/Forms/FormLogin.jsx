@@ -11,25 +11,26 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import { useNavigate } from "react-router-dom";
 
 import { Formik, Form } from "formik";
+import useUsuario from "../../hooks/useUsuario";
 
 export default function FormLogin() {
   const [checked, setChecked] = useState(false);
+  const { logar } = useUsuario();
   const navigate = useNavigate();
 
   function handleChange() {
     setChecked((state) => !state);
   }
-  function logar() {
-    navigate("/");
-  }
+
   return (
     <>
       <ContainerFormLogin>
         <Formik
           initialValues={{
-            email: "@",
-            password: "123",
+            email: "",
+            password: "",
           }}
+          onSubmit={logar}
         >
           <Form autoComplete="off">
             <Box my={2}>
@@ -72,7 +73,7 @@ export default function FormLogin() {
                 style={{ height: "42px" }}
                 color="primary"
                 fullWidth
-                onClick={logar}
+                type="submit"
               >
                 Inciar Sessão
               </Button>
