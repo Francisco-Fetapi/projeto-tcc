@@ -5,6 +5,8 @@ import { Text } from "../styles";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
 import TextField from "@material-ui/core/TextField";
 
+import { useField } from "formik";
+
 export default function TextField1({
   icon,
   select,
@@ -15,6 +17,7 @@ export default function TextField1({
   multiline,
   ...props
 }) {
+  const [field, meta] = useField({ name: id, type });
   const Label = label && (
     <Text variant="subtitle1" style={{ fontWeight: 500 }}>
       {label}
@@ -31,6 +34,7 @@ export default function TextField1({
           select
           fullWidth
           {...props}
+          {...field}
         >
           {children}
         </TextField>
@@ -48,6 +52,7 @@ export default function TextField1({
           id={id}
           multiline
           {...props}
+          {...field}
         />
       </>
     );
@@ -64,6 +69,7 @@ export default function TextField1({
             <InputAdornment position="end">{icon || ""}</InputAdornment>
           }
           {...props}
+          {...field}
         />
       </FormControl>
     </>
