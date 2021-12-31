@@ -41,7 +41,7 @@ function FormInserirEmail({ definirEmail }) {
   return (
     <Formik
       initialValues={{
-        __email: "ola@",
+        __email: "",
       }}
       style={{ width: 300 }}
       onSubmit={definirEmail}
@@ -80,7 +80,7 @@ function FormInserirCodigo({ definirCodigo }) {
   return (
     <Formik
       initialValues={{
-        codigo_de_recuperacao: "121",
+        codigo_de_recuperacao: "",
       }}
       style={{ width: 300 }}
       onSubmit={definirCodigo}
@@ -119,8 +119,8 @@ function FormInserirNovaPasse({ concluir }) {
   return (
     <Formik
       initialValues={{
-        nova_senha: "12",
-        conf_nova_senha: "12",
+        nova_senha: "",
+        conf_nova_senha: "",
       }}
       style={{ width: 300 }}
       onSubmit={concluir}

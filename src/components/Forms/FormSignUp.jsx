@@ -36,11 +36,11 @@ export default function FormLogin({ handleClose }) {
       <ContainerFormSignUp>
         <Formik
           initialValues={{
-            _nome: "olamundo",
-            _email: "@mgo",
-            _password: "122",
-            _password2: "122",
-            _data_nascimento: "2021-11-23",
+            _nome: "",
+            _email: "",
+            _password: "",
+            _password2: "",
+            _data_nascimento: "",
             genero: "m",
           }}
           onSubmit={criarConta}
@@ -100,14 +100,14 @@ export default function FormLogin({ handleClose }) {
                   </FormLabel>
                   <RadioGroup aria-label="gender" id="genero" color="primary">
                     <FormControlLabel
-                      value="f"
-                      control={<Radio color="primary" />}
-                      label="Feminino"
-                    />
-                    <FormControlLabel
                       value="m"
                       control={<Radio color="primary" />}
                       label="Masulino"
+                    />
+                    <FormControlLabel
+                      value="f"
+                      control={<Radio color="primary" />}
+                      label="Feminino"
                     />
                   </RadioGroup>
                 </FormControl>
