@@ -8,12 +8,8 @@ import TextField1 from "../TextField1";
 import { Formik, Form } from "formik";
 import useUsuario from "../../hooks/useUsuario";
 import paises from "../../mock/paises.json";
-
-const itens = [1, 2, 3].map((item) => (
-  <MenuItem key={item} value={`item${item}`}>
-    Item {item}
-  </MenuItem>
-));
+import generos from "../../mock/generos.json";
+import motivos from "../../mock/motivosAssistir.json";
 
 export default function FormMaisSobreVoce() {
   const { setMaisSobreMim } = useUsuario();
@@ -25,9 +21,9 @@ export default function FormMaisSobreVoce() {
           pais: paisesArray[0],
           estado: "",
           cidade: "",
-          genero_favorito: "",
+          genero_favorito: generos[0],
           genero_favorito_porque: "",
-          pior_genero: "",
+          pior_genero: generos[5],
           pra_que_assistir: "",
           biografia: "",
         }}
@@ -72,15 +68,12 @@ export default function FormMaisSobreVoce() {
                     )}
 
                     {paises[values.pais][values.estado].length === 0 && (
-                      <TextField1
-                        id="cidade"
-                        label="Digite o nome da sua cidade"
-                      />
+                      <TextField1 id="cidade" label="Nome da sua cidade" />
                     )}
                   </>
                 )}
                 {!paises[values.pais][values.estado] && (
-                  <TextField1 id="cidade" label="Digite o nome da sua cidade" />
+                  <TextField1 id="cidade" label="Nome da sua cidade" />
                 )}
               </Box>
             </Box>
@@ -91,17 +84,19 @@ export default function FormMaisSobreVoce() {
                   id="genero_favorito"
                   label="Escolha o seu genero favorito"
                 >
-                  {itens}
+                  {generos.map((genero) => (
+                    <MenuItem key={genero} value={genero}>
+                      {genero}
+                    </MenuItem>
+                  ))}
                 </TextField1>
               </Box>
               <Box>
                 <TextField1
-                  select
                   id="genero_favorito_porque"
                   label="Gosto mais desse genero porque..."
-                >
-                  {itens}
-                </TextField1>
+                  placeholder="Este campo é opcional"
+                />
               </Box>
             </Box>
             <Box mt={5} className="grid-2">
@@ -111,7 +106,13 @@ export default function FormMaisSobreVoce() {
                   id="pior_genero"
                   label="O genero que menos gostas"
                 >
-                  {itens}
+                  {generos
+                    .filter((genero) => genero !== values.genero_favorito)
+                    .map((genero) => (
+                      <MenuItem key={genero} value={genero}>
+                        {genero}
+                      </MenuItem>
+                    ))}
                 </TextField1>
               </Box>
               <Box>
@@ -120,7 +121,11 @@ export default function FormMaisSobreVoce() {
                   id="pra_que_assistir"
                   label="Assisto para..."
                 >
-                  {itens}
+                  {motivos.map((motivo) => (
+                    <MenuItem key={motivo} value={motivo}>
+                      {motivo}
+                    </MenuItem>
+                  ))}
                 </TextField1>
               </Box>
             </Box>

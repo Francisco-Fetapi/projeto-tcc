@@ -19,7 +19,7 @@ export default function TextField1({
 }) {
   const [field, meta] = useField({ name: id, type });
   const Label = label && (
-    <Text variant="subtitle1" style={{ fontWeight: 500 }}>
+    <Text variant="subtitle1" style={{ fontWeight: 500, marginBottom: 5 }}>
       {label}
     </Text>
   );
