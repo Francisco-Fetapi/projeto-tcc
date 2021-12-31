@@ -15,30 +15,20 @@ import FormLabel from "@material-ui/core/FormLabel";
 import AlternateEmail from "@material-ui/icons/AlternateEmail";
 
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-
 import { Formik, Form, useField } from "formik";
+import useUsuario from "../../hooks/useUsuario";
 
 function RadioGroup({ children, id }) {
-  const [field, meta] = useField({ name: id });
+  const [field] = useField({ name: id });
   return <RadioGroupMui {...field}>{children}</RadioGroupMui>;
 }
 
 export default function FormLogin({ handleClose }) {
   const img = useRef();
-  const navigate = useNavigate();
+  const { exibirFotoASerAlterada, criarConta } = useUsuario();
 
   function alterarFoto(e) {
-    if (e.target.files.length) {
-      const fr = new FileReader();
-      fr.readAsDataURL(e.target.files[0]);
-      fr.onload = function (e) {
-        img.current.src = e.target.result;
-      };
-    }
-  }
-  function criarConta() {
-    navigate("/confirmar-email");
+    exibirFotoASerAlterada(e, img);
   }
 
   return (
@@ -53,6 +43,7 @@ export default function FormLogin({ handleClose }) {
             _data_nascimento: "2021-11-23",
             genero: "m",
           }}
+          onSubmit={criarConta}
           style={{ width: 300 }}
         >
           <Form>
@@ -131,7 +122,7 @@ export default function FormLogin({ handleClose }) {
                 </Text>
                 <label className="foto">
                   <img ref={img} src="./img/user.jpg" alt="Foto perfil" />
-                  <input type="file" hidden onChange={alterarFoto} />
+                  <input type="file" id="foto" hidden onChange={alterarFoto} />
                   <div>
                     <FaPlusCircle />
                   </div>
@@ -153,7 +144,7 @@ export default function FormLogin({ handleClose }) {
                 style={{ height: "42px" }}
                 color="primary"
                 fullWidth
-                onClick={criarConta}
+                type="submit"
               >
                 Criar conta
               </Button>
@@ -164,6 +155,7 @@ export default function FormLogin({ handleClose }) {
                 style={{ height: "42px" }}
                 color="primary"
                 fullWidth
+                type="button"
               >
                 Já tenho uma conta
               </Button>

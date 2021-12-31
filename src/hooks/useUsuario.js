@@ -8,6 +8,21 @@ export default function useUsuario() {
       console.log(values);
       navigate("/");
     },
+    criarConta(values, actions) {
+      console.log(values);
+      const foto = document.querySelector("#foto").files[0];
+      console.log(foto);
+      navigate("/confirmar-email");
+    },
+    exibirFotoASerAlterada(e, img) {
+      if (e.target.files.length) {
+        const fr = new FileReader();
+        fr.readAsDataURL(e.target.files[0]);
+        fr.onload = function (e) {
+          img.current.src = e.target.result;
+        };
+      }
+    },
   };
 
   return funcoes;
