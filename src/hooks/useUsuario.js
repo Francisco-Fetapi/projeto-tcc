@@ -21,6 +21,18 @@ export default function useUsuario() {
     reenviarCodigo() {
       console.log("Codigo reenviado");
     },
+    alterarSenha: {
+      inserirEmail(values) {
+        console.log(values);
+      },
+      inserirCodigo(values) {
+        console.log(values);
+      },
+      concluir(values) {
+        console.log(values);
+        navigate("/");
+      },
+    },
     setMaisSobreMim(values) {
       console.log(values);
       navigate("/");

@@ -9,23 +9,30 @@ import Fingerprint from "@material-ui/icons/Fingerprint";
 import AlternateEmail from "@material-ui/icons/AlternateEmail";
 
 import { Formik, Form } from "formik";
+import useUsuario from "../../hooks/useUsuario";
 
 export default function FormEsqueciAPasse({ handleClose }) {
   const [form2, setForm2] = useState(false);
   const [form3, setForm3] = useState(false);
+  const { alterarSenha } = useUsuario();
 
-  function definirEmail() {
+  function definirEmail(values, actions) {
     setForm2(true);
+    alterarSenha.inserirEmail(values, actions);
   }
-  function definirCodigo() {
+  function definirCodigo(values, actions) {
     setForm2(false);
     setForm3(true);
+    alterarSenha.inserirCodigo(values, actions);
+  }
+  function concluir(values, actions) {
+    alterarSenha.concluir(values, actions);
   }
   return (
     <ContainerFormEsqueciAPasse>
       {!form2 && !form3 && <FormInserirEmail definirEmail={definirEmail} />}
       {form2 && !form3 && <FormInserirCodigo definirCodigo={definirCodigo} />}
-      {form3 && <FormInserirNovaPasse />}
+      {form3 && <FormInserirNovaPasse concluir={concluir} />}
     </ContainerFormEsqueciAPasse>
   );
 }
@@ -37,6 +44,7 @@ function FormInserirEmail({ definirEmail }) {
         __email: "ola@",
       }}
       style={{ width: 300 }}
+      onSubmit={definirEmail}
     >
       <Form autoComplete="off">
         <Box mt={-0.5}>
@@ -59,7 +67,7 @@ function FormInserirEmail({ definirEmail }) {
             variant="contained"
             style={{ height: "42px" }}
             color="primary"
-            onClick={definirEmail}
+            type="submit"
           >
             Envie-me o Código
           </Button>
@@ -75,6 +83,7 @@ function FormInserirCodigo({ definirCodigo }) {
         codigo_de_recuperacao: "121",
       }}
       style={{ width: 300 }}
+      onSubmit={definirCodigo}
     >
       <Form autocomplete="off">
         <Box mt={-0.5}>
@@ -94,10 +103,10 @@ function FormInserirCodigo({ definirCodigo }) {
 
         <Box mt={4} display="flex" justifyContent="center">
           <Button
-            onClick={definirCodigo}
             variant="contained"
             style={{ height: "42px" }}
             color="primary"
+            type="submit"
           >
             Enviar Código
           </Button>
@@ -106,7 +115,7 @@ function FormInserirCodigo({ definirCodigo }) {
     </Formik>
   );
 }
-function FormInserirNovaPasse() {
+function FormInserirNovaPasse({ concluir }) {
   return (
     <Formik
       initialValues={{
@@ -114,8 +123,9 @@ function FormInserirNovaPasse() {
         conf_nova_senha: "12",
       }}
       style={{ width: 300 }}
+      onSubmit={concluir}
     >
-      <Form autocomplete="off">
+      <Form autoComplete="off">
         <Box mt={-0.5}>
           <TextField1
             placeholder="Insira uma nova palavra-passe"
@@ -146,6 +156,7 @@ function FormInserirNovaPasse() {
             variant="contained"
             style={{ height: "42px" }}
             color="primary"
+            type="submit"
           >
             Definir Nova Passe
           </Button>
