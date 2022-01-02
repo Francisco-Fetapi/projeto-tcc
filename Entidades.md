@@ -5,7 +5,7 @@ nome
 email
 senha
 slug
-data-nascimento
+data_nascimento
 genero
 pais
 estado
@@ -19,6 +19,7 @@ foto_perfil
 foto_capa
 
 # EmailConfirm
+
 id
 email
 codigo

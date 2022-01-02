@@ -17,6 +17,14 @@ const API = {
     let { data } = await api.post("/signup/codigo/refresh", { email });
     return data;
   },
+  async criarConta(values) {
+    let { data } = await api.post("/signup/concluir", values);
+    return data;
+  },
+  async cadastrarUsuario(values) {
+    let { data } = await api.post("/registrar", values);
+    return data;
+  },
 };
 
 export default API;

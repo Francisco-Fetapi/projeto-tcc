@@ -12,7 +12,7 @@ import generos from "../../mock/generos.json";
 import motivos from "../../mock/motivosAssistir.json";
 
 export default function FormMaisSobreVoce() {
-  const { setMaisSobreMim } = useUsuario();
+  const { criarConta } = useUsuario();
   const paisesArray = Object.keys(paises);
   return (
     <MaisSobreVoce.Form>
@@ -27,7 +27,7 @@ export default function FormMaisSobreVoce() {
           pra_que_assistir: "",
           biografia: "",
         }}
-        onSubmit={setMaisSobreMim}
+        onSubmit={criarConta}
       >
         {({ values }) => (
           <Form autoComplete="off">

@@ -34,7 +34,6 @@ export default function useUsuario() {
         let erros = parsearErros(res.erros);
         let primeiro_erro = showFirstError(erros);
         actions.setErrors(primeiro_erro);
-        console.log(primeiro_erro);
       } else {
         Object.keys(values).forEach((campo) => {
           const campo_parseado = parsearCampo(campo);
@@ -80,9 +79,33 @@ export default function useUsuario() {
         navigate("/");
       },
     },
-    setMaisSobreMim(values) {
-      console.log(values);
-      navigate("/");
+    async criarConta(values, actions) {
+      mostrar();
+      let res = await API.criarConta(values);
+      console.log(res);
+      if (res.status === "error") {
+        let erros = parsearErros(res.erros);
+        let primeiro_erro = showFirstError(erros);
+        actions.setErrors(primeiro_erro);
+        console.log(values);
+        console.log(primeiro_erro);
+        ocultar();
+      } else {
+        const dados = {
+          ...dados_form_criar_conta,
+          pais: values.pais,
+          estado: values.estado,
+          cidade: values.cidade,
+          genero_favorito: values.genero_favorito,
+          genero_favorito_porque: values.genero_favorito_porque,
+          genero_n_favorito: values.pior_genero,
+          assisto_para: values.pra_que_assistir,
+          mini_biografia: values.biografia,
+        };
+        let res = await API.cadastrarUsuario(dados);
+        console.log(res);
+        ocultar();
+      }
     },
     exibirFotoASerAlterada(e, img) {
       if (e.target.files.length) {

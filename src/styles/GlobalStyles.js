@@ -148,5 +148,10 @@ export const GlobalStyles = createGlobalStyle`
           color: ${colorPrimary};
         }
       }
-  
+      .MuiFormHelperText-contained{
+          margin-left:0;
+      }
+      .label-error{
+        color:#F44336;
+      }
 `;
