@@ -1,8 +1,7 @@
 const initialState = {
   nome: "",
   email: "",
-  senha: "",
-  slug: "",
+  password: "",
   data_nascimento: "",
   genero: "",
   pais: "",

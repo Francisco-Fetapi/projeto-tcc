@@ -23,7 +23,7 @@ export default function FormConfirmarEmail() {
         <Form autoComplete="off">
           <Box mt={-0.5}>
             <TextField1
-              placeholder="XXX-XXX-XXX"
+              placeholder="XXX-XXX"
               icon={<Security />}
               id="cod_confirmacao"
               label="Código de confirmação"

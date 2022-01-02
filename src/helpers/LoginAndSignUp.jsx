@@ -15,3 +15,7 @@ export function showFirstError(erros) {
   let keys = Object.keys(erros);
   return { [keys[0]]: erros[keys[0]] };
 }
+export function parsearCampo(campo) {
+  const campo_parseado = campo.replace(/^(_)/, "");
+  return campo_parseado;
+}

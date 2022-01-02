@@ -17,3 +17,9 @@ assisto_para
 mini_biografia
 foto_perfil
 foto_capa
+
+# EmailConfirm
+id
+email
+codigo
+**timestamps**

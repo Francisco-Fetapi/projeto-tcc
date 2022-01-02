@@ -1,11 +1,20 @@
 import { useNavigate } from "react-router-dom";
 import API from "../API";
-import { parsearErros, showFirstError } from "../helpers/LoginAndSignUp";
+import {
+  parsearCampo,
+  parsearErros,
+  showFirstError,
+} from "../helpers/LoginAndSignUp";
 import useLoading from "./useLinearProgress";
+import { useDispatch, useSelector } from "react-redux";
+import { SET_STATE } from "../store/SignUp.actions";
+import { selectAll } from "../store/SignUp.selectors";
 
 export default function useUsuario() {
   const navigate = useNavigate();
   const { mostrar, ocultar } = useLoading();
+  const Disparar = useDispatch();
+  const dados_form_criar_conta = useSelector(selectAll);
 
   const funcoes = {
     logar(values) {
@@ -25,13 +34,25 @@ export default function useUsuario() {
         actions.setErrors(primeiro_erro);
         console.log(primeiro_erro);
       } else {
-        console.log("Tudo certo");
-        // navigate("/confirmar-email");
+        Object.keys(values).forEach((campo) => {
+          const campo_parseado = parsearCampo(campo);
+          Disparar(SET_STATE(campo_parseado, values[campo]));
+        });
+        console.log(res.codigo);
+        navigate("/confirmar-email");
       }
     },
-    verificarEmail(values) {
+    async verificarEmail(values) {
       console.log(values);
-      navigate("/mais-sobre-voce");
+      const dados = {
+        codigo: values.cod_confirmacao,
+        email: dados_form_criar_conta.email,
+      };
+      mostrar();
+      let res = await API.validarCodigo(dados);
+      ocultar();
+      console.log(res);
+      // navigate("/mais-sobre-voce");
     },
     reenviarCodigo() {
       console.log("Codigo reenviado");

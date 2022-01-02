@@ -1,3 +1,3 @@
 export function selectAll(reducer) {
-  return reducer.App;
+  return reducer.SignUp;
 }

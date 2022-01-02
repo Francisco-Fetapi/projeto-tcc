@@ -9,6 +9,10 @@ const API = {
     let { data } = await api.post("/signup/validar/form1", values);
     return data;
   },
+  async validarCodigo(values) {
+    let { data } = await api.post("/signup/validar/codigo", values);
+    return data;
+  },
 };
 
 export default API;
