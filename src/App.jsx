@@ -7,6 +7,7 @@ import useLinearProgress from "./hooks/useLinearProgress";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Alerta from "./components/Alerta";
 
 function App() {
   const { aberto: linearProgressAberto } = useLinearProgress();
@@ -16,6 +17,7 @@ function App() {
       <GlobalStyles />
       <Routes />
       {linearProgressAberto && <LinearProgress />}
+      <Alerta />
     </Theme>
   );
 }

@@ -6,6 +6,7 @@ import {
   showFirstError,
 } from "../helpers/LoginAndSignUp";
 import useLoading from "./useLinearProgress";
+import useAlert from "./useAlert";
 import { useDispatch, useSelector } from "react-redux";
 import { SET_STATE } from "../store/SignUp.actions";
 import { selectAll } from "../store/SignUp.selectors";
@@ -13,6 +14,7 @@ import { selectAll } from "../store/SignUp.selectors";
 export default function useUsuario() {
   const navigate = useNavigate();
   const { mostrar, ocultar } = useLoading();
+  const { alertar } = useAlert();
   const Disparar = useDispatch();
   const dados_form_criar_conta = useSelector(selectAll);
 
@@ -51,7 +53,7 @@ export default function useUsuario() {
       mostrar();
       let res = await API.validarCodigo(dados);
       ocultar();
-      console.log(res);
+      alertar(res.msg, res.status, 4);
       // navigate("/mais-sobre-voce");
     },
     reenviarCodigo() {
