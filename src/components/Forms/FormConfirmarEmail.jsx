@@ -27,6 +27,9 @@ export default function FormConfirmarEmail() {
               icon={<Security />}
               id="cod_confirmacao"
               label="Código de confirmação"
+              inputProps={{
+                maxLength: 6,
+              }}
             />
           </Box>
           <Box mt={1}>
@@ -52,7 +55,7 @@ export default function FormConfirmarEmail() {
               color="primary"
               onClick={reenviarCodigo}
             >
-              Reenviar o código
+              Não recebi o código.
             </Button>
           </Box>
         </Form>

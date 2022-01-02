@@ -53,11 +53,20 @@ export default function useUsuario() {
       mostrar();
       let res = await API.validarCodigo(dados);
       ocultar();
-      alertar(res.msg, res.status, 4);
-      // navigate("/mais-sobre-voce");
+      alertar(res.msg, res.status, 3);
+      if (res.status === "success") {
+        setTimeout(() => {
+          navigate("/mais-sobre-voce");
+        }, 3000);
+      }
     },
-    reenviarCodigo() {
-      console.log("Codigo reenviado");
+    async reenviarCodigo() {
+      console.log(dados_form_criar_conta.email);
+      mostrar();
+      let res = await API.reenviarCodigo(dados_form_criar_conta.email);
+      ocultar();
+      alertar(res.msg, res.status, 5);
+      console.log("Codigo reenviado", res.codigo);
     },
     alterarSenha: {
       inserirEmail(values) {

@@ -3,10 +3,10 @@ const initialState = {
   modalSignUp: false,
   modalEsqueciAPasse: false,
   linearProgress: false,
-  alert: true,
-  alert_msg: "Ola Mundi",
+  alert: false,
+  alert_msg: "",
   alert_status: "",
-  alert_tempo: 30,
+  alert_tempo: 3,
 };
 
 export default function AppReducer(state = initialState, { payload, type }) {

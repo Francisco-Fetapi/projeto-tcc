@@ -13,6 +13,10 @@ const API = {
     let { data } = await api.post("/signup/validar/codigo", values);
     return data;
   },
+  async reenviarCodigo(email) {
+    let { data } = await api.post("/signup/codigo/refresh", { email });
+    return data;
+  },
 };
 
 export default API;
