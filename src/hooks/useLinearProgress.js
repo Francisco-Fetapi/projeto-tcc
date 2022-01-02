@@ -8,13 +8,14 @@ export default function useLinearProgress() {
 
   const aberto = estado.linearProgress;
 
-  function mostrar() {
-    Disparar(SET_STATE("linearProgress", true));
-  }
+  const funcoes = {
+    mostrar() {
+      Disparar(SET_STATE("linearProgress", true));
+    },
+    ocultar() {
+      Disparar(SET_STATE("linearProgress", false));
+    },
+  };
 
-  function ocultar() {
-    Disparar(SET_STATE("linearProgress", false));
-  }
-
-  return [aberto, mostrar, ocultar];
+  return { aberto, ...funcoes };
 }

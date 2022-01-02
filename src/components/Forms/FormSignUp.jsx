@@ -23,9 +23,9 @@ function RadioGroup({ children, id }) {
   return <RadioGroupMui {...field}>{children}</RadioGroupMui>;
 }
 
-export default function FormLogin({ handleClose }) {
+export default function FormSignUp({ handleClose }) {
   const img = useRef();
-  const { exibirFotoASerAlterada, criarConta } = useUsuario();
+  const { exibirFotoASerAlterada, enviarDadosDaConta } = useUsuario();
 
   function alterarFoto(e) {
     exibirFotoASerAlterada(e, img);
@@ -43,7 +43,7 @@ export default function FormLogin({ handleClose }) {
             _data_nascimento: "",
             genero: "m",
           }}
-          onSubmit={criarConta}
+          onSubmit={enviarDadosDaConta}
           style={{ width: 300 }}
         >
           <Form autoComplete="off">

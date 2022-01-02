@@ -1,18 +1,24 @@
 import { useNavigate } from "react-router-dom";
+import API from "../API";
+import useLoading from "./useLinearProgress";
 
 export default function useUsuario() {
   const navigate = useNavigate();
+  const { mostrar, ocultar } = useLoading();
 
   const funcoes = {
     logar(values) {
       console.log(values);
       navigate("/");
     },
-    criarConta(values, actions) {
+    async enviarDadosDaConta(values, actions) {
       console.log(values);
-      const foto = document.querySelector("#foto").files[0];
-      console.log(foto);
-      navigate("/confirmar-email");
+      // const foto = document.querySelector("#foto").files[0];
+      mostrar();
+      await API.teste();
+      ocultar();
+      // console.log(foto);
+      // navigate("/confirmar-email");
     },
     verificarEmail(values) {
       console.log(values);
