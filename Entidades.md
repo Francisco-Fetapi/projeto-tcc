@@ -3,8 +3,8 @@
 id
 nome
 email
-slug
 senha
+slug
 data-nascimento
 genero
 pais
@@ -15,3 +15,5 @@ genero_favorito_porque
 genero_n_favorito
 assisto_para
 mini_biografia
+foto_perfil
+foto_capa
