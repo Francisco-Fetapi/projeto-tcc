@@ -6,6 +6,7 @@ import OutlinedInput from "@material-ui/core/OutlinedInput";
 import TextField from "@material-ui/core/TextField";
 
 import { useField } from "formik";
+import FormHelperText from "@material-ui/core/FormHelperText";
 
 export default function TextField1({
   icon,
@@ -70,7 +71,11 @@ export default function TextField1({
           }
           {...props}
           {...field}
+          error={meta.touched && !!meta.error}
         />
+        <FormHelperText error={meta.touched && !!meta.error}>
+          {meta.error}
+        </FormHelperText>
       </FormControl>
     </>
   );

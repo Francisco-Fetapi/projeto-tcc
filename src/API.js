@@ -5,9 +5,8 @@ const api = axios.create({
 });
 
 const API = {
-  async teste() {
-    let { data } = await api.get("/teste");
-    console.log(data);
+  async enviarDadosCriarConta(values) {
+    let { data } = await api.post("/signup/validar/form1", values);
     return data;
   },
 };

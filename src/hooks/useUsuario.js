@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import API from "../API";
+import { parsearErros, showFirstError } from "../helpers/LoginAndSignUp";
 import useLoading from "./useLinearProgress";
 
 export default function useUsuario() {
@@ -15,10 +16,18 @@ export default function useUsuario() {
       console.log(values);
       // const foto = document.querySelector("#foto").files[0];
       mostrar();
-      await API.teste();
+      let res = await API.enviarDadosCriarConta(values);
+      console.log(res);
       ocultar();
-      // console.log(foto);
-      // navigate("/confirmar-email");
+      if (res.status === "error") {
+        let erros = parsearErros(res.erros);
+        let primeiro_erro = showFirstError(erros);
+        actions.setErrors(primeiro_erro);
+        console.log(primeiro_erro);
+      } else {
+        console.log("Tudo certo");
+        // navigate("/confirmar-email");
+      }
     },
     verificarEmail(values) {
       console.log(values);
