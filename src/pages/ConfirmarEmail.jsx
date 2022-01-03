@@ -10,6 +10,12 @@ import useUsuario from "../hooks/useUsuario";
 export default function ConfirmarEmail_() {
   const { seLogadoIrParaHome, logado } = useUsuario();
   useEffect(seLogadoIrParaHome, []);
+  useEffect(() => {
+    window.onbeforeunload = () => false;
+    return () => {
+      window.onbeforeunload = null;
+    };
+  }, []);
 
   if (logado) {
     return <div />;
