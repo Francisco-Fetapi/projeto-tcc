@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { MaisSobreVoce, Text } from "../styles";
 import Box from "@material-ui/core/Box";
 import { FaInfoCircle } from "react-icons/fa";
 import IconAndText from "../components/IconAndText";
 import FormMaisSobreVoce from "../components/Forms/FormMaisSobreVoce";
+import useUsuario from "../hooks/useUsuario";
 
 export default function MaisSobreVoce_() {
+  const { seLogadoIrParaHome, logado } = useUsuario();
+  useEffect(seLogadoIrParaHome, []);
+  if (logado) {
+    return <div />;
+  }
+
   return (
     <MaisSobreVoce.Container>
       <Box>

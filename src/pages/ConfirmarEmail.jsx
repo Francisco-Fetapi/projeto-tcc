@@ -1,11 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { ConfirmarEmail, Text } from "../styles";
 import Box from "@material-ui/core/Box";
 import { FaEnvelope } from "react-icons/fa";
 import IconAndText from "../components/IconAndText";
 import FormConfirmarEmail from "../components/Forms/FormConfirmarEmail";
 
+import useUsuario from "../hooks/useUsuario";
+
 export default function ConfirmarEmail_() {
+  const { seLogadoIrParaHome, logado } = useUsuario();
+  useEffect(seLogadoIrParaHome, []);
+
+  if (logado) {
+    return <div />;
+  }
+
   return (
     <ConfirmarEmail.Container>
       <Box className="titulo_e_descricao">

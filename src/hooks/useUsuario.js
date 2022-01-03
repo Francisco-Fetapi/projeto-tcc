@@ -26,7 +26,6 @@ export default function useUsuario() {
       if (info.logado) {
         info.logout(); //na conta anterior;
       }
-      console.log(values);
       LoadingLinear.mostrar();
       let res = await API.logar(values);
       LoadingLinear.ocultar();
@@ -35,13 +34,17 @@ export default function useUsuario() {
         Disparar(SET_STATE("usuario", res.user[0]));
         navigate("/");
       }
-      console.log(res);
     },
     logado: localStorage.getItem("token") ? true : false,
     token: localStorage.getItem("token"),
     seNaoLogadoIrParaLogin() {
       if (!info.logado) {
         navigate("/login");
+      }
+    },
+    seLogadoIrParaHome() {
+      if (info.logado) {
+        navigate("/");
       }
     },
     async getDadosUsuarioByToken() {
@@ -53,6 +56,7 @@ export default function useUsuario() {
     logout() {
       Disparar(SET_STATE("usuario", {}));
       API.logout();
+      console.log("deslogado");
     },
     usuario: store.usuario || {},
     async enviarDadosDaConta(values, actions) {
