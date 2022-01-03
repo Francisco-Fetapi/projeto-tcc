@@ -122,7 +122,13 @@ export default function FormSignUp({ handleClose }) {
                 </Text>
                 <label className="foto">
                   <img ref={img} src="./img/user.jpg" alt="Foto perfil" />
-                  <input type="file" id="foto" hidden onChange={alterarFoto} />
+                  <input
+                    type="file"
+                    accept="image/*"
+                    id="foto"
+                    hidden
+                    onChange={alterarFoto}
+                  />
                   <div>
                     <FaPlusCircle />
                   </div>
