@@ -10,3 +10,9 @@ export function RESET_ALL() {
     type: "RESET_ALL",
   };
 }
+export function SET_STATES(states) {
+  return {
+    payload: states,
+    type: "SET_STATES",
+  };
+}

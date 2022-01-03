@@ -19,13 +19,14 @@ export default function FormMaisSobreVoce() {
       <Formik
         initialValues={{
           pais: paisesArray[0],
-          estado: "",
-          cidade: "",
+          estado: "Benguela",
+          cidade: "Lobito",
           genero_favorito: generos[0],
           genero_favorito_porque: "",
           pior_genero: generos[5],
-          pra_que_assistir: "",
-          biografia: "",
+          pra_que_assistir: "Relaxar",
+          biografia: `Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur.`,
         }}
         onSubmit={criarConta}
       >

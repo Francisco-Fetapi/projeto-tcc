@@ -21,6 +21,8 @@ export default function AppReducer(state = initialState, { payload, type }) {
       return { ...state, [payload.nome]: payload.value };
     case "RESET_ALL":
       return initialState;
+    case "SET_STATES":
+      return { ...state, ...payload };
     default:
       return state;
   }

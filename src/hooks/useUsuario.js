@@ -9,7 +9,7 @@ import useLoading from "./useLinearProgress";
 import useLoadingCircular from "./useLoadingCircular";
 import useAlert from "./useAlert";
 import { useDispatch, useSelector } from "react-redux";
-import { RESET_ALL, SET_STATE } from "../store/SignUp.actions";
+import { RESET_ALL, SET_STATE, SET_STATES } from "../store/SignUp.actions";
 import { selectAll } from "../store/SignUp.selectors";
 
 export default function useUsuario() {
@@ -45,7 +45,7 @@ export default function useUsuario() {
       }
     },
     seNaoTemEmailIrParaCriarConta() {
-      if (!info.criar_conta_dados.email) {
+      if (!info.criar_conta_dados.email && !info.logado) {
         navigate("/criar-conta");
       }
     },
@@ -79,14 +79,15 @@ export default function useUsuario() {
         let primeiro_erro = showFirstError(erros);
         actions.setErrors(primeiro_erro);
       } else {
+        const dados = {};
         Object.keys(values).forEach((campo) => {
           const campo_parseado = parsearCampo(campo);
-          Disparar(SET_STATE(campo_parseado, values[campo]));
-          console.log("renderizou");
+          dados[campo_parseado] = values[campo];
         });
         if (foto) {
-          Disparar(SET_STATE("foto_perfil", foto));
+          dados["foto_perfil"] = foto;
         }
+        Disparar(SET_STATES(dados));
         console.log(res.codigo);
         navigate("/confirmar-email");
       }
@@ -105,6 +106,7 @@ export default function useUsuario() {
           navigate("/mais-sobre-voce");
         }, 3000);
       }
+      console.log(store);
     },
     async reenviarCodigo() {
       LoadingLinear.mostrar();
@@ -147,7 +149,7 @@ export default function useUsuario() {
           genero_n_favorito: values.pior_genero,
           assisto_para: values.pra_que_assistir,
           mini_biografia: values.biografia,
-          foto_perfil_: dados_form_criar_conta.foto_perfil || null,
+          foto_perfil_: dados_form_criar_conta.foto_perfil,
         };
         let res = await API.cadastrarUsuario(dados);
         console.log(res);
