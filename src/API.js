@@ -1,9 +1,22 @@
 import axios from "axios";
+const BASE_URL = "http://localhost:8000";
 
 const api = axios.create({
-  baseURL: "http://localhost:8000/api",
+  baseURL: `${BASE_URL}/api`,
   params: {
     token: null,
+  },
+  onDownloadProgress(progress) {
+    console.log(progress);
+    progress.onreadystatechange = function (e) {
+      console.log(e);
+    };
+  },
+  onUploadProgress(progress) {
+    console.log(progress);
+    progress.onreadystatechange = function (e) {
+      console.log(e);
+    };
   },
 });
 
@@ -31,6 +44,7 @@ api.interceptors.response.use(
 );
 
 const API = {
+  BASE_URL,
   async enviarDadosCriarConta(values) {
     let { data } = await api.post("/signup/validar/form1", values);
     return data;
@@ -58,6 +72,10 @@ const API = {
   async logar(values) {
     let { data } = await api.post("/login", values);
     return data;
+  },
+  logout() {
+    api.defaults.params.token = null;
+    localStorage.clear();
   },
   async getDadosUsuarioByToken(token) {
     let { data } = await api.get("/usuario/dados", { token });

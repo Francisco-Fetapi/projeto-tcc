@@ -8,14 +8,30 @@ import useTheme from "@material-ui/core/styles/useTheme";
 import { FaEnvelope } from "react-icons/fa";
 import { FaBell } from "react-icons/fa";
 import { FaChevronDown } from "react-icons/fa";
+import useUsuario from "../hooks/useUsuario";
+
+import API from "../API";
 
 export default function MenuSecondary_() {
+  const { logado, usuario } = useUsuario();
+
+  const a_carregar = logado && !usuario.id;
   const theme = useTheme();
   return (
     <MenuSecondary>
       <Box display="flex" alignItems="center" className="foto-user-nome">
-        <img src="./img/user.jpg" alt="Foto usuario" />
-        <Text>NomeUsuario</Text>
+        {a_carregar && <img src={"./img/user.jpg"} alt="imagem do usuario" />}
+        {!a_carregar && (
+          <img
+            src={
+              usuario.foto_perfil === "null"
+                ? "./img/user.jpg"
+                : `${API.BASE_URL}/${usuario.foto_perfil}`
+            }
+            alt="imagem do usuario"
+          />
+        )}
+        <Text>{a_carregar ? "Carregando..." : usuario.nome}</Text>
       </Box>
       <Box
         display="flex"

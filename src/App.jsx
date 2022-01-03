@@ -11,12 +11,12 @@ import Alerta from "./components/Alerta";
 import useUsuario from "./hooks/useUsuario";
 
 function App() {
-  const { getDadosUsuarioByToken, logado, usuario } = useUsuario();
+  const { getDadosUsuarioByToken, token, logado, usuario } = useUsuario();
   useEffect(() => {
     if (logado && !usuario.id) {
       getDadosUsuarioByToken();
     }
-  }, []);
+  }, [token]);
 
   return (
     <Theme>

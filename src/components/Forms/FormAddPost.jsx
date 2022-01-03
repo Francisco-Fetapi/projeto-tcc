@@ -10,8 +10,13 @@ import Send from "@material-ui/icons/Send";
 import AddCircle from "@material-ui/icons/AddCircle";
 
 import { Formik, Form } from "formik";
+import useUsuario from "../../hooks/useUsuario";
+import API from "../../API";
 
 export default function FormAddPost() {
+  const { logado, usuario } = useUsuario();
+
+  const a_carregar = logado && !usuario.id;
   return (
     <Paper className="paper" elevation={3}>
       <Formik
@@ -21,7 +26,19 @@ export default function FormAddPost() {
       >
         <Form autoComplete="off">
           <Box display="flex" alignItems="flex-start">
-            <img src="./img/user.jpg" alt="logo user" />
+            {a_carregar && (
+              <img src={"./img/user.jpg"} alt="imagem do usuario" />
+            )}
+            {!a_carregar && (
+              <img
+                src={
+                  usuario.foto_perfil === "null"
+                    ? "./img/user.jpg"
+                    : `${API.BASE_URL}/${usuario.foto_perfil}`
+                }
+                alt="imagem do usuario"
+              />
+            )}
             <TextField1
               multiline
               rowsMax={10}

@@ -23,6 +23,9 @@ export default function useUsuario() {
 
   const info = {
     async logar(values) {
+      if (info.logado) {
+        info.logout(); //na conta anterior;
+      }
       console.log(values);
       LoadingLinear.mostrar();
       let res = await API.logar(values);
@@ -35,22 +38,27 @@ export default function useUsuario() {
       console.log(res);
     },
     logado: localStorage.getItem("token") ? true : false,
+    token: localStorage.getItem("token"),
     seNaoLogadoIrParaLogin() {
       if (!info.logado) {
         navigate("/login");
       }
     },
     async getDadosUsuarioByToken() {
-      LoadingCircular.mostrar();
       const token = localStorage.getItem("token");
       let res = await API.getDadosUsuarioByToken(token);
       Disparar(SET_STATE("usuario", res));
       console.log(res);
-      LoadingCircular.ocultar();
+    },
+    logout() {
+      Disparar(SET_STATE("usuario", {}));
+      API.logout();
     },
     usuario: store.usuario || {},
     async enviarDadosDaConta(values, actions) {
-      console.log(values);
+      if (info.logado) {
+        info.logout(); //na conta anterior;
+      }
       const foto = document.querySelector("#foto").files[0];
       LoadingLinear.mostrar();
       let res = await API.enviarDadosCriarConta(values);
@@ -73,7 +81,6 @@ export default function useUsuario() {
       }
     },
     async verificarEmail(values) {
-      console.log(values);
       const dados = {
         codigo: values.cod_confirmacao,
         email: dados_form_criar_conta.email,
@@ -89,7 +96,6 @@ export default function useUsuario() {
       }
     },
     async reenviarCodigo() {
-      console.log(dados_form_criar_conta.email);
       LoadingLinear.mostrar();
       let res = await API.reenviarCodigo(dados_form_criar_conta.email);
       LoadingLinear.ocultar();
@@ -130,7 +136,7 @@ export default function useUsuario() {
           genero_n_favorito: values.pior_genero,
           assisto_para: values.pra_que_assistir,
           mini_biografia: values.biografia,
-          foto_perfil: dados_form_criar_conta.foto_perfil || null,
+          foto_perfil_: dados_form_criar_conta.foto_perfil || null,
         };
         let res = await API.cadastrarUsuario(dados);
         console.log(res);

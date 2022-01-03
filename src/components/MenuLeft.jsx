@@ -18,8 +18,14 @@ import FilmeIcon from "@material-ui/icons/Videocam";
 import MoreHoriz from "@material-ui/icons/MoreHoriz";
 
 import atividades from "../mock/atividades.json";
+import useUsuario from "../hooks/useUsuario";
+import API from "../API";
 
 export default function MenuLeft() {
+  const { logado, usuario } = useUsuario();
+
+  const a_carregar = logado && !usuario.id;
+
   return (
     <>
       <div />
@@ -27,13 +33,25 @@ export default function MenuLeft() {
         <List>
           <ListItem button className="item-usuario">
             <ListItemAvatar>
-              <img
-                src="./img/user.jpg"
-                alt="foto usuario"
-                className="item-foto-usuario"
-              />
+              <>
+                {a_carregar && (
+                  <img src={"./img/user.jpg"} alt="imagem do usuario" />
+                )}
+                {!a_carregar && (
+                  <img
+                    src={
+                      usuario.foto_perfil === "null"
+                        ? "./img/user.jpg"
+                        : `${API.BASE_URL}/${usuario.foto_perfil}`
+                    }
+                    alt="imagem do usuario"
+                  />
+                )}
+              </>
             </ListItemAvatar>
-            <ListItemText primary="Nome do usuario" />
+            <ListItemText
+              primary={a_carregar ? "carregando..." : usuario.nome}
+            />
           </ListItem>
           <ListItem button>
             <ListItemAvatar>

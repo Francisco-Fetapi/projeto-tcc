@@ -31,6 +31,14 @@ export const MainContainer = styled.div`
     min-width: 200px;
     padding-bottom: 70px;
 
+    .MuiListItemAvatar-root {
+      img {
+        width: 64px;
+        height: 64px;
+        margin-right: 10px;
+        border-radius: 50%;
+      }
+    }
     .MuiAvatar-root:not(.atvidade-icon) {
       background: #303f9f;
     }

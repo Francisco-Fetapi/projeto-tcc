@@ -16,14 +16,31 @@ import ThumbDown from "@material-ui/icons/ThumbDown";
 import ThumbUp from "@material-ui/icons/ThumbUp";
 
 import { FaPencilAlt, FaPlus } from "react-icons/fa";
+import useUsuario from "../../hooks/useUsuario";
+import API from "../../API";
 
 export default function InfoUsuario() {
+  const { logado, usuario } = useUsuario();
+  const a_carregar = logado && !usuario.id;
+
   return (
     <Box mb={5}>
       <Perfil.Info>
         <Box className="foto-nome-bio">
           <Box component="figure">
-            <img src="./img/user.jpg" alt="imagem do usuario" />
+            {a_carregar && (
+              <img src={"./img/user.jpg"} alt="imagem do usuario" />
+            )}
+            {!a_carregar && (
+              <img
+                src={
+                  usuario.foto_perfil === "null"
+                    ? "./img/user.jpg"
+                    : `${API.BASE_URL}/${usuario.foto_perfil}`
+                }
+                alt="imagem do usuario"
+              />
+            )}
             <Box component="figcaption">
               <div>
                 <FaCamera />
@@ -32,13 +49,11 @@ export default function InfoUsuario() {
           </Box>
           <Box mt={2} display="flex" flexDirection="column">
             <Text variant="h6" style={{ color: "#393939" }}>
-              Nome do Usuario
+              {a_carregar ? "Carregando..." : usuario.nome}
             </Text>
             <Box mt={1.3}>
               <Text color="textSecondary" variant="subtitle2">
-                Aqui irá aparecer uma mini biografia do usuario, palavras ou
-                frases que o descrevam.Aqui irá aparecer uma mini biografia do
-                usuario, palavras ou frases que o descrevam.
+                {a_carregar ? "Carregando..." : usuario.mini_biografia}
               </Text>
             </Box>
             <div style={{ flexGrow: 1 }} />
@@ -59,19 +74,45 @@ export default function InfoUsuario() {
               <ListItemIcon>
                 <Home className="home" />
               </ListItemIcon>
-              <ListItemText>Vive no Lobito, Benguela, Angola</ListItemText>
+              <ListItemText>
+                {a_carregar ? (
+                  "Carregando..."
+                ) : (
+                  <span>
+                    Vive em <b>{usuario.cidade}</b>, <b>{usuario.estado}</b> ,
+                    <b>{usuario.pais}</b>
+                  </span>
+                )}
+              </ListItemText>
             </ListItem>
             <ListItem>
               <ListItemIcon>
                 <ThumbUp className="thumbUp" />
               </ListItemIcon>
-              <ListItemText>Romance é o seu género favorito</ListItemText>
+              <ListItemText>
+                {a_carregar ? (
+                  "Carregando..."
+                ) : (
+                  <span>
+                    <b>{usuario.genero_favorito}</b> é o seu género favorito
+                  </span>
+                )}
+              </ListItemText>
             </ListItem>
             <ListItem>
               <ListItemIcon>
                 <ThumbDown className="thumbDown" />
               </ListItemIcon>
-              <ListItemText>Terror é o género de que menos gostas</ListItemText>
+              <ListItemText>
+                {a_carregar ? (
+                  "Carregando..."
+                ) : (
+                  <span>
+                    <b>{usuario.genero_n_favorito}</b> é o género de que menos
+                    gostas
+                  </span>
+                )}
+              </ListItemText>
             </ListItem>
           </List>
           <Box mt={3} display="flex" justifyContent="center">
