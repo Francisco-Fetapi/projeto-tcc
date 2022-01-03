@@ -2,7 +2,33 @@ import axios from "axios";
 
 const api = axios.create({
   baseURL: "http://localhost:8000/api",
+  params: {
+    token: null,
+  },
 });
+
+api.interceptors.request.use(
+  function (config) {
+    config.params.token = localStorage.getItem("token") || null;
+    return config;
+  },
+  function (error) {
+    console.log(error);
+  }
+);
+api.interceptors.response.use(
+  function (response) {
+    if (response.data.token) {
+      localStorage.setItem("token", response.data.token);
+    }
+    return response;
+  },
+  function (error) {
+    // Any status codes that falls outside the range of 2xx cause this function to trigger
+    // Do something with response error
+    console.log(error);
+  }
+);
 
 const API = {
   async enviarDadosCriarConta(values) {
@@ -22,8 +48,17 @@ const API = {
     return data;
   },
   async cadastrarUsuario(values) {
-    let { data } = await api.post("/registrar", values);
+    const form = new FormData();
+    for (let campo in values) {
+      form.append(campo, values[campo]);
+    }
+    let { data } = await api.post("/registrar", form);
     return data;
+  },
+  async logar(values) {
+    let res = await api.post("/login", values);
+    console.log(res);
+    return res.data;
   },
 };
 

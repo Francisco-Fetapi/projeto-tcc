@@ -19,13 +19,20 @@ export default function useUsuario() {
   const dados_form_criar_conta = useSelector(selectAll);
 
   const funcoes = {
-    logar(values) {
+    async logar(values) {
       console.log(values);
-      navigate("/");
+      mostrar();
+      let res = await API.logar(values);
+      ocultar();
+      alertar(res.msg, res.status, 3);
+      if (res.status === "success") {
+      }
+      console.log(res);
+      // navigate("/");
     },
     async enviarDadosDaConta(values, actions) {
       console.log(values);
-      // const foto = document.querySelector("#foto").files[0];
+      const foto = document.querySelector("#foto").files[0];
       mostrar();
       let res = await API.enviarDadosCriarConta(values);
       console.log(res);
@@ -39,6 +46,9 @@ export default function useUsuario() {
           const campo_parseado = parsearCampo(campo);
           Disparar(SET_STATE(campo_parseado, values[campo]));
         });
+        if (foto) {
+          Disparar(SET_STATE("foto_perfil", foto));
+        }
         console.log(res.codigo);
         navigate("/confirmar-email");
       }
@@ -97,14 +107,21 @@ export default function useUsuario() {
           estado: values.estado,
           cidade: values.cidade,
           genero_favorito: values.genero_favorito,
-          genero_favorito_porque: values.genero_favorito_porque,
+          genero_favorito_porque: values.genero_favorito_porque || null,
           genero_n_favorito: values.pior_genero,
           assisto_para: values.pra_que_assistir,
           mini_biografia: values.biografia,
+          foto_perfil: dados_form_criar_conta.foto_perfil || null,
         };
         let res = await API.cadastrarUsuario(dados);
         console.log(res);
         ocultar();
+        if (res.status === "success") {
+          navigate("/");
+        } else {
+          console.log(res.erro);
+          alertar(res.msg, res.status, 4);
+        }
       }
     },
     exibirFotoASerAlterada(e, img) {
