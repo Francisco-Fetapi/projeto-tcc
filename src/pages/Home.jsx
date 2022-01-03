@@ -6,7 +6,7 @@ import Box from "@material-ui/core/Box";
 import useUsuario from "../hooks/useUsuario";
 
 export default function Home() {
-  const { seNaoLogadoIrParaLogin, logado, usuario } = useUsuario();
+  const { seNaoLogadoIrParaLogin, usuario } = useUsuario();
   useEffect(() => {
     seNaoLogadoIrParaLogin();
   }, []);

@@ -25,7 +25,8 @@ function RadioGroup({ children, id }) {
 
 export default function FormSignUp({ handleClose }) {
   const img = useRef();
-  const { exibirFotoASerAlterada, enviarDadosDaConta } = useUsuario();
+  const { exibirFotoASerAlterada, enviarDadosDaConta, criar_conta_dados } =
+    useUsuario();
 
   function alterarFoto(e) {
     exibirFotoASerAlterada(e, img);
@@ -36,12 +37,12 @@ export default function FormSignUp({ handleClose }) {
       <ContainerFormSignUp>
         <Formik
           initialValues={{
-            _nome: "",
-            _email: "",
-            _password: "",
-            _password2: "",
-            _data_nascimento: "",
-            genero: "m",
+            _nome: criar_conta_dados.nome || "",
+            _email: criar_conta_dados.email || "",
+            _password: criar_conta_dados.password || "",
+            _password2: criar_conta_dados.password2 || "",
+            _data_nascimento: criar_conta_dados.data_nascimento || "",
+            genero: criar_conta_dados.genero || "m",
           }}
           onSubmit={enviarDadosDaConta}
           style={{ width: 300 }}

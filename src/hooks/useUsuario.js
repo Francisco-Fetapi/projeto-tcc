@@ -9,7 +9,7 @@ import useLoading from "./useLinearProgress";
 import useLoadingCircular from "./useLoadingCircular";
 import useAlert from "./useAlert";
 import { useDispatch, useSelector } from "react-redux";
-import { SET_STATE } from "../store/SignUp.actions";
+import { RESET_ALL, SET_STATE } from "../store/SignUp.actions";
 import { selectAll } from "../store/SignUp.selectors";
 
 export default function useUsuario() {
@@ -38,6 +38,7 @@ export default function useUsuario() {
     logado: localStorage.getItem("token") ? true : false,
     token: localStorage.getItem("token"),
     criar_conta_dados: dados_form_criar_conta,
+    usuario: store.usuario || {},
     seNaoLogadoIrParaLogin() {
       if (!info.logado) {
         navigate("/login");
@@ -64,7 +65,6 @@ export default function useUsuario() {
       API.logout();
       console.log("deslogado");
     },
-    usuario: store.usuario || {},
     async enviarDadosDaConta(values, actions) {
       if (info.logado) {
         info.logout(); //na conta anterior;
@@ -82,6 +82,7 @@ export default function useUsuario() {
         Object.keys(values).forEach((campo) => {
           const campo_parseado = parsearCampo(campo);
           Disparar(SET_STATE(campo_parseado, values[campo]));
+          console.log("renderizou");
         });
         if (foto) {
           Disparar(SET_STATE("foto_perfil", foto));
@@ -153,11 +154,15 @@ export default function useUsuario() {
         LoadingLinear.ocultar();
         if (res.status === "success") {
           navigate("/");
+          info.apagarDadosCriarConta();
         } else {
           console.log(res.erro);
           alertar(res.msg, res.status, 4);
         }
       }
+    },
+    apagarDadosCriarConta() {
+      Disparar(RESET_ALL());
     },
     exibirFotoASerAlterada(e, img) {
       if (e.target.files.length) {
