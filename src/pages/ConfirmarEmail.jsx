@@ -7,9 +7,11 @@ import FormConfirmarEmail from "../components/Forms/FormConfirmarEmail";
 
 import useUsuario from "../hooks/useUsuario";
 
-export default function ConfirmarEmail_() {
-  const { seLogadoIrParaHome, logado } = useUsuario();
+export default function ConfirmarEmail1() {
+  const { seLogadoIrParaHome, logado, seNaoTemEmailIrParaCriarConta } =
+    useUsuario();
   useEffect(seLogadoIrParaHome, []);
+  useEffect(seNaoTemEmailIrParaCriarConta, []);
   useEffect(() => {
     window.onbeforeunload = () => false;
     return () => {

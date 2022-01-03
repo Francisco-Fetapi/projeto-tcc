@@ -37,9 +37,15 @@ export default function useUsuario() {
     },
     logado: localStorage.getItem("token") ? true : false,
     token: localStorage.getItem("token"),
+    criar_conta_dados: dados_form_criar_conta,
     seNaoLogadoIrParaLogin() {
       if (!info.logado) {
         navigate("/login");
+      }
+    },
+    seNaoTemEmailIrParaCriarConta() {
+      if (!info.criar_conta_dados.email) {
+        navigate("/criar-conta");
       }
     },
     seLogadoIrParaHome() {

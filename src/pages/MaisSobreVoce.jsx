@@ -7,8 +7,10 @@ import FormMaisSobreVoce from "../components/Forms/FormMaisSobreVoce";
 import useUsuario from "../hooks/useUsuario";
 
 export default function MaisSobreVoce_() {
-  const { seLogadoIrParaHome, logado } = useUsuario();
+  const { seLogadoIrParaHome, logado, seNaoTemEmailIrParaCriarConta } =
+    useUsuario();
   useEffect(seLogadoIrParaHome, []);
+  useEffect(seNaoTemEmailIrParaCriarConta, []);
   useEffect(() => {
     window.onbeforeunload = () => false;
     return () => {
