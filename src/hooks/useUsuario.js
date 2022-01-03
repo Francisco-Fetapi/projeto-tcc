@@ -6,6 +6,7 @@ import {
   showFirstError,
 } from "../helpers/LoginAndSignUp";
 import useLoading from "./useLinearProgress";
+import useLoadingCircular from "./useLoadingCircular";
 import useAlert from "./useAlert";
 import { useDispatch, useSelector } from "react-redux";
 import { SET_STATE } from "../store/SignUp.actions";
@@ -13,30 +14,48 @@ import { selectAll } from "../store/SignUp.selectors";
 
 export default function useUsuario() {
   const navigate = useNavigate();
-  const { mostrar, ocultar } = useLoading();
+  const LoadingLinear = useLoading();
+  const LoadingCircular = useLoadingCircular();
   const { alertar } = useAlert();
   const Disparar = useDispatch();
   const dados_form_criar_conta = useSelector(selectAll);
+  const store = useSelector(selectAll);
 
-  const funcoes = {
+  const info = {
     async logar(values) {
       console.log(values);
-      mostrar();
+      LoadingLinear.mostrar();
       let res = await API.logar(values);
-      ocultar();
+      LoadingLinear.ocultar();
       alertar(res.msg, res.status, 3);
       if (res.status === "success") {
+        Disparar(SET_STATE("usuario", res.user[0]));
+        navigate("/");
       }
       console.log(res);
-      // navigate("/");
     },
+    logado: localStorage.getItem("token") ? true : false,
+    seNaoLogadoIrParaLogin() {
+      if (!info.logado) {
+        navigate("/login");
+      }
+    },
+    async getDadosUsuarioByToken() {
+      LoadingCircular.mostrar();
+      const token = localStorage.getItem("token");
+      let res = await API.getDadosUsuarioByToken(token);
+      Disparar(SET_STATE("usuario", res));
+      console.log(res);
+      LoadingCircular.ocultar();
+    },
+    usuario: store.usuario || {},
     async enviarDadosDaConta(values, actions) {
       console.log(values);
       const foto = document.querySelector("#foto").files[0];
-      mostrar();
+      LoadingLinear.mostrar();
       let res = await API.enviarDadosCriarConta(values);
       console.log(res);
-      ocultar();
+      LoadingLinear.ocultar();
       if (res.status === "error") {
         let erros = parsearErros(res.erros);
         let primeiro_erro = showFirstError(erros);
@@ -59,9 +78,9 @@ export default function useUsuario() {
         codigo: values.cod_confirmacao,
         email: dados_form_criar_conta.email,
       };
-      mostrar();
+      LoadingLinear.mostrar();
       let res = await API.validarCodigo(dados);
-      ocultar();
+      LoadingLinear.ocultar();
       alertar(res.msg, res.status, 3);
       if (res.status === "success") {
         setTimeout(() => {
@@ -71,9 +90,9 @@ export default function useUsuario() {
     },
     async reenviarCodigo() {
       console.log(dados_form_criar_conta.email);
-      mostrar();
+      LoadingLinear.mostrar();
       let res = await API.reenviarCodigo(dados_form_criar_conta.email);
-      ocultar();
+      LoadingLinear.ocultar();
       alertar(res.msg, res.status, 5);
       console.log("Codigo reenviado", res.codigo);
     },
@@ -90,7 +109,7 @@ export default function useUsuario() {
       },
     },
     async criarConta(values, actions) {
-      mostrar();
+      LoadingLinear.mostrar();
       let res = await API.criarConta(values);
       console.log(res);
       if (res.status === "error") {
@@ -99,7 +118,7 @@ export default function useUsuario() {
         actions.setErrors(primeiro_erro);
         console.log(values);
         console.log(primeiro_erro);
-        ocultar();
+        LoadingLinear.ocultar();
       } else {
         const dados = {
           ...dados_form_criar_conta,
@@ -115,7 +134,7 @@ export default function useUsuario() {
         };
         let res = await API.cadastrarUsuario(dados);
         console.log(res);
-        ocultar();
+        LoadingLinear.ocultar();
         if (res.status === "success") {
           navigate("/");
         } else {
@@ -135,5 +154,5 @@ export default function useUsuario() {
     },
   };
 
-  return funcoes;
+  return info;
 }

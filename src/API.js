@@ -56,9 +56,12 @@ const API = {
     return data;
   },
   async logar(values) {
-    let res = await api.post("/login", values);
-    console.log(res);
-    return res.data;
+    let { data } = await api.post("/login", values);
+    return data;
+  },
+  async getDadosUsuarioByToken(token) {
+    let { data } = await api.get("/usuario/dados", { token });
+    return data;
   },
 };
 
