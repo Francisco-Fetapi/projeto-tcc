@@ -19,7 +19,7 @@ import MoreHoriz from "@material-ui/icons/MoreHoriz";
 
 import atividades from "../mock/atividades.json";
 import useUsuario from "../hooks/useUsuario";
-import API from "../API";
+import { BASE_URL, IMG_USER_PADRAO } from "../API";
 
 export default function MenuLeft() {
   const { logado, usuario } = useUsuario();
@@ -35,14 +35,14 @@ export default function MenuLeft() {
             <ListItemAvatar>
               <>
                 {a_carregar && (
-                  <img src={"./img/user.jpg"} alt="imagem do usuario" />
+                  <img src={IMG_USER_PADRAO} alt="imagem do usuario" />
                 )}
                 {!a_carregar && (
                   <img
                     src={
-                      usuario.foto_perfil === "null"
-                        ? "./img/user.jpg"
-                        : `${API.BASE_URL}/${usuario.foto_perfil}`
+                      usuario.foto_perfil === "null" || usuario.foto_perfil
+                        ? IMG_USER_PADRAO
+                        : `${BASE_URL}/${usuario.foto_perfil}`
                     }
                     alt="imagem do usuario"
                   />

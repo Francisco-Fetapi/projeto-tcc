@@ -54,11 +54,7 @@ export default function Post({
       <Card className="post">
         <CardHeader
           avatar={
-            <img
-              className="foto-user"
-              src={`./img/${user.foto}`}
-              alt="foto do usuario"
-            />
+            <img className="foto-user" src={user.foto} alt="foto do usuario" />
           }
           action={
             <IconButton>

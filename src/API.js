@@ -1,22 +1,13 @@
 import axios from "axios";
-const BASE_URL = "http://localhost:8000";
+
+export const BASE_URL = "http://localhost:8000";
+export const IMG_USER_PADRAO = `${BASE_URL}/img/user.jpg`;
+export const IMG_CAPA_PADRAO = `${BASE_URL}/img/user.jpg`;
 
 const api = axios.create({
   baseURL: `${BASE_URL}/api`,
   params: {
     token: null,
-  },
-  onDownloadProgress(progress) {
-    console.log(progress);
-    progress.onreadystatechange = function (e) {
-      console.log(e);
-    };
-  },
-  onUploadProgress(progress) {
-    console.log(progress);
-    progress.onreadystatechange = function (e) {
-      console.log(e);
-    };
   },
 });
 
@@ -44,7 +35,6 @@ api.interceptors.response.use(
 );
 
 const API = {
-  BASE_URL,
   async enviarDadosCriarConta(values) {
     let { data } = await api.post("/signup/validar/form1", values);
     return data;

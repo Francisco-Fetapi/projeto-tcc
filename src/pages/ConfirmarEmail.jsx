@@ -6,6 +6,7 @@ import IconAndText from "../components/IconAndText";
 import FormConfirmarEmail from "../components/Forms/FormConfirmarEmail";
 
 import useUsuario from "../hooks/useUsuario";
+import { IMG_USER_PADRAO } from "../API";
 
 export default function ConfirmarEmail1() {
   const { seLogadoIrParaHome, logado, seNaoTemEmailIrParaCriarConta } =
@@ -36,7 +37,7 @@ export default function ConfirmarEmail1() {
       </Box>
       <Box mt={2} className="foto-e-form">
         <Box>
-          <img src="./img/user.jpg" alt="Imagem do usuario" />
+          <img src={IMG_USER_PADRAO} alt="Imagem do usuario" />
           <Text variant="h6">Nome Usuario</Text>
           <Text color="textSecondary" variant="subtitle2">
             email@gmail.com

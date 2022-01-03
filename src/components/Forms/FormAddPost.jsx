@@ -11,7 +11,7 @@ import AddCircle from "@material-ui/icons/AddCircle";
 
 import { Formik, Form } from "formik";
 import useUsuario from "../../hooks/useUsuario";
-import API from "../../API";
+import { BASE_URL, IMG_USER_PADRAO } from "../../API";
 
 export default function FormAddPost() {
   const { logado, usuario } = useUsuario();
@@ -27,14 +27,14 @@ export default function FormAddPost() {
         <Form autoComplete="off">
           <Box display="flex" alignItems="flex-start">
             {a_carregar && (
-              <img src={"./img/user.jpg"} alt="imagem do usuario" />
+              <img src={IMG_USER_PADRAO} alt="imagem do usuario" />
             )}
             {!a_carregar && (
               <img
                 src={
-                  usuario.foto_perfil === "null"
-                    ? "./img/user.jpg"
-                    : `${API.BASE_URL}/${usuario.foto_perfil}`
+                  usuario.foto_perfil === "null" || usuario.foto_perfil
+                    ? IMG_USER_PADRAO
+                    : `${BASE_URL}/${usuario.foto_perfil}`
                 }
                 alt="imagem do usuario"
               />

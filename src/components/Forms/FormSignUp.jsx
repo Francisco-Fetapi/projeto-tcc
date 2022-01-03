@@ -17,6 +17,7 @@ import AlternateEmail from "@material-ui/icons/AlternateEmail";
 import { Link } from "react-router-dom";
 import { Formik, Form, useField } from "formik";
 import useUsuario from "../../hooks/useUsuario";
+import { IMG_USER_PADRAO } from "../../API";
 
 function RadioGroup({ children, id }) {
   const [field] = useField({ name: id });
@@ -122,7 +123,7 @@ export default function FormSignUp({ handleClose }) {
                   Foto de perfil
                 </Text>
                 <label className="foto">
-                  <img ref={img} src="./img/user.jpg" alt="Foto perfil" />
+                  <img ref={img} src={IMG_USER_PADRAO} alt="Foto perfil" />
                   <input
                     type="file"
                     accept="image/*"

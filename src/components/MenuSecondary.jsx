@@ -10,7 +10,7 @@ import { FaBell } from "react-icons/fa";
 import { FaChevronDown } from "react-icons/fa";
 import useUsuario from "../hooks/useUsuario";
 
-import API from "../API";
+import API, { BASE_URL, IMG_USER_PADRAO } from "../API";
 
 export default function MenuSecondary_() {
   const { logado, usuario } = useUsuario();
@@ -20,13 +20,13 @@ export default function MenuSecondary_() {
   return (
     <MenuSecondary>
       <Box display="flex" alignItems="center" className="foto-user-nome">
-        {a_carregar && <img src={"./img/user.jpg"} alt="imagem do usuario" />}
+        {a_carregar && <img src={IMG_USER_PADRAO} alt="imagem do usuario" />}
         {!a_carregar && (
           <img
             src={
-              usuario.foto_perfil === "null"
-                ? "./img/user.jpg"
-                : `${API.BASE_URL}/${usuario.foto_perfil}`
+              usuario.foto_perfil === "null" || usuario.foto_perfil
+                ? IMG_USER_PADRAO
+                : `${BASE_URL}/${usuario.foto_perfil}`
             }
             alt="imagem do usuario"
           />

@@ -17,7 +17,7 @@ import ThumbUp from "@material-ui/icons/ThumbUp";
 
 import { FaPencilAlt, FaPlus } from "react-icons/fa";
 import useUsuario from "../../hooks/useUsuario";
-import API from "../../API";
+import { IMG_USER_PADRAO, BASE_URL } from "../../API";
 
 export default function InfoUsuario() {
   const { logado, usuario } = useUsuario();
@@ -29,14 +29,14 @@ export default function InfoUsuario() {
         <Box className="foto-nome-bio">
           <Box component="figure">
             {a_carregar && (
-              <img src={"./img/user.jpg"} alt="imagem do usuario" />
+              <img src={IMG_USER_PADRAO} alt="imagem do usuario" />
             )}
             {!a_carregar && (
               <img
                 src={
-                  usuario.foto_perfil === "null"
-                    ? "./img/user.jpg"
-                    : `${API.BASE_URL}/${usuario.foto_perfil}`
+                  usuario.foto_perfil === "null" || usuario.foto_perfil
+                    ? IMG_USER_PADRAO
+                    : `${BASE_URL}/${usuario.foto_perfil}`
                 }
                 alt="imagem do usuario"
               />

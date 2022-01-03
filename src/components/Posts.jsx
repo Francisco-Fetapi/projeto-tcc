@@ -1,10 +1,11 @@
 import React from "react";
+import { IMG_USER_PADRAO } from "../API";
 import Post from "./Post";
 
 export default function Posts() {
   const user = {
     nome: "Nome do usuario",
-    foto: "user.jpg",
+    foto: IMG_USER_PADRAO,
   };
   return (
     <div>
