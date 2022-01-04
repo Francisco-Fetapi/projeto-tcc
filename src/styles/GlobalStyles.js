@@ -66,10 +66,11 @@ export const GlobalStyles = createGlobalStyle`
           padding-bottom:0px;
           border-radius:20px;
           img{
-              width:45px;
-              height:45px;
+              width:60px;
+              height:60px;
               border-radius:50%;
               margin-right:8px;
+              object-fit: cover;
           }
           .MuiFormControl-root{
               width:100%;

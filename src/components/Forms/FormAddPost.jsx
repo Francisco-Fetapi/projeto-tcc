@@ -20,6 +20,7 @@ export default function FormAddPost() {
   const { logado } = useUsuario();
 
   const { usuario } = useSelector(selectAll);
+  const fotoPerfil = `${BASE_URL}/${usuario.foto_perfil}`;
 
   const a_carregar = logado && !usuario.id;
   return (
@@ -36,12 +37,9 @@ export default function FormAddPost() {
             )}
             {!a_carregar && (
               <img
-                src={
-                  usuario.foto_perfil === "null" || usuario.foto_perfil
-                    ? IMG_USER_PADRAO
-                    : `${BASE_URL}/${usuario.foto_perfil}`
-                }
+                src={fotoPerfil}
                 alt="imagem do usuario"
+                style={{ width: 64, height: 54 }}
               />
             )}
             <TextField1

@@ -27,6 +27,7 @@ export default function MenuLeft() {
   const { logado } = useUsuario();
   const { usuario } = useSelector(selectAll);
   const a_carregar = logado && !usuario.id;
+  const fotoPerfil = `${BASE_URL}/${usuario.foto_perfil}`;
 
   return (
     <>
@@ -40,14 +41,7 @@ export default function MenuLeft() {
                   <img src={IMG_USER_PADRAO} alt="imagem do usuario" />
                 )}
                 {!a_carregar && (
-                  <img
-                    src={
-                      usuario.foto_perfil === "null" || usuario.foto_perfil
-                        ? IMG_USER_PADRAO
-                        : `${BASE_URL}/${usuario.foto_perfil}`
-                    }
-                    alt="imagem do usuario"
-                  />
+                  <img src={fotoPerfil} alt="imagem do usuario" />
                 )}
               </>
             </ListItemAvatar>
