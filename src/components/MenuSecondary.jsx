@@ -10,10 +10,15 @@ import { FaBell } from "react-icons/fa";
 import { FaChevronDown } from "react-icons/fa";
 import useUsuario from "../hooks/useUsuario";
 
+import { useSelector } from "react-redux";
+import { selectAll } from "../store/App.selectors";
+
 import { BASE_URL, IMG_USER_PADRAO } from "../API";
 
 export default function MenuSecondary_() {
-  const { logado, usuario } = useUsuario();
+  const { logado } = useUsuario();
+
+  const { usuario } = useSelector(selectAll);
 
   const a_carregar = logado && !usuario.id;
   const theme = useTheme();

@@ -9,7 +9,9 @@ import useLoading from "./useLinearProgress";
 import useAlert from "./useAlert";
 import { useDispatch, useSelector } from "react-redux";
 import { RESET_ALL, SET_STATE, SET_STATES } from "../store/SignUp.actions";
+import { SET_STATE_USER } from "../store/App.actions";
 import { selectAll } from "../store/SignUp.selectors";
+import useModal from "./useModal";
 
 export default function useUsuario() {
   const navigate = useNavigate();
@@ -18,8 +20,10 @@ export default function useUsuario() {
   const Disparar = useDispatch();
   const dados_form_criar_conta = useSelector(selectAll);
   const store = useSelector(selectAll);
+  const [, , fecharModal1] = useModal("modalEditarBiografia");
+  let info = {};
 
-  const info = {
+  info = {
     async logar(values) {
       if (info.logado) {
         info.logout(); //na conta anterior;
@@ -36,7 +40,6 @@ export default function useUsuario() {
     logado: localStorage.getItem("token") ? true : false,
     token: localStorage.getItem("token"),
     criar_conta_dados: dados_form_criar_conta,
-    usuario: store.usuario || {},
     seNaoLogadoIrParaLogin() {
       if (!info.logado) {
         navigate("/login");
@@ -191,22 +194,42 @@ export default function useUsuario() {
     async alterarFotoDeCapa(foto, concluir) {
       LoadingLinear.mostrar();
       let res = await API.alterarFotoDeCapa(foto);
+      LoadingLinear.ocultar();
       if (res.status === "success") {
-        window.location.reload();
-      } else {
-        alertar(res.msg, res.status, 3);
+        console.log(res);
+        Disparar(SET_STATE_USER("foto_capa", res.foto_capa));
       }
+      alertar(res.msg, res.status, 3);
     },
     async alterarFotoDePerfil(inputFile) {
       const foto = inputFile.current.files[0];
       LoadingLinear.mostrar();
       let res = await API.alterarFotoDePerfil(foto);
+      LoadingLinear.ocultar();
       if (res.status === "success") {
-        window.location.reload();
-      } else {
-        alertar(res.msg, res.status, 3);
+        Disparar(SET_STATE_USER("foto_perfil", res.foto_perfil));
       }
-      console.log(res);
+      alertar(res.msg, res.status, 3);
+
+      // console.log(res);
+    },
+    async alterarBiografia(values, actions) {
+      if (!values.mini_biografia) {
+        actions.setErrors({
+          mini_biografia: "Este campo não pode estar vazio",
+        });
+        return;
+      }
+      LoadingLinear.mostrar();
+      console.log(values);
+      let res = await API.alterarBiografia(values);
+      alertar(res.msg, res.status, 4);
+      if (res.status === "success") {
+        console.log("Alterou", res.mini_biografia);
+        Disparar(SET_STATE_USER("mini_biografia", res.mini_biografia));
+      }
+      LoadingLinear.ocultar();
+      fecharModal1();
     },
   };
 

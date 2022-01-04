@@ -7,14 +7,19 @@ import Box from "@material-ui/core/Box";
 import { Formik, Form } from "formik";
 import useUsuario from "../../hooks/useUsuario";
 
+import { useSelector } from "react-redux";
+import { selectAll } from "../../store/App.selectors";
+
 export default function FormAddPost() {
-  const { usuario } = useUsuario();
+  const { alterarBiografia } = useUsuario();
+  const { usuario } = useSelector(selectAll);
 
   return (
     <Formik
       initialValues={{
         mini_biografia: usuario.mini_biografia,
       }}
+      onSubmit={alterarBiografia}
     >
       <Form autoComplete="off">
         <TextField1
@@ -30,6 +35,7 @@ export default function FormAddPost() {
             style={{ height: "42px" }}
             variant="contained"
             color="primary"
+            type="submit"
           >
             Concluir
           </Button>

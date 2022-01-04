@@ -9,9 +9,12 @@ import "slick-carousel/slick/slick-theme.css";
 import Alerta from "./components/Alerta";
 import useUsuario from "./hooks/useUsuario";
 import { useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectAll } from "./store/App.selectors";
 
 function App() {
-  const { getDadosUsuarioByToken, token, logado, usuario } = useUsuario();
+  const { getDadosUsuarioByToken, token, logado } = useUsuario();
+  const { usuario } = useSelector(selectAll);
   const { pathname } = useLocation();
   useEffect(() => {
     if (logado && !usuario.id) {

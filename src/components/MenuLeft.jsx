@@ -20,10 +20,12 @@ import MoreHoriz from "@material-ui/icons/MoreHoriz";
 import atividades from "../mock/atividades.json";
 import useUsuario from "../hooks/useUsuario";
 import { BASE_URL, IMG_USER_PADRAO } from "../API";
+import { useSelector } from "react-redux";
+import { selectAll } from "../store/App.selectors";
 
 export default function MenuLeft() {
-  const { logado, usuario } = useUsuario();
-
+  const { logado } = useUsuario();
+  const { usuario } = useSelector(selectAll);
   const a_carregar = logado && !usuario.id;
 
   return (

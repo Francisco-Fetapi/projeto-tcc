@@ -13,12 +13,14 @@ import FormLabel from "@material-ui/core/FormLabel";
 import AlternateEmail from "@material-ui/icons/AlternateEmail";
 
 import { Formik, Form, useField } from "formik";
-import useUsuario from "../../hooks/useUsuario";
 import paises from "../../mock/paises.json";
 import generos from "../../mock/generos.json";
 import motivos from "../../mock/motivosAssistir.json";
 import { Text } from "../../styles";
 import { FaUser } from "react-icons/fa";
+
+import { useSelector } from "react-redux";
+import { selectAll } from "../../store/App.selectors";
 
 function RadioGroup({ children, id }) {
   const [field] = useField({ name: id });
@@ -26,8 +28,9 @@ function RadioGroup({ children, id }) {
 }
 
 export default function FormAddPost() {
-  const { usuario } = useUsuario();
   const paisesArray = Object.keys(paises);
+
+  const { usuario } = useSelector(selectAll);
 
   return (
     <Formik

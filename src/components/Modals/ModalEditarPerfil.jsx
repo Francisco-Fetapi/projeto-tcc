@@ -3,12 +3,16 @@ import TemplateModal from "./Template.jsx";
 import { useEffect } from "react";
 import { alterarLarguraDoModal } from "../../helpers/LoginAndSignUp";
 import { useState } from "react";
-import useUsuario from "../../hooks/useUsuario.js";
+
 import FormEditarPerfil from "../Forms/FormEditarPerfil";
+import { useSelector } from "react-redux";
+import { selectAll } from "../../store/App.selectors";
 
 export default function ModalEditarPerfil() {
   const [propsModal, setPropsModal] = useState({});
-  const { usuario } = useUsuario();
+
+  const { usuario } = useSelector(selectAll);
+
   useEffect(() => {
     window.onresize = () => alterarLarguraDoModal(setPropsModal, 410);
     window.onload = () => alterarLarguraDoModal(setPropsModal, 410);

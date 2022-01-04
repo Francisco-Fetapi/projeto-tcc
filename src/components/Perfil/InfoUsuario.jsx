@@ -26,13 +26,15 @@ import useModal from "../../hooks/useModal";
 import ModalEditarBiografia from "../Modals/ModalEditarBiografia";
 import ModalEditarPerfil from "../Modals/ModalEditarPerfil";
 import ModalVerPerfil from "../Modals/ModalVerPerfil";
+import { useSelector } from "react-redux";
+import { selectAll } from "../../store/App.selectors";
 
 export default function InfoUsuario() {
-  const { logado, usuario, exibirFotoASerAlterada, alterarFotoDePerfil } =
-    useUsuario();
+  const { logado, exibirFotoASerAlterada, alterarFotoDePerfil } = useUsuario();
   const [, abrirModal1] = useModal("modalEditarBiografia");
   const [, abrirModal2] = useModal("modalEditarPerfil");
   const [, abrirModal3] = useModal("modalVerPerfil");
+  const { usuario } = useSelector(selectAll);
 
   const fotoPerfilInicial = `${BASE_URL}/${usuario.foto_perfil}`;
   const a_carregar = logado && !usuario.id;
@@ -47,7 +49,6 @@ export default function InfoUsuario() {
     setFotoDePerfil(fotoPerfilInicial);
     inputFile.current.value = "";
   }
-  console.log("Rerender");
 
   return (
     <Box mb={5}>

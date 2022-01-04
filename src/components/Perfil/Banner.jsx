@@ -9,9 +9,12 @@ import { useRef } from "react";
 
 import Done from "@material-ui/icons/Done";
 import Clear from "@material-ui/icons/Clear";
+import { useSelector } from "react-redux";
+import { selectAll } from "../../store/App.selectors";
 
 export default function Banner() {
-  const { usuario, exibirFoto2ASerAlterada, alterarFotoDeCapa } = useUsuario();
+  const { usuario } = useSelector(selectAll);
+  const { exibirFoto2ASerAlterada, alterarFotoDeCapa } = useUsuario();
   const fotoCapaInicial = `${BASE_URL}/${usuario.foto_capa}`;
   const inputFile = useRef();
   const [fotoDeCapa, setFotoDeCapa] = useState("");

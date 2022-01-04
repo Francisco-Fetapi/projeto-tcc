@@ -2,11 +2,12 @@ import React from "react";
 import Box from "@material-ui/core/Box";
 import { Text } from "../../styles";
 import { Perfil } from "../../styles/pages/Perfil";
-import useUsuario from "../../hooks/useUsuario";
+import { useSelector } from "react-redux";
+import { selectAll } from "../../store/App.selectors";
 import { formatarData } from "../../helpers";
 
 export default function InfoPerfil() {
-  const { usuario } = useUsuario();
+  const { usuario } = useSelector(selectAll);
 
   return (
     <Perfil.InfoPerfil>
