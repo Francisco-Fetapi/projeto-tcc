@@ -77,6 +77,12 @@ const API = {
     let { data } = await api.post("/usuario/alterar/foto-de-capa", formData);
     return data;
   },
+  async alterarFotoDePerfil(foto) {
+    const formData = new FormData();
+    formData.append("foto_de_perfil", foto);
+    let { data } = await api.post("/usuario/alterar/foto-de-perfil", formData);
+    return data;
+  },
 };
 
 export default API;

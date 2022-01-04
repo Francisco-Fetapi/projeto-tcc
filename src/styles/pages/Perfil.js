@@ -113,20 +113,40 @@ export const Perfil = {
           height: 100%;
           border-radius: 50%;
         }
+        .left {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+        }
+        .right {
+          position: absolute;
+          bottom: 0;
+          right: 0;
+        }
         figcaption {
           position: absolute;
           bottom: 0;
           right: 0;
-          div {
-            padding: 5px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #716e6e;
-            border-radius: 50%;
-            svg {
-              color: white;
-            }
+        }
+        label,
+        .label {
+          display: block;
+          padding: 7px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: #716e6e;
+          border-radius: 50%;
+          cursor: pointer;
+          :hover {
+            opacity: 0.9;
+          }
+          :active {
+            opacity: 0.5;
+          }
+          svg {
+            color: white;
+            font-size: 15px;
           }
         }
       }

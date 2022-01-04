@@ -167,12 +167,17 @@ export default function useUsuario() {
     apagarDadosCriarConta() {
       Disparar(RESET_ALL());
     },
-    exibirFotoASerAlterada(e, img) {
+    exibirFotoASerAlterada(e, img, setX) {
       if (e.target.files.length) {
         const fr = new FileReader();
         fr.readAsDataURL(e.target.files[0]);
         fr.onload = function (e) {
-          img.current.src = e.target.result;
+          if (setX) {
+            setX(e.target.result);
+            console.log("renderizou");
+          } else {
+            img.current.src = e.target.result;
+          }
         };
       }
     },
@@ -189,6 +194,16 @@ export default function useUsuario() {
     async alterarFotoDeCapa(foto, concluir) {
       LoadingLinear.mostrar();
       let res = await API.alterarFotoDeCapa(foto);
+      if (res.status === "success") {
+        window.location.reload();
+      } else {
+        alertar(res.msg, res.status, 3);
+      }
+    },
+    async alterarFotoDePerfil(inputFile) {
+      const foto = inputFile.current.files[0];
+      LoadingLinear.mostrar();
+      let res = await API.alterarFotoDePerfil(foto);
       if (res.status === "success") {
         window.location.reload();
       } else {

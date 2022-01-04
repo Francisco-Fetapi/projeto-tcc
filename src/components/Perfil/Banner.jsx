@@ -18,9 +18,8 @@ export default function Banner() {
 
   useEffect(() => {
     setFotoDeCapa(fotoCapaInicial);
-    console.log("foto capa inicial mudou");
   }, [fotoCapaInicial]);
-  console.log(fotoCapaInicial, "no store ->", usuario.foto_capa);
+
   function cancelar() {
     setFotoDeCapa(fotoCapaInicial);
     inputFile.current.value = "";
