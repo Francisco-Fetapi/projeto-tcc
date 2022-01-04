@@ -4,7 +4,6 @@ id
 nome
 email
 senha
-slug
 data_nascimento
 genero
 pais

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const colorPrimary = "#303F9F";
+// const colorPrimary = "#303F9F";
 
 export const Perfil = {
   Container: styled.div`
@@ -233,6 +233,28 @@ export const Perfil = {
           width: 100%;
           height: 100%;
         }
+      }
+    }
+  `,
+  InfoPerfil: styled.div`
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 12px;
+    .dado-grid-1 {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+    .dado-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .dado-grid-2,
+    .dado-grid-1 {
+      p:first-child {
+        font-weight: bold;
+      }
+      p:last-child {
+        font-style: italic;
       }
     }
   `,

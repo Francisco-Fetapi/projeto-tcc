@@ -2,7 +2,7 @@ import React from "react";
 import TemplateModal from "./Template.jsx";
 import FormEsqueciAPasse from "../Forms/FormEsqueciAPasse.jsx";
 import { useEffect } from "react";
-import { alterarLarguraDoModal } from "../../helpers/LoginAndSignUp.jsx";
+import { alterarLarguraDoModal } from "../../helpers/LoginAndSignUp";
 import { useState } from "react";
 
 export default function ModalEsqueciAPasse() {

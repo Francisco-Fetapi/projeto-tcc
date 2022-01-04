@@ -1,7 +1,7 @@
 import React from "react";
 import TemplateModal from "./Template.jsx";
 import { useEffect } from "react";
-import { alterarLarguraDoModal } from "../../helpers/LoginAndSignUp.jsx";
+import { alterarLarguraDoModal } from "../../helpers/LoginAndSignUp";
 import { useState } from "react";
 import useUsuario from "../../hooks/useUsuario.js";
 import FormEditarPerfil from "../Forms/FormEditarPerfil";

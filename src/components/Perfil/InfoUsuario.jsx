@@ -30,9 +30,9 @@ import ModalVerPerfil from "../Modals/ModalVerPerfil";
 export default function InfoUsuario() {
   const { logado, usuario, exibirFotoASerAlterada, alterarFotoDePerfil } =
     useUsuario();
-  const [modal1Aberto, abrirModal1] = useModal("modalEditarBiografia");
-  const [modal2Aberto, abrirModal2] = useModal("modalEditarPerfil");
-  const [modal3Aberto, abrirModal3] = useModal("modalVerPerfil");
+  const [, abrirModal1] = useModal("modalEditarBiografia");
+  const [, abrirModal2] = useModal("modalEditarPerfil");
+  const [, abrirModal3] = useModal("modalVerPerfil");
 
   const fotoPerfilInicial = `${BASE_URL}/${usuario.foto_perfil}`;
   const a_carregar = logado && !usuario.id;

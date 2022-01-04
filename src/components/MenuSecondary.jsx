@@ -10,7 +10,7 @@ import { FaBell } from "react-icons/fa";
 import { FaChevronDown } from "react-icons/fa";
 import useUsuario from "../hooks/useUsuario";
 
-import API, { BASE_URL, IMG_USER_PADRAO } from "../API";
+import { BASE_URL, IMG_USER_PADRAO } from "../API";
 
 export default function MenuSecondary_() {
   const { logado, usuario } = useUsuario();
