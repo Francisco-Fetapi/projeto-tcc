@@ -74,7 +74,9 @@ export default function FormDialog({
       >
         <DialogTitle
           id="customized-dialog-title"
-          onClose={() => navigate(navigateToOnClose)}
+          onClose={
+            navigateToOnClose ? () => navigate(navigateToOnClose) : handleClose
+          }
           component="div"
         >
           <Text

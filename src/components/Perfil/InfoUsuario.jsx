@@ -21,10 +21,19 @@ import useUsuario from "../../hooks/useUsuario";
 import { IMG_USER_PADRAO, BASE_URL } from "../../API";
 import Done from "@material-ui/icons/Done";
 import Clear from "@material-ui/icons/Clear";
+import useModal from "../../hooks/useModal";
+
+import ModalEditarBiografia from "../Modals/ModalEditarBiografia";
+import ModalEditarPerfil from "../Modals/ModalEditarPerfil";
+import ModalVerPerfil from "../Modals/ModalVerPerfil";
 
 export default function InfoUsuario() {
   const { logado, usuario, exibirFotoASerAlterada, alterarFotoDePerfil } =
     useUsuario();
+  const [modal1Aberto, abrirModal1] = useModal("modalEditarBiografia");
+  const [modal2Aberto, abrirModal2] = useModal("modalEditarPerfil");
+  const [modal3Aberto, abrirModal3] = useModal("modalVerPerfil");
+
   const fotoPerfilInicial = `${BASE_URL}/${usuario.foto_perfil}`;
   const a_carregar = logado && !usuario.id;
   const inputFile = useRef();
@@ -101,6 +110,7 @@ export default function InfoUsuario() {
                 color="primary"
                 startIcon={<FaPencilAlt />}
                 variant="outlined"
+                onClick={abrirModal1}
               >
                 Editar biografia
               </Button>
@@ -160,16 +170,25 @@ export default function InfoUsuario() {
               startIcon={<FaPencilAlt />}
               variant="outlined"
               style={{ marginRight: 10 }}
+              onClick={abrirModal2}
             >
               Editar perfil
             </Button>
-            <Button color="primary" startIcon={<FaPlus />} variant="outlined">
+            <Button
+              color="primary"
+              onClick={abrirModal3}
+              startIcon={<FaPlus />}
+              variant="outlined"
+            >
               Ver mais
             </Button>
           </Box>
         </Box>
       </Perfil.Info>
       <Divider />
+      {modal1Aberto && <ModalEditarBiografia />}
+      {modal2Aberto && <ModalEditarPerfil />}
+      {modal3Aberto && <ModalVerPerfil />}
     </Box>
   );
 }

@@ -154,4 +154,7 @@ export const GlobalStyles = createGlobalStyle`
       .label-error{
         color:#F44336;
       }
+      .MuiDialogContent-root{
+        min-width:500px;
+      }
 `;
