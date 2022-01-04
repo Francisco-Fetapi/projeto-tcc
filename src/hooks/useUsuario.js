@@ -21,6 +21,7 @@ export default function useUsuario() {
   const dados_form_criar_conta = useSelector(selectAll);
   const store = useSelector(selectAll);
   const [, , fecharModal1] = useModal("modalEditarBiografia");
+  const [, , fecharModal2] = useModal("modalEditarPerfil");
   let info = {};
 
   info = {
@@ -230,6 +231,25 @@ export default function useUsuario() {
       }
       LoadingLinear.ocultar();
       fecharModal1();
+    },
+    async updatePerfil(values, actions) {
+      LoadingLinear.mostrar();
+      let res = await API.alterarPerfil(values);
+
+      if (res.status === "success") {
+        alertar(res.msg, res.status, 3);
+        info.getDadosUsuarioByToken();
+        fecharModal2();
+      } else {
+        if (res.erros) {
+          let primeiro_erro = showFirstError(res.erros);
+          actions.setErrors(primeiro_erro);
+          console.log(primeiro_erro);
+        } else {
+          alertar(res.msg, res.status, 3);
+        }
+      }
+      LoadingLinear.ocultar();
     },
   };
 

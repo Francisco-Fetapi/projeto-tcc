@@ -87,6 +87,10 @@ const API = {
     let { data } = await api.post("/usuario/alterar/biografia", dados);
     return data;
   },
+  async alterarPerfil(dados) {
+    let { data } = await api.post("/usuario/alterar/perfil", dados);
+    return data;
+  },
 };
 
 export default API;

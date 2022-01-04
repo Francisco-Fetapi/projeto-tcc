@@ -21,6 +21,7 @@ import { FaUser } from "react-icons/fa";
 
 import { useSelector } from "react-redux";
 import { selectAll } from "../../store/App.selectors";
+import useUsuario from "../../hooks/useUsuario";
 
 function RadioGroup({ children, id }) {
   const [field] = useField({ name: id });
@@ -29,7 +30,7 @@ function RadioGroup({ children, id }) {
 
 export default function FormAddPost() {
   const paisesArray = Object.keys(paises);
-
+  const { updatePerfil } = useUsuario();
   const { usuario } = useSelector(selectAll);
 
   return (
@@ -37,7 +38,6 @@ export default function FormAddPost() {
       initialValues={{
         mini_biografia: usuario.mini_biografia,
         nome: usuario.nome,
-        email: usuario.email,
         senha: usuario.senha,
         data_nascimento: usuario.data_nascimento,
         genero: usuario.genero,
@@ -45,10 +45,12 @@ export default function FormAddPost() {
         estado: usuario.estado,
         cidade: usuario.cidade,
         genero_favorito: usuario.genero_favorito,
-        genero_favorito_porque: usuario.genero_favorito_porque,
+        genero_favorito_porque: usuario.genero_favorito_porque || "",
         genero_n_favorito: usuario.genero_n_favorito,
         assisto_para: usuario.assisto_para,
+        password: "",
       }}
+      onSubmit={updatePerfil}
     >
       {({ values }) => (
         <Form autoComplete="off">
@@ -58,14 +60,6 @@ export default function FormAddPost() {
             id="nome"
             label="Nome de usuário"
           />
-          <Box my={2.5}>
-            <TextField1
-              placeholder="Insira seu email"
-              icon={<AlternateEmail style={{ width: 18, height: 18 }} />}
-              id="email"
-              label="Email"
-            />
-          </Box>
 
           <Box mt={2.5}>
             <TextField1
@@ -188,6 +182,18 @@ export default function FormAddPost() {
                 </MenuItem>
               ))}
             </TextField1>
+          </Box>
+
+          <Box mt={2.5}>
+            <TextField1
+              placeholder="Sua senha atual"
+              icon={null}
+              id="password"
+              label="Senha"
+            />
+            <Text variant="body2" color="textSecondary">
+              Necessária para efetivar as alterações
+            </Text>
           </Box>
 
           <Box mt={4} display="flex" flexDirection="column" alignItems="center">
