@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const BASE_URL = "http://localhost:8000";
 export const IMG_USER_PADRAO = `${BASE_URL}/img/user.jpg`;
-export const IMG_CAPA_PADRAO = `${BASE_URL}/img/user.jpg`;
+export const IMG_CAPA_PADRAO = `${BASE_URL}/img/fundo-perfil.png`;
 
 const api = axios.create({
   baseURL: `${BASE_URL}/api`,
@@ -69,6 +69,12 @@ const API = {
   },
   async getDadosUsuarioByToken(token) {
     let { data } = await api.get("/usuario/dados", { token });
+    return data;
+  },
+  async alterarFotoDeCapa(foto) {
+    const formData = new FormData();
+    formData.append("foto_de_capa", foto);
+    let { data } = await api.post("/usuario/alterar/foto-de-capa", formData);
     return data;
   },
 };

@@ -9,6 +9,7 @@ import useLoading from "./useLinearProgress";
 import useLoadingCircular from "./useLoadingCircular";
 import useAlert from "./useAlert";
 import { useDispatch, useSelector } from "react-redux";
+import { SET_STATE_USER } from "../store/App.actions";
 import { RESET_ALL, SET_STATE, SET_STATES } from "../store/SignUp.actions";
 import { selectAll } from "../store/SignUp.selectors";
 
@@ -174,6 +175,26 @@ export default function useUsuario() {
           img.current.src = e.target.result;
         };
       }
+    },
+    exibirFoto2ASerAlterada(e, setFotoCapa) {
+      // foto de capa
+      if (e.target.files.length) {
+        const fr = new FileReader();
+        fr.readAsDataURL(e.target.files[0]);
+        fr.onload = function (e) {
+          setFotoCapa(e.target.result);
+        };
+      }
+    },
+    async alterarFotoDeCapa(foto, concluir) {
+      LoadingLinear.mostrar();
+      let res = await API.alterarFotoDeCapa(foto);
+      if (res.status === "success") {
+        window.location.reload();
+      } else {
+        alertar(res.msg, res.status, 3);
+      }
+      console.log(res);
     },
   };
 

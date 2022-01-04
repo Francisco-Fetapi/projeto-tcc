@@ -154,7 +154,10 @@ export const Perfil = {
   Banner: styled.div`
     width: 100%;
     height: 300px;
-    background: url("./img/fundo-perfil.png");
+    background: url(${({ img }) => img});
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background: ; */
     display: flex;
     align-items: flex-end;
 
