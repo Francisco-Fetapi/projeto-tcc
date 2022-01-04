@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { alterarLarguraDoModal } from "../../helpers/LoginAndSignUp.jsx";
 import { useState } from "react";
 import useUsuario from "../../hooks/useUsuario.js";
+import FormEditarPerfil from "../Forms/FormEditarPerfil";
 
 export default function ModalEditarPerfil() {
   const [propsModal, setPropsModal] = useState({});
@@ -20,10 +21,10 @@ export default function ModalEditarPerfil() {
     <TemplateModal
       nomeModal="modalEditarPerfil"
       titulo={`${usuario.nome} - Editar Perfil`}
-      subtitulo="Insira um biografia curta e descritiva."
+      subtitulo="Atualize os dados da sua conta."
       {...propsModal}
     >
-      {/* <FormEsqueciAPasse /> */}
+      <FormEditarPerfil />
     </TemplateModal>
   );
 }

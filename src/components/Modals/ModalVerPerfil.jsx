@@ -20,7 +20,7 @@ export default function ModalEditarPerfil() {
     <TemplateModal
       nomeModal="modalVerPerfil"
       titulo={`${usuario.nome} - Perfil`}
-      subtitulo="Insira um biografia curta e descritiva."
+      subtitulo="Todos os dados da sua conta."
       {...propsModal}
     >
       {/* <FormEsqueciAPasse /> */}

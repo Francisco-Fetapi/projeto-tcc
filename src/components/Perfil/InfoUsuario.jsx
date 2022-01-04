@@ -47,6 +47,7 @@ export default function InfoUsuario() {
     setFotoDePerfil(fotoPerfilInicial);
     inputFile.current.value = "";
   }
+  console.log("Rerender");
 
   return (
     <Box mb={5}>
@@ -186,9 +187,9 @@ export default function InfoUsuario() {
         </Box>
       </Perfil.Info>
       <Divider />
-      {modal1Aberto && <ModalEditarBiografia />}
-      {modal2Aberto && <ModalEditarPerfil />}
-      {modal3Aberto && <ModalVerPerfil />}
+      <ModalEditarBiografia />
+      <ModalEditarPerfil />
+      <ModalVerPerfil />
     </Box>
   );
 }

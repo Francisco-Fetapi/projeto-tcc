@@ -1,6 +1,6 @@
 import React from "react";
 import TemplateModal from "./Template.jsx";
-import FormEsqueciAPasse from "../Forms/FormEsqueciAPasse.jsx";
+import FormEditarBiografia from "../Forms/FormEditarBiografia.jsx";
 import { useEffect } from "react";
 import { alterarLarguraDoModal } from "../../helpers/LoginAndSignUp.jsx";
 import { useState } from "react";
@@ -21,10 +21,10 @@ export default function ModalEditarPerfil() {
     <TemplateModal
       nomeModal="modalEditarBiografia"
       titulo={`${usuario.nome} - Editar Biografia`}
-      subtitulo="Insira um biografia curta e descritiva."
+      subtitulo="Informações sobre você que melhor te descrevem."
       {...propsModal}
     >
-      {/* <FormEsqueciAPasse /> */}
+      <FormEditarBiografia />
     </TemplateModal>
   );
 }
