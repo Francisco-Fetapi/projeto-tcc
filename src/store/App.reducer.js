@@ -5,6 +5,7 @@ const initialState = {
   modalEditarBiografia: false,
   modalEditarPerfil: false,
   modalVerPerfil: false,
+  modalAlterarEmail: false,
   linearProgress: false,
   circularProgress: false,
   alert: false,

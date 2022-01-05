@@ -26,6 +26,7 @@ import useModal from "../../hooks/useModal";
 import ModalEditarBiografia from "../Modals/ModalEditarBiografia";
 import ModalEditarPerfil from "../Modals/ModalEditarPerfil";
 import ModalVerPerfil from "../Modals/ModalVerPerfil";
+import ModalAlterarEmail from "../Modals/ModalAlterarEmail";
 import { useSelector } from "react-redux";
 import { selectAll } from "../../store/App.selectors";
 
@@ -34,6 +35,7 @@ export default function InfoUsuario() {
   const [, abrirModal1] = useModal("modalEditarBiografia");
   const [, abrirModal2] = useModal("modalEditarPerfil");
   const [, abrirModal3] = useModal("modalVerPerfil");
+  const [, abrirModal4] = useModal("modalAlterarEmail");
   const { usuario } = useSelector(selectAll);
 
   const fotoPerfilInicial = `${BASE_URL}/${usuario.foto_perfil}`;
@@ -100,6 +102,24 @@ export default function InfoUsuario() {
           <Box mt={2} display="flex" flexDirection="column">
             <Text variant="h6" style={{ color: "#393939" }}>
               {a_carregar ? "Carregando..." : usuario.nome}
+            </Text>
+
+            <Text variant="subtitle2" color="textSecondary">
+              <Box display="flex" alignItems="center">
+                {a_carregar ? "Carregando..." : usuario.email}
+                {!a_carregar && (
+                  <Box
+                    ml={2}
+                    className="alterar_email"
+                    display="flex"
+                    alignItems="center"
+                    onClick={abrirModal4}
+                  >
+                    <Box mr={0.5}>Alterar</Box>
+                    <FaPencilAlt style={{ fontSize: 12 }} />
+                  </Box>
+                )}
+              </Box>
             </Text>
             <Box mt={1.3}>
               <Text color="textSecondary" variant="subtitle2">
@@ -191,6 +211,7 @@ export default function InfoUsuario() {
       <ModalEditarBiografia />
       <ModalEditarPerfil />
       <ModalVerPerfil />
+      <ModalAlterarEmail />
     </Box>
   );
 }

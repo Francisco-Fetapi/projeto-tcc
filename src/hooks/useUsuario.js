@@ -22,6 +22,7 @@ export default function useUsuario() {
   const store = useSelector(selectAll);
   const [, , fecharModal1] = useModal("modalEditarBiografia");
   const [, , fecharModal2] = useModal("modalEditarPerfil");
+  const [, , fecharModal3] = useModal("modalAlterarEmail");
   let info = {};
 
   info = {
@@ -127,6 +128,34 @@ export default function useUsuario() {
       concluir(values) {
         console.log(values);
         navigate("/");
+      },
+    },
+    alterarEmail: {
+      async inserirNovoEmailESenha(values, actions, setForm2, setDataForm1) {
+        console.log(values);
+        LoadingLinear.mostrar();
+        let res = await API.alterarEmail(values);
+        LoadingLinear.ocultar();
+        if (res.status === "success") {
+          console.log(res.codigo);
+          setForm2(true);
+          setDataForm1(values);
+        } else {
+          actions.setErrors(res.erros);
+        }
+      },
+      async inserirCodigo(values, actions) {
+        console.log(values);
+        LoadingLinear.mostrar();
+        let res = await API.alterarEmail(values);
+        LoadingLinear.ocultar();
+        if (res.status === "success") {
+          console.log(res);
+          info.getDadosUsuarioByToken();
+          fecharModal3();
+        } else {
+          actions.setErrors(res.erros);
+        }
       },
     },
     async criarConta(values, actions) {
@@ -237,10 +266,12 @@ export default function useUsuario() {
       let res = await API.alterarPerfil(values);
 
       if (res.status === "success") {
-        alertar(res.msg, res.status, 3);
+        LoadingLinear.ocultar();
         info.getDadosUsuarioByToken();
         fecharModal2();
+        return;
       } else {
+        LoadingLinear.ocultar();
         if (res.erros) {
           let primeiro_erro = showFirstError(res.erros);
           actions.setErrors(primeiro_erro);
@@ -249,7 +280,6 @@ export default function useUsuario() {
           alertar(res.msg, res.status, 3);
         }
       }
-      LoadingLinear.ocultar();
     },
   };
 

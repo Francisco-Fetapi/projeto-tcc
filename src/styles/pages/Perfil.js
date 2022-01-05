@@ -150,6 +150,16 @@ export const Perfil = {
           }
         }
       }
+      .alterar_email {
+        cursor: pointer;
+        user-select: none;
+        :hover {
+          opacity: 0.8;
+        }
+        :active {
+          opacity: 0.5;
+        }
+      }
     }
     .mais_info_perfil {
       .MuiListItemIcon-root {
