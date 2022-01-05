@@ -95,6 +95,10 @@ const API = {
     let { data } = await api.post("/usuario/alterar/email", dados);
     return data;
   },
+  async alterarSenha(dados) {
+    let { data } = await api.post("/alterar-senha", dados);
+    return data;
+  },
 };
 
 export default API;

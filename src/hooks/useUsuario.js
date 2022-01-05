@@ -119,20 +119,54 @@ export default function useUsuario() {
       console.log("Codigo reenviado", res.codigo);
     },
     alterarSenha: {
-      inserirEmail(values, actions, setForm2, setAllData) {
+      async inserirEmail(values, actions, setForm2, setAllData) {
         console.log(values);
-        setForm2(true);
-        setAllData(values);
+        LoadingLinear.mostrar();
+        let res = await API.alterarSenha(values);
+        LoadingLinear.ocultar();
+        if (res.status === "success") {
+          setForm2(true);
+          setAllData(values);
+        } else {
+          actions.setErrors(res.erros);
+        }
+        console.log(res);
       },
-      inserirCodigo(values, actions, setForm2, setForm3, allData, setAllData) {
-        console.log(values);
-        setForm2(false);
-        setForm3(true);
-        setAllData({ ...allData, ...values });
+      async inserirCodigo(
+        values,
+        actions,
+        setForm2,
+        setForm3,
+        allData,
+        setAllData
+      ) {
+        const allValues = { ...allData, ...values };
+        console.log(allValues);
+        LoadingLinear.mostrar();
+        let res = await API.alterarSenha(allValues);
+        LoadingLinear.ocultar();
+        if (res.status === "success") {
+          setForm2(false);
+          setForm3(true);
+          setAllData(allValues);
+        } else {
+          actions.setErrors(res.erros);
+        }
+        console.log(res);
       },
-      concluir(values) {
+      async concluir(values, actions) {
         console.log(values);
-        // navigate("/");
+        LoadingLinear.mostrar();
+        let res = await API.alterarSenha(values);
+        LoadingLinear.ocultar();
+        if (res.status === "success") {
+          navigate("/");
+        } else {
+          let erros = parsearErros(res.erros);
+          let primeiro_erro = showFirstError(erros);
+          actions.setErrors(primeiro_erro);
+        }
+        console.log(res);
       },
     },
     alterarEmail: {
