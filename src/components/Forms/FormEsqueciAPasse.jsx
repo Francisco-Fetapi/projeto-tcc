@@ -94,10 +94,13 @@ function FormInserirCodigo({ definirCodigo }) {
       <Form autoComplete="off">
         <Box mt={-0.5}>
           <TextField1
-            placeholder="Insira o codigo"
             icon={<Security />}
             id="codigo_de_recuperacao"
             label="Código de recuperação"
+            placeholder="XXX-XXX"
+            inputProps={{
+              maxLength: 6,
+            }}
           />
         </Box>
         <Box mt={1}>

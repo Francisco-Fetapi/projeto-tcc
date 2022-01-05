@@ -100,18 +100,20 @@ function FormInserirCodigo({ inserirCodigo }) {
       <Form autoComplete="off">
         <Box mt={-0.5}>
           <TextField1
-            placeholder="Insira uma nova palavra-passe"
+            placeholder="XXX-XXX"
             icon={<Security />}
             id="codigo"
             label="Código de confirmação"
+            inputProps={{
+              maxLength: 6,
+            }}
           />
         </Box>
-        {/* <Box mt={1}>
+        <Box mt={1}>
           <Text color="textSecondary" variant="subtitle2">
-            Depois de definida, essa será a <b>palavra-passe</b> com a qual a
-            sua conta estará vinculada.
+            O código de confirmação foi enviado para o seu novo email.
           </Text>
-        </Box> */}
+        </Box>
 
         <Box mt={4} display="flex" justifyContent="center">
           <Button
