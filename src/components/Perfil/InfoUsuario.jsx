@@ -21,6 +21,7 @@ import useUsuario from "../../hooks/useUsuario";
 import { IMG_USER_PADRAO, BASE_URL } from "../../API";
 import Done from "@material-ui/icons/Done";
 import Clear from "@material-ui/icons/Clear";
+import AccountCircle from "@material-ui/icons/AccountCircle";
 import useModal from "../../hooks/useModal";
 
 import ModalEditarBiografia from "../Modals/ModalEditarBiografia";
@@ -189,7 +190,7 @@ export default function InfoUsuario() {
           <Box mt={3} display="flex" justifyContent="center">
             <Button
               color="primary"
-              startIcon={<FaPencilAlt />}
+              startIcon={<AccountCircle />}
               variant="outlined"
               style={{ marginRight: 10 }}
               onClick={abrirModal2}
