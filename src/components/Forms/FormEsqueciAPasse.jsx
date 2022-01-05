@@ -15,18 +15,24 @@ export default function FormEsqueciAPasse({ handleClose }) {
   const [form2, setForm2] = useState(false);
   const [form3, setForm3] = useState(false);
   const { alterarSenha } = useUsuario();
+  const [allData, setAllData] = useState({});
 
   function definirEmail(values, actions) {
-    setForm2(true);
-    alterarSenha.inserirEmail(values, actions);
+    alterarSenha.inserirEmail(values, actions, setForm2, setAllData);
   }
   function definirCodigo(values, actions) {
-    setForm2(false);
-    setForm3(true);
-    alterarSenha.inserirCodigo(values, actions);
+    alterarSenha.inserirCodigo(
+      values,
+      actions,
+      setForm2,
+      setForm3,
+      allData,
+      setAllData
+    );
   }
   function concluir(values, actions) {
-    alterarSenha.concluir(values, actions);
+    const allValues = { ...allData, ...values };
+    alterarSenha.concluir(allValues, actions);
   }
   return (
     <ContainerFormEsqueciAPasse>
@@ -85,7 +91,7 @@ function FormInserirCodigo({ definirCodigo }) {
       style={{ width: 300 }}
       onSubmit={definirCodigo}
     >
-      <Form autocomplete="off">
+      <Form autoComplete="off">
         <Box mt={-0.5}>
           <TextField1
             placeholder="Insira o codigo"

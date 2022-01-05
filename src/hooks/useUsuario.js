@@ -119,15 +119,20 @@ export default function useUsuario() {
       console.log("Codigo reenviado", res.codigo);
     },
     alterarSenha: {
-      inserirEmail(values) {
+      inserirEmail(values, actions, setForm2, setAllData) {
         console.log(values);
+        setForm2(true);
+        setAllData(values);
       },
-      inserirCodigo(values) {
+      inserirCodigo(values, actions, setForm2, setForm3, allData, setAllData) {
         console.log(values);
+        setForm2(false);
+        setForm3(true);
+        setAllData({ ...allData, ...values });
       },
       concluir(values) {
         console.log(values);
-        navigate("/");
+        // navigate("/");
       },
     },
     alterarEmail: {
