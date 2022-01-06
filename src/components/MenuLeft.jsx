@@ -53,7 +53,7 @@ export default function MenuLeft() {
       <div />
       <div className="menu-left">
         <List>
-          <ListItem button className="item-usuario">
+          <ListItem button className={a_carregar ? "" : "item-usuario"}>
             <ListItemAvatar>
               <>
                 {a_carregar && (

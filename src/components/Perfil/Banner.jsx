@@ -14,7 +14,7 @@ import { selectAll } from "../../store/App.selectors";
 export default function Banner() {
   const { usuario } = useSelector(selectAll);
   const { exibirFoto2ASerAlterada, alterarFotoDeCapa } = useUsuario();
-  const fotoCapaInicial = usuario.foto_capa;
+  const fotoCapaInicial = usuario.foto_capa || "";
   const inputFile = useRef();
   const [fotoDeCapa, setFotoDeCapa] = useState("");
 

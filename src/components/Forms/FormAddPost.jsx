@@ -11,10 +11,11 @@ import AddCircle from "@material-ui/icons/AddCircle";
 
 import { Formik, Form } from "formik";
 import useUsuario from "../../hooks/useUsuario";
-import { IMG_USER_PADRAO } from "../../API";
 
 import { useSelector } from "react-redux";
 import { selectAll } from "../../store/App.selectors";
+
+import Skeleton from "@material-ui/lab/Skeleton";
 
 export default function FormAddPost() {
   const { logado } = useUsuario();
@@ -24,7 +25,7 @@ export default function FormAddPost() {
 
   const a_carregar = logado && !usuario.id;
   return (
-    <Paper className="paper" elevation={3}>
+    <Paper className="paper" elevation={!a_carregar ? 3 : 0}>
       <Formik
         initialValues={{
           post: "",
@@ -33,7 +34,12 @@ export default function FormAddPost() {
         <Form autoComplete="off">
           <Box display="flex" alignItems="flex-start">
             {a_carregar && (
-              <img src={IMG_USER_PADRAO} alt="imagem do usuario" />
+              <Skeleton
+                variant="circle"
+                width={64}
+                height={54}
+                style={{ marginRight: 10 }}
+              />
             )}
             {!a_carregar && (
               <img
@@ -42,29 +48,66 @@ export default function FormAddPost() {
                 style={{ width: 64, height: 54 }}
               />
             )}
-            <TextField1
-              multiline
-              maxRows={10}
-              id="post"
-              fullWidth
-              placeholder="Escreva alguma coisa e publique"
-            />
+
+            {a_carregar && <Skeleton variant="rect" width="100%" height={86} />}
+            {!a_carregar && (
+              <TextField1
+                multiline
+                maxRows={10}
+                id="post"
+                fullWidth
+                placeholder="Escreva alguma coisa e publique"
+              />
+            )}
           </Box>
           <Box mt={1} display="flex" justifyContent={"center"}>
-            <Button endIcon={<Send />} variant="contained" color="primary">
-              Publicar
-            </Button>
+            {a_carregar && (
+              <Skeleton variant="rect" width={124.83} height={36.5} />
+            )}
+            {!a_carregar && (
+              <Button endIcon={<Send />} variant="contained" color="primary">
+                Publicar
+              </Button>
+            )}
           </Box>
-          <Box mt={1}>
-            <Divider />
-          </Box>
+          <Box mt={1}>{!a_carregar && <Divider />}</Box>
           <Box className="button-group">
-            <ButtonGroup fullWidth variant="text" color="primary">
-              <Button startIcon={<FaVideo />}>Videos</Button>
-              <Button startIcon={<FaPhotoVideo />}>Foto</Button>
-              <Button startIcon={<FaEye />}>A Assistir</Button>
-              <Button startIcon={<AddCircle />}>Mais</Button>
-            </ButtonGroup>
+            {a_carregar && (
+              <Box display="flex" alignItems="center" justifyContent="center">
+                <Skeleton
+                  variant="rect"
+                  width="100%"
+                  height={22}
+                  style={{ margin: 7 }}
+                />
+                <Skeleton
+                  variant="rect"
+                  width="100%"
+                  height={22}
+                  style={{ margin: 7 }}
+                />
+                <Skeleton
+                  variant="rect"
+                  width="100%"
+                  height={22}
+                  style={{ margin: 7 }}
+                />
+                <Skeleton
+                  variant="rect"
+                  width="100%"
+                  height={22}
+                  style={{ margin: 7 }}
+                />
+              </Box>
+            )}
+            {!a_carregar && (
+              <ButtonGroup fullWidth variant="text" color="primary">
+                <Button startIcon={<FaVideo />}>Videos</Button>
+                <Button startIcon={<FaPhotoVideo />}>Foto</Button>
+                <Button startIcon={<FaEye />}>A Assistir</Button>
+                <Button startIcon={<AddCircle />}>Mais</Button>
+              </ButtonGroup>
+            )}
           </Box>
         </Form>
       </Formik>

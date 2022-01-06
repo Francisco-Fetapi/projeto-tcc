@@ -39,7 +39,7 @@ export default function InfoUsuario() {
   const [, abrirModal4] = useModal("modalAlterarEmail");
   const { usuario } = useSelector(selectAll);
 
-  const fotoPerfilInicial = usuario.foto_perfil;
+  const fotoPerfilInicial = usuario.foto_perfil || "";
   const a_carregar = logado && !usuario.id;
   const inputFile = useRef();
   const [fotoDePerfil, setFotoDePerfil] = useState("");
