@@ -11,7 +11,7 @@ import AddCircle from "@material-ui/icons/AddCircle";
 
 import { Formik, Form } from "formik";
 import useUsuario from "../../hooks/useUsuario";
-import { BASE_URL, IMG_USER_PADRAO } from "../../API";
+import { IMG_USER_PADRAO } from "../../API";
 
 import { useSelector } from "react-redux";
 import { selectAll } from "../../store/App.selectors";
@@ -20,7 +20,7 @@ export default function FormAddPost() {
   const { logado } = useUsuario();
 
   const { usuario } = useSelector(selectAll);
-  const fotoPerfil = `${BASE_URL}/${usuario.foto_perfil}`;
+  const fotoPerfil = usuario.foto_perfil;
 
   const a_carregar = logado && !usuario.id;
   return (
@@ -44,7 +44,7 @@ export default function FormAddPost() {
             )}
             <TextField1
               multiline
-              rowsMax={10}
+              maxRows={10}
               id="post"
               fullWidth
               placeholder="Escreva alguma coisa e publique"

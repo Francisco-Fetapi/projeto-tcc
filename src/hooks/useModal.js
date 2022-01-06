@@ -12,7 +12,9 @@ export default function useModal(nome) {
     Disparar(SET_STATE(nome, true));
   }
 
-  function fechar() {
+  function fechar(e, reason) {
+    if (reason === "backdropClick" || reason === "escapeKeyDown") return;
+
     Disparar(SET_STATE(nome, false));
   }
 

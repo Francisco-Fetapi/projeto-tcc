@@ -18,7 +18,7 @@ import ThumbUp from "@material-ui/icons/ThumbUp";
 
 import { FaPencilAlt, FaPlus } from "react-icons/fa";
 import useUsuario from "../../hooks/useUsuario";
-import { IMG_USER_PADRAO, BASE_URL } from "../../API";
+import { IMG_USER_PADRAO } from "../../API";
 import Done from "@material-ui/icons/Done";
 import Clear from "@material-ui/icons/Clear";
 import AccountCircle from "@material-ui/icons/AccountCircle";
@@ -39,7 +39,7 @@ export default function InfoUsuario() {
   const [, abrirModal4] = useModal("modalAlterarEmail");
   const { usuario } = useSelector(selectAll);
 
-  const fotoPerfilInicial = `${BASE_URL}/${usuario.foto_perfil}`;
+  const fotoPerfilInicial = usuario.foto_perfil;
   const a_carregar = logado && !usuario.id;
   const inputFile = useRef();
   const [fotoDePerfil, setFotoDePerfil] = useState("");

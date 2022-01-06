@@ -27,7 +27,7 @@ export default function MenuLeft() {
   const { logado } = useUsuario();
   const { usuario } = useSelector(selectAll);
   const a_carregar = logado && !usuario.id;
-  const fotoPerfil = `${BASE_URL}/${usuario.foto_perfil}`;
+  const fotoPerfil = usuario.foto_perfil;
 
   return (
     <>

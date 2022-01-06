@@ -3,7 +3,6 @@ import { Perfil } from "../../styles/pages/Perfil";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import { FaCamera } from "react-icons/fa";
-import { BASE_URL } from "../../API";
 import useUsuario from "../../hooks/useUsuario";
 import { useRef } from "react";
 
@@ -15,7 +14,7 @@ import { selectAll } from "../../store/App.selectors";
 export default function Banner() {
   const { usuario } = useSelector(selectAll);
   const { exibirFoto2ASerAlterada, alterarFotoDeCapa } = useUsuario();
-  const fotoCapaInicial = `${BASE_URL}/${usuario.foto_capa}`;
+  const fotoCapaInicial = usuario.foto_capa;
   const inputFile = useRef();
   const [fotoDeCapa, setFotoDeCapa] = useState("");
 

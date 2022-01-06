@@ -67,8 +67,8 @@ export default function FormDialog({
         onClose={handleClose}
         open={open}
         scroll="body"
-        disableBackdropClick
-        disableEscapeKeyDown
+        // disableBackdropClick
+        // disableEscapeKeyDown
         {...props}
         // fullScreen
       >
