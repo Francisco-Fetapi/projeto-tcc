@@ -161,4 +161,8 @@ export const GlobalStyles = createGlobalStyle`
             min-width:420px
         }
       }
+
+      #foto-menu .MuiList-padding {
+            padding: 2px;
+          }
 `;

@@ -302,13 +302,26 @@ export const Perfil = {
           .fundo-preto-2 {
             background: linear-gradient(
               to left,
-              rgba(0, 0, 0, 0.2) 20%,
+              rgba(0, 0, 0, 0.4) 50%,
               transparent
             );
             width: 0;
             top: 0;
             bottom: 0;
             right: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            svg {
+              display: block;
+              margin-top: 10px;
+              cursor: pointer;
+              zoom: 0.85;
+              color: #f0f0f0;
+              :active {
+                opacity: 0.8;
+              }
+            }
           }
         }
       }
