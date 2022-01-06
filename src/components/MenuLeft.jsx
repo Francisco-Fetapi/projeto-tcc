@@ -19,9 +19,28 @@ import MoreHoriz from "@material-ui/icons/MoreHoriz";
 
 import atividades from "../mock/atividades.json";
 import useUsuario from "../hooks/useUsuario";
-import { BASE_URL, IMG_USER_PADRAO } from "../API";
+import { IMG_USER_PADRAO } from "../API";
 import { useSelector } from "react-redux";
 import { selectAll } from "../store/App.selectors";
+
+import Skeleton from "@material-ui/lab/Skeleton";
+
+function ListItemWithSkeleton({ a_carregar, className, icon, label }) {
+  return (
+    <ListItem button>
+      <ListItemAvatar>
+        <Avatar className={!a_carregar ? className : "skeleton"}>
+          {!a_carregar && icon}
+          {a_carregar && <Skeleton variant="circle" width={40} height={40} />}
+        </Avatar>
+      </ListItemAvatar>
+      <ListItemText>
+        {a_carregar && <Skeleton variant="rect" width="100%" height={20} />}
+        {!a_carregar && label}
+      </ListItemText>
+    </ListItem>
+  );
+}
 
 export default function MenuLeft() {
   const { logado } = useUsuario();
@@ -38,7 +57,12 @@ export default function MenuLeft() {
             <ListItemAvatar>
               <>
                 {a_carregar && (
-                  <img src={IMG_USER_PADRAO} alt="imagem do usuario" />
+                  <Skeleton
+                    variant="circle"
+                    width={64}
+                    height={64}
+                    style={{ marginRight: 10 }}
+                  />
                 )}
                 {!a_carregar && (
                   <img src={fotoPerfil} alt="imagem do usuario" />
@@ -46,49 +70,43 @@ export default function MenuLeft() {
               </>
             </ListItemAvatar>
             <ListItemText
-              primary={a_carregar ? "carregando..." : usuario.nome}
+              primary={a_carregar ? <Skeleton variant="text" /> : usuario.nome}
             />
           </ListItem>
-          <ListItem button>
-            <ListItemAvatar>
-              <Avatar className="avatar_series">
-                <SerieIcon />
-              </Avatar>
-            </ListItemAvatar>
-            <ListItemText primary="Series" />
-          </ListItem>
-          <ListItem button>
-            <ListItemAvatar>
-              <Avatar className="avatar_filmes">
-                <FilmeIcon />
-              </Avatar>
-            </ListItemAvatar>
-            <ListItemText primary="Filmes" />
-          </ListItem>
-          <ListItem button>
-            <ListItemAvatar>
-              <Avatar className="avatar_amigos">
-                <FaUsers />
-              </Avatar>
-            </ListItemAvatar>
-            <ListItemText primary="Amigos" />
-          </ListItem>
-          <ListItem button>
-            <ListItemAvatar>
-              <Avatar className="avatar_videos">
-                <FaTv />
-              </Avatar>
-            </ListItemAvatar>
-            <ListItemText primary="Videos" />
-          </ListItem>
-          <ListItem button>
-            <ListItemAvatar>
-              <Avatar>
-                <FaChevronDown />
-              </Avatar>
-            </ListItemAvatar>
-            <ListItemText primary="Ver mais" />
-          </ListItem>
+          <ListItemWithSkeleton
+            a_carregar={a_carregar}
+            label="Series"
+            className="avatar_series"
+            icon={<SerieIcon />}
+          />
+          <ListItemWithSkeleton
+            a_carregar={a_carregar}
+            label="Filmes"
+            className="avatar_filmes"
+            icon={<FilmeIcon />}
+          />
+          <ListItemWithSkeleton
+            a_carregar={a_carregar}
+            label="Amigos"
+            className="avatar_amigos"
+            icon={<FaUsers />}
+          />
+          <ListItemWithSkeleton
+            a_carregar={a_carregar}
+            label="Videos"
+            className="avatar_videos"
+            icon={<FaTv />}
+          />
+          {!a_carregar && (
+            <ListItem button>
+              <ListItemAvatar>
+                <Avatar>
+                  <FaChevronDown />
+                </Avatar>
+              </ListItemAvatar>
+              <ListItemText primary="Ver mais" />
+            </ListItem>
+          )}
           <br />
           <Divider />
         </List>

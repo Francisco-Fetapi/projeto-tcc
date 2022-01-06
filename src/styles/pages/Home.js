@@ -39,8 +39,11 @@ export const MainContainer = styled.div`
         border-radius: 50%;
       }
     }
-    .MuiAvatar-root:not(.atvidade-icon) {
+    .MuiAvatar-root:not(.atvidade-icon, .skeleton) {
       background: #303f9f;
+    }
+    .MuiAvatar-root.skeleton {
+      background: none;
     }
     .MuiAvatar-root.avatar_series {
       background: linear-gradient(121deg, #2ada2a, #2a5a1a);
