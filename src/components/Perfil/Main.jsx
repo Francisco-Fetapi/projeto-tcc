@@ -9,11 +9,18 @@ import Favoritos from "./Favoritos";
 import MarcadosParaMaisTarde from "./MarcadosParaMaisTarde";
 import AddPost from "../AddPost";
 import Posts from "../Posts";
+import { useSelector } from "react-redux";
+import { selectAll } from "../../store/App.selectors";
+
+import Skeleton from "@material-ui/lab/Skeleton";
 
 export default function Main() {
+  const { usuario } = useSelector(selectAll);
+  const a_carregar = !usuario.id;
   return (
     <Perfil.Container>
-      <Banner />
+      {!a_carregar && <Banner />}
+      {a_carregar && <Skeleton variant="rect" width="100%" height={300} />}
       <InfoUsuario />
       <FotosEAmigos />
       <Box className="grid-2">

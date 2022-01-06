@@ -18,7 +18,6 @@ import ThumbUp from "@material-ui/icons/ThumbUp";
 
 import { FaPencilAlt, FaPlus } from "react-icons/fa";
 import useUsuario from "../../hooks/useUsuario";
-import { IMG_USER_PADRAO } from "../../API";
 import Done from "@material-ui/icons/Done";
 import Clear from "@material-ui/icons/Clear";
 import AccountCircle from "@material-ui/icons/AccountCircle";
@@ -31,8 +30,28 @@ import ModalAlterarEmail from "../Modals/ModalAlterarEmail";
 import { useSelector } from "react-redux";
 import { selectAll } from "../../store/App.selectors";
 
+import Skeleton from "@material-ui/lab/Skeleton";
+
+function ListItemWithSkeleton({ a_carregar, className, Icon, children }) {
+  if (a_carregar) {
+    return (
+      <ListItem>
+        <Skeleton variant="rect" width="100%" height={38} />
+      </ListItem>
+    );
+  }
+  return (
+    <ListItem>
+      <ListItemIcon>
+        <Icon className={className} />
+      </ListItemIcon>
+      <ListItemText>{children}</ListItemText>
+    </ListItem>
+  );
+}
+
 export default function InfoUsuario() {
-  const { logado, exibirFotoASerAlterada, alterarFotoDePerfil } = useUsuario();
+  const { exibirFotoASerAlterada, alterarFotoDePerfil } = useUsuario();
   const [, abrirModal1] = useModal("modalEditarBiografia");
   const [, abrirModal2] = useModal("modalEditarPerfil");
   const [, abrirModal3] = useModal("modalVerPerfil");
@@ -40,7 +59,7 @@ export default function InfoUsuario() {
   const { usuario } = useSelector(selectAll);
 
   const fotoPerfilInicial = usuario.foto_perfil || "";
-  const a_carregar = logado && !usuario.id;
+  const a_carregar = !usuario.id;
   const inputFile = useRef();
   const [fotoDePerfil, setFotoDePerfil] = useState("");
 
@@ -59,7 +78,9 @@ export default function InfoUsuario() {
         <Box className="foto-nome-bio">
           <Box component="figure">
             {a_carregar && (
-              <img src={IMG_USER_PADRAO} alt="imagem do usuario" />
+              <Box>
+                <Skeleton variant="circle" width={90} height={90} />
+              </Box>
             )}
             {!a_carregar && <img src={fotoDePerfil} alt="imagem do usuario" />}
             <input
@@ -69,15 +90,18 @@ export default function InfoUsuario() {
               id="foto_perfil"
               ref={inputFile}
             />
-            <Box component="figcaption">
-              {!fotoDePerfil.includes("base64") && (
-                <Tooltip title="Alterar foto de perfil">
-                  <label onClick={() => inputFile.current.click()}>
-                    <FaCamera />
-                  </label>
-                </Tooltip>
-              )}
-            </Box>
+            {!a_carregar && (
+              <Box component="figcaption">
+                {!fotoDePerfil.includes("base64") && (
+                  <Tooltip title="Alterar foto de perfil">
+                    <label onClick={() => inputFile.current.click()}>
+                      <FaCamera />
+                    </label>
+                  </Tooltip>
+                )}
+              </Box>
+            )}
+
             {fotoDePerfil.includes("base64") && (
               <>
                 <Tooltip title="Cancelar">
@@ -102,12 +126,25 @@ export default function InfoUsuario() {
           </Box>
           <Box mt={2} display="flex" flexDirection="column">
             <Text variant="h6" style={{ color: "#393939" }}>
-              {a_carregar ? "Carregando..." : usuario.nome}
+              {a_carregar ? (
+                <Skeleton variant="rect" width="70%" height={32} />
+              ) : (
+                usuario.nome
+              )}
             </Text>
 
             <Text variant="subtitle2" color="textSecondary">
               <Box display="flex" alignItems="center">
-                {a_carregar ? "Carregando..." : usuario.email}
+                {a_carregar ? (
+                  <Skeleton
+                    variant="rect"
+                    width="100%"
+                    height={12}
+                    style={{ marginTop: 8 }}
+                  />
+                ) : (
+                  usuario.email
+                )}
                 {!a_carregar && (
                   <Box
                     ml={2}
@@ -124,87 +161,94 @@ export default function InfoUsuario() {
             </Text>
             <Box mt={1.3}>
               <Text color="textSecondary" variant="subtitle2">
-                {a_carregar ? "Carregando..." : usuario.mini_biografia}
+                {a_carregar ? (
+                  <Skeleton variant="rect" width="100%" height={72} />
+                ) : (
+                  usuario.mini_biografia
+                )}
               </Text>
             </Box>
             <div style={{ flexGrow: 1 }} />
+
             <Box mt={3} display="flex" justifyContent="center">
-              <Button
-                color="primary"
-                startIcon={<FaPencilAlt />}
-                variant="outlined"
-                onClick={abrirModal1}
-              >
-                Editar biografia
-              </Button>
+              {!a_carregar && (
+                <Button
+                  color="primary"
+                  startIcon={<FaPencilAlt />}
+                  variant="outlined"
+                  onClick={abrirModal1}
+                >
+                  Editar biografia
+                </Button>
+              )}
+              {a_carregar && (
+                <Skeleton variant="rect" width={183} height={36} />
+              )}
             </Box>
           </Box>
         </Box>
         <Box className="mais_info_perfil">
           <List>
-            <ListItem>
-              <ListItemIcon>
-                <Home className="home" />
-              </ListItemIcon>
-              <ListItemText>
-                {a_carregar ? (
-                  "Carregando..."
-                ) : (
-                  <span>
-                    Vive em <b>{usuario.cidade}</b>, <b>{usuario.estado}</b> ,
-                    <b>{usuario.pais}</b>
-                  </span>
-                )}
-              </ListItemText>
-            </ListItem>
-            <ListItem>
-              <ListItemIcon>
-                <ThumbUp className="thumbUp" />
-              </ListItemIcon>
-              <ListItemText>
-                {a_carregar ? (
-                  "Carregando..."
-                ) : (
-                  <span>
-                    <b>{usuario.genero_favorito}</b> é o seu género favorito
-                  </span>
-                )}
-              </ListItemText>
-            </ListItem>
-            <ListItem>
-              <ListItemIcon>
-                <ThumbDown className="thumbDown" />
-              </ListItemIcon>
-              <ListItemText>
-                {a_carregar ? (
-                  "Carregando..."
-                ) : (
-                  <span>
-                    <b>{usuario.genero_n_favorito}</b> é o género de que menos
-                    gostas
-                  </span>
-                )}
-              </ListItemText>
-            </ListItem>
+            <ListItemWithSkeleton
+              a_carregar={a_carregar}
+              Icon={Home}
+              className="home"
+            >
+              <span>
+                Vive em <b>{usuario.cidade}</b>, <b>{usuario.estado}</b> ,
+                <b>{usuario.pais}</b>
+              </span>
+            </ListItemWithSkeleton>
+            <ListItemWithSkeleton
+              a_carregar={a_carregar}
+              Icon={ThumbUp}
+              className="thumbUp"
+            >
+              <span>
+                <b>{usuario.genero_favorito}</b> é o seu género favorito
+              </span>
+            </ListItemWithSkeleton>
+            <ListItemWithSkeleton
+              a_carregar={a_carregar}
+              Icon={ThumbDown}
+              className="thumbDown"
+            >
+              <span>
+                <b>{usuario.genero_n_favorito}</b> é o género de que menos
+                gostas
+              </span>
+            </ListItemWithSkeleton>
           </List>
           <Box mt={3} display="flex" justifyContent="center">
-            <Button
-              color="primary"
-              startIcon={<AccountCircle />}
-              variant="outlined"
-              style={{ marginRight: 10 }}
-              onClick={abrirModal2}
-            >
-              Editar perfil
-            </Button>
-            <Button
-              color="primary"
-              onClick={abrirModal3}
-              startIcon={<FaPlus />}
-              variant="outlined"
-            >
-              Ver mais
-            </Button>
+            {!a_carregar && (
+              <>
+                <Button
+                  color="primary"
+                  startIcon={<AccountCircle />}
+                  variant="outlined"
+                  style={{ marginRight: 10 }}
+                  onClick={abrirModal2}
+                >
+                  Editar perfil
+                </Button>
+                <Button
+                  color="primary"
+                  onClick={abrirModal3}
+                  startIcon={<FaPlus />}
+                  variant="outlined"
+                >
+                  Ver mais
+                </Button>
+              </>
+            )}
+            {a_carregar && (
+              <>
+                <Box mr={2.2} width={183}>
+                  <Skeleton variant="rect" width={183} height={36} />
+                </Box>
+                <Skeleton variant="rect" width={183} height={36} />
+              </>
+            )}
           </Box>
         </Box>
       </Perfil.Info>

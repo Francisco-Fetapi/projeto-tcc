@@ -69,10 +69,14 @@ function FormInserirNovoEmailESenha({ inserirNovoEmailESenha }) {
         <Box mt={2}>
           <TextField1
             icon={<FaUserLock />}
-            placeholder="Para confirmar as alterações"
             id="senha_conf"
             label="Palavra-passe"
           />
+        </Box>
+        <Box mt={1}>
+          <Text color="textSecondary" variant="subtitle2">
+            Para confirmar as alterações
+          </Text>
         </Box>
 
         <Box mt={4} display="flex" justifyContent="center">

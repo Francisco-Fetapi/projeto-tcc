@@ -10,7 +10,6 @@ import Send from "@material-ui/icons/Send";
 import AddCircle from "@material-ui/icons/AddCircle";
 
 import { Formik, Form } from "formik";
-import useUsuario from "../../hooks/useUsuario";
 
 import { useSelector } from "react-redux";
 import { selectAll } from "../../store/App.selectors";
@@ -18,12 +17,10 @@ import { selectAll } from "../../store/App.selectors";
 import Skeleton from "@material-ui/lab/Skeleton";
 
 export default function FormAddPost() {
-  const { logado } = useUsuario();
-
   const { usuario } = useSelector(selectAll);
   const fotoPerfil = usuario.foto_perfil;
 
-  const a_carregar = logado && !usuario.id;
+  const a_carregar = !usuario.id;
   return (
     <Paper className="paper" elevation={!a_carregar ? 3 : 0}>
       <Formik

@@ -18,8 +18,6 @@ import FilmeIcon from "@material-ui/icons/Videocam";
 import MoreHoriz from "@material-ui/icons/MoreHoriz";
 
 import atividades from "../mock/atividades.json";
-import useUsuario from "../hooks/useUsuario";
-import { IMG_USER_PADRAO } from "../API";
 import { useSelector } from "react-redux";
 import { selectAll } from "../store/App.selectors";
 
@@ -43,9 +41,8 @@ function ListItemWithSkeleton({ a_carregar, className, icon, label }) {
 }
 
 export default function MenuLeft() {
-  const { logado } = useUsuario();
   const { usuario } = useSelector(selectAll);
-  const a_carregar = logado && !usuario.id;
+  const a_carregar = !usuario.id;
   const fotoPerfil = usuario.foto_perfil;
 
   return (
