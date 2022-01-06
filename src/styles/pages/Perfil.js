@@ -223,6 +223,7 @@ export const Perfil = {
       padding-bottom: 5px;
       width: 100%;
       border-radius: 10px;
+
       .fotos-grid {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
@@ -242,6 +243,73 @@ export const Perfil = {
         img {
           width: 100%;
           height: 100%;
+        }
+      }
+      .galeria {
+        figure {
+          width: 100%;
+          height: 130px;
+          zoom: 1;
+          position: relative;
+          margin: 0;
+          figcaption {
+            opacity: 0;
+          }
+          img {
+            width: 100%;
+            height: 100%;
+          }
+
+          .fundo-preto-1 {
+            height: 0;
+            background: linear-gradient(
+              to top,
+              rgba(0, 0, 0, 0.5) 40%,
+              transparent
+            );
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            bottom: 0px;
+            right: 0;
+            left: 0;
+            color: white;
+            font-weight: bolder;
+            font-size: 12px;
+            overflow: hidden;
+          }
+          .fundo-preto-1,
+          .fundo-preto-2 {
+            transition: all 0.5s ease-in-out;
+            cursor: default;
+            user-select: none;
+            position: absolute;
+            opacity: 0;
+          }
+          :hover {
+            .fundo-preto-1 {
+              opacity: 1;
+              height: 40%;
+            }
+            .fundo-preto-2 {
+              opacity: 1;
+              width: 30%;
+            }
+            figcaption {
+              opacity: 1;
+            }
+          }
+          .fundo-preto-2 {
+            background: linear-gradient(
+              to left,
+              rgba(0, 0, 0, 0.2) 20%,
+              transparent
+            );
+            width: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+          }
         }
       }
     }
