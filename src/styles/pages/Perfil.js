@@ -325,6 +325,12 @@ export const Perfil = {
           }
         }
       }
+      .msg-sem-foto {
+        svg {
+          font-size: 80px;
+          /* color: #1976d2; */
+        }
+      }
     }
   `,
   InfoPerfil: styled.div`
