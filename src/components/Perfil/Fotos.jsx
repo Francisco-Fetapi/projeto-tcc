@@ -7,8 +7,8 @@ import IconButton from "@material-ui/core/IconButton";
 
 import Pagination from "@material-ui/lab/Pagination";
 
-import MoreVertIcon from "@material-ui/icons/MoreVert";
 import AddIcon from "@material-ui/icons/Add";
+import Foto from "./Foto";
 
 export default function Fotos() {
   const [page, setPage] = React.useState(1);
@@ -34,17 +34,7 @@ export default function Fotos() {
       </Box>
       <Box mt={2} className="fotos-grid galeria">
         {[1, 5, 3, 4, 3, 1].map((img, key) => (
-          <Box key={key} component="figure">
-            <img src={`./img/user${img}.jpg`} alt="user" />
-            <div className="fundo-preto-1">
-              <p>Há {key + 1} dia(s)</p>
-            </div>
-            <div className="fundo-preto-2">
-              <IconButton>
-                <MoreVertIcon style={{ color: "white" }} />
-              </IconButton>
-            </div>
-          </Box>
+          <Foto img={`./img/user${img}.jpg`} key={key} tempo={key + 1} />
         ))}
       </Box>
       <Box mt={2.3} display="flex" justifyContent="center">
