@@ -108,7 +108,13 @@ const API = {
   async addFotoNaGaleria(foto) {
     const formData = new FormData();
     formData.append("foto", foto);
-    const { data } = await api.post("/usuario/galeria/add");
+    const { data } = await api.post("/usuario/galeria/add", formData);
+    return data;
+  },
+  async getFotosDaGaleria(page = 0) {
+    const { data } = await api.get("/usuario/galeria", {
+      params: { page },
+    });
     return data;
   },
 };

@@ -218,6 +218,27 @@ export const Perfil = {
     gap: 10px;
     min-height: 420px;
 
+    .fotos {
+      position: relative;
+      .paginate {
+        position: absolute;
+        bottom: 10px;
+        right: 0;
+        left: 0;
+      }
+      .progress {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 999;
+      }
+    }
+
     .fotos,
     .amigos {
       padding: 30px;
@@ -331,7 +352,7 @@ export const Perfil = {
         }
       }
       .msg-sem-foto {
-        svg {
+        svg.foto {
           font-size: 80px;
           cursor: pointer;
           :active {

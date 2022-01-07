@@ -322,11 +322,23 @@ export default function useUsuario() {
       }
     },
     Galeria: {
-      async guardar(file) {
-        LoadingLinear.mostrar();
+      async guardar(file, { setPaginate, setLoading, setPreview }) {
+        setLoading(true);
+        console.log(file);
         let res = await API.addFotoNaGaleria(file);
-        LoadingLinear.ocultar();
+        this.get({ setPaginate, setLoading }, 0);
         console.log(res);
+        setLoading(false);
+        setPreview("");
+        console.log("Guardou");
+      },
+      async get({ setPaginate, setLoading }, page) {
+        setLoading(true);
+        let res = await API.getFotosDaGaleria(page);
+        setLoading(false);
+        console.log(res);
+
+        setPaginate(res);
       },
     },
     async getOutrosUsuarios(setState, page) {
