@@ -216,6 +216,7 @@ export const Perfil = {
     grid-template-columns: 1fr 1fr;
     justify-content: center;
     gap: 10px;
+    min-height: 420px;
 
     .fotos,
     .amigos {
@@ -336,6 +337,12 @@ export const Perfil = {
           :active {
             opacity: 0.8;
           }
+        }
+      }
+      .msg-sem-amigos {
+        img {
+          width: 300px;
+          height: 250px;
         }
       }
     }

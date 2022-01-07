@@ -17,8 +17,8 @@ import useUsuario from "../../hooks/useUsuario";
 
 export default function Fotos() {
   const [page, setPage] = useState(1);
-  const fotos = [1, 5, 3, 4, 3, 1];
-  // const fotos = [];
+  // const fotos = [1, 5, 3, 4, 3, 1];
+  const fotos = [];
   const inputFile = useRef();
   const [preview, setPreview] = useState("");
   const { exibirFoto2ASerAlterada, Galeria } = useUsuario();
