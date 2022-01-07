@@ -105,6 +105,12 @@ const API = {
     });
     return data;
   },
+  async addFotoNaGaleria(foto) {
+    const formData = new FormData();
+    formData.append("foto", foto);
+    const { data } = await api.post("/usuario/galeria/add");
+    return data;
+  },
 };
 
 export default API;

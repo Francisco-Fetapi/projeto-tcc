@@ -35,7 +35,7 @@ export default function useUsuario() {
       LoadingLinear.ocultar();
       alertar(res.msg, res.status, 3);
       if (res.status === "success") {
-        Disparar(SET_STATE("usuario", res.user[0]));
+        info.getDadosUsuarioByToken();
         navigate("/");
       }
     },
@@ -266,20 +266,22 @@ export default function useUsuario() {
       if (res.status === "success") {
         console.log(res);
         Disparar(SET_STATE_USER("foto_capa", res.foto_capa));
+        concluir();
       }
       alertar(res.msg, res.status, 3);
     },
-    async alterarFotoDePerfil(inputFile) {
+    async alterarFotoDePerfil(inputFile, cleanInput) {
       const foto = inputFile.current.files[0];
       LoadingLinear.mostrar();
       let res = await API.alterarFotoDePerfil(foto);
       LoadingLinear.ocultar();
       if (res.status === "success") {
         Disparar(SET_STATE_USER("foto_perfil", res.foto_perfil));
+        cleanInput(); //value = ""
       }
       alertar(res.msg, res.status, 3);
 
-      // console.log(res);
+      console.log(res);
     },
     async alterarBiografia(values, actions) {
       if (!values.mini_biografia) {
@@ -320,12 +322,17 @@ export default function useUsuario() {
       }
     },
     Galeria: {
-      guardar(file) {
-        console.log(file);
+      async guardar(file) {
+        LoadingLinear.mostrar();
+        let res = await API.addFotoNaGaleria(file);
+        LoadingLinear.ocultar();
+        console.log(res);
       },
     },
     async getOutrosUsuarios(setState, page) {
+      LoadingLinear.mostrar();
       let res = await API.getOutrosUsuarios(page);
+      LoadingLinear.ocultar();
       setState(res);
     },
   };

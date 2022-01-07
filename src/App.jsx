@@ -16,9 +16,12 @@ function App() {
   const { getDadosUsuarioByToken, token, logado } = useUsuario();
   const { usuario } = useSelector(selectAll);
   const { pathname } = useLocation();
+  const routes_not_user = ["/login", "/signup"];
   useEffect(() => {
     if (logado && !usuario.id) {
-      getDadosUsuarioByToken();
+      if (!routes_not_user.includes(pathname)) {
+        getDadosUsuarioByToken();
+      }
     }
   }, [token]);
 

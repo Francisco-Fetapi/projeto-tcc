@@ -23,3 +23,10 @@ id
 email
 codigo
 **timestamps**
+
+# Amigos
+
+id
+id_usuario
+id_amigo
+**timestamps**

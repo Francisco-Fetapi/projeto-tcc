@@ -69,6 +69,9 @@ export default function InfoUsuario() {
 
   function cancelar() {
     setFotoDePerfil(fotoPerfilInicial);
+    limparInputFile();
+  }
+  function limparInputFile() {
     inputFile.current.value = "";
   }
 
@@ -114,7 +117,9 @@ export default function InfoUsuario() {
                 <Tooltip title="Concluir">
                   <div
                     className="right"
-                    onClick={() => alterarFotoDePerfil(inputFile)}
+                    onClick={() =>
+                      alterarFotoDePerfil(inputFile, limparInputFile)
+                    }
                   >
                     <label>
                       <Done />
