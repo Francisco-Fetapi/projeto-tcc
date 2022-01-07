@@ -35,7 +35,7 @@ export default function Amigos() {
           </Box>
         ))}
       </Box>
-      {amigos.length >= 6 && (
+      {amigos.length > 6 && (
         <Box mt={2.3} display="flex" justifyContent="center">
           <Pagination
             count={5}

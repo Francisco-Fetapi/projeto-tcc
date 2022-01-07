@@ -324,6 +324,10 @@ export default function useUsuario() {
         console.log(file);
       },
     },
+    async getOutrosUsuarios(setState, page) {
+      let res = await API.getOutrosUsuarios(page);
+      setState(res);
+    },
   };
 
   return info;
