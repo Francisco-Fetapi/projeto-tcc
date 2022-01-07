@@ -250,13 +250,12 @@ export default function useUsuario() {
         };
       }
     },
-    exibirFoto2ASerAlterada(e, setFotoCapa) {
-      // foto de capa
+    exibirFoto2ASerAlterada(e, setFoto) {
       if (e.target.files.length) {
         const fr = new FileReader();
         fr.readAsDataURL(e.target.files[0]);
         fr.onload = function (e) {
-          setFotoCapa(e.target.result);
+          setFoto(e.target.result);
         };
       }
     },
@@ -319,6 +318,11 @@ export default function useUsuario() {
           alertar(res.msg, res.status, 3);
         }
       }
+    },
+    Galeria: {
+      guardar(file) {
+        console.log(file);
+      },
     },
   };
 

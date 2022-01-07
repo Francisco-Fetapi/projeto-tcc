@@ -286,6 +286,10 @@ export const Perfil = {
             position: absolute;
             opacity: 0;
           }
+          .fundo-preto-1.preview {
+            opacity: 1;
+            height: 40%;
+          }
           :hover {
             .fundo-preto-1 {
               opacity: 1;
@@ -328,7 +332,10 @@ export const Perfil = {
       .msg-sem-foto {
         svg {
           font-size: 80px;
-          /* color: #1976d2; */
+          cursor: pointer;
+          :active {
+            opacity: 0.8;
+          }
         }
       }
     }
