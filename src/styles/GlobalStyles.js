@@ -163,6 +163,6 @@ export const GlobalStyles = createGlobalStyle`
       }
 
       #foto-menu .MuiList-padding {
-            padding: 2px;
-          }
+        padding: 2px;
+    }
 `;

@@ -14,6 +14,8 @@ export const Amigos = {
         border-radius: 7px;
         padding: 20px 25px;
         position: relative;
+        margin: 6px;
+        height: 200px;
 
         figure {
           position: absolute;
@@ -30,6 +32,12 @@ export const Amigos = {
     .slider-pedidos {
       width: 100%;
       max-width: 500px;
+      div {
+        height: 100%;
+      }
+      .slick-list {
+        width: 100% !important;
+      }
     }
     .pedidos {
       display: flex !important;

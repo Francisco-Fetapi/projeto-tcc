@@ -26,7 +26,6 @@ export default function ListaSugestoes() {
     getSugestoes(setPaginate);
   }, []);
   useEffect(() => {
-    console.log(paginate);
     if (paginate.total > usuarios.length) {
       setUsuarios([...usuarios, ...paginate.data]);
     }

@@ -352,6 +352,13 @@ export default function useUsuario() {
       console.log(res);
       setPaginate(res);
     },
+    async getPedidosDeAmizade({ setLoading, setPedidos }) {
+      setLoading(true);
+      let res = await API.getPedidosDeAmizade();
+      setLoading(false);
+      setPedidos(res);
+      // setPaginate(res);
+    },
   };
 
   return info;

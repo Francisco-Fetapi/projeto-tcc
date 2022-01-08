@@ -123,6 +123,10 @@ const API = {
     });
     return data;
   },
+  async getPedidosDeAmizade() {
+    const { data } = await api.get("/usuario/pedidos-de-amizade");
+    return data;
+  },
 };
 
 export default API;

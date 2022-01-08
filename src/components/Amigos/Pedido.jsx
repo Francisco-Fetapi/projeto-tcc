@@ -8,22 +8,23 @@ import { Text } from "../../styles";
 
 import Done from "@material-ui/icons/Done";
 import Clear from "@material-ui/icons/Clear";
+import { mostrarXCharOntText, primeiroEUltimoNome } from "../../helpers";
 
-export default function Pedido({ img }) {
+export default function Pedido({ user }) {
   return (
     <Box className="pedido">
       <Paper variant="outlined" className="dados">
-        <Text variant="h6">Nome Usuario</Text>
+        <Text variant="h6">{primeiroEUltimoNome(user)}</Text>
         <Box mt={2}>
           <Text variant="subtitle2">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt
-            magnam ex impedit iure doloribus pariatur provident, exercitationem
+            {mostrarXCharOntText(user.mini_biografia, 110)}
           </Text>
         </Box>
         <Box component="figure">
-          <img src={`./img/${img}`} alt="foto do usuario" />
+          <img src={user.foto_perfil} alt="foto do usuario" />
         </Box>
       </Paper>
+      <Box flexGrow={1} />
       <Box mt={5} display="flex" justifyContent="center">
         <ButtonGroup color="primary" className="btn-acoes">
           <Button className="aceitar" startIcon={<Done />}>
