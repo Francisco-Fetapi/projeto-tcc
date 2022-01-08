@@ -36,12 +36,10 @@ export default function Fotos() {
   }, [preview]);
   useEffect(() => {
     Galeria.get({ setPaginate, setLoading }, paginate.current_page);
-    console.log("Carregou fotos", paginate);
   }, [paginate.current_page]);
 
   useEffect(() => {
     setFotos(paginate.data);
-    console.log("Setado em fotos");
   }, [paginate.data]);
 
   return (
@@ -57,6 +55,8 @@ export default function Fotos() {
           <Text variant="subtitle2" color="textSecondary">
             {paginate.total
               ? `${paginate.total} fotos`
+              : loading
+              ? "Carregando..."
               : "Nenhuma foto na galeria"}
           </Text>
         </Box>

@@ -117,6 +117,12 @@ const API = {
     });
     return data;
   },
+  async getAmigos(page = 0) {
+    const { data } = await api.get("/usuario/amigos", {
+      params: { page },
+    });
+    return data;
+  },
 };
 
 export default API;

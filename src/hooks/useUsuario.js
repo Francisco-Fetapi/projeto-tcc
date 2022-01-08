@@ -325,9 +325,8 @@ export default function useUsuario() {
       async guardar(file, { setPaginate, setLoading, setPreview }) {
         setLoading(true);
         console.log(file);
-        let res = await API.addFotoNaGaleria(file);
+        await API.addFotoNaGaleria(file);
         this.get({ setPaginate, setLoading }, 0);
-        console.log(res);
         setLoading(false);
         setPreview("");
         console.log("Guardou");
@@ -336,7 +335,6 @@ export default function useUsuario() {
         setLoading(true);
         let res = await API.getFotosDaGaleria(page);
         setLoading(false);
-        console.log(res);
 
         setPaginate(res);
       },
@@ -346,6 +344,13 @@ export default function useUsuario() {
       let res = await API.getSugestoes(page);
       LoadingLinear.ocultar();
       setState(res);
+    },
+    async getAmigos({ setPaginate, setLoading }, page) {
+      setLoading(true);
+      let res = await API.getAmigos(page);
+      setLoading(false);
+      console.log(res);
+      setPaginate(res);
     },
   };
 

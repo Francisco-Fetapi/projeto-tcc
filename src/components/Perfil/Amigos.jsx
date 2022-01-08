@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Paper from "@material-ui/core/Paper";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
@@ -6,47 +6,76 @@ import { Text } from "../../styles";
 
 import Pagination from "@material-ui/lab/Pagination";
 import { useNavigate } from "react-router-dom";
+import useUsuario from "../../hooks/useUsuario";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 export default function Amigos() {
-  const [page, setPage] = useState(1);
-  const handleChange = (event, value) => {
-    setPage(value);
-  };
+  const [paginate, setPaginate] = useState({
+    current_page: 1,
+    last_page: 1,
+    total: 0,
+    data: [],
+  });
+  const [amigos, setAmigos] = useState([]);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-  // const amigos = [1, 5, 3, 6, 4, 2];
-  const amigos = [];
+  const { getAmigos } = useUsuario();
+  const handleChange = (event, value) => {
+    setPaginate({ ...paginate, current_page: value });
+  };
+  useEffect(() => {
+    getAmigos({ setPaginate, setLoading }, paginate.current_page);
+  }, [paginate.current_page]);
+
+  useEffect(() => {
+    setAmigos(paginate.data);
+  }, [paginate.data]);
+
   return (
     <Paper className="amigos">
+      {loading && (
+        <Box className="progress">
+          <CircularProgress />
+        </Box>
+      )}
       <Text variant="h6">Amigos</Text>
       <Text variant="subtitle2" color="textSecondary">
-        {amigos.length === 0 && "Sem amigos"}
-        {amigos.length === 1 && "Você tem 1 amigo"}
-        {amigos.length > 1 && `Você tem ${amigos.length} amigos`}
+        {paginate.total === 0 && loading && "Carregando..."}
+        {paginate.total === 0 && !loading && "Sem amigos"}
+        {paginate.total === 1 && "Você tem 1 amigo"}
+        {paginate.total > 1 && `Você tem ${paginate.total} amigos`}
       </Text>
-      <Box mt={2} className="fotos-grid">
-        {amigos.map((amigo, key) => (
-          <Box component="figure" key={key}>
-            <img src={`./img/user${amigo}.svg`} alt="user" />
-            <Box component="figcaption">
-              <Text align="center" variant="body2" color="textSecondary">
-                Nome do usuario
-              </Text>
+      {!loading && (
+        <Box mt={2} className="fotos-grid">
+          {amigos.map((amigo, key) => (
+            <Box component="figure" key={key}>
+              <img src={amigo.foto_perfil} alt="user" />
+              <Box component="figcaption">
+                <Text align="center" variant="body2" color="textSecondary">
+                  {amigo.nome}
+                </Text>
+              </Box>
             </Box>
-          </Box>
-        ))}
-      </Box>
-      {amigos.length > 6 && (
-        <Box mt={2.3} display="flex" justifyContent="center">
+          ))}
+        </Box>
+      )}
+      {paginate.total > 6 && (
+        <Box
+          mt={2.3}
+          className="paginate"
+          display="flex"
+          justifyContent="center"
+        >
           <Pagination
-            count={5}
-            page={page}
+            count={paginate.last_page}
+            page={paginate.current_page}
             onChange={handleChange}
             variant="outlined"
             shape="rounded"
           />
         </Box>
       )}
-      {amigos.length === 0 && (
+      {paginate.total === 0 && !loading && (
         <Box
           height="100%"
           display="flex"
@@ -82,7 +111,6 @@ export default function Amigos() {
           </Box>
         </Box>
       )}
-      {amigos.length < 6 && <Box mt={2.3} />}
     </Paper>
   );
 }

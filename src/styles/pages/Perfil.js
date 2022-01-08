@@ -218,24 +218,35 @@ export const Perfil = {
     gap: 10px;
     min-height: 420px;
 
-    .fotos {
-      position: relative;
-      .paginate {
-        position: absolute;
-        bottom: 10px;
-        right: 0;
-        left: 0;
-      }
-      .progress {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
+    .progress {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+    .paginate {
+      position: absolute;
+      bottom: 10px;
+      right: 0;
+      left: 0;
+    }
+
+    .amigos {
+      figure {
         display: flex;
-        justify-content: center;
+        flex-direction: column;
         align-items: center;
-        z-index: 999;
+      }
+      img {
+        width: 130px !important;
+        height: 130px !important;
+        border-radius: 50%;
+        margin-bottom: 8px;
       }
     }
 
@@ -245,6 +256,7 @@ export const Perfil = {
       padding-bottom: 5px;
       width: 100%;
       border-radius: 10px;
+      position: relative;
 
       .fotos-grid {
         display: grid;
