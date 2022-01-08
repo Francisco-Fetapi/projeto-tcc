@@ -41,7 +41,7 @@ export default function ListaPedidos() {
       )}
       {!loading && pedidos.length > 0 && (
         <>
-          <Text variant="h5">PEDIDOS DE AMIZADE</Text>
+          <Text variant="h5">{pedidos.length} PEDIDO(S) DE AMIZADE</Text>
           <Box mt={2}>
             <Text variant="subtitle2" color="textSecondary">
               Aceite o pedido de amizade dessas pessoas caso você queira se

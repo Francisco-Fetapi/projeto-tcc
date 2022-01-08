@@ -105,6 +105,28 @@ export default function Amigos() {
           </Box>
         </Box>
       )}
+      {!loading && paginate.total < 8 && (
+        <Box
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+          mt={2}
+          className="paginate"
+          px={1}
+        >
+          <Text variant="subtitle2" color="textSecondary" align="center">
+            Quanto mais amigos tiver mais atualizado você fica sobre as suas
+            atividades.
+          </Text>
+          <Button
+            variant="text"
+            color="secondary"
+            onClick={() => navigate("/amigos")}
+          >
+            Adicionar amigos
+          </Button>
+        </Box>
+      )}
     </Paper>
   );
 }

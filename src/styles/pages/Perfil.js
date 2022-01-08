@@ -166,17 +166,10 @@ export const Perfil = {
         min-width: auto;
         margin-right: 10px;
         svg {
-          font-size: 30px;
+          font-size: 20px;
         }
         .home {
-          color: #fa2f3d;
-          font-size: 37px;
-        }
-        .thumbUp {
-          color: #388e3c;
-        }
-        .thumbDown {
-          color: #df8e3c;
+          zoom: 1.2;
         }
       }
     }

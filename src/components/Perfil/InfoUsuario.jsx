@@ -201,8 +201,8 @@ export default function InfoUsuario() {
               className="home"
             >
               <span>
-                Vive em <b>{usuario.cidade}</b>, <b>{usuario.estado}</b> ,
-                <b>{usuario.pais}</b>
+                <b>Localidade:</b> {usuario.cidade}, {usuario.estado} ,
+                {usuario.pais}
               </span>
             </ListItemWithSkeleton>
             <ListItemWithSkeleton
@@ -211,7 +211,7 @@ export default function InfoUsuario() {
               className="thumbUp"
             >
               <span>
-                <b>{usuario.genero_favorito}</b> é o seu género favorito
+                <b>Género Favorito:</b> {usuario.genero_favorito}
               </span>
             </ListItemWithSkeleton>
             <ListItemWithSkeleton
@@ -220,8 +220,7 @@ export default function InfoUsuario() {
               className="thumbDown"
             >
               <span>
-                <b>{usuario.genero_n_favorito}</b> é o género de que menos
-                gostas
+                <b>Pior Género:</b> {usuario.genero_n_favorito}
               </span>
             </ListItemWithSkeleton>
           </List>

@@ -54,7 +54,7 @@ export default function Fotos() {
           <Text variant="h6">Fotos da Galeria</Text>
           <Text variant="subtitle2" color="textSecondary">
             {paginate.total
-              ? `${paginate.total} fotos`
+              ? `${paginate.total} foto(s)`
               : loading
               ? "Carregando..."
               : "Nenhuma foto na galeria"}
