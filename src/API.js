@@ -99,8 +99,8 @@ const API = {
     let { data } = await api.post("/alterar-senha", dados);
     return data;
   },
-  async getOutrosUsuarios(page = 0) {
-    let { data } = await api.get("/outros-usuarios", {
+  async getSugestoes(page = 0) {
+    let { data } = await api.get("/sugestoes-de-amizade", {
       params: { page },
     });
     return data;

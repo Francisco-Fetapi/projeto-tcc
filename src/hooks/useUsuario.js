@@ -341,9 +341,9 @@ export default function useUsuario() {
         setPaginate(res);
       },
     },
-    async getOutrosUsuarios(setState, page) {
+    async getSugestoes(setState, page) {
       LoadingLinear.mostrar();
-      let res = await API.getOutrosUsuarios(page);
+      let res = await API.getSugestoes(page);
       LoadingLinear.ocultar();
       setState(res);
     },

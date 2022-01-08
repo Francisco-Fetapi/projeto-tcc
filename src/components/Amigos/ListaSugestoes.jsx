@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Box from "@material-ui/core/Box";
 import Paper from "@material-ui/core/Paper";
 import CircularProgress from "@material-ui/core/CircularProgress";
@@ -7,10 +7,13 @@ import Sugestao from "./Sugestao";
 
 import Button from "@material-ui/core/Button";
 import useUsuario from "../../hooks/useUsuario";
-import { useState } from "react";
+import { selectAll } from "../../store/App.selectors";
+import { primeiroNome } from "../../helpers";
+import { useSelector } from "react-redux";
 
 export default function ListaSugestoes() {
-  const { getOutrosUsuarios } = useUsuario();
+  const { getSugestoes } = useUsuario();
+  const { usuario } = useSelector(selectAll);
   const [paginate, setPaginate] = useState({
     current_page: 1,
     last_page: 1,
@@ -20,7 +23,7 @@ export default function ListaSugestoes() {
   const [usuarios, setUsuarios] = useState([]);
 
   useEffect(() => {
-    getOutrosUsuarios(setPaginate);
+    getSugestoes(setPaginate);
   }, []);
   useEffect(() => {
     console.log(paginate);
@@ -29,7 +32,7 @@ export default function ListaSugestoes() {
     }
   }, [paginate]);
   function carregarMais() {
-    getOutrosUsuarios(setPaginate, paginate.current_page + 1);
+    getSugestoes(setPaginate, paginate.current_page + 1);
   }
   return (
     <Paper elevation={2} className="lista-sugestoes">
@@ -40,7 +43,7 @@ export default function ListaSugestoes() {
         justifyContent="center"
       >
         <Text align="center" variant="h6">
-          $Usuario, deseja receber ainda mais atualizações?
+          {primeiroNome(usuario)}, deseja receber ainda mais atualizações?
         </Text>
         <Box mt={2}>
           <Text align="center" variant="subtitle2" color="textSecondary">
