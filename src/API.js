@@ -100,7 +100,7 @@ const API = {
     return data;
   },
   async getSugestoes(page = 0) {
-    let { data } = await api.get("/sugestoes-de-amizade", {
+    let { data } = await api.get("/usuario/sugestoes-de-amizade", {
       params: { page },
     });
     return data;
