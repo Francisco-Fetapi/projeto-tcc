@@ -243,7 +243,7 @@ export const Perfil = {
         align-items: center;
         cursor: pointer;
       }
-      img {
+      img.img-amigo {
         width: 100px !important;
         height: 100px !important;
         border-radius: 50%;

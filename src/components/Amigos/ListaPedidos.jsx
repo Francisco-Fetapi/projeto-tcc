@@ -39,7 +39,7 @@ export default function ListaPedidos() {
           </Box>
         </>
       )}
-      {!loading && (
+      {!loading && pedidos.length > 0 && (
         <>
           <Text variant="h5">PEDIDOS DE AMIZADE</Text>
           <Box mt={2}>
@@ -48,16 +48,28 @@ export default function ListaPedidos() {
               atualizar sobre as suas atividades.
             </Text>
           </Box>
+
+          <Box mt={2} className="slider-pedidos">
+            <Slider {...settings} className="pedidos">
+              {pedidos.map((user) => (
+                <Pedido user={user} key={user.id} />
+              ))}
+            </Slider>
+          </Box>
         </>
       )}
-      {!loading && (
-        <Box mt={2} className="slider-pedidos">
-          <Slider {...settings} className="pedidos">
-            {pedidos.map((user) => (
-              <Pedido user={user} key={user.id} />
-            ))}
-          </Slider>
-        </Box>
+      {!loading && pedidos.length === 0 && (
+        <>
+          <Text variant="h5">NENHUM PEDIDO DE AMIZADE</Text>
+          <Box mt={2}>
+            <Text variant="subtitle2" color="textSecondary">
+              Todas as solicitações de amizade aparecerão aqui. Além de receber
+              solicitações de amizade você também pode enviá-las. Confira
+              algumas
+              <b> sugestões de amizade</b> abaixo.
+            </Text>
+          </Box>
+        </>
       )}
     </Box>
   );

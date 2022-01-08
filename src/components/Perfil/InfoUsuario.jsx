@@ -88,6 +88,7 @@ export default function InfoUsuario() {
             {!a_carregar && <img src={fotoDePerfil} alt="imagem do usuario" />}
             <input
               type="file"
+              accept="image/*"
               hidden
               onChange={(e) => exibirFotoASerAlterada(e, null, setFotoDePerfil)}
               id="foto_perfil"

@@ -21,9 +21,10 @@ export default function ListaSugestoes() {
     data: [],
   });
   const [usuarios, setUsuarios] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getSugestoes(setPaginate);
+    getSugestoes({ setPaginate, setLoading });
   }, []);
   useEffect(() => {
     if (paginate.total > usuarios.length) {
@@ -31,7 +32,7 @@ export default function ListaSugestoes() {
     }
   }, [paginate]);
   function carregarMais() {
-    getSugestoes(setPaginate, paginate.current_page + 1);
+    getSugestoes({ setPaginate, setLoading }, paginate.current_page + 1);
   }
   return (
     <Paper elevation={2} className="lista-sugestoes">
@@ -56,6 +57,11 @@ export default function ListaSugestoes() {
           <Sugestao usuario={usuario} key={usuario.id} />
         ))}
       </Box>
+      {loading && (
+        <Box display="flex" my={2} justifyContent="center">
+          <CircularProgress />
+        </Box>
+      )}
       {paginate.current_page < paginate.last_page && (
         <Box mt={2} display="flex" justifyContent="center">
           <Button

@@ -339,11 +339,11 @@ export default function useUsuario() {
         setPaginate(res);
       },
     },
-    async getSugestoes(setState, page) {
-      LoadingLinear.mostrar();
+    async getSugestoes({ setPaginate, setLoading }, page) {
+      setLoading(true);
       let res = await API.getSugestoes(page);
-      LoadingLinear.ocultar();
-      setState(res);
+      setLoading(false);
+      setPaginate(res);
     },
     async getAmigos({ setPaginate, setLoading }, page) {
       setLoading(true);

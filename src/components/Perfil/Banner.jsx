@@ -65,6 +65,7 @@ export default function Banner() {
         </div>
         <input
           type="file"
+          accept="image/*"
           ref={inputFile}
           hidden
           onChange={(e) => exibirFoto2ASerAlterada(e, setFotoDeCapa)}

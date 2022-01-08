@@ -161,6 +161,7 @@ export default function Fotos() {
 
       <input
         type="file"
+        accept="image/*"
         ref={inputFile}
         hidden
         onChange={(e) => exibirFoto2ASerAlterada(e, setPreview)}
