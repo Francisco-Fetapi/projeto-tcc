@@ -241,10 +241,11 @@ export const Perfil = {
         display: flex;
         flex-direction: column;
         align-items: center;
+        cursor: pointer;
       }
       img {
-        width: 130px !important;
-        height: 130px !important;
+        width: 100px !important;
+        height: 100px !important;
         border-radius: 50%;
         margin-bottom: 8px;
       }
@@ -377,6 +378,11 @@ export const Perfil = {
           width: 300px;
           height: 250px;
         }
+      }
+    }
+    .amigos {
+      .fotos-grid {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
       }
     }
   `,

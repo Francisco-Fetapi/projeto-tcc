@@ -8,6 +8,7 @@ import Pagination from "@material-ui/lab/Pagination";
 import { useNavigate } from "react-router-dom";
 import useUsuario from "../../hooks/useUsuario";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import Amigo from "./Amigo";
 
 export default function Amigos() {
   const [paginate, setPaginate] = useState({
@@ -47,19 +48,12 @@ export default function Amigos() {
       </Text>
       {!loading && (
         <Box mt={2} className="fotos-grid">
-          {amigos.map((amigo, key) => (
-            <Box component="figure" key={key}>
-              <img src={amigo.foto_perfil} alt="user" />
-              <Box component="figcaption">
-                <Text align="center" variant="body2" color="textSecondary">
-                  {amigo.nome}
-                </Text>
-              </Box>
-            </Box>
+          {amigos.map((amigo) => (
+            <Amigo user={amigo} key={amigo.id} />
           ))}
         </Box>
       )}
-      {paginate.total > 6 && (
+      {paginate.total > 8 && (
         <Box
           mt={2.3}
           className="paginate"
