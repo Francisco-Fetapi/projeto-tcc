@@ -14,7 +14,6 @@ import AddAPhotoIcon from "@material-ui/icons/AddAPhoto";
 import Foto from "./Foto";
 
 import useUsuario from "../../hooks/useUsuario";
-import { BASE_URL } from "../../API";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 export default function Fotos() {
@@ -24,7 +23,6 @@ export default function Fotos() {
     total: 0,
     data: [],
   });
-  // const fotos = [1, 5, 3, 4, 3, 1];
   const [fotos, setFotos] = useState([]);
   const [loading, setLoading] = useState(true);
   const inputFile = useRef();
@@ -107,8 +105,8 @@ export default function Fotos() {
               .slice(0, 5)
               .map((img, key) => (
                 <Foto
-                  img={`${BASE_URL}/${img.url_resized}`}
-                  imgFull={`${BASE_URL}/${img.url_original}`}
+                  img={img.url_resized}
+                  imgFull={img.url_original}
                   key={key}
                   tempo={key + 1}
                 />
@@ -117,8 +115,8 @@ export default function Fotos() {
             !loading &&
             fotos.map((img, key) => (
               <Foto
-                img={`${BASE_URL}/${img.url_resized}`}
-                imgFull={`${BASE_URL}/${img.url_original}`}
+                img={img.url_resized}
+                imgFull={img.url_original}
                 key={key}
                 tempo={key + 1}
               />
