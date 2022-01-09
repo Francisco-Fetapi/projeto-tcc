@@ -4,7 +4,7 @@ import Box from "@material-ui/core/Box";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EyeIcon from "@material-ui/icons/RemoveRedEye";
 
-export default function Foto({ img, imgFull, tempo, preview }) {
+export default function Foto({ img, imgFull, selecionar, tempo, preview }) {
   const link = useRef();
   return (
     <Box component="figure">
@@ -15,7 +15,7 @@ export default function Foto({ img, imgFull, tempo, preview }) {
       </div>
       {!preview && (
         <div className="fundo-preto-2">
-          <DeleteIcon size="small" />
+          <DeleteIcon size="small" onClick={selecionar} />
           <EyeIcon size="small" onClick={() => link.current.click()} />
           <a
             href={imgFull}

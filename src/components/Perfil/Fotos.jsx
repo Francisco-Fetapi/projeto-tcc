@@ -13,6 +13,8 @@ import DoneIcon from "@material-ui/icons/Done";
 import AddAPhotoIcon from "@material-ui/icons/AddAPhoto";
 import Foto from "./Foto";
 
+import Confirmar from "../Modals/ModalConfirmar";
+
 import useUsuario from "../../hooks/useUsuario";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
@@ -25,9 +27,12 @@ export default function Fotos() {
   });
   const [fotos, setFotos] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [confirm, setConfirm] = useState(false);
+  const [fotoSelecionada, setFotoSelecionada] = useState(0);
   const inputFile = useRef();
   const [preview, setPreview] = useState("");
   const { exibirFoto2ASerAlterada, Galeria } = useUsuario();
+
   const handleChange = (event, value) => {
     setPaginate({ ...paginate, current_page: value });
   };
@@ -41,6 +46,13 @@ export default function Fotos() {
   useEffect(() => {
     setFotos(paginate.data);
   }, [paginate.data]);
+  useEffect(() => {
+    setConfirm(true);
+  }, [fotoSelecionada]);
+
+  function apagarFoto(id) {
+    console.log(id);
+  }
 
   return (
     <Paper className="fotos">
@@ -109,6 +121,7 @@ export default function Fotos() {
                   imgFull={img.url_original}
                   key={key}
                   tempo={key + 1}
+                  selecionar={() => setFotoSelecionada(img.id)}
                 />
               ))}
           {!preview &&
@@ -119,6 +132,7 @@ export default function Fotos() {
                 imgFull={img.url_original}
                 key={key}
                 tempo={key + 1}
+                selecionar={() => setFotoSelecionada(img.id)}
               />
             ))}
         </Box>
@@ -177,6 +191,13 @@ export default function Fotos() {
           />
         </Box>
       )}
+      <Confirmar
+        open={confirm}
+        onClose={() => setConfirm(false)}
+        onSim={() => apagarFoto(fotoSelecionada)}
+      >
+        Estás a prestes a apagar esta foto. Esse processo é irreversivel.
+      </Confirmar>
     </Paper>
   );
 }
