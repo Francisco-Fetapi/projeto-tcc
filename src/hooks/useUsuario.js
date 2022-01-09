@@ -324,7 +324,6 @@ export default function useUsuario() {
     Galeria: {
       async guardar(file, { setPaginate, setLoading, setPreview }) {
         setLoading(true);
-        console.log(file);
         await API.addFotoNaGaleria(file);
         this.get({ setPaginate, setLoading }, 0);
         setLoading(false);
@@ -337,6 +336,19 @@ export default function useUsuario() {
         setLoading(false);
 
         setPaginate(res);
+      },
+      async eliminar({ setPaginate, setLoading, setConfirm, paginate }, id) {
+        setConfirm(false);
+        setLoading(true);
+        let res = await API.eliminarFotoGaleria(id);
+        console.log(res);
+        if (res.status === "success") {
+          const page_atual =
+            paginate.current_page < paginate.last_page
+              ? paginate.current_page
+              : 0;
+          this.get({ setPaginate, setLoading }, page_atual);
+        }
       },
     },
     async getSugestoes({ setPaginate, setLoading }, page) {

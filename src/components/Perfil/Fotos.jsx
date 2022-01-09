@@ -28,7 +28,7 @@ export default function Fotos() {
   const [fotos, setFotos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [confirm, setConfirm] = useState(false);
-  const [fotoSelecionada, setFotoSelecionada] = useState(0);
+  const [fotoSelecionada, setFotoSelecionada] = useState(null);
   const inputFile = useRef();
   const [preview, setPreview] = useState("");
   const { exibirFoto2ASerAlterada, Galeria } = useUsuario();
@@ -46,12 +46,10 @@ export default function Fotos() {
   useEffect(() => {
     setFotos(paginate.data);
   }, [paginate.data]);
-  useEffect(() => {
-    setConfirm(true);
-  }, [fotoSelecionada]);
 
   function apagarFoto(id) {
     console.log(id);
+    Galeria.eliminar({ setPaginate, setLoading, setConfirm, paginate }, id);
   }
 
   return (
@@ -113,17 +111,18 @@ export default function Fotos() {
           {preview && <Foto img={preview} preview />}
           {preview &&
             fotos.length > 0 &&
-            fotos
-              .slice(0, 5)
-              .map((img, key) => (
-                <Foto
-                  img={img.url_resized}
-                  imgFull={img.url_original}
-                  key={key}
-                  tempo={key + 1}
-                  selecionar={() => setFotoSelecionada(img.id)}
-                />
-              ))}
+            fotos.slice(0, 5).map((img, key) => (
+              <Foto
+                img={img.url_resized}
+                imgFull={img.url_original}
+                key={key}
+                tempo={key + 1}
+                selecionar={() => {
+                  setConfirm(true);
+                  setFotoSelecionada(img.id);
+                }}
+              />
+            ))}
           {!preview &&
             !loading &&
             fotos.map((img, key) => (
@@ -132,7 +131,10 @@ export default function Fotos() {
                 imgFull={img.url_original}
                 key={key}
                 tempo={key + 1}
-                selecionar={() => setFotoSelecionada(img.id)}
+                selecionar={() => {
+                  setConfirm(true);
+                  setFotoSelecionada(img.id);
+                }}
               />
             ))}
         </Box>

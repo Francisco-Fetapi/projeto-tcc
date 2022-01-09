@@ -117,6 +117,10 @@ const API = {
     });
     return data;
   },
+  async eliminarFotoGaleria(id_foto) {
+    const { data } = await api.post("/usuario/galeria/eliminar", { id_foto });
+    return data;
+  },
   async getAmigos(page = 0) {
     const { data } = await api.get("/usuario/amigos", {
       params: { page },

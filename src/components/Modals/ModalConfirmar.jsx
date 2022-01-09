@@ -19,7 +19,7 @@ export default function Confirmar({ onClose, open, children, onSim, onNao }) {
           <Button onClick={onNao || onClose} color="primary">
             Não
           </Button>
-          <Button onClick={onSim} color="primary" autoFocus>
+          <Button onClick={onSim} color="primary">
             Sim
           </Button>
         </DialogActions>
