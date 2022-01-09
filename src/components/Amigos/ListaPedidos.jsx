@@ -21,7 +21,9 @@ export default function ListaPedidos() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getPedidosDeAmizade({ setLoading, setPedidos });
+    if (pedidos.length === 0) {
+      getPedidosDeAmizade({ setLoading, setPedidos });
+    }
   }, []);
   useEffect(() => {
     console.log(pedidos);
@@ -52,7 +54,12 @@ export default function ListaPedidos() {
           <Box mt={2} className="slider-pedidos">
             <Slider {...settings} className="pedidos">
               {pedidos.map((user) => (
-                <Pedido user={user} key={user.id} />
+                <Pedido
+                  user={user}
+                  key={user.id}
+                  pedidos={pedidos}
+                  setPedidos={setPedidos}
+                />
               ))}
             </Slider>
           </Box>

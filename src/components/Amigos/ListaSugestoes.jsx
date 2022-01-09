@@ -24,7 +24,9 @@ export default function ListaSugestoes() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getSugestoes({ setPaginate, setLoading });
+    if (usuarios.length === 0 || paginate.data.length === 0) {
+      getSugestoes({ setPaginate, setLoading });
+    }
   }, []);
   useEffect(() => {
     if (paginate.total > usuarios.length) {
@@ -42,9 +44,17 @@ export default function ListaSugestoes() {
         flexDirection="column"
         justifyContent="center"
       >
-        <Text align="center" variant="h6">
-          {primeiroNome(usuario)}, deseja receber ainda mais atualizações?
-        </Text>
+        {usuario.id && (
+          <Text align="center" variant="h6">
+            {primeiroNome(usuario)}, deseja receber ainda mais atualizações?
+          </Text>
+        )}
+        {!usuario.id && (
+          <Text align="center" variant="h6">
+            Desejas receber ainda mais atualizações?
+          </Text>
+        )}
+
         <Box mt={2}>
           <Text align="center" variant="subtitle2" color="textSecondary">
             Adicione essas pessoas que talvez você conheça a sua lista de amigos
@@ -53,8 +63,13 @@ export default function ListaSugestoes() {
         </Box>
       </Box>
       <Box className="sugestoes">
-        {usuarios.map((usuario) => (
-          <Sugestao usuario={usuario} key={usuario.id} />
+        {usuarios.map((usuario, key) => (
+          <Sugestao
+            usuario={usuario}
+            usuarios={usuarios}
+            setUsuarios={setUsuarios}
+            key={usuario.id}
+          />
         ))}
       </Box>
       {loading && (

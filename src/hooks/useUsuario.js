@@ -359,6 +359,23 @@ export default function useUsuario() {
       setPedidos(res);
       // setPaginate(res);
     },
+    PedidoDeAmizade: {
+      async aceitar({ setLoading, pedidos, setPedidos }, id) {
+        setLoading(true);
+        let novos_pedidos = pedidos.filter((pedido) => pedido.id !== id);
+        setTimeout(() => {
+          setLoading(false);
+          setPedidos(novos_pedidos);
+        }, 2000);
+      },
+      async enviar({ setLoading, usuarios, setUsuarios }, id) {
+        setLoading(true);
+        let novos_usuarios = usuarios.filter((user) => user.id !== id);
+        setTimeout(() => {
+          setUsuarios(novos_usuarios);
+        }, 2000);
+      },
+    },
   };
 
   return info;

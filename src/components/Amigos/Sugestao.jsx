@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import Box from "@material-ui/core/Box";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 import Add from "@material-ui/icons/AddCircle";
 import { Text } from "../../styles";
 import { BASE_URL } from "../../API";
 
-export default function Sugestao({ usuario }) {
+import useUsuario from "../../hooks/useUsuario";
+
+export default function Sugestao({ usuario, usuarios, setUsuarios }) {
+  const [loading, setLoading] = useState(false);
+  const { PedidoDeAmizade } = useUsuario();
   return (
     <Paper variant="outlined" className="sugestao">
       <Box component="figure">
@@ -33,9 +38,23 @@ export default function Sugestao({ usuario }) {
           {usuario.email}
         </Text>
         <Box mt={2} display="flex" justifyContent="center">
-          <Button variant="contained" color="primary" startIcon={<Add />}>
-            Adicionar
-          </Button>
+          {!loading && (
+            <Button
+              onClick={() =>
+                PedidoDeAmizade.enviar(
+                  { setLoading, setUsuarios, usuarios },
+                  usuario.id
+                )
+              }
+              variant="contained"
+              color="primary"
+              startIcon={<Add />}
+            >
+              Adicionar
+            </Button>
+          )}
+
+          {loading && <CircularProgress />}
         </Box>
       </Box>
     </Paper>

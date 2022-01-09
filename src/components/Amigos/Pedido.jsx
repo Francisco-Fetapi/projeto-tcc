@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import useUsuario from "../../hooks/useUsuario";
 
 import { Text } from "../../styles";
 
@@ -10,7 +12,15 @@ import Done from "@material-ui/icons/Done";
 import Clear from "@material-ui/icons/Clear";
 import { mostrarXCharOntText, primeiroEUltimoNome } from "../../helpers";
 
-export default function Pedido({ user }) {
+export default function Pedido({ user, pedidos, setPedidos }) {
+  const [loading, setLoading] = useState(false);
+  const { PedidoDeAmizade } = useUsuario();
+
+  // useEffect(()=>{
+  //   return ()=>{
+  //     setLoading(false)
+  //   }
+  // },[])
   return (
     <Box className="pedido">
       <Paper variant="outlined" className="dados">
@@ -23,11 +33,25 @@ export default function Pedido({ user }) {
         <Box component="figure">
           <img src={user.foto_perfil} alt="foto do usuario" />
         </Box>
+        {loading && (
+          <Box className="loading">
+            <CircularProgress />
+          </Box>
+        )}
       </Paper>
       <Box flexGrow={1} />
       <Box mt={5} display="flex" justifyContent="center">
         <ButtonGroup color="primary" className="btn-acoes">
-          <Button className="aceitar" startIcon={<Done />}>
+          <Button
+            onClick={() =>
+              PedidoDeAmizade.aceitar(
+                { setLoading, setPedidos, pedidos },
+                user.id
+              )
+            }
+            className="aceitar"
+            startIcon={<Done />}
+          >
             Aceitar
           </Button>
           <Button className="rejeitar" startIcon={<Clear />}>
