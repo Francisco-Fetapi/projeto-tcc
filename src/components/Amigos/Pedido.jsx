@@ -12,15 +12,10 @@ import Done from "@material-ui/icons/Done";
 import Clear from "@material-ui/icons/Clear";
 import { mostrarXCharOntText, primeiroEUltimoNome } from "../../helpers";
 
-export default function Pedido({ user, pedidos, setPedidos }) {
+export default function Pedido({ user, setPedidos }) {
   const [loading, setLoading] = useState(false);
   const { PedidoDeAmizade } = useUsuario();
 
-  // useEffect(()=>{
-  //   return ()=>{
-  //     setLoading(false)
-  //   }
-  // },[])
   return (
     <Box className="pedido">
       <Paper variant="outlined" className="dados">
@@ -44,17 +39,20 @@ export default function Pedido({ user, pedidos, setPedidos }) {
         <ButtonGroup color="primary" className="btn-acoes">
           <Button
             onClick={() =>
-              PedidoDeAmizade.aceitar(
-                { setLoading, setPedidos, pedidos },
-                user.id
-              )
+              PedidoDeAmizade.aceitar({ setLoading, setPedidos }, user.id)
             }
             className="aceitar"
             startIcon={<Done />}
           >
             Aceitar
           </Button>
-          <Button className="rejeitar" startIcon={<Clear />}>
+          <Button
+            onClick={() =>
+              PedidoDeAmizade.rejeitar({ setLoading, setPedidos }, user.id)
+            }
+            className="rejeitar"
+            startIcon={<Clear />}
+          >
             Recusar
           </Button>
         </ButtonGroup>

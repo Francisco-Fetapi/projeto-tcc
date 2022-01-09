@@ -27,6 +27,7 @@ export const Amigos = {
           display: flex;
           justify-content: center;
           align-items: center;
+          background: rgba(0, 0, 0, 0.1);
         }
 
         figure {

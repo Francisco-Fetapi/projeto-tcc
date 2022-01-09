@@ -127,6 +127,18 @@ const API = {
     const { data } = await api.get("/usuario/pedidos-de-amizade");
     return data;
   },
+  async aceitarPedidoDeAmizade(id_amigo) {
+    const { data } = await api.post("/usuario/aceitar-pedido", { id_amigo });
+    return data;
+  },
+  async rejeitarPedidoDeAmizade(id_amigo) {
+    const { data } = await api.post("/usuario/rejeitar-pedido", { id_amigo });
+    return data;
+  },
+  async enviarPedidoDeAmizade(id_amigo) {
+    const { data } = await api.post("/usuario/enviar-pedido", { id_amigo });
+    return data;
+  },
 };
 
 export default API;

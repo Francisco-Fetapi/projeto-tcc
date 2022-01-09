@@ -360,20 +360,40 @@ export default function useUsuario() {
       // setPaginate(res);
     },
     PedidoDeAmizade: {
-      async aceitar({ setLoading, pedidos, setPedidos }, id) {
+      async aceitar({ setLoading, setPedidos }, id) {
         setLoading(true);
-        let novos_pedidos = pedidos.filter((pedido) => pedido.id !== id);
-        setTimeout(() => {
-          setLoading(false);
-          setPedidos(novos_pedidos);
-        }, 2000);
+
+        const res = await API.aceitarPedidoDeAmizade(id);
+        if (res.status === "success") {
+          setPedidos((pedidos) => {
+            let novos_pedidos = pedidos.filter((pedido) => pedido.id !== id);
+            return novos_pedidos;
+          });
+        }
+        setLoading(false);
       },
-      async enviar({ setLoading, usuarios, setUsuarios }, id) {
+      async rejeitar({ setLoading, setPedidos }, id) {
         setLoading(true);
-        let novos_usuarios = usuarios.filter((user) => user.id !== id);
-        setTimeout(() => {
-          setUsuarios(novos_usuarios);
-        }, 2000);
+        const res = await API.rejeitarPedidoDeAmizade(id);
+        if (res.status === "success") {
+          setPedidos((pedidos) => {
+            let novos_pedidos = pedidos.filter((pedido) => pedido.id !== id);
+            return novos_pedidos;
+          });
+        }
+        setLoading(false);
+      },
+      async enviar({ setLoading, setUsuarios }, id) {
+        setLoading(true);
+
+        const res = await API.enviarPedidoDeAmizade(id);
+        if (res.status === "success") {
+          setUsuarios((usuarios) => {
+            let novos_usuarios = usuarios.filter((user) => user.id !== id);
+            return novos_usuarios;
+          });
+        }
+        setLoading(false);
       },
     },
   };

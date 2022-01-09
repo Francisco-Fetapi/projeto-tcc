@@ -54,12 +54,7 @@ export default function ListaPedidos() {
           <Box mt={2} className="slider-pedidos">
             <Slider {...settings} className="pedidos">
               {pedidos.map((user) => (
-                <Pedido
-                  user={user}
-                  key={user.id}
-                  pedidos={pedidos}
-                  setPedidos={setPedidos}
-                />
+                <Pedido user={user} key={user.id} setPedidos={setPedidos} />
               ))}
             </Slider>
           </Box>

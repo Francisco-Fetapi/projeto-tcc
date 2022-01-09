@@ -66,7 +66,6 @@ export default function ListaSugestoes() {
         {usuarios.map((usuario, key) => (
           <Sugestao
             usuario={usuario}
-            usuarios={usuarios}
             setUsuarios={setUsuarios}
             key={usuario.id}
           />

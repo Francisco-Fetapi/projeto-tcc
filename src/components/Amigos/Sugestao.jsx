@@ -10,7 +10,7 @@ import { BASE_URL } from "../../API";
 
 import useUsuario from "../../hooks/useUsuario";
 
-export default function Sugestao({ usuario, usuarios, setUsuarios }) {
+export default function Sugestao({ usuario, setUsuarios }) {
   const [loading, setLoading] = useState(false);
   const { PedidoDeAmizade } = useUsuario();
   return (
@@ -41,10 +41,7 @@ export default function Sugestao({ usuario, usuarios, setUsuarios }) {
           {!loading && (
             <Button
               onClick={() =>
-                PedidoDeAmizade.enviar(
-                  { setLoading, setUsuarios, usuarios },
-                  usuario.id
-                )
+                PedidoDeAmizade.enviar({ setLoading, setUsuarios }, usuario.id)
               }
               variant="contained"
               color="primary"

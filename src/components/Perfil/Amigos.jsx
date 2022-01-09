@@ -43,8 +43,8 @@ export default function Amigos() {
       <Text variant="subtitle2" color="textSecondary">
         {paginate.total === 0 && loading && "Carregando..."}
         {paginate.total === 0 && !loading && "Sem amigos"}
-        {paginate.total === 1 && "Você tem 1 amigo"}
-        {paginate.total > 1 && `Você tem ${paginate.total} amigos`}
+        {paginate.total === 1 && " 1 amigo"}
+        {paginate.total > 1 && `${paginate.total} amigos`}
       </Text>
       {!loading && (
         <Box mt={2} className="fotos-grid">
