@@ -1,21 +1,16 @@
-import { useDispatch, useSelector } from "react-redux";
-import { SET_STATE } from "../store/App.actions";
-import { selectAll } from "../store/App.selectors";
+import { useState } from "react";
 
 export default function useLinearProgress() {
-  const Disparar = useDispatch();
-  const estado = useSelector(selectAll);
-
-  const aberto = estado.linearProgress;
+  const [loading, setLoading] = useState(false);
 
   const funcoes = {
     mostrar() {
-      Disparar(SET_STATE("linearProgress", true));
+      setLoading(true);
     },
     ocultar() {
-      Disparar(SET_STATE("linearProgress", false));
+      setLoading(false);
     },
   };
 
-  return { aberto, ...funcoes };
+  return { loading, ...funcoes };
 }

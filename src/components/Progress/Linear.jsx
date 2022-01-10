@@ -1,7 +1,6 @@
 import React from "react";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import LinearProgress from "@material-ui/core/LinearProgress";
-import useLinearProgress from "../../hooks/useLinearProgress";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,9 +14,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function LinearIndeterminate() {
+export default function LinearIndeterminate({ aberto }) {
   const classes = useStyles();
-  const { aberto } = useLinearProgress();
 
   return (
     aberto && (

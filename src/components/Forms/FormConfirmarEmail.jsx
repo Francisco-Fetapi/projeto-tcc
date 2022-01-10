@@ -8,17 +8,21 @@ import Security from "@material-ui/icons/Security";
 
 import { Formik, Form } from "formik";
 import useUsuario from "../../hooks/useUsuario";
+import useLinearProgress from "../../hooks/useLinearProgress";
+import LinearProgress from "../Progress/Linear.jsx";
 
 export default function FormConfirmarEmail() {
   const { verificarEmail, reenviarCodigo } = useUsuario();
+  const LoadingLinear = useLinearProgress();
 
   return (
     <ConfirmarEmail.Form>
+      <LinearProgress aberto={LoadingLinear.loading} />
       <Formik
         initialValues={{
           cod_confirmacao: "",
         }}
-        onSubmit={verificarEmail}
+        onSubmit={(v, a) => verificarEmail(v, a, LoadingLinear)}
       >
         <Form autoComplete="off">
           <Box mt={-0.5}>
@@ -53,7 +57,7 @@ export default function FormConfirmarEmail() {
               variant="text"
               style={{ width: "250px", height: "42px" }}
               color="primary"
-              onClick={reenviarCodigo}
+              onClick={() => reenviarCodigo(LoadingLinear)}
             >
               Não recebi o código.
             </Button>

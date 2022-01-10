@@ -11,7 +11,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { RESET_ALL, SET_STATE, SET_STATES } from "../store/SignUp.actions";
 import { SET_STATE_USER } from "../store/App.actions";
 import { selectAll } from "../store/SignUp.selectors";
-import useModal from "./useModal";
 
 export default function useUsuario() {
   const navigate = useNavigate();
@@ -20,9 +19,7 @@ export default function useUsuario() {
   const Disparar = useDispatch();
   const dados_form_criar_conta = useSelector(selectAll);
   const store = useSelector(selectAll);
-  const [, , fecharModal1] = useModal("modalEditarBiografia");
-  const [, , fecharModal2] = useModal("modalEditarPerfil");
-  const [, , fecharModal3] = useModal("modalAlterarEmail");
+
   let info = {};
 
   info = {
@@ -68,7 +65,7 @@ export default function useUsuario() {
       API.logout();
       console.log("deslogado");
     },
-    async enviarDadosDaConta(values, actions) {
+    async enviarDadosDaConta(values, actions, LoadingLinear) {
       if (info.logado) {
         info.logout(); //na conta anterior;
       }
@@ -95,7 +92,7 @@ export default function useUsuario() {
         navigate("/confirmar-email");
       }
     },
-    async verificarEmail(values) {
+    async verificarEmail(values, actions, LoadingLinear) {
       const dados = {
         codigo: values.cod_confirmacao,
         email: dados_form_criar_conta.email,
@@ -111,7 +108,7 @@ export default function useUsuario() {
       }
       console.log(store);
     },
-    async reenviarCodigo() {
+    async reenviarCodigo(LoadingLinear) {
       LoadingLinear.mostrar();
       let res = await API.reenviarCodigo(dados_form_criar_conta.email);
       LoadingLinear.ocultar();

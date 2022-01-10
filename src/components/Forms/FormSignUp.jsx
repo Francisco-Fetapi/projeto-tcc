@@ -18,6 +18,9 @@ import { Link } from "react-router-dom";
 import { Formik, Form, useField } from "formik";
 import useUsuario from "../../hooks/useUsuario";
 import { IMG_USER_PADRAO } from "../../API";
+import useLinearProgress from "../../hooks/useLinearProgress";
+
+import LinearProgress from "../Progress/Linear.jsx";
 
 function RadioGroup({ children, id }) {
   const [field] = useField({ name: id });
@@ -28,6 +31,7 @@ export default function FormSignUp({ handleClose }) {
   const img = useRef();
   const { exibirFotoASerAlterada, enviarDadosDaConta, criar_conta_dados } =
     useUsuario();
+  const LoadingLinear = useLinearProgress();
 
   function alterarFoto(e) {
     exibirFotoASerAlterada(e, img);
@@ -36,6 +40,7 @@ export default function FormSignUp({ handleClose }) {
   return (
     <>
       <ContainerFormSignUp>
+        <LinearProgress aberto={LoadingLinear.loading} />
         <Formik
           initialValues={{
             _nome: criar_conta_dados.nome || "",
@@ -45,7 +50,9 @@ export default function FormSignUp({ handleClose }) {
             _data_nascimento: criar_conta_dados.data_nascimento || "",
             genero: criar_conta_dados.genero || "m",
           }}
-          onSubmit={enviarDadosDaConta}
+          onSubmit={(values, actions) =>
+            enviarDadosDaConta(values, actions, LoadingLinear)
+          }
           style={{ width: 300 }}
         >
           <Form autoComplete="off">
