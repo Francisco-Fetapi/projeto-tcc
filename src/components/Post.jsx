@@ -13,6 +13,9 @@ import SaveAltIcon from "@material-ui/icons/SaveAlt";
 import ModeCommentIcon from "@material-ui/icons/ModeComment";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+
 import { Text } from "../styles";
 
 import { FaClock, FaGlobe } from "react-icons/fa";
@@ -49,6 +52,15 @@ export default function Post({
   children,
   img,
 }) {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
   return (
     <Box my={2}>
       <Card className="post">
@@ -57,7 +69,7 @@ export default function Post({
             <img className="foto-user" src={user.foto} alt="foto do usuario" />
           }
           action={
-            <IconButton>
+            <IconButton onClick={handleClick}>
               <MoreVertIcon />
             </IconButton>
           }
@@ -99,6 +111,16 @@ export default function Post({
           </ButtonGroup>
         </Box>
       </Card>
+
+      <Menu
+        anchorEl={anchorEl}
+        keepMounted
+        open={Boolean(anchorEl)}
+        onClose={handleClose}
+      >
+        <MenuItem onClick={handleClose}>Editar</MenuItem>
+        <MenuItem onClick={handleClose}>Eliminar</MenuItem>
+      </Menu>
     </Box>
   );
 }
