@@ -11,23 +11,19 @@ import useModal from "../hooks/useModal.js";
 export default function LoginAndSignUp({ page }) {
   const theme = useTheme();
 
-  const [abertoModalSignUp, abrirModalSignUp, fecharModalSignUp] =
-    useModal("modalSignUp");
-  const [
-    abertoModalEsqueciAPasse,
-    abrirModalEsqueciAPasse,
-    fecharModalEsqueciAPasse,
-  ] = useModal("modalEsqueciAPasse");
+  const [modalSignUp, abrirSU, fecharSU] = useModal();
+  const [modalForgot, abrirForgot, fecharForgot] = useModal();
+
   useEffect(() => {
     if (page === "signUp") {
-      abrirModalSignUp();
+      abrirSU();
     } else {
-      fecharModalSignUp();
+      fecharSU();
     }
     if (page === "esqueci-a-passe") {
-      abrirModalEsqueciAPasse();
+      abrirForgot();
     } else {
-      fecharModalEsqueciAPasse();
+      fecharForgot();
     }
   }, [page]);
 
@@ -39,8 +35,8 @@ export default function LoginAndSignUp({ page }) {
         </LoginBanner>
         <FormLogin />
       </Paper>
-      {abertoModalSignUp && <ModalSignUp />}
-      {abertoModalEsqueciAPasse && <ModalEsqueciAPasse />}
+      <ModalSignUp open={modalSignUp} />
+      <ModalEsqueciAPasse open={modalForgot} />
     </Container>
   );
 }
