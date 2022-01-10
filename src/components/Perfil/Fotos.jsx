@@ -198,7 +198,7 @@ export default function Fotos() {
         onClose={() => setConfirm(false)}
         onSim={() => apagarFoto(fotoSelecionada)}
       >
-        Estás a prestes a apagar esta foto. Esse processo é irreversivel.
+        Estás prestes a apagar esta foto. Esse processo é irreversivel.
       </Confirmar>
     </Paper>
   );
