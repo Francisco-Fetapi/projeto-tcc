@@ -183,7 +183,7 @@ export default function useUsuario() {
           actions.setErrors(res.erros);
         }
       },
-      async inserirCodigo(values, actions) {
+      async inserirCodigo(values, actions, { setModal }) {
         console.log(values);
         LoadingLinear.mostrar();
         let res = await API.alterarEmail(values);
@@ -191,7 +191,7 @@ export default function useUsuario() {
         if (res.status === "success") {
           console.log(res);
           info.getDadosUsuarioByToken();
-          fecharModal3();
+          setModal(false);
         } else {
           actions.setErrors(res.erros);
         }
@@ -301,14 +301,14 @@ export default function useUsuario() {
       LoadingLinear.ocultar();
       setModal(false);
     },
-    async updatePerfil(values, actions) {
+    async updatePerfil(values, actions, { setModal }) {
       LoadingLinear.mostrar();
       let res = await API.alterarPerfil(values);
 
       if (res.status === "success") {
         LoadingLinear.ocultar();
         info.getDadosUsuarioByToken();
-        fecharModal2();
+        setModal(false);
         return;
       } else {
         LoadingLinear.ocultar();

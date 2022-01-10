@@ -28,10 +28,14 @@ function RadioGroup({ children, id }) {
   return <RadioGroupMui {...field}>{children}</RadioGroupMui>;
 }
 
-export default function FormAddPost() {
+export default function FormEditarPerfil({ setModal }) {
   const paisesArray = Object.keys(paises);
   const { updatePerfil } = useUsuario();
   const { usuario } = useSelector(selectAll);
+
+  function atualizarPerfil(values, actions) {
+    updatePerfil(values, actions, { setModal });
+  }
 
   return (
     <Formik
@@ -50,7 +54,7 @@ export default function FormAddPost() {
         assisto_para: usuario.assisto_para,
         password: "",
       }}
-      onSubmit={updatePerfil}
+      onSubmit={atualizarPerfil}
     >
       {({ values }) => (
         <Form autoComplete="off">

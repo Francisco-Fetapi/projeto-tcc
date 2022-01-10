@@ -29,7 +29,7 @@ export default function ModalEditarPerfil(props) {
       {...propsModal}
       {...props}
     >
-      <FormEditarPerfil />
+      <FormEditarPerfil setModal={props.setModal} />
     </TemplateModal>
   );
 }

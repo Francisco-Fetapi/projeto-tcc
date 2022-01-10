@@ -23,7 +23,7 @@ export default function ModalEsqueciAPasse(props) {
       {...propsModal}
       {...props}
     >
-      <FormAlterarEmail />
+      <FormAlterarEmail setModal={props.setModal} />
     </TemplateModal>
   );
 }

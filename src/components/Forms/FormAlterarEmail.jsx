@@ -12,7 +12,7 @@ import useUsuario from "../../hooks/useUsuario";
 import { FaUserLock } from "react-icons/fa";
 import { Text } from "../../styles";
 
-export default function FormAlterarEmail() {
+export default function FormAlterarEmail({ setModal }) {
   const { alterarEmail } = useUsuario();
   const [form2, setForm2] = useState(false);
   const [dataForm1, setDataForm1] = useState({});
@@ -27,7 +27,7 @@ export default function FormAlterarEmail() {
   }
   function inserirCodigo(values, actions) {
     const allData = { ...dataForm1, ...values };
-    alterarEmail.inserirCodigo(allData, actions);
+    alterarEmail.inserirCodigo(allData, actions, { setModal });
     console.log(allData);
   }
 
