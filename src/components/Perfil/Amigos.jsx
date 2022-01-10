@@ -105,7 +105,7 @@ export default function Amigos() {
           </Box>
         </Box>
       )}
-      {!loading && paginate.total < 8 && (
+      {!loading && paginate.total > 0 && paginate.total < 8 && (
         <Box
           display="flex"
           flexDirection="column"
