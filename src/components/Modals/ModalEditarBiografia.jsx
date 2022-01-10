@@ -7,7 +7,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { selectAll } from "../../store/App.selectors";
 
-export default function ModalEditarPerfil() {
+export default function ModalEditarPerfil(props) {
   const [propsModal, setPropsModal] = useState({});
   const { usuario } = useSelector(selectAll);
 
@@ -25,8 +25,9 @@ export default function ModalEditarPerfil() {
       titulo={`${usuario.nome} - Editar Biografia`}
       subtitulo="Informações sobre você que melhor te descrevem."
       {...propsModal}
+      {...props}
     >
-      <FormEditarBiografia />
+      <FormEditarBiografia setModal={props.setModal} />
     </TemplateModal>
   );
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import Button from "@material-ui/core/Button";
 import TextField1 from "../TextField1";
 import Box from "@material-ui/core/Box";
@@ -10,16 +10,20 @@ import useUsuario from "../../hooks/useUsuario";
 import { useSelector } from "react-redux";
 import { selectAll } from "../../store/App.selectors";
 
-export default function FormAddPost() {
+export default function FormAddPost({ setModal }) {
   const { alterarBiografia } = useUsuario();
   const { usuario } = useSelector(selectAll);
+
+  function alterar(values, actions) {
+    alterarBiografia(values, actions, { setModal });
+  }
 
   return (
     <Formik
       initialValues={{
         mini_biografia: usuario.mini_biografia,
       }}
-      onSubmit={alterarBiografia}
+      onSubmit={alterar}
     >
       <Form autoComplete="off">
         <TextField1

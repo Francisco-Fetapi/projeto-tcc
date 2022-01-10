@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useCallback } from "react";
 import { Text } from "../../styles";
 import { Perfil } from "../../styles/pages/Perfil";
 import Box from "@material-ui/core/Box";
@@ -21,7 +21,6 @@ import useUsuario from "../../hooks/useUsuario";
 import Done from "@material-ui/icons/Done";
 import Clear from "@material-ui/icons/Clear";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-import useModal from "../../hooks/useModal";
 
 import ModalEditarBiografia from "../Modals/ModalEditarBiografia";
 import ModalEditarPerfil from "../Modals/ModalEditarPerfil";
@@ -31,6 +30,7 @@ import { useSelector } from "react-redux";
 import { selectAll } from "../../store/App.selectors";
 
 import Skeleton from "@material-ui/lab/Skeleton";
+import useModal from "../../hooks/useModal";
 
 function ListItemWithSkeleton({ a_carregar, className, Icon, children }) {
   if (a_carregar) {
@@ -52,10 +52,12 @@ function ListItemWithSkeleton({ a_carregar, className, Icon, children }) {
 
 export default function InfoUsuario() {
   const { exibirFotoASerAlterada, alterarFotoDePerfil } = useUsuario();
-  const [, abrirModal1] = useModal("modalEditarBiografia");
-  const [, abrirModal2] = useModal("modalEditarPerfil");
-  const [, abrirModal3] = useModal("modalVerPerfil");
-  const [, abrirModal4] = useModal("modalAlterarEmail");
+
+  const [modal1, abrirModal1, , setModal1] = useModal();
+  const [modal2, abrirModal2, , setModal2] = useModal();
+  const [modal3, abrirModal3, , setModal3] = useModal();
+  const [modal4, abrirModal4, , setModal4] = useModal();
+
   const { usuario } = useSelector(selectAll);
 
   const fotoPerfilInicial = usuario.foto_perfil || "";
@@ -258,10 +260,10 @@ export default function InfoUsuario() {
         </Box>
       </Perfil.Info>
       <Divider />
-      <ModalEditarBiografia />
-      <ModalEditarPerfil />
-      <ModalVerPerfil />
-      <ModalAlterarEmail />
+      <ModalEditarBiografia open={modal1} setModal={setModal1} />
+      <ModalEditarPerfil open={modal2} setModal={setModal2} />
+      <ModalVerPerfil open={modal3} setModal={setModal3} />
+      <ModalAlterarEmail open={modal4} setModal={setModal4} />
     </Box>
   );
 }

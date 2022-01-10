@@ -283,7 +283,7 @@ export default function useUsuario() {
 
       console.log(res);
     },
-    async alterarBiografia(values, actions) {
+    async alterarBiografia(values, actions, { setModal }) {
       if (!values.mini_biografia) {
         actions.setErrors({
           mini_biografia: "Este campo não pode estar vazio",
@@ -299,7 +299,7 @@ export default function useUsuario() {
         Disparar(SET_STATE_USER("mini_biografia", res.mini_biografia));
       }
       LoadingLinear.ocultar();
-      fecharModal1();
+      setModal(false);
     },
     async updatePerfil(values, actions) {
       LoadingLinear.mostrar();

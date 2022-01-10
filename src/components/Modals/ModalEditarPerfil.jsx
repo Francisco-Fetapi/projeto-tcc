@@ -8,7 +8,7 @@ import FormEditarPerfil from "../Forms/FormEditarPerfil";
 import { useSelector } from "react-redux";
 import { selectAll } from "../../store/App.selectors";
 
-export default function ModalEditarPerfil() {
+export default function ModalEditarPerfil(props) {
   const [propsModal, setPropsModal] = useState({});
 
   const { usuario } = useSelector(selectAll);
@@ -27,6 +27,7 @@ export default function ModalEditarPerfil() {
       titulo={`${usuario.nome} - Editar Perfil`}
       subtitulo="Atualize os dados da sua conta."
       {...propsModal}
+      {...props}
     >
       <FormEditarPerfil />
     </TemplateModal>

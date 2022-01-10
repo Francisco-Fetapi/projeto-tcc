@@ -6,7 +6,6 @@ import withStyles from "@material-ui/styles/withStyles";
 import MuiDialogTitle from "@material-ui/core/DialogTitle";
 import IconButton from "@material-ui/core/IconButton";
 import Tooltip from "@material-ui/core/Tooltip";
-import useModal from "../../hooks/useModal";
 import { ModalSignUp } from "../../styles/pages/LoginAndSignUp";
 import CloseIcon from "@material-ui/icons/Close";
 import { useNavigate } from "react-router-dom";
@@ -56,10 +55,16 @@ export default function FormDialog({
   subtitulo,
   children,
   navigateToOnClose,
+  open,
+  setModal,
   ...props
 }) {
-  const [open, , handleClose] = useModal(nomeModal);
   const navigate = useNavigate();
+  function handleClose(e, reason) {
+    if (reason === "backdropClick" || reason === "escapeKeyDown") return;
+
+    setModal(false);
+  }
 
   return (
     <ModalSignUp>
@@ -73,7 +78,6 @@ export default function FormDialog({
         // fullScreen
       >
         <DialogTitle
-          id="customized-dialog-title"
           onClose={
             navigateToOnClose ? () => navigate(navigateToOnClose) : handleClose
           }

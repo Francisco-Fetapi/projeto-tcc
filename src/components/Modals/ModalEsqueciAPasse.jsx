@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { alterarLarguraDoModal } from "../../helpers/LoginAndSignUp";
 import { useState } from "react";
 
-export default function ModalEsqueciAPasse() {
+export default function ModalEsqueciAPasse(props) {
   const [propsModal, setPropsModal] = useState({});
   useEffect(() => {
     window.onresize = () => alterarLarguraDoModal(setPropsModal, 410);
@@ -22,6 +22,7 @@ export default function ModalEsqueciAPasse() {
       titulo="Esqueci a palavra-passe"
       subtitulo="Defina uma nova palavra-passe"
       {...propsModal}
+      {...props}
     >
       <FormEsqueciAPasse />
     </TemplateModal>

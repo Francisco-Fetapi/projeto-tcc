@@ -1,22 +1,13 @@
-import { useDispatch, useSelector } from "react-redux";
-import { SET_STATE } from "../store/App.actions";
-import { selectAll } from "../store/App.selectors";
+import { useState, useCallback } from "react";
 
-export default function useModal(nome) {
-  const Disparar = useDispatch();
-  const estado = useSelector(selectAll);
+export default function useModal() {
+  const [modal, setModal] = useState(false);
 
-  const aberto = estado[nome];
-
-  function abrir() {
-    Disparar(SET_STATE(nome, true));
-  }
-
-  function fechar(e, reason) {
+  const abrir = useCallback(() => setModal(true), []);
+  const fechar = useCallback((e, reason) => {
     if (reason === "backdropClick" || reason === "escapeKeyDown") return;
+    setModal(false);
+  }, []);
 
-    Disparar(SET_STATE(nome, false));
-  }
-
-  return [aberto, abrir, fechar];
+  return [modal, abrir, fechar, setModal];
 }

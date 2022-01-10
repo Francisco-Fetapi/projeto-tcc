@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import FormSignUp from "../Forms/FormSignUp.jsx";
 import { alterarLarguraDoModal } from "../../helpers/LoginAndSignUp";
 
-export default function ModalSignUp() {
+export default function ModalSignUp(props) {
   const navigate = useNavigate();
   const [propsModal, setPropsModal] = useState({});
   useEffect(() => {
@@ -22,6 +22,7 @@ export default function ModalSignUp() {
       titulo="Criar conta"
       subtitulo="Rápido e fácil. Junte-se a nós"
       {...propsModal}
+      {...props}
     >
       <FormSignUp handleClose={() => navigate("/login")} />
     </TemplateModal>
