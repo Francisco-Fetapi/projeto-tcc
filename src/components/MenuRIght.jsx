@@ -5,6 +5,8 @@ import ListItemText from "@material-ui/core/ListItemText";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
 import Divider from "@material-ui/core/Divider";
+import Box from "@material-ui/core/Box";
+import Button from "@material-ui/core/Button";
 
 import { Text } from "../styles";
 
@@ -29,15 +31,10 @@ export default function MenuLeft() {
               <ListItemText primary={item.nome} secondary={item.data} />
             </ListItem>
           ))}
-          <ListItem button>
-            <ListItemAvatar>
-              <Avatar>
-                <FaChevronDown />
-              </Avatar>
-            </ListItemAvatar>
-            <ListItemText primary="Ver mais" />
-          </ListItem>
         </List>
+        <Box my={1} display="flex" justifyContent="center">
+          <Button color="primary">Ver mais séries</Button>
+        </Box>
         <br />
         <Divider />
         <br />
@@ -56,15 +53,10 @@ export default function MenuLeft() {
                 <ListItemText primary={item.nome} secondary={item.data} />
               </ListItem>
             ))}
-          <ListItem button>
-            <ListItemAvatar>
-              <Avatar>
-                <FaChevronDown />
-              </Avatar>
-            </ListItemAvatar>
-            <ListItemText primary="Ver mais" />
-          </ListItem>
         </List>
+        <Box my={1} display="flex" justifyContent="center">
+          <Button color="primary">Ver mais filmes</Button>
+        </Box>
       </div>
     </>
   );

@@ -30,6 +30,7 @@ export const MainContainer = styled.div`
     width: 25%;
     min-width: 200px;
     padding-bottom: 70px;
+    box-sizing: border-box;
 
     .MuiListItemAvatar-root {
       img {
@@ -39,9 +40,9 @@ export const MainContainer = styled.div`
         border-radius: 50%;
       }
     }
-    .MuiAvatar-root:not(.atvidade-icon, .skeleton) {
+    /* .MuiAvatar-root:not(.atvidade-icon, .skeleton) {
       background: #303f9f;
-    }
+    } */
     .MuiAvatar-root.skeleton {
       background: none;
     }
