@@ -10,12 +10,16 @@ import useUsuario from "../../hooks/useUsuario";
 import paises from "../../mock/paises.json";
 import generos from "../../mock/generos.json";
 import motivos from "../../mock/motivosAssistir.json";
+import LinearProgress from "../Progress/Linear.jsx";
+import useLinearProgress from "../../hooks/useLinearProgress";
 
 export default function FormMaisSobreVoce() {
   const { criarConta } = useUsuario();
   const paisesArray = Object.keys(paises);
+  const LoadingLinear = useLinearProgress();
   return (
     <MaisSobreVoce.Form>
+      <LinearProgress aberto={LoadingLinear.loading} />
       <Formik
         initialValues={{
           pais: paisesArray[0],
@@ -27,7 +31,7 @@ export default function FormMaisSobreVoce() {
           pra_que_assistir: "",
           biografia: "",
         }}
-        onSubmit={criarConta}
+        onSubmit={(v, a) => criarConta(v, a, LoadingLinear)}
       >
         {({ values }) => (
           <Form autoComplete="off">

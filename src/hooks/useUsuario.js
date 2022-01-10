@@ -194,7 +194,7 @@ export default function useUsuario() {
         }
       },
     },
-    async criarConta(values, actions) {
+    async criarConta(values, actions, LoadingLinear) {
       LoadingLinear.mostrar();
       let res = await API.criarConta(values);
       console.log(res);

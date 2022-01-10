@@ -7,6 +7,8 @@ import FormConfirmarEmail from "../components/Forms/FormConfirmarEmail";
 
 import useUsuario from "../hooks/useUsuario";
 import { IMG_USER_PADRAO } from "../API";
+import { selectAll } from "../store/SignUp.selectors";
+import { useSelector } from "react-redux";
 
 export default function ConfirmarEmail1() {
   const { seLogadoIrParaHome, logado, seNaoTemEmailIrParaCriarConta } =
@@ -19,6 +21,8 @@ export default function ConfirmarEmail1() {
       window.onbeforeunload = null;
     };
   }, []);
+
+  const usuario = useSelector(selectAll);
 
   if (logado) {
     return <div />;
@@ -38,9 +42,9 @@ export default function ConfirmarEmail1() {
       <Box mt={2} className="foto-e-form">
         <Box>
           <img src={IMG_USER_PADRAO} alt="Imagem do usuario" />
-          <Text variant="h6">Nome Usuario</Text>
+          <Text variant="h6">{usuario.nome}</Text>
           <Text color="textSecondary" variant="subtitle2">
-            email@gmail.com
+            {usuario.email}
           </Text>
         </Box>
         <FormConfirmarEmail />
