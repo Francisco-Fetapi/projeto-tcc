@@ -169,7 +169,13 @@ export default function useUsuario() {
       },
     },
     alterarEmail: {
-      async inserirNovoEmailESenha(values, actions, setForm2, setDataForm1) {
+      async inserirNovoEmailESenha(
+        values,
+        actions,
+        setForm2,
+        setDataForm1,
+        LoadingLinear
+      ) {
         console.log(values);
         LoadingLinear.mostrar();
         let res = await API.alterarEmail(values);
@@ -182,7 +188,7 @@ export default function useUsuario() {
           actions.setErrors(res.erros);
         }
       },
-      async inserirCodigo(values, actions, { setModal }) {
+      async inserirCodigo(values, actions, { setModal, LoadingLinear }) {
         console.log(values);
         LoadingLinear.mostrar();
         let res = await API.alterarEmail(values);

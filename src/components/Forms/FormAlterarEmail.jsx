@@ -12,27 +12,32 @@ import useUsuario from "../../hooks/useUsuario";
 import { FaUserLock } from "react-icons/fa";
 import { Text } from "../../styles";
 
+import LinearProgress from "../Progress/Linear.jsx";
+import useLinearProgress from "../../hooks/useLinearProgress";
+
 export default function FormAlterarEmail({ setModal }) {
   const { alterarEmail } = useUsuario();
   const [form2, setForm2] = useState(false);
   const [dataForm1, setDataForm1] = useState({});
+  const LoadingLinear = useLinearProgress();
 
   function inserirNovoEmailESenha(values, actions) {
     alterarEmail.inserirNovoEmailESenha(
       values,
       actions,
       setForm2,
-      setDataForm1
+      setDataForm1,
+      LoadingLinear
     );
   }
   function inserirCodigo(values, actions) {
     const allData = { ...dataForm1, ...values };
-    alterarEmail.inserirCodigo(allData, actions, { setModal });
-    console.log(allData);
+    alterarEmail.inserirCodigo(allData, actions, { setModal, LoadingLinear });
   }
 
   return (
     <div>
+      <LinearProgress aberto={LoadingLinear.loading} />
       {!form2 && (
         <FormInserirNovoEmailESenha
           inserirNovoEmailESenha={inserirNovoEmailESenha}
