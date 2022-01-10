@@ -10,6 +10,8 @@ import { ModalSignUp } from "../../styles/pages/LoginAndSignUp";
 import CloseIcon from "@material-ui/icons/Close";
 import { useNavigate } from "react-router-dom";
 
+import Slide from "@material-ui/core/Slide";
+
 const styles = (theme) => ({
   root: {
     margin: 0,
@@ -49,6 +51,10 @@ const DialogContent = withStyles((theme) => ({
   },
 }))(MuiDialogContent);
 
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
+
 export default function FormDialog({
   titulo,
   nomeModal,
@@ -57,6 +63,7 @@ export default function FormDialog({
   navigateToOnClose,
   open,
   setModal,
+  direction,
   ...props
 }) {
   const navigate = useNavigate();
@@ -75,6 +82,7 @@ export default function FormDialog({
         // disableBackdropClick
         // disableEscapeKeyDown
         {...props}
+        TransitionComponent={Transition}
         // fullScreen
       >
         <DialogTitle
