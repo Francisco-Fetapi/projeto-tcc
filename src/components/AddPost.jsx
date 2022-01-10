@@ -8,9 +8,22 @@ import { useSelector } from "react-redux";
 import Skeleton from "@material-ui/lab/Skeleton";
 import { selectAll } from "../store/App.selectors";
 
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+
 export default function AddPost() {
   const { usuario } = useSelector(selectAll);
   const a_carregar = !usuario.id;
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
   return (
     <Box className="AddPost" mb={8}>
       {!a_carregar && (
@@ -18,7 +31,13 @@ export default function AddPost() {
           <Text variant="body1" color="textSecondary">
             Publique algo para:
           </Text>
-          <Box className="publico" ml={1} display="flex" alignItems="center">
+          <Box
+            className="publico"
+            ml={1}
+            display="flex"
+            alignItems="center"
+            onClick={handleClick}
+          >
             <Text variant="body1" color="primary">
               Amigos
             </Text>
@@ -33,6 +52,15 @@ export default function AddPost() {
       <Box mt={1}>
         <FormAddPost />
       </Box>
+      <Menu
+        anchorEl={anchorEl}
+        keepMounted
+        open={Boolean(anchorEl)}
+        onClose={handleClose}
+      >
+        <MenuItem onClick={handleClose}>Amigos</MenuItem>
+        <MenuItem onClick={handleClose}>Público</MenuItem>
+      </Menu>
     </Box>
   );
 }
