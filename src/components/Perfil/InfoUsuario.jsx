@@ -32,6 +32,9 @@ import { selectAll } from "../../store/App.selectors";
 import Skeleton from "@material-ui/lab/Skeleton";
 import useModal from "../../hooks/useModal";
 
+import LinearProgress from "../Progress/Linear.jsx";
+import useLinearProgress from "../../hooks/useLinearProgress";
+
 function ListItemWithSkeleton({ a_carregar, className, Icon, children }) {
   if (a_carregar) {
     return (
@@ -64,6 +67,7 @@ export default function InfoUsuario() {
   const a_carregar = !usuario.id;
   const inputFile = useRef();
   const [fotoDePerfil, setFotoDePerfil] = useState("");
+  const LoadingLinear = useLinearProgress();
 
   useEffect(() => {
     setFotoDePerfil(fotoPerfilInicial);
@@ -79,6 +83,7 @@ export default function InfoUsuario() {
 
   return (
     <Box mb={5}>
+      <LinearProgress aberto={LoadingLinear.loading} />
       <Perfil.Info>
         <Box className="foto-nome-bio">
           <Box component="figure">
@@ -121,7 +126,11 @@ export default function InfoUsuario() {
                   <div
                     className="right"
                     onClick={() =>
-                      alterarFotoDePerfil(inputFile, limparInputFile)
+                      alterarFotoDePerfil(
+                        inputFile,
+                        limparInputFile,
+                        LoadingLinear
+                      )
                     }
                   >
                     <label>

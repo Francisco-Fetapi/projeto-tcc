@@ -268,7 +268,7 @@ export default function useUsuario() {
         concluir();
       }
     },
-    async alterarFotoDePerfil(inputFile, cleanInput) {
+    async alterarFotoDePerfil(inputFile, cleanInput, LoadingLinear) {
       const foto = inputFile.current.files[0];
       LoadingLinear.mostrar();
       let res = await API.alterarFotoDePerfil(foto);
@@ -277,8 +277,6 @@ export default function useUsuario() {
         Disparar(SET_STATE_USER("foto_perfil", res.foto_perfil));
         cleanInput(); //value = ""
       }
-      alertar(res.msg, res.status, 3);
-
       console.log(res);
     },
     async alterarBiografia(values, actions, { setModal }) {
