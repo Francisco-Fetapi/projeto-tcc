@@ -12,11 +12,14 @@ import { useNavigate } from "react-router-dom";
 
 import { Formik, Form } from "formik";
 import useUsuario from "../../hooks/useUsuario";
+import LinearProgress from "../Progress/Linear.jsx";
+import useLinearProgress from "../../hooks/useLinearProgress";
 
 export default function FormLogin() {
   const [checked, setChecked] = useState(false);
   const { logar } = useUsuario();
   const navigate = useNavigate();
+  const LoadingLinear = useLinearProgress();
 
   function handleChange() {
     setChecked((state) => !state);
@@ -25,12 +28,13 @@ export default function FormLogin() {
   return (
     <>
       <ContainerFormLogin>
+        <LinearProgress aberto={LoadingLinear.loading} />
         <Formik
           initialValues={{
             email: "",
             password: "",
           }}
-          onSubmit={logar}
+          onSubmit={(v, a) => logar(v, a, LoadingLinear)}
         >
           <Form autoComplete="off">
             <Box my={2}>

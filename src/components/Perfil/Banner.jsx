@@ -10,6 +10,8 @@ import Done from "@material-ui/icons/Done";
 import Clear from "@material-ui/icons/Clear";
 import { useSelector } from "react-redux";
 import { selectAll } from "../../store/App.selectors";
+import LinearProgress from "../Progress/Linear.jsx";
+import useLinearProgress from "../../hooks/useLinearProgress";
 
 export default function Banner() {
   const { usuario } = useSelector(selectAll);
@@ -17,6 +19,7 @@ export default function Banner() {
   const fotoCapaInicial = usuario.foto_capa || "";
   const inputFile = useRef();
   const [fotoDeCapa, setFotoDeCapa] = useState("");
+  const LoadingLinear = useLinearProgress();
 
   useEffect(() => {
     setFotoDeCapa(fotoCapaInicial);
@@ -27,50 +30,57 @@ export default function Banner() {
     inputFile.current.value = "";
   }
   return (
-    <Perfil.Banner img={fotoDeCapa}>
-      <div>
+    <>
+      <LinearProgress aberto={LoadingLinear.loading} />
+      <Perfil.Banner img={fotoDeCapa}>
         <div>
-          {!fotoDeCapa.includes("base64") && (
-            <Button
-              startIcon={<FaCamera />}
-              onClick={() => inputFile.current.click()}
-              color="default"
-              variant="contained"
-            >
-              Alterar foto de capa
-            </Button>
-          )}
-          {fotoDeCapa.includes("base64") && (
-            <Box>
+          <div>
+            {!fotoDeCapa.includes("base64") && (
               <Button
-                startIcon={<Done />}
-                onClick={() =>
-                  alterarFotoDeCapa(inputFile.current.files[0], cancelar)
-                }
+                startIcon={<FaCamera />}
+                onClick={() => inputFile.current.click()}
                 color="default"
                 variant="contained"
               >
-                Concluir
+                Alterar foto de capa
               </Button>
-              <Button
-                startIcon={<Clear />}
-                onClick={cancelar}
-                color="default"
-                variant="contained"
-              >
-                Cancelar
-              </Button>
-            </Box>
-          )}
+            )}
+            {fotoDeCapa.includes("base64") && (
+              <Box>
+                <Button
+                  startIcon={<Done />}
+                  onClick={() =>
+                    alterarFotoDeCapa(
+                      inputFile.current.files[0],
+                      cancelar,
+                      LoadingLinear
+                    )
+                  }
+                  color="default"
+                  variant="contained"
+                >
+                  Concluir
+                </Button>
+                <Button
+                  startIcon={<Clear />}
+                  onClick={cancelar}
+                  color="default"
+                  variant="contained"
+                >
+                  Cancelar
+                </Button>
+              </Box>
+            )}
+          </div>
+          <input
+            type="file"
+            accept="image/*"
+            ref={inputFile}
+            hidden
+            onChange={(e) => exibirFoto2ASerAlterada(e, setFotoDeCapa)}
+          />
         </div>
-        <input
-          type="file"
-          accept="image/*"
-          ref={inputFile}
-          hidden
-          onChange={(e) => exibirFoto2ASerAlterada(e, setFotoDeCapa)}
-        />
-      </div>
-    </Perfil.Banner>
+      </Perfil.Banner>
+    </>
   );
 }

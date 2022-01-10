@@ -23,17 +23,19 @@ export default function useUsuario() {
   let info = {};
 
   info = {
-    async logar(values) {
+    async logar(values, actions, LoadingLinear) {
       if (info.logado) {
         info.logout(); //na conta anterior;
       }
       LoadingLinear.mostrar();
       let res = await API.logar(values);
       LoadingLinear.ocultar();
-      alertar(res.msg, res.status, 3);
+
       if (res.status === "success") {
         info.getDadosUsuarioByToken();
         navigate("/");
+      } else {
+        alertar(res.msg, res.status, 3);
       }
     },
     logado: localStorage.getItem("token") ? true : false,
@@ -256,7 +258,7 @@ export default function useUsuario() {
         };
       }
     },
-    async alterarFotoDeCapa(foto, concluir) {
+    async alterarFotoDeCapa(foto, concluir, LoadingLinear) {
       LoadingLinear.mostrar();
       let res = await API.alterarFotoDeCapa(foto);
       LoadingLinear.ocultar();
@@ -265,7 +267,6 @@ export default function useUsuario() {
         Disparar(SET_STATE_USER("foto_capa", res.foto_capa));
         concluir();
       }
-      alertar(res.msg, res.status, 3);
     },
     async alterarFotoDePerfil(inputFile, cleanInput) {
       const foto = inputFile.current.files[0];
