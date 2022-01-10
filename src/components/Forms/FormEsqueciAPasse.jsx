@@ -11,14 +11,24 @@ import Security from "@material-ui/icons/Security";
 import { Formik, Form } from "formik";
 import useUsuario from "../../hooks/useUsuario";
 
+import LinearProgress from "../Progress/Linear.jsx";
+import useLinearProgress from "../../hooks/useLinearProgress";
+
 export default function FormEsqueciAPasse({ handleClose }) {
   const [form2, setForm2] = useState(false);
   const [form3, setForm3] = useState(false);
   const { alterarSenha } = useUsuario();
   const [allData, setAllData] = useState({});
+  const LoadingLinear = useLinearProgress();
 
   function definirEmail(values, actions) {
-    alterarSenha.inserirEmail(values, actions, setForm2, setAllData);
+    alterarSenha.inserirEmail(
+      values,
+      actions,
+      setForm2,
+      setAllData,
+      LoadingLinear
+    );
   }
   function definirCodigo(values, actions) {
     alterarSenha.inserirCodigo(
@@ -27,15 +37,17 @@ export default function FormEsqueciAPasse({ handleClose }) {
       setForm2,
       setForm3,
       allData,
-      setAllData
+      setAllData,
+      LoadingLinear
     );
   }
   function concluir(values, actions) {
     const allValues = { ...allData, ...values };
-    alterarSenha.concluir(allValues, actions);
+    alterarSenha.concluir(allValues, actions, LoadingLinear);
   }
   return (
     <ContainerFormEsqueciAPasse>
+      <LinearProgress aberto={LoadingLinear.loading} />
       {!form2 && !form3 && <FormInserirEmail definirEmail={definirEmail} />}
       {form2 && !form3 && <FormInserirCodigo definirCodigo={definirCodigo} />}
       {form3 && <FormInserirNovaPasse concluir={concluir} />}

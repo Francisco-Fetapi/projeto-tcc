@@ -118,7 +118,7 @@ export default function useUsuario() {
       console.log("Codigo reenviado", res.codigo);
     },
     alterarSenha: {
-      async inserirEmail(values, actions, setForm2, setAllData) {
+      async inserirEmail(values, actions, setForm2, setAllData, LoadingLinear) {
         console.log(values);
         LoadingLinear.mostrar();
         let res = await API.alterarSenha(values);
@@ -137,7 +137,8 @@ export default function useUsuario() {
         setForm2,
         setForm3,
         allData,
-        setAllData
+        setAllData,
+        LoadingLinear
       ) {
         const allValues = { ...allData, ...values };
         console.log(allValues);
@@ -153,7 +154,7 @@ export default function useUsuario() {
         }
         console.log(res);
       },
-      async concluir(values, actions) {
+      async concluir(values, actions, LoadingLinear) {
         console.log(values);
         LoadingLinear.mostrar();
         let res = await API.alterarSenha(values);
@@ -285,7 +286,7 @@ export default function useUsuario() {
       }
       console.log(res);
     },
-    async alterarBiografia(values, actions, { setModal }) {
+    async alterarBiografia(values, actions, { setModal, LoadingLinear }) {
       if (!values.mini_biografia) {
         actions.setErrors({
           mini_biografia: "Este campo não pode estar vazio",
@@ -293,17 +294,14 @@ export default function useUsuario() {
         return;
       }
       LoadingLinear.mostrar();
-      console.log(values);
       let res = await API.alterarBiografia(values);
-      alertar(res.msg, res.status, 4);
       if (res.status === "success") {
-        console.log("Alterou", res.mini_biografia);
         Disparar(SET_STATE_USER("mini_biografia", res.mini_biografia));
       }
       LoadingLinear.ocultar();
       setModal(false);
     },
-    async updatePerfil(values, actions, { setModal }) {
+    async updatePerfil(values, actions, { setModal, LoadingLinear }) {
       LoadingLinear.mostrar();
       let res = await API.alterarPerfil(values);
 
@@ -317,7 +315,6 @@ export default function useUsuario() {
         if (res.erros) {
           let primeiro_erro = showFirstError(res.erros);
           actions.setErrors(primeiro_erro);
-          console.log(primeiro_erro);
         } else {
           alertar(res.msg, res.status, 3);
         }

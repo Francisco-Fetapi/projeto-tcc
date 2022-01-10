@@ -9,42 +9,48 @@ import useUsuario from "../../hooks/useUsuario";
 
 import { useSelector } from "react-redux";
 import { selectAll } from "../../store/App.selectors";
+import LinearProgress from "../Progress/Linear.jsx";
+import useLinearProgress from "../../hooks/useLinearProgress";
 
 export default function FormAddPost({ setModal }) {
   const { alterarBiografia } = useUsuario();
   const { usuario } = useSelector(selectAll);
+  const LoadingLinear = useLinearProgress();
 
   function alterar(values, actions) {
-    alterarBiografia(values, actions, { setModal });
+    alterarBiografia(values, actions, { setModal, LoadingLinear });
   }
 
   return (
-    <Formik
-      initialValues={{
-        mini_biografia: usuario.mini_biografia,
-      }}
-      onSubmit={alterar}
-    >
-      <Form autoComplete="off">
-        <TextField1
-          label="Biografia"
-          multiline
-          rows={6}
-          id="mini_biografia"
-          fullWidth
-          placeholder="Insira um biografia curta e descritiva."
-        />
-        <Box mt={1} display="flex" justifyContent={"center"}>
-          <Button
-            style={{ height: "42px" }}
-            variant="contained"
-            color="primary"
-            type="submit"
-          >
-            Concluir
-          </Button>
-        </Box>
-      </Form>
-    </Formik>
+    <>
+      <LinearProgress aberto={LoadingLinear.loading} />
+      <Formik
+        initialValues={{
+          mini_biografia: usuario.mini_biografia,
+        }}
+        onSubmit={alterar}
+      >
+        <Form autoComplete="off">
+          <TextField1
+            label="Biografia"
+            multiline
+            rows={6}
+            id="mini_biografia"
+            fullWidth
+            placeholder="Insira um biografia curta e descritiva."
+          />
+          <Box mt={1} display="flex" justifyContent={"center"}>
+            <Button
+              style={{ height: "42px" }}
+              variant="contained"
+              color="primary"
+              type="submit"
+            >
+              Concluir
+            </Button>
+          </Box>
+        </Form>
+      </Formik>
+    </>
   );
 }
