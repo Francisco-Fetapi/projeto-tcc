@@ -165,4 +165,10 @@ export const GlobalStyles = createGlobalStyle`
       #foto-menu .MuiList-padding {
         padding: 2px;
     }
+    #menu-header{
+        user-select:none;
+        li{
+            cursor:pointer;
+        }
+    }
 `;
