@@ -5,7 +5,6 @@ import {
   parsearErros,
   showFirstError,
 } from "../helpers/LoginAndSignUp";
-import useLoading from "./useLinearProgress";
 import useAlert from "./useAlert";
 import { useDispatch, useSelector } from "react-redux";
 import { RESET_ALL, SET_STATE, SET_STATES } from "../store/SignUp.actions";
@@ -14,7 +13,6 @@ import { selectAll } from "../store/SignUp.selectors";
 
 export default function useUsuario() {
   const navigate = useNavigate();
-  const LoadingLinear = useLoading();
   const { alertar } = useAlert();
   const Disparar = useDispatch();
   const dados_form_criar_conta = useSelector(selectAll);
