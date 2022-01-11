@@ -5,7 +5,6 @@ import { GlobalStyles } from "./styles/GlobalStyles";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Alerta from "./components/Alerta";
 import useUsuario from "./hooks/useUsuario";
 import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -35,8 +34,6 @@ function App() {
     <Theme>
       <GlobalStyles />
       <Routes />
-
-      <Alerta />
     </Theme>
   );
 }

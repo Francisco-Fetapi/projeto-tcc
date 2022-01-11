@@ -15,11 +15,15 @@ import useUsuario from "../../hooks/useUsuario";
 import LinearProgress from "../Progress/Linear.jsx";
 import useLinearProgress from "../../hooks/useLinearProgress";
 
+import Alerta from "../Alerta";
+import useAlert from "../../hooks/useAlert";
+
 export default function FormLogin() {
   const [checked, setChecked] = useState(false);
   const { logar } = useUsuario();
   const navigate = useNavigate();
   const LoadingLinear = useLinearProgress();
+  const { alert, alertar, fechar } = useAlert();
 
   function handleChange() {
     setChecked((state) => !state);
@@ -34,7 +38,7 @@ export default function FormLogin() {
             email: "",
             password: "",
           }}
-          onSubmit={(v, a) => logar(v, a, LoadingLinear)}
+          onSubmit={(v, a) => logar(v, a, LoadingLinear, alertar)}
         >
           <Form autoComplete="off">
             <Box my={2}>
@@ -110,6 +114,7 @@ export default function FormLogin() {
           </Form>
         </Formik>
       </ContainerFormLogin>
+      <Alerta alert={alert} fechar={fechar} />
     </>
   );
 }

@@ -21,7 +21,7 @@ export default function useUsuario() {
   let info = {};
 
   info = {
-    async logar(values, actions, LoadingLinear) {
+    async logar(values, actions, LoadingLinear, alertar) {
       if (info.logado) {
         info.logout(); //na conta anterior;
       }

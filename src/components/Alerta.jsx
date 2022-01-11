@@ -17,9 +17,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Alerta() {
+export default function Alerta({ alert, fechar }) {
   const classes = useStyles();
-  const { alert, fechar } = useAlert();
 
   return (
     <div className={classes.root}>
@@ -33,7 +32,7 @@ export default function Alerta() {
         }}
       >
         <Alert onClose={fechar} severity={alert.status || "info"}>
-          {alert.msg}
+          {alert.msg || null}
         </Alert>
       </Snackbar>
     </div>
