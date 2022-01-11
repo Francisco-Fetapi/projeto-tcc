@@ -92,7 +92,7 @@ export default function useUsuario() {
         navigate("/confirmar-email");
       }
     },
-    async verificarEmail(values, actions, LoadingLinear) {
+    async verificarEmail(values, actions, LoadingLinear, alertar) {
       const dados = {
         codigo: values.cod_confirmacao,
         email: dados_form_criar_conta.email,
@@ -108,7 +108,7 @@ export default function useUsuario() {
       }
       console.log(store);
     },
-    async reenviarCodigo(LoadingLinear) {
+    async reenviarCodigo(LoadingLinear, alertar) {
       LoadingLinear.mostrar();
       let res = await API.reenviarCodigo(dados_form_criar_conta.email);
       LoadingLinear.ocultar();

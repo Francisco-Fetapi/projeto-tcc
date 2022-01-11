@@ -11,18 +11,23 @@ import useUsuario from "../../hooks/useUsuario";
 import useLinearProgress from "../../hooks/useLinearProgress";
 import LinearProgress from "../Progress/Linear.jsx";
 
+import Alerta from "../Alerta";
+import useAlert from "../../hooks/useAlert";
+
 export default function FormConfirmarEmail() {
   const { verificarEmail, reenviarCodigo } = useUsuario();
   const LoadingLinear = useLinearProgress();
+  const { alert, alertar, fechar } = useAlert();
 
   return (
     <ConfirmarEmail.Form>
       <LinearProgress aberto={LoadingLinear.loading} />
+      <Alerta alert={alert} fechar={fechar} />
       <Formik
         initialValues={{
           cod_confirmacao: "",
         }}
-        onSubmit={(v, a) => verificarEmail(v, a, LoadingLinear)}
+        onSubmit={(v, a) => verificarEmail(v, a, LoadingLinear, alertar)}
       >
         <Form autoComplete="off">
           <Box mt={-0.5}>
@@ -57,7 +62,7 @@ export default function FormConfirmarEmail() {
               variant="text"
               style={{ width: "250px", height: "42px" }}
               color="primary"
-              onClick={() => reenviarCodigo(LoadingLinear)}
+              onClick={() => reenviarCodigo(LoadingLinear, alertar)}
             >
               Não recebi o código.
             </Button>
