@@ -127,6 +127,9 @@ export const GlobalStyles = createGlobalStyle`
             font-size:10px;
             padding:0px 3px;
         }
+        .MuiButton-label{
+            zoom:.9;
+        }
         
       }
   }
