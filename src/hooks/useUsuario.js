@@ -5,7 +5,6 @@ import {
   parsearErros,
   showFirstError,
 } from "../helpers/LoginAndSignUp";
-import useAlert from "./useAlert";
 import { useDispatch, useSelector } from "react-redux";
 import { RESET_ALL, SET_STATE, SET_STATES } from "../store/SignUp.actions";
 import { SET_STATE_USER } from "../store/App.actions";
@@ -13,7 +12,6 @@ import { selectAll } from "../store/SignUp.selectors";
 
 export default function useUsuario() {
   const navigate = useNavigate();
-  const { alertar } = useAlert();
   const Disparar = useDispatch();
   const dados_form_criar_conta = useSelector(selectAll);
   const store = useSelector(selectAll);
@@ -201,7 +199,7 @@ export default function useUsuario() {
         }
       },
     },
-    async criarConta(values, actions, LoadingLinear) {
+    async criarConta(values, actions, LoadingLinear, alertar) {
       LoadingLinear.mostrar();
       let res = await API.criarConta(values);
       console.log(res);
@@ -232,7 +230,6 @@ export default function useUsuario() {
           navigate("/");
           info.apagarDadosCriarConta();
         } else {
-          console.log(res.erro);
           alertar(res.msg, res.status, 4);
         }
       }
@@ -299,7 +296,7 @@ export default function useUsuario() {
       LoadingLinear.ocultar();
       setModal(false);
     },
-    async updatePerfil(values, actions, { setModal, LoadingLinear }) {
+    async updatePerfil(values, actions, { setModal, LoadingLinear, alertar }) {
       LoadingLinear.mostrar();
       let res = await API.alterarPerfil(values);
 

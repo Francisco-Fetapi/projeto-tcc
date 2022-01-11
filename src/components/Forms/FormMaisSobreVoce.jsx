@@ -13,13 +13,18 @@ import motivos from "../../mock/motivosAssistir.json";
 import LinearProgress from "../Progress/Linear.jsx";
 import useLinearProgress from "../../hooks/useLinearProgress";
 
+import Alerta from "../Alerta";
+import useAlert from "../../hooks/useAlert";
+
 export default function FormMaisSobreVoce() {
   const { criarConta } = useUsuario();
   const paisesArray = Object.keys(paises);
   const LoadingLinear = useLinearProgress();
+  const { alert, alertar, fechar } = useAlert();
   return (
     <MaisSobreVoce.Form>
       <LinearProgress aberto={LoadingLinear.loading} />
+      <Alerta alert={alert} fechar={fechar} />
       <Formik
         initialValues={{
           pais: paisesArray[0],
@@ -31,7 +36,7 @@ export default function FormMaisSobreVoce() {
           pra_que_assistir: "",
           biografia: "",
         }}
-        onSubmit={(v, a) => criarConta(v, a, LoadingLinear)}
+        onSubmit={(v, a) => criarConta(v, a, LoadingLinear, alertar)}
       >
         {({ values }) => (
           <Form autoComplete="off">

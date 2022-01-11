@@ -10,8 +10,6 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 
-import AlternateEmail from "@material-ui/icons/AlternateEmail";
-
 import { Formik, Form, useField } from "formik";
 import paises from "../../mock/paises.json";
 import generos from "../../mock/generos.json";
@@ -26,6 +24,9 @@ import useUsuario from "../../hooks/useUsuario";
 import LinearProgress from "../Progress/Linear.jsx";
 import useLinearProgress from "../../hooks/useLinearProgress";
 
+import Alerta from "../Alerta";
+import useAlert from "../../hooks/useAlert";
+
 function RadioGroup({ children, id }) {
   const [field] = useField({ name: id });
   return <RadioGroupMui {...field}>{children}</RadioGroupMui>;
@@ -36,14 +37,15 @@ export default function FormEditarPerfil({ setModal }) {
   const { updatePerfil } = useUsuario();
   const { usuario } = useSelector(selectAll);
   const LoadingLinear = useLinearProgress();
-
+  const { alert, alertar, fechar } = useAlert();
   function atualizarPerfil(values, actions) {
-    updatePerfil(values, actions, { setModal, LoadingLinear });
+    updatePerfil(values, actions, { setModal, LoadingLinear, alertar });
   }
 
   return (
     <>
       <LinearProgress aberto={LoadingLinear.loading} />
+      <Alerta alert={alert} fechar={fechar} />
       <Formik
         initialValues={{
           mini_biografia: usuario.mini_biografia,

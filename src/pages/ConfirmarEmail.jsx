@@ -40,7 +40,7 @@ export default function ConfirmarEmail1() {
         </Box>
       </Box>
       <Box mt={2} className="foto-e-form">
-        <Box>
+        <Box display="flex" flexDirection="column" alignItems="center">
           <img src={IMG_USER_PADRAO} alt="Imagem do usuario" />
           <Text variant="h6">{usuario.nome}</Text>
           <Text color="textSecondary" variant="subtitle2">
