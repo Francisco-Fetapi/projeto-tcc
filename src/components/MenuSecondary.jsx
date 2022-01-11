@@ -25,6 +25,7 @@ import Switch from "@material-ui/core/Switch";
 import FeedbackIcon from "@material-ui/icons/Feedback";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import PaletteIcon from "@material-ui/icons/Palette";
+import useUsuario from "../hooks/useUsuario";
 
 function Badge({ children, ...props }) {
   if (props.badgeContent === 0) {
@@ -37,6 +38,7 @@ export default function MenuSecondary_({ info }) {
   const theme = useTheme();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const { usuario } = useSelector(selectAll);
+  const { logout } = useUsuario();
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -142,7 +144,7 @@ export default function MenuSecondary_({ info }) {
                 </ListItemSecondaryAction>
               </ListItem>
               <Divider />
-              <ListItem style={{ paddingTop: 15 }}>
+              <ListItem style={{ paddingTop: 15 }} onClick={() => logout(true)}>
                 <ListItemAvatar>
                   <ExitToAppIcon />
                 </ListItemAvatar>

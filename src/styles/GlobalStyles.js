@@ -169,6 +169,13 @@ export const GlobalStyles = createGlobalStyle`
         user-select:none;
         li{
             cursor:pointer;
+            :active{
+                opacity:.7;
+            }
+        }
+        .MuiPaper-root{
+            left:915px;
+            min-width:420px;
         }
     }
     .fab-button{

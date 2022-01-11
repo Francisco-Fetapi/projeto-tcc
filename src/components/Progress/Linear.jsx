@@ -4,7 +4,7 @@ import LinearProgress from "@material-ui/core/LinearProgress";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    background: "rgba(0,0,0,.7)",
+    background: "#00000055",
     position: "fixed",
     top: 0,
     left: 0,
@@ -23,7 +23,7 @@ export default function LinearIndeterminate({ aberto }) {
     aberto && (
       <div className={classes.root}>
         <LinearProgress
-          color="secondary"
+          color="primary"
           style={{
             height: "5px",
           }}

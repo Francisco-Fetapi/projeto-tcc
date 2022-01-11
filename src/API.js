@@ -63,9 +63,11 @@ const API = {
     let { data } = await api.post("/login", values);
     return data;
   },
-  logout() {
+  async logout() {
+    let { data } = await api.get("/usuario/logout");
     api.defaults.params.token = null;
     localStorage.clear();
+    return data;
   },
   async getDadosUsuarioByToken(token) {
     let { data } = await api.get("/usuario/dados", { token });

@@ -18,7 +18,8 @@ export default function Header() {
   const { getInfoHeader } = useUsuario();
   const LoadingLinear = useLinearProgress();
   useEffect(() => {
-    getInfoHeader(setHeader, LoadingLinear);
+    console.log(header);
+    getInfoHeader(setHeader);
   }, []);
   const refresh = useCallback(
     () => getInfoHeader(setHeader, LoadingLinear),

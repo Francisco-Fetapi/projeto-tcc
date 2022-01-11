@@ -64,15 +64,16 @@ export default function useUsuario() {
       console.log(res);
     },
     async getInfoHeader(setState, LoadingLinear) {
-      LoadingLinear.mostrar();
+      LoadingLinear?.mostrar();
       let res = await API.getInfoHeader();
-      LoadingLinear.ocultar();
+      LoadingLinear?.ocultar();
       setState(res);
     },
-    logout() {
+    async logout(gotologin) {
       Disparar(SET_STATE("usuario", {}));
-      API.logout();
       console.log("deslogado");
+      if (gotologin) navigate("/login");
+      await API.logout();
     },
     async enviarDadosDaConta(values, actions, LoadingLinear) {
       if (info.logado) {
