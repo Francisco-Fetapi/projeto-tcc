@@ -71,6 +71,10 @@ const API = {
     let { data } = await api.get("/usuario/dados", { token });
     return data;
   },
+  async getInfoHeader() {
+    let { data } = await api.get("/usuario/info-header");
+    return data;
+  },
   async alterarFotoDeCapa(foto) {
     const formData = new FormData();
     formData.append("foto_de_capa", foto);

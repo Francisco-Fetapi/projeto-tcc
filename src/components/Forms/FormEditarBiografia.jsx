@@ -1,8 +1,7 @@
-import React, { useCallback } from "react";
+import React from "react";
 import Button from "@material-ui/core/Button";
 import TextField1 from "../TextField1";
 import Box from "@material-ui/core/Box";
-// import { FaVideo, FaPhotoVideo, FaEye } from "react-icons/fa";
 
 import { Formik, Form } from "formik";
 import useUsuario from "../../hooks/useUsuario";

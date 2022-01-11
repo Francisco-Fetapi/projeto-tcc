@@ -55,8 +55,19 @@ export default function useUsuario() {
     async getDadosUsuarioByToken() {
       const token = localStorage.getItem("token");
       let res = await API.getDadosUsuarioByToken(token);
-      Disparar(SET_STATE("usuario", res));
+      if (res.status === "success") {
+        Disparar(SET_STATE("usuario", res.data));
+      } else {
+        info.logout();
+        navigate("/login");
+      }
       console.log(res);
+    },
+    async getInfoHeader(setState, LoadingLinear) {
+      LoadingLinear.mostrar();
+      let res = await API.getInfoHeader();
+      LoadingLinear.ocultar();
+      setState(res);
     },
     logout() {
       Disparar(SET_STATE("usuario", {}));

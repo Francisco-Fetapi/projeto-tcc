@@ -10,7 +10,7 @@ import { MdGroup } from "react-icons/md";
 
 import { useLocation } from "react-router-dom";
 
-export default function Menu() {
+export default function Menu({ info }) {
   const { pathname } = useLocation();
   return (
     <MenuContainer>
@@ -27,18 +27,16 @@ export default function Menu() {
       <MenuItem
         rota="/amigos"
         active={"/amigos" === pathname}
-        badge={3}
+        badge={info.pedidos_de_amizade}
         badgeMax={9}
         icon={<FaUsers />}
       />
       <MenuItem
         rota="/videos"
         active={"/videos" === pathname}
-        badge={12}
-        badgeMax={9}
         icon={<FaTv />}
       />
-      <MenuItem rota="/" badge={1} badgeMax={15} icon={<MdGroup />} />
+      <MenuItem rota="/" icon={<MdGroup />} />
     </MenuContainer>
   );
 }

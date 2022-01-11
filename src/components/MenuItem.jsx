@@ -25,7 +25,7 @@ export default function MenuItem({
       color={theme.palette.primary.main}
       {...props}
     >
-      {badge && (
+      {badge > 0 && (
         <Badge max={badgeMax} badgeContent={badge}>
           {icon}
         </Badge>

@@ -1,7 +1,7 @@
 import React from "react";
 import { MenuSecondary, Text } from "../styles";
 import Box from "@material-ui/core/Box";
-import Badge from "@material-ui/core/Badge";
+import MuiBadge from "@material-ui/core/Badge";
 import IconButton from "@material-ui/core/IconButton";
 import useTheme from "@material-ui/core/styles/useTheme";
 
@@ -26,7 +26,14 @@ import FeedbackIcon from "@material-ui/icons/Feedback";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import PaletteIcon from "@material-ui/icons/Palette";
 
-export default function MenuSecondary_() {
+function Badge({ children, ...props }) {
+  if (props.badgeContent === 0) {
+    return children;
+  }
+  return <MuiBadge {...props}>{children}</MuiBadge>;
+}
+
+export default function MenuSecondary_({ info }) {
   const theme = useTheme();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const { usuario } = useSelector(selectAll);
@@ -53,7 +60,7 @@ export default function MenuSecondary_() {
             background: theme.palette.primary.main,
           }}
         >
-          <Badge max={9} badgeContent={1}>
+          <Badge max={9} badgeContent={info.mensagens}>
             <FaEnvelope color="white" />
           </Badge>
         </IconButton>
@@ -64,7 +71,7 @@ export default function MenuSecondary_() {
             background: theme.palette.primary.main,
           }}
         >
-          <Badge max={99} badgeContent={18}>
+          <Badge max={99} badgeContent={info.notificacoes}>
             <FaBell color="white" />
           </Badge>
         </IconButton>

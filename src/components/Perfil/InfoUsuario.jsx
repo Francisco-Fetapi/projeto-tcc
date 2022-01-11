@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, useCallback } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Text } from "../../styles";
 import { Perfil } from "../../styles/pages/Perfil";
 import Box from "@material-ui/core/Box";
