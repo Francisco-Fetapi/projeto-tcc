@@ -26,7 +26,9 @@ export default function Main() {
       <Box className="grid-2">
         <Box className="publicacoes-guardadas">
           <PublicacoesGuardadas />
-          <Favoritos />
+          <Box position="relative">
+            <Favoritos />
+          </Box>
         </Box>
         <Box>
           <MarcadosParaMaisTarde />

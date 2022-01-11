@@ -52,6 +52,24 @@ export const Perfil = {
         }
       }
     }
+    .favoritos.fixed {
+      position: fixed;
+      bottom: 0;
+      height: 100%;
+      overflow-y: auto;
+      padding-top: 90px;
+      padding-right: 30px;
+
+      &::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+        background: #d4d4d4;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 2px;
+      }
+    }
     .movies {
       width: 100%;
       max-width: 600px;

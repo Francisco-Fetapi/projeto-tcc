@@ -19,7 +19,7 @@ export default function ModalEsqueciAPasse(props) {
     <TemplateModal
       nomeModal="modalAlterarEmail"
       titulo="Alterar Email"
-      subtitulo="................"
+      subtitulo=""
       {...propsModal}
       {...props}
     >
