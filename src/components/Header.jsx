@@ -5,6 +5,9 @@ import Box from "@material-ui/core/Box";
 import MenuSecondary from "./MenuSecondary.jsx";
 import FormSearch from "./Forms/FormSearch";
 
+import Fab from "@material-ui/core/Fab";
+import RefreshIcon from "@material-ui/icons/Refresh";
+
 export default function Header() {
   return (
     <>
@@ -31,6 +34,9 @@ export default function Header() {
           marginBottom: "100px",
         }}
       />
+      <Fab color="primary" aria-label="add" className="fab-button">
+        <RefreshIcon />
+      </Fab>
     </>
   );
 }

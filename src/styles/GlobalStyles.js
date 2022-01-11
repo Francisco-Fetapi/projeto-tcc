@@ -171,4 +171,10 @@ export const GlobalStyles = createGlobalStyle`
             cursor:pointer;
         }
     }
+    .fab-button{
+        position: fixed;
+        z-index: 1;
+        bottom: 30px;
+        right: 30px;
+    }
 `;
