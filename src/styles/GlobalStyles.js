@@ -177,4 +177,12 @@ export const GlobalStyles = createGlobalStyle`
         bottom: 30px;
         right: 30px;
     }
+    .Mui-error{
+        .MuiInputAdornment-root{
+            color:#F44336;
+        }
+        svg{
+            color:inherit;
+        }
+    }
 `;

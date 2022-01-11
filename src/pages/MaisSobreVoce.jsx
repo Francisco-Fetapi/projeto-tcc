@@ -27,8 +27,9 @@ export default function MaisSobreVoce_() {
         <IconAndText Icon={FaInfoCircle} label="Mais sobre você" />
         <Box mt={1}>
           <Text align="center" variant="body1" color="textSecondary">
-            Os teus amigos precisarão saber mais de você do que apenas o seu
-            nome. Preencha os campos segunites para completar o processo
+            Preencha os campos abaixo pra completar o processo de criação do seu
+            perfil. Essas informações serão exibidas publicamente para todos os
+            usuários do sistema.
           </Text>
         </Box>
       </Box>

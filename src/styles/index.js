@@ -111,6 +111,7 @@ export const MaisSobreVoce = {
     align-items: center;
     min-height: 100vh;
     margin: 50px auto;
+    max-width: 720px;
 
     .form {
       width: 100%;
