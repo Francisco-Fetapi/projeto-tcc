@@ -19,21 +19,21 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Alerta() {
   const classes = useStyles();
-  const { alert, alert_msg, alert_status, alert_tempo, fechar } = useAlert();
+  const { alert, fechar } = useAlert();
 
   return (
     <div className={classes.root}>
       <Snackbar
-        open={alert}
-        autoHideDuration={alert_tempo * 1000}
+        open={alert.open}
+        autoHideDuration={alert.tempo * 1000}
         onClose={fechar}
         anchorOrigin={{
           vertical: "bottom",
           horizontal: "right",
         }}
       >
-        <Alert onClose={fechar} severity={alert_status || "info"}>
-          {alert_msg}
+        <Alert onClose={fechar} severity={alert.status || "info"}>
+          {alert.msg}
         </Alert>
       </Snackbar>
     </div>
