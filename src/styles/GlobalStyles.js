@@ -1,6 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 import { HeaderContainer } from "./";
 import { MainContainer } from "./pages/Home";
+import { LoginBanner } from "./pages/LoginAndSignUp";
 
 // const colorPrimary = "#303F9F";
 const colorPrimary = "#2196f3";
@@ -28,9 +29,13 @@ export const GlobalStyles = createGlobalStyle`
                 }
             }
         }
+        ${LoginBanner}{
+            box-shadow: none;
+        }
         .nome_usuario{
             color: #F0F0F0 !important;
         }
+        
     }
 
     form:not(.input-padrao){

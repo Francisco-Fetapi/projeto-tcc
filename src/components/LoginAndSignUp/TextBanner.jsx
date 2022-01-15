@@ -6,17 +6,19 @@ import {
 } from "../../styles/pages/LoginAndSignUp";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
-// import useModal from "../../hooks/useModal.js";
 import { useNavigate } from "react-router-dom";
 
+import useTheme from "@material-ui/core/styles/useTheme";
+
 export default function TextBanner() {
-  // const [, abrirModalSignUp] = useModal("modalSignUp");
   const navigate = useNavigate();
+  const theme = useTheme();
+
   function irParaSignUp() {
     navigate("/criar-conta");
   }
   return (
-    <BannerContainer>
+    <BannerContainer colorPrimary={theme.palette.primary.main}>
       <QuadradoBanner>Rede Social</QuadradoBanner>
       <Text className="titulo1" variant="subtitle2">
         Junte-se a nós

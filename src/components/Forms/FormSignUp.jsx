@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { Text } from "../../styles";
+import { Text, Link } from "../../styles";
 import { ContainerFormSignUp } from "../../styles/pages/LoginAndSignUp";
 import Box from "@material-ui/core/Box";
 import TextField1 from "../TextField1";
@@ -14,7 +14,6 @@ import FormLabel from "@material-ui/core/FormLabel";
 
 import AlternateEmail from "@material-ui/icons/AlternateEmail";
 
-import { Link } from "react-router-dom";
 import { Formik, Form, useField } from "formik";
 import useUsuario from "../../hooks/useUsuario";
 import { IMG_USER_PADRAO } from "../../API";

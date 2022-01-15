@@ -54,7 +54,7 @@ export const LoginBanner = styled.div`
 export const BannerContainer = styled.div`
   width: 75%;
   height: 85%;
-  background: #303f9fbb;
+  background: ${({ colorPrimary }) => colorPrimary + "dd"};
   color: #0f0f0f;
   padding: 20px 30px;
   display: flex;
@@ -88,7 +88,6 @@ export const QuadradoBanner = styled.div`
   padding: 10px;
   margin-bottom: 40px;
   text-transform: uppercase;
-  /* background:${({ background }) => background || "rgba(0,0,0,.8)"}; */
   background: rgba(255, 255, 255, 0.3);
   position: relative;
 

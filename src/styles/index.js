@@ -1,9 +1,13 @@
 import styled, { css } from "styled-components";
 import Typography from "@material-ui/core/Typography";
+import { Link as LinkRrd } from "react-router-dom";
 
 export const Text = styled(Typography)``;
 export const ContainerBase = styled.main`
   min-height: 100vh;
+`;
+export const Link = styled(LinkRrd)`
+  color: #4baeb9 !important;
 `;
 export const HeaderContainer = styled.div`
   background: #fff;
