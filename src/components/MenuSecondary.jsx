@@ -52,6 +52,11 @@ export default function MenuSecondary_({ info }) {
   }, []);
 
   const mudarTema = useCallback(() => {
+    if (!dark) {
+      localStorage.setItem("dark", true);
+    } else {
+      localStorage.removeItem("dark");
+    }
     Disparar(SET_STATE("dark", !dark));
   }, [dark]);
 

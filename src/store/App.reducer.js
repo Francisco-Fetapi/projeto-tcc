@@ -3,7 +3,7 @@ const initialState = {
   series: [],
   filmes: [],
   posts: [],
-  dark: true,
+  dark: JSON.parse(localStorage.getItem("dark")) || false,
 };
 
 export default function AppReducer(state = initialState, { payload, type }) {

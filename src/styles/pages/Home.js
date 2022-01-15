@@ -8,7 +8,8 @@ export const MainContainer = styled.div`
   margin-top: -30px;
 
   .item-usuario {
-    background: linear-gradient(150deg, #c5f0f2, #0e257f);
+    /* background: linear-gradient(150deg, #c5f0f2, #0e257f); */
+    background: linear-gradient(150deg, #2196f3, #4796f9);
     color: white;
   }
 
