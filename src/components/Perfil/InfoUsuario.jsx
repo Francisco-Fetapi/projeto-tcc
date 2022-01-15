@@ -142,7 +142,11 @@ export default function InfoUsuario() {
             )}
           </Box>
           <Box mt={2} display="flex" flexDirection="column">
-            <Text variant="h6" style={{ color: "#393939" }}>
+            <Text
+              variant="h6"
+              style={{ color: "#393939" }}
+              className="nome_usuario"
+            >
               {a_carregar ? (
                 <Skeleton variant="rect" width="70%" height={32} />
               ) : (
@@ -205,7 +209,7 @@ export default function InfoUsuario() {
           </Box>
         </Box>
         <Box className="mais_info_perfil">
-          <List>
+          <List style={{ zoom: 0.9 }}>
             <ListItemWithSkeleton
               a_carregar={a_carregar}
               Icon={Home}

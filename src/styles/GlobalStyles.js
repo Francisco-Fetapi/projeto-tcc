@@ -15,7 +15,7 @@ export const GlobalStyles = createGlobalStyle`
         }
         ${MainContainer}{
             .item-usuario {
-                background: linear-gradient(150deg, #0a0a0a 40%, #1c1f1f);
+                background: linear-gradient(150deg, #0a0a0a 40%, #2c2c2c);
             }
             .lista-atividades {
                 .nao-lida {
@@ -27,6 +27,9 @@ export const GlobalStyles = createGlobalStyle`
                     color:white;
                 }
             }
+        }
+        .nome_usuario{
+            color: #F0F0F0 !important;
         }
     }
 

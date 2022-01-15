@@ -44,7 +44,7 @@ export default function Sugestao({ usuario, setUsuarios }) {
                 PedidoDeAmizade.enviar({ setLoading, setUsuarios }, usuario.id)
               }
               variant="contained"
-              color="primary"
+              color="secondary"
               startIcon={<Add />}
             >
               Adicionar

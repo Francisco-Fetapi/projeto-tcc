@@ -15,6 +15,7 @@ export default function ListaPedidos() {
     speed: 300,
     slidesToShow: 2,
     slidesToScroll: 2,
+    arrows: false,
   };
   const { getPedidosDeAmizade } = useUsuario();
   const [pedidos, setPedidos] = useState([]);
