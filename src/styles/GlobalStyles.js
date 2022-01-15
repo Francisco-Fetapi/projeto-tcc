@@ -1,8 +1,35 @@
 import { createGlobalStyle } from "styled-components";
+import { HeaderContainer } from "./";
+import { MainContainer } from "./pages/Home";
 
-const colorPrimary = "#303F9F";
+// const colorPrimary = "#303F9F";
+const colorPrimary = "#2196f3";
 
 export const GlobalStyles = createGlobalStyle`
+
+    /* AJUSTES NO TEMA ESCURO */
+    .dark{
+        ${HeaderContainer}{
+            background: #1a1a1a;
+            box-shadow: 1px 1px 1px #1c1f1f;
+        }
+        ${MainContainer}{
+            .item-usuario {
+                background: linear-gradient(150deg, #0a0a0a 40%, #1c1f1f);
+            }
+            .lista-atividades {
+                .nao-lida {
+                    background: #1c1f1f !important;
+                }
+            }
+            .MuiAvatar-root{
+                svg{
+                    color:white;
+                }
+            }
+        }
+    }
+
     form:not(.input-padrao){
         .MuiFormControl-root{
         width:100%;
@@ -179,9 +206,6 @@ export const GlobalStyles = createGlobalStyle`
         .MuiPaper-root{
             left:915px;
             min-width:420px;
-        }
-        .MuiMenu-paper{
-            max-height:none;
         }
     }
     .fab-button{

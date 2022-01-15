@@ -5,6 +5,10 @@ import { createTheme } from "@material-ui/core/styles";
 import { useSelector } from "react-redux";
 import { selectAll } from "../store/App.selectors";
 
+import blue from "@material-ui/core/colors/blue";
+import deepOrange from "@material-ui/core/colors/deepOrange";
+// import green from "@material-ui/core/colors/green";
+
 export default function Theme({ children }) {
   const { dark } = useSelector(selectAll);
 
@@ -14,19 +18,15 @@ export default function Theme({ children }) {
     },
     palette: {
       type: dark ? "dark" : "light",
-      secondary: {
-        light: "#81c784",
-        main: "#4caf50",
-        dark: "#388e3c",
-        contrastText: "rgba(247, 247, 247, 0.939)",
-      },
+      primary: blue,
+      secondary: deepOrange,
     },
   });
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      {children}
+      <div className={dark ? "dark" : ""}>{children}</div>
     </ThemeProvider>
   );
 }
