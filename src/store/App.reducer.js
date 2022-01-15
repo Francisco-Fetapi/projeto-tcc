@@ -1,5 +1,8 @@
 const initialState = {
   usuario: {},
+  series: [],
+  filmes: [],
+  posts: [],
 };
 
 export default function AppReducer(state = initialState, { payload, type }) {
