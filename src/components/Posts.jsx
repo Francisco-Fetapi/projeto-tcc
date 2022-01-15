@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { IMG_USER_PADRAO } from "../API";
 import Post from "./Post";
+import usePosts from "../hooks/usePosts";
 
 export default function Posts() {
+  const { carregar } = usePosts();
+  useEffect(() => {
+    carregar();
+  }, []);
   const user = {
     nome: "Nome do usuario",
     foto: IMG_USER_PADRAO,

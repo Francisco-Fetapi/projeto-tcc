@@ -21,9 +21,7 @@ export default function MenuLeft() {
   const a_carregar = !series.length;
 
   useEffect(() => {
-    if (a_carregar) {
-      carregar();
-    }
+    carregar();
   }, []);
 
   return (
