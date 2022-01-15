@@ -19,6 +19,10 @@ import MenuItem from "@material-ui/core/MenuItem";
 import { Text } from "../styles";
 
 import { FaClock, FaGlobe } from "react-icons/fa";
+import { selectAll } from "../store/App.selectors";
+import { useSelector } from "react-redux";
+
+import Skeleton from "@material-ui/lab/Skeleton";
 
 function SubHeader({ tempo, publico }) {
   return (
@@ -53,6 +57,8 @@ export default function Post({
   img,
 }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const { posts } = useSelector(selectAll);
+  const a_carregar = !posts.length;
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -66,28 +72,54 @@ export default function Post({
       <Card className="post">
         <CardHeader
           avatar={
-            <img className="foto-user" src={user.foto} alt="foto do usuario" />
+            !a_carregar ? (
+              <img
+                className="foto-user"
+                src={user.foto}
+                alt="foto do usuario"
+              />
+            ) : (
+              <Skeleton variant="circle" width={45} height={45} />
+            )
           }
           action={
-            <IconButton onClick={handleClick}>
-              <MoreVertIcon />
-            </IconButton>
+            !a_carregar ? (
+              <IconButton onClick={handleClick}>
+                <MoreVertIcon />
+              </IconButton>
+            ) : null
           }
-          title={<Text>{user.nome}</Text>}
-          subheader={<SubHeader tempo={tempo} publico={publico} />}
+          title={
+            !a_carregar ? (
+              <Text>{user.nome}</Text>
+            ) : (
+              <Skeleton variant="text" width="40%" />
+            )
+          }
+          subheader={
+            !a_carregar ? (
+              <SubHeader tempo={tempo} publico={publico} />
+            ) : (
+              <Skeleton variant="text" width="20%" />
+            )
+          }
         />
         <CardContent>
-          <Typography variant="body2" color="textSecondary" component="p">
-            {children}
-          </Typography>
-          {img && (
+          {!a_carregar ? (
+            <Typography variant="body2" color="textSecondary" component="p">
+              {children}
+            </Typography>
+          ) : (
+            <Skeleton variant="rect" width="90%" height="95px" />
+          )}
+          {img && !a_carregar && (
             <Box mt={3} className="imagem-post">
               <img src={`./img/${img}`} alt="imagem" />
             </Box>
           )}
         </CardContent>
         <Box className="post-acoes">
-          {reacoes && (
+          {reacoes > 0 && !a_carregar && (
             <Box ml={2} mt={2} display="flex" justifyContent="flex-start">
               <Box>
                 <img src="./img/like.png" alt="like" />
@@ -98,17 +130,33 @@ export default function Post({
               </Box>
             </Box>
           )}
-          <Divider />
-          <ButtonGroup size="small" fullWidth>
-            <Button startIcon={<ThumbUpIcon />}>Gostar</Button>
+          {!a_carregar && <Divider />}
+          {!a_carregar ? (
+            <ButtonGroup size="small" fullWidth>
+              <Button startIcon={<ThumbUpIcon />}>Gostar</Button>
 
-            <Button startIcon={<ModeCommentIcon />}>
-              Comentar &nbsp;
-              <NumeroComentarios comentarios={comentarios} />
-            </Button>
+              <Button startIcon={<ModeCommentIcon />}>
+                Comentar &nbsp;
+                <NumeroComentarios comentarios={comentarios} />
+              </Button>
 
-            <Button startIcon={<SaveAltIcon />}>Guardar</Button>
-          </ButtonGroup>
+              <Button startIcon={<SaveAltIcon />}>Guardar</Button>
+            </ButtonGroup>
+          ) : (
+            <Box display="flex" height="40px" alignItems="center">
+              {[1, 2, 3].map((item) => (
+                <Box
+                  key={item}
+                  width="33.3%"
+                  display="flex"
+                  justifyContent="center"
+                  alignItems="center"
+                >
+                  <Skeleton variant="text" width="80px" />
+                </Box>
+              ))}
+            </Box>
+          )}
         </Box>
       </Card>
 
