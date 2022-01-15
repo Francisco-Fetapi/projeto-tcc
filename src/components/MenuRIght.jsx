@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -13,10 +13,18 @@ import { selectAll } from "../store/App.selectors";
 import { useSelector } from "react-redux";
 
 import Skeleton from "@material-ui/lab/Skeleton";
+import useMovies from "../hooks/useMovies";
 
 export default function MenuLeft() {
   const { series } = useSelector(selectAll);
+  const { carregar } = useMovies("series");
   const a_carregar = !series.length;
+
+  useEffect(() => {
+    if (a_carregar) {
+      carregar();
+    }
+  }, []);
 
   return (
     <>

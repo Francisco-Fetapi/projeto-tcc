@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Box from "@material-ui/core/Box";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -23,6 +23,7 @@ import { selectAll } from "../store/App.selectors";
 import { useSelector } from "react-redux";
 
 import Skeleton from "@material-ui/lab/Skeleton";
+import usePosts from "../hooks/usePosts";
 
 function SubHeader({ tempo, publico }) {
   return (
@@ -58,7 +59,14 @@ export default function Post({
 }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const { posts } = useSelector(selectAll);
+  const { carregar } = usePosts();
   const a_carregar = !posts.length;
+
+  useEffect(() => {
+    if (a_carregar) {
+      carregar();
+    }
+  }, []);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);

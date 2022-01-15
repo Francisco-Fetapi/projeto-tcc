@@ -12,6 +12,7 @@ export default function Posts() {
     <div>
       {[1, 2, 0, 3, 4].map((item) => (
         <Post
+          key={item}
           user={user}
           reacoes={item * 2}
           comentarios={item + item * 3}

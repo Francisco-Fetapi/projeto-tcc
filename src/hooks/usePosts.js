@@ -2,19 +2,14 @@ import { useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { SET_STATE } from "../store/App.actions";
 
-import series from "../mock/series.json";
-
-function useMovies(tipo) {
+function usePost() {
   const Disparar = useDispatch();
 
   const get = useCallback(() => {
-    return new Promise((res, rej) => {
+    return new Promise((res) => {
       setTimeout(() => {
-        res(series);
-      }, 5000);
-      if (series.lenght === 0) {
-        rej("error");
-      }
+        res([1, 2, 3]);
+      }, 6000);
     });
   }, []);
 
@@ -22,11 +17,11 @@ function useMovies(tipo) {
     async carregar() {
       const data = await get();
       console.log(data);
-      Disparar(SET_STATE(tipo, data));
+      Disparar(SET_STATE("posts", data));
     },
   };
 
   return dados;
 }
 
-export default useMovies;
+export default usePost;
