@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Box from "@material-ui/core/Box";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -18,7 +18,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 
 import { Text } from "../styles";
 
-import { FaClock, FaGlobe } from "react-icons/fa";
+import { FaClock, FaGlobe, FaUsers } from "react-icons/fa";
 import { selectAll } from "../store/App.selectors";
 import { useSelector } from "react-redux";
 
@@ -34,7 +34,7 @@ function SubHeader({ tempo, publico }) {
         </Text>
       </Box>
       <Box ml={3} display="flex" alignItems="center">
-        <FaGlobe />
+        {publico === "amigos" ? <FaUsers /> : <FaGlobe />}
         <Text variant="subtitle2" style={{ paddingLeft: 5 }}>
           {publico}
         </Text>
