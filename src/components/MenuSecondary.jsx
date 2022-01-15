@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { MenuSecondary, Text } from "../styles";
 import Box from "@material-ui/core/Box";
 import MuiBadge from "@material-ui/core/Badge";
@@ -26,6 +26,8 @@ import FeedbackIcon from "@material-ui/icons/Feedback";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import PaletteIcon from "@material-ui/icons/Palette";
 import useUsuario from "../hooks/useUsuario";
+import { useDispatch } from "react-redux";
+import { SET_STATE } from "../store/App.actions";
 
 function Badge({ children, ...props }) {
   if (props.badgeContent === 0) {
@@ -37,16 +39,22 @@ function Badge({ children, ...props }) {
 export default function MenuSecondary_({ info }) {
   const theme = useTheme();
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const { usuario } = useSelector(selectAll);
+  const { usuario, dark } = useSelector(selectAll);
   const { logout } = useUsuario();
+  const Disparar = useDispatch();
 
-  const handleClick = (event) => {
+  const handleClick = useCallback((event) => {
     setAnchorEl(event.currentTarget);
-  };
+  }, []);
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setAnchorEl(null);
-  };
+  }, []);
+
+  const mudarTema = useCallback(() => {
+    Disparar(SET_STATE("dark", !dark));
+  }, [dark]);
+
   return (
     <MenuSecondary>
       <Box
@@ -134,13 +142,13 @@ export default function MenuSecondary_({ info }) {
                 </ListItemText>
               </ListItem>
               <Divider />
-              <ListItem style={{ paddingTop: 15 }}>
+              <ListItem style={{ paddingTop: 15 }} onClick={mudarTema}>
                 <ListItemAvatar>
                   <PaletteIcon />
                 </ListItemAvatar>
                 <ListItemText>Modo escuro</ListItemText>
                 <ListItemSecondaryAction>
-                  <Switch color="primary" />
+                  <Switch color="primary" checked={dark} />
                 </ListItemSecondaryAction>
               </ListItem>
               <Divider />

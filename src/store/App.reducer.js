@@ -3,6 +3,7 @@ const initialState = {
   series: [],
   filmes: [],
   posts: [],
+  dark: true,
 };
 
 export default function AppReducer(state = initialState, { payload, type }) {
