@@ -180,6 +180,9 @@ export const GlobalStyles = createGlobalStyle`
             left:915px;
             min-width:420px;
         }
+        .MuiMenu-paper{
+            max-height:none;
+        }
     }
     .fab-button{
         position: fixed;
