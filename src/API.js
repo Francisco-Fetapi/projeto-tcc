@@ -15,6 +15,7 @@ const api = axios.create({
   params: {
     token: null,
   },
+  timeout: 99999999,
 });
 
 api.interceptors.request.use(
