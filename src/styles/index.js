@@ -23,6 +23,10 @@ export const HeaderContainer = styled.div`
   right: 0;
   z-index: 2;
 
+  svg {
+    zoom: 1.2;
+  }
+
   .MuiOutlinedInput-root {
     height: 45px;
     width: 100%;
