@@ -35,6 +35,9 @@ export const GlobalStyles = createGlobalStyle`
         .nome_usuario{
             color: #F0F0F0 !important;
         }
+        .sugestoes .sugestao figure{
+            background:#262626;
+        }
         
     }
 
