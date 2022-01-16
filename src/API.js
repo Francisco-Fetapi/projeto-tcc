@@ -1,6 +1,12 @@
 import axios from "axios";
 
-export const BASE_URL = "http://localhost:8000";
+const on_production = process.env.node_env === "production";
+
+export const BASE_URL = on_production
+  ? "http://localhost:8000"
+  : "https://socialmoviesspace.herokuapp.com";
+console.log(BASE_URL);
+
 export const IMG_USER_PADRAO = `${BASE_URL}/img/user.jpg`;
 export const IMG_CAPA_PADRAO = `${BASE_URL}/img/fundo-perfil.png`;
 
