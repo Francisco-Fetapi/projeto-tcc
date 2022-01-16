@@ -48,8 +48,8 @@ export default function Header() {
             <text
               transform="translate(2 26)"
               fill="#fff"
-              font-size="16"
-              font-family="ScriptMTBold, Script MT"
+              fontSize="16"
+              fontFamily="ScriptMTBold, Script MT"
             >
               <tspan x="0" y="0">
                 SMS

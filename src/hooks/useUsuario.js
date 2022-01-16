@@ -330,11 +330,11 @@ export default function useUsuario() {
     Galeria: {
       async guardar(file, { setPaginate, setLoading, setPreview }) {
         setLoading(true);
-        await API.addFotoNaGaleria(file);
+        const res = await API.addFotoNaGaleria(file);
         this.get({ setPaginate, setLoading }, 0);
         setLoading(false);
         setPreview("");
-        console.log("Guardou");
+        console.log(res);
       },
       async get({ setPaginate, setLoading }, page) {
         setLoading(true);
