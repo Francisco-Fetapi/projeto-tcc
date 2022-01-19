@@ -31,6 +31,11 @@ export const Container = styled(ContainerBase)`
         max-width: 450px;
       }
     }
+    @media (max-width: 370px) {
+      & {
+        margin: 0px;
+      }
+    }
   }
 `;
 export const LoginBanner = styled.div`
@@ -44,10 +49,15 @@ export const LoginBanner = styled.div`
   justify-content: center;
   align-items: center;
 
-  box-shadow: 8px 2px 80px #c4c4c4;
+  /* box-shadow: 8px 2px 80px #c4c4c4; */
   @media (max-width: 900px) {
     & {
       display: none;
+    }
+  }
+  @media (max-height: 450px) {
+    & {
+      height: auto;
     }
   }
 `;
@@ -133,6 +143,11 @@ export const ContainerFormLogin = styled.div`
   @media (max-width: 600px) {
     form {
       width: 80%;
+    }
+  }
+  @media (max-height: 450px) {
+    & {
+      margin: 20px auto;
     }
   }
 `;

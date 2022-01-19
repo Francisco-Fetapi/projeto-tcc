@@ -18,6 +18,7 @@ import { useSelector } from "react-redux";
 import { selectAll } from "../store/App.selectors";
 
 import Skeleton from "@material-ui/lab/Skeleton";
+import { primeiroEUltimoNome } from "../helpers";
 
 function ListItemWithSkeleton({ a_carregar, className, icon, label }) {
   return (
@@ -63,7 +64,13 @@ export default function MenuLeft() {
               </>
             </ListItemAvatar>
             <ListItemText
-              primary={a_carregar ? <Skeleton variant="text" /> : usuario.nome}
+              primary={
+                a_carregar ? (
+                  <Skeleton variant="text" />
+                ) : (
+                  primeiroEUltimoNome(usuario)
+                )
+              }
             />
           </ListItem>
           <ListItemWithSkeleton

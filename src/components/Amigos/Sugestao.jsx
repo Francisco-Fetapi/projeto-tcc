@@ -8,6 +8,8 @@ import Add from "@material-ui/icons/AddCircle";
 import { Text } from "../../styles";
 import { BASE_URL } from "../../API";
 
+import { primeiroEUltimoNome } from "../../helpers";
+
 import useUsuario from "../../hooks/useUsuario";
 
 export default function Sugestao({ usuario, setUsuarios }) {
@@ -25,7 +27,7 @@ export default function Sugestao({ usuario, setUsuarios }) {
         alignItems="center"
         mt={4.5}
       >
-        <Text align="center">{usuario.nome}</Text>
+        <Text align="center">{primeiroEUltimoNome(usuario)}</Text>
         <Box flexGrow={1} />
         <Text color="textSecondary" variant="subtitle2">
           {`de ${usuario.pais},${usuario.estado},${usuario.cidade}`}
