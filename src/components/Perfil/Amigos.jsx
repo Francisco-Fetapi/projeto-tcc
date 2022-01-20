@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import Paper from "@material-ui/core/Paper";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
-import { Text } from "../../styles";
+import { Text } from "~/styles";
 
 import Pagination from "@material-ui/lab/Pagination";
 import { useNavigate } from "react-router-dom";
-import useUsuario from "../../hooks/useUsuario";
+import useUsuario from "~/hooks/useUsuario";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Amigo from "./Amigo";
 

@@ -2,7 +2,7 @@ import React from "react";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import Publicacao from "./Publicacao";
-import { Text } from "../../styles";
+import { Text } from "~/styles";
 
 export default function PublicacoesGuardadas() {
   return (

@@ -11,21 +11,21 @@ import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 
 import { Formik, Form, useField } from "formik";
-import paises from "../../mock/paises.json";
-import generos from "../../mock/generos.json";
-import motivos from "../../mock/motivosAssistir.json";
-import { Text } from "../../styles";
+import paises from "~/mock/paises.json";
+import generos from "~/mock/generos.json";
+import motivos from "~/mock/motivosAssistir.json";
+import { Text } from "~/styles";
 import { FaUser } from "react-icons/fa";
 
 import { useSelector } from "react-redux";
-import { selectAll } from "../../store/App.selectors";
-import useUsuario from "../../hooks/useUsuario";
+import { selectAll } from "~/store/App.selectors";
+import useUsuario from "~/hooks/useUsuario";
 
 import LinearProgress from "../Progress/Linear.jsx";
-import useLinearProgress from "../../hooks/useLinearProgress";
+import useLinearProgress from "~/hooks/useLinearProgress";
 
 import Alerta from "../Alerta";
-import useAlert from "../../hooks/useAlert";
+import useAlert from "~/hooks/useAlert";
 
 function RadioGroup({ children, id }) {
   const [field] = useField({ name: id });

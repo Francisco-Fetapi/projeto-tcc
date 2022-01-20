@@ -5,12 +5,12 @@ import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 import Add from "@material-ui/icons/AddCircle";
-import { Text } from "../../styles";
-import { BASE_URL } from "../../API";
+import { Text } from "~/styles";
+import { BASE_URL } from "~/API";
 
-import { primeiroEUltimoNome } from "../../helpers";
+import { primeiroEUltimoNome } from "~/helpers";
 
-import useUsuario from "../../hooks/useUsuario";
+import useUsuario from "~/hooks/useUsuario";
 
 export default function Sugestao({ usuario, setUsuarios }) {
   const [loading, setLoading] = useState(false);

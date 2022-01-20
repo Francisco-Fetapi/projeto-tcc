@@ -4,12 +4,12 @@ import TextField1 from "../TextField1";
 import Box from "@material-ui/core/Box";
 
 import { Formik, Form } from "formik";
-import useUsuario from "../../hooks/useUsuario";
+import useUsuario from "~/hooks/useUsuario";
 
 import { useSelector } from "react-redux";
-import { selectAll } from "../../store/App.selectors";
+import { selectAll } from "~/store/App.selectors";
 import LinearProgress from "../Progress/Linear.jsx";
-import useLinearProgress from "../../hooks/useLinearProgress";
+import useLinearProgress from "~/hooks/useLinearProgress";
 
 export default function FormAddPost({ setModal }) {
   const { alterarBiografia } = useUsuario();

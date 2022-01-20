@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
-import { Text, Link } from "../../styles";
-import { ContainerFormSignUp } from "../../styles/pages/LoginAndSignUp";
+import { Text, Link } from "~/styles";
+import { ContainerFormSignUp } from "~/styles/pages/LoginAndSignUp";
 import Box from "@material-ui/core/Box";
 import TextField1 from "../TextField1";
 import { FaUserLock, FaUser, FaPlusCircle } from "react-icons/fa";
@@ -15,9 +15,9 @@ import FormLabel from "@material-ui/core/FormLabel";
 import AlternateEmail from "@material-ui/icons/AlternateEmail";
 
 import { Formik, Form, useField } from "formik";
-import useUsuario from "../../hooks/useUsuario";
-import { IMG_USER_PADRAO } from "../../API";
-import useLinearProgress from "../../hooks/useLinearProgress";
+import useUsuario from "~/hooks/useUsuario";
+import { IMG_USER_PADRAO } from "~/API";
+import useLinearProgress from "~/hooks/useLinearProgress";
 
 import LinearProgress from "../Progress/Linear.jsx";
 

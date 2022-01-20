@@ -1,8 +1,8 @@
 import React from "react";
-import { Text } from "../../styles";
+import { Text } from "~/styles";
 import Box from "@material-ui/core/Box";
 import Movie from "./Movie";
-import movies from "../../mock/series.json";
+import movies from "~/mock/series.json";
 
 import Slider from "react-slick";
 

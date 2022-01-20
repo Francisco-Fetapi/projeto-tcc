@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import Box from "@material-ui/core/Box";
 import Paper from "@material-ui/core/Paper";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import { Text } from "../../styles";
+import { Text } from "~/styles";
 import Sugestao from "./Sugestao";
 
 import Button from "@material-ui/core/Button";
-import useUsuario from "../../hooks/useUsuario";
-import { selectAll } from "../../store/App.selectors";
-import { primeiroNome } from "../../helpers";
+import useUsuario from "~/hooks/useUsuario";
+import { selectAll } from "~/store/App.selectors";
+import { primeiroNome } from "~/helpers";
 import { useSelector } from "react-redux";
 
 export default function ListaSugestoes() {

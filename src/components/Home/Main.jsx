@@ -1,5 +1,5 @@
 import React from "react";
-import { MainContainer } from "../../styles/pages/Home";
+import { MainContainer } from "~/styles/pages/Home";
 import MenuLeft from "../MenuLeft.jsx";
 import MenuRight from "../MenuRIght.jsx";
 import MainContent from "./MainContent";

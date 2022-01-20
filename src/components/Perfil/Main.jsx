@@ -1,5 +1,5 @@
 import React from "react";
-import { Perfil } from "../../styles/pages/Perfil";
+import { Perfil } from "~/styles/pages/Perfil";
 import Banner from "./Banner";
 import FotosEAmigos from "./FotosEAmigos";
 import InfoUsuario from "./InfoUsuario";
@@ -10,7 +10,7 @@ import MarcadosParaMaisTarde from "./MarcadosParaMaisTarde";
 import AddPost from "../AddPost";
 import Posts from "../Posts";
 import { useSelector } from "react-redux";
-import { selectAll } from "../../store/App.selectors";
+import { selectAll } from "~/store/App.selectors";
 
 import Skeleton from "@material-ui/lab/Skeleton";
 

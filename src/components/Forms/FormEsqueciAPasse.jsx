@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Text } from "../../styles";
-import { ContainerFormEsqueciAPasse } from "../../styles/pages/LoginAndSignUp";
+import { Text } from "~/styles";
+import { ContainerFormEsqueciAPasse } from "~/styles/pages/LoginAndSignUp";
 import Box from "@material-ui/core/Box";
 import TextField1 from "../TextField1";
 import { FaUserLock } from "react-icons/fa";
@@ -9,10 +9,10 @@ import AlternateEmail from "@material-ui/icons/AlternateEmail";
 import Security from "@material-ui/icons/Security";
 
 import { Formik, Form } from "formik";
-import useUsuario from "../../hooks/useUsuario";
+import useUsuario from "~/hooks/useUsuario";
 
 import LinearProgress from "../Progress/Linear.jsx";
-import useLinearProgress from "../../hooks/useLinearProgress";
+import useLinearProgress from "~/hooks/useLinearProgress";
 
 export default function FormEsqueciAPasse({ handleClose }) {
   const [form2, setForm2] = useState(false);

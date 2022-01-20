@@ -1,5 +1,5 @@
 import React from "react";
-import { Perfil } from "../../styles/pages/Perfil";
+import { Perfil } from "~/styles/pages/Perfil";
 import Amigos from "./Amigos";
 import Fotos from "./Fotos";
 

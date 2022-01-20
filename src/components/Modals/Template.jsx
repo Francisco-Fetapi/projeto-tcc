@@ -1,12 +1,12 @@
 import React from "react";
-import { Text } from "../../styles";
+import { Text } from "~/styles";
 import Dialog from "@material-ui/core/Dialog";
 import MuiDialogContent from "@material-ui/core/DialogContent";
 import withStyles from "@material-ui/styles/withStyles";
 import MuiDialogTitle from "@material-ui/core/DialogTitle";
 import IconButton from "@material-ui/core/IconButton";
 import Tooltip from "@material-ui/core/Tooltip";
-import { ModalSignUp } from "../../styles/pages/LoginAndSignUp";
+import { ModalSignUp } from "~/styles/pages/LoginAndSignUp";
 import CloseIcon from "@material-ui/icons/Close";
 import { useNavigate } from "react-router-dom";
 

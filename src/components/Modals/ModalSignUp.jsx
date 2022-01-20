@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import TemplateModal from "./Template.jsx";
 import { useNavigate } from "react-router-dom";
 import FormSignUp from "../Forms/FormSignUp.jsx";
-import { alterarLarguraDoModal } from "../../helpers/LoginAndSignUp";
+import { alterarLarguraDoModal } from "~/helpers/LoginAndSignUp";
 
 export default function ModalSignUp(props) {
   const navigate = useNavigate();

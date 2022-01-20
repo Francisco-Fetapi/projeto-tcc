@@ -1,18 +1,18 @@
 import React from "react";
-import { Text } from "../../styles";
-import { ConfirmarEmail } from "../../styles";
+import { Text } from "~/styles";
+import { ConfirmarEmail } from "~/styles";
 import Box from "@material-ui/core/Box";
 import TextField1 from "../TextField1";
 import Button from "@material-ui/core/Button";
 import Security from "@material-ui/icons/Security";
 
 import { Formik, Form } from "formik";
-import useUsuario from "../../hooks/useUsuario";
-import useLinearProgress from "../../hooks/useLinearProgress";
+import useUsuario from "~/hooks/useUsuario";
+import useLinearProgress from "~/hooks/useLinearProgress";
 import LinearProgress from "../Progress/Linear.jsx";
 
 import Alerta from "../Alerta";
-import useAlert from "../../hooks/useAlert";
+import useAlert from "~/hooks/useAlert";
 
 export default function FormConfirmarEmail() {
   const { verificarEmail, reenviarCodigo } = useUsuario();

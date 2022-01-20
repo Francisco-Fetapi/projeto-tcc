@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Paper from "@material-ui/core/Paper";
 import Box from "@material-ui/core/Box";
 import Tooltip from "@material-ui/core/Tooltip";
-import { Text } from "../../styles";
+import { Text } from "~/styles";
 import IconButton from "@material-ui/core/IconButton";
 
 import Pagination from "@material-ui/lab/Pagination";
@@ -15,7 +15,7 @@ import Foto from "./Foto";
 
 import Confirmar from "../Modals/ModalConfirmar";
 
-import useUsuario from "../../hooks/useUsuario";
+import useUsuario from "~/hooks/useUsuario";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 export default function Fotos() {

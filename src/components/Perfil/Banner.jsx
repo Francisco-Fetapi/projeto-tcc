@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { Perfil } from "../../styles/pages/Perfil";
+import { Perfil } from "~/styles/pages/Perfil";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import { FaCamera } from "react-icons/fa";
-import useUsuario from "../../hooks/useUsuario";
+import useUsuario from "~/hooks/useUsuario";
 import { useRef } from "react";
 
 import Done from "@material-ui/icons/Done";
 import Clear from "@material-ui/icons/Clear";
 import { useSelector } from "react-redux";
-import { selectAll } from "../../store/App.selectors";
+import { selectAll } from "~/store/App.selectors";
 import LinearProgress from "../Progress/Linear.jsx";
-import useLinearProgress from "../../hooks/useLinearProgress";
+import useLinearProgress from "~/hooks/useLinearProgress";
 
 export default function Banner() {
   const { usuario } = useSelector(selectAll);

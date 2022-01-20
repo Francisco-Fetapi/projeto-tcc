@@ -7,13 +7,13 @@ import Security from "@material-ui/icons/Security";
 import AlternateEmail from "@material-ui/icons/AlternateEmail";
 
 import { Formik, Form } from "formik";
-import useUsuario from "../../hooks/useUsuario";
+import useUsuario from "~/hooks/useUsuario";
 
 import { FaUserLock } from "react-icons/fa";
-import { Text } from "../../styles";
+import { Text } from "~/styles";
 
 import LinearProgress from "../Progress/Linear.jsx";
-import useLinearProgress from "../../hooks/useLinearProgress";
+import useLinearProgress from "~/hooks/useLinearProgress";
 
 export default function FormAlterarEmail({ setModal }) {
   const { alterarEmail } = useUsuario();

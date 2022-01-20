@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Box from "@material-ui/core/Box";
-import { Text } from "../../styles";
+import { Text } from "~/styles";
 import Pedido from "./Pedido";
 
 import Slider from "react-slick";
 
-import useUsuario from "../../hooks/useUsuario";
+import useUsuario from "~/hooks/useUsuario";
 import Skeleton from "@material-ui/lab/Skeleton";
 
 export default function ListaPedidos() {

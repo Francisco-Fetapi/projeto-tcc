@@ -1,20 +1,20 @@
 import React from "react";
-import { MaisSobreVoce } from "../../styles";
+import { MaisSobreVoce } from "~/styles";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
 import MenuItem from "@material-ui/core/MenuItem";
 import TextField1 from "../TextField1";
 
 import { Formik, Form } from "formik";
-import useUsuario from "../../hooks/useUsuario";
-import paises from "../../mock/paises.json";
-import generos from "../../mock/generos.json";
-import motivos from "../../mock/motivosAssistir.json";
+import useUsuario from "~/hooks/useUsuario";
+import paises from "~/mock/paises.json";
+import generos from "~/mock/generos.json";
+import motivos from "~/mock/motivosAssistir.json";
 import LinearProgress from "../Progress/Linear.jsx";
-import useLinearProgress from "../../hooks/useLinearProgress";
+import useLinearProgress from "~/hooks/useLinearProgress";
 
 import Alerta from "../Alerta";
-import useAlert from "../../hooks/useAlert";
+import useAlert from "~/hooks/useAlert";
 
 export default function FormMaisSobreVoce() {
   const { criarConta } = useUsuario();

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Text } from "../../styles";
-import { ContainerFormLogin } from "../../styles/pages/LoginAndSignUp";
+import { Text } from "~/styles";
+import { ContainerFormLogin } from "~/styles/pages/LoginAndSignUp";
 import Box from "@material-ui/core/Box";
 import TextField1 from "../TextField1";
 import { FaUserLock } from "react-icons/fa";
@@ -11,12 +11,12 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import { useNavigate } from "react-router-dom";
 
 import { Formik, Form } from "formik";
-import useUsuario from "../../hooks/useUsuario";
+import useUsuario from "~/hooks/useUsuario";
 import LinearProgress from "../Progress/Linear.jsx";
-import useLinearProgress from "../../hooks/useLinearProgress";
+import useLinearProgress from "~/hooks/useLinearProgress";
 
 import Alerta from "../Alerta";
-import useAlert from "../../hooks/useAlert";
+import useAlert from "~/hooks/useAlert";
 
 export default function FormLogin() {
   const [checked, setChecked] = useState(false);

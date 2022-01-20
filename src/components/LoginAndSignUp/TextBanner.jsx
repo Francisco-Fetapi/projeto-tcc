@@ -1,9 +1,6 @@
 import React from "react";
-import { Text } from "../../styles";
-import {
-  BannerContainer,
-  QuadradoBanner,
-} from "../../styles/pages/LoginAndSignUp";
+import { Text } from "~/styles";
+import { BannerContainer, QuadradoBanner } from "~/styles/pages/LoginAndSignUp";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import { useNavigate } from "react-router-dom";

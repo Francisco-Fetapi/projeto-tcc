@@ -5,7 +5,7 @@ import Box from "@material-ui/core/Box";
 // import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 // import Avatar from "@material-ui/core/Avatar";
 import VerERemover from "./VerERemover";
-import { Text } from "../../styles";
+import { Text } from "~/styles";
 
 export default function Favorito({ imgMovie }) {
   return (

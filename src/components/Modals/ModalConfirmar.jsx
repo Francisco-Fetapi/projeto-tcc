@@ -4,7 +4,7 @@ import Box from "@material-ui/core/Box";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
-import { Text } from "../../styles";
+import { Text } from "~/styles";
 import DialogTitle from "@material-ui/core/DialogTitle";
 
 export default function Confirmar({ onClose, open, children, onSim, onNao }) {

@@ -4,13 +4,13 @@ import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import useUsuario from "../../hooks/useUsuario";
+import useUsuario from "~/hooks/useUsuario";
 
-import { Text } from "../../styles";
+import { Text } from "~/styles";
 
 import Done from "@material-ui/icons/Done";
 import Clear from "@material-ui/icons/Clear";
-import { mostrarXCharOntText, primeiroEUltimoNome } from "../../helpers";
+import { mostrarXCharOntText, primeiroEUltimoNome } from "~/helpers";
 
 export default function Pedido({ user, setPedidos }) {
   const [loading, setLoading] = useState(false);

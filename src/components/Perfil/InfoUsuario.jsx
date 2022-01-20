@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
-import { Text } from "../../styles";
-import { Perfil } from "../../styles/pages/Perfil";
+import { Text } from "~/styles";
+import { Perfil } from "~/styles/pages/Perfil";
 import Box from "@material-ui/core/Box";
 import { FaCamera } from "react-icons/fa";
 import Button from "@material-ui/core/Button";
@@ -17,7 +17,7 @@ import ThumbDown from "@material-ui/icons/ThumbDown";
 import ThumbUp from "@material-ui/icons/ThumbUp";
 
 import { FaPencilAlt, FaPlus } from "react-icons/fa";
-import useUsuario from "../../hooks/useUsuario";
+import useUsuario from "~/hooks/useUsuario";
 import Done from "@material-ui/icons/Done";
 import Clear from "@material-ui/icons/Clear";
 import AccountCircle from "@material-ui/icons/AccountCircle";
@@ -27,13 +27,13 @@ import ModalEditarPerfil from "../Modals/ModalEditarPerfil";
 import ModalVerPerfil from "../Modals/ModalVerPerfil";
 import ModalAlterarEmail from "../Modals/ModalAlterarEmail";
 import { useSelector } from "react-redux";
-import { selectAll } from "../../store/App.selectors";
+import { selectAll } from "~/store/App.selectors";
 
 import Skeleton from "@material-ui/lab/Skeleton";
-import useModal from "../../hooks/useModal";
+import useModal from "~/hooks/useModal";
 
 import LinearProgress from "../Progress/Linear.jsx";
-import useLinearProgress from "../../hooks/useLinearProgress";
+import useLinearProgress from "~/hooks/useLinearProgress";
 
 function ListItemWithSkeleton({ a_carregar, className, Icon, children }) {
   if (a_carregar) {
