@@ -37,6 +37,12 @@ export const HeaderContainer = styled.div`
     .logo-e-form {
       display: none;
     }
+    & {
+      zoom: 0.75;
+    }
+    .menu-button-mobile {
+      zoom: 1.3;
+    }
     .menu-mobile {
       display: block !important;
     }

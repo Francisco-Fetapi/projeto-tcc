@@ -10,11 +10,8 @@ import ListItemText from "@material-ui/core/ListItemText";
 import MailIcon from "@material-ui/icons/Mail";
 import MenuIcon from "@material-ui/icons/Menu";
 
-import useTheme from "@material-ui/core/styles/useTheme";
-
 export default function MenuMobile() {
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const theme = useTheme();
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -34,7 +31,7 @@ export default function MenuMobile() {
       <Drawer
         // container={container}
         variant="temporary"
-        anchor={theme.direction === "rtl" ? "right" : "left"}
+        anchor="right"
         open={mobileOpen}
         onClose={handleDrawerToggle}
         classes={{
