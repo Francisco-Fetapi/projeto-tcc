@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { HeaderContainer } from "../styles";
 import Menu from "./Menu.jsx";
+import MenuMobile from "./MenuMobile";
 import Box from "@material-ui/core/Box";
 import MenuSecondary from "./MenuSecondary.jsx";
 import FormSearch from "./Forms/FormSearch";
@@ -71,6 +72,8 @@ export default function Header() {
         <Box className="menu-items-header-secondary">
           <MenuSecondary info={header} />
         </Box>
+
+        <MenuMobile info={header} />
       </HeaderContainer>
       <div
         style={{

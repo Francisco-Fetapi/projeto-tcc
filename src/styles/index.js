@@ -37,6 +37,9 @@ export const HeaderContainer = styled.div`
     .logo-e-form {
       display: none;
     }
+    .menu-mobile {
+      display: block !important;
+    }
   }
   svg {
     zoom: 1.2;
