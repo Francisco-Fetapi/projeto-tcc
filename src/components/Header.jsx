@@ -56,7 +56,6 @@ export default function Header() {
               </tspan>
             </text>
           </svg>
-          {/* <img src="./img/logo3.svg" alt="logo" style={{ zoom: "1.2" }} /> */}
           <FormSearch />
         </Box>
         <Box
