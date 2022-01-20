@@ -151,4 +151,12 @@ export const MainContainer = styled.div`
       width: 35%;
     }
   }
+  @media (max-width: 840px) {
+    & {
+      grid-template-columns: 1fr;
+    }
+    .menu-left {
+      display: none;
+    }
+  }
 `;

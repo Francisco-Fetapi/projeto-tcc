@@ -10,7 +10,7 @@ export default function FormSearch() {
     console.log(values);
   }
   return (
-    <Box ml={5}>
+    <Box ml={5} className="header-form-search">
       <Formik
         initialValues={{
           search: "",

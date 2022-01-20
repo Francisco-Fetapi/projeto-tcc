@@ -6,6 +6,8 @@ import Home from "@material-ui/icons/Home";
 import { FaUser } from "react-icons/fa";
 import { FaUsers } from "react-icons/fa";
 import { FaTv } from "react-icons/fa";
+import { FaEnvelope } from "react-icons/fa";
+import { FaBell } from "react-icons/fa";
 import { MdGroup } from "react-icons/md";
 
 import { useLocation } from "react-router-dom";
@@ -23,6 +25,22 @@ export default function Menu({ info }) {
         rota="/perfil"
         active={"/perfil" === pathname}
         icon={<FaUser style={{ fontSize: 28 }} />}
+      />
+      <MenuItem
+        rota="/mensagens"
+        active={"/mensagens" === pathname}
+        icon={<FaEnvelope style={{ fontSize: 28 }} />}
+        style={{ display: "none" }}
+        badge={info.mensagens}
+        badgeMax={9}
+      />
+      <MenuItem
+        rota="/notificacoes"
+        active={"/notificacoes" === pathname}
+        icon={<FaBell style={{ fontSize: 28 }} />}
+        style={{ display: "none" }}
+        badge={info.notificacoes}
+        badgeMax={99}
       />
       <MenuItem
         rota="/amigos"

@@ -23,6 +23,21 @@ export const HeaderContainer = styled.div`
   right: 0;
   z-index: 2;
 
+  @media (max-width: 946px) {
+    .header-form-search {
+      display: none;
+    }
+  }
+  @media (max-width: 700px) {
+    & {
+      zoom: 0.9;
+    }
+  }
+  @media (max-width: 615px) {
+    .logo-e-form {
+      display: none;
+    }
+  }
   svg {
     zoom: 1.2;
   }
@@ -42,6 +57,11 @@ export const MenuItemContainer = styled.div`
   padding: 0px 12px;
   margin: 0px 10px;
   cursor: pointer;
+  @media (max-width: 615px) {
+    & {
+      display: flex !important;
+    }
+  }
 
   ${({ active, color }) =>
     active &&
@@ -63,6 +83,11 @@ export const MenuItemContainer = styled.div`
 export const MenuSecondary = styled.div`
   display: flex;
   align-items: center;
+  @media (max-width: 615px) {
+    & {
+      display: none;
+    }
+  }
   .foto-user-nome {
     margin-right: 20px;
     img {

@@ -32,7 +32,7 @@ export default function Header() {
     <>
       <LinearProgress aberto={LoadingLinear.loading} />
       <HeaderContainer>
-        <Box display="flex" alignItems="center">
+        <Box className="logo-e-form" display="flex" alignItems="center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="40"
@@ -64,10 +64,11 @@ export default function Header() {
           display="flex"
           alignItems="center"
           justifyContent="center"
+          className="menu-items-header-main"
         >
           <Menu info={header} />
         </Box>
-        <Box>
+        <Box className="menu-items-header-secondary">
           <MenuSecondary info={header} />
         </Box>
       </HeaderContainer>
