@@ -47,6 +47,11 @@ export const HeaderContainer = styled.div`
       display: block !important;
     }
   }
+  @media (max-width: 575px) {
+    .menu-items-header-main {
+      justify-content: flex-start;
+    }
+  }
   svg {
     zoom: 1.2;
   }
@@ -60,6 +65,12 @@ export const MenuContainer = styled.div`
   display: flex;
   align-items: center;
   height: 100%;
+
+  @media (max-width: 575px) {
+    .menuItem-hide-on-mobile {
+      display: none !important;
+    }
+  }
 `;
 export const MenuItemContainer = styled.div`
   height: 100%;

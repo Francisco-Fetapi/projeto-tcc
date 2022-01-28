@@ -48,13 +48,19 @@ export default function Menu({ info }) {
         badge={info.pedidos_de_amizade}
         badgeMax={9}
         icon={<FaUsers />}
+        className="menuItem-hide-on-mobile"
       />
       <MenuItem
         rota="/videos"
         active={"/videos" === pathname}
         icon={<FaTv />}
+        className="menuItem-hide-on-mobile"
       />
-      <MenuItem rota="/" icon={<MdGroup />} />
+      <MenuItem
+        rota="/"
+        icon={<MdGroup />}
+        className="menuItem-hide-on-mobile"
+      />
     </MenuContainer>
   );
 }
