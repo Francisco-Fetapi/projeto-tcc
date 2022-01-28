@@ -14,6 +14,23 @@ export const Perfil = {
       grid-template-columns: auto 1fr;
       column-gap: 30px;
 
+      @media (max-width: 915px) {
+        & {
+          grid-template-columns: 1fr;
+          width: 100%;
+          justify-content: center;
+          max-width: 600px;
+          margin-left: auto;
+          margin-right: auto;
+          padding: 0 15px;
+          column-gap: 0px;
+        }
+      }
+      @media (max-width: 615px) {
+        & {
+          width: 80%;
+        }
+      }
       .MuiListItem-gutters {
         padding-left: 0px;
       }
@@ -21,6 +38,12 @@ export const Perfil = {
     .publicacoes-guardadas {
       width: 100%;
       max-width: 400px;
+      padding-left: 10px;
+      @media (max-width: 915px) {
+        &:not(.mobile) {
+          display: none;
+        }
+      }
       .MuiListItem-root {
         flex-direction: column;
       }
@@ -240,6 +263,7 @@ export const Perfil = {
         grid-template-columns: 1fr;
         max-width: 600px;
         margin: 0 auto;
+        justify-content: center;
       }
       .fotos,
       .amigos {
@@ -289,6 +313,12 @@ export const Perfil = {
       min-width: 460px;
       border-radius: 10px;
       position: relative;
+
+      @media (max-width: 630px) {
+        & {
+          min-width: auto;
+        }
+      }
 
       .fotos-grid {
         display: grid;

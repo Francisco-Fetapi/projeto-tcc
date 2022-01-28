@@ -14,6 +14,17 @@ import { selectAll } from "~/store/App.selectors";
 
 import Skeleton from "@material-ui/lab/Skeleton";
 
+function PubsSavedsAndFavoritos({ className }) {
+  return (
+    <Box className={`publicacoes-guardadas ${className}`}>
+      <PublicacoesGuardadas />
+      <Box position="relative">
+        <Favoritos />
+      </Box>
+    </Box>
+  );
+}
+
 export default function Main() {
   const { usuario } = useSelector(selectAll);
   const a_carregar = !usuario.id;
@@ -24,12 +35,7 @@ export default function Main() {
       <InfoUsuario />
       <FotosEAmigos />
       <Box className="grid-2">
-        <Box className="publicacoes-guardadas">
-          <PublicacoesGuardadas />
-          <Box position="relative">
-            <Favoritos />
-          </Box>
-        </Box>
+        <PubsSavedsAndFavoritos />
         <Box>
           <MarcadosParaMaisTarde />
           <Box my={10}>
