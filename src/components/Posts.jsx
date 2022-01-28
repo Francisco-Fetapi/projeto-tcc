@@ -12,6 +12,7 @@ export default function Posts() {
     nome: "Nome do usuario",
     foto: IMG_USER_PADRAO,
   };
+  const movie = ["invasion", "TWD", "spider-man", "matrix", "Lucifer"];
 
   return (
     <div>
@@ -23,6 +24,7 @@ export default function Posts() {
           comentarios={item + item * 3}
           tempo={`há ${item + 1} hora(s)`}
           publico={item % 2 ? "publico" : "amigos"}
+          img={item % 2 ? movie[item] + ".jpg" : null}
         >
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Placeat
           veritatis excepturi rerum sapiente nostrum, odit maiores delectus,
