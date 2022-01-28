@@ -195,3 +195,16 @@ export const MaisSobreVoce = {
   `,
   Form: styled.div``,
 };
+
+export const MenuItemMobileStyled = styled.div`
+  svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+  :first-child {
+    svg {
+      width: 24px !important;
+      height: 24px !important;
+    }
+  }
+`;

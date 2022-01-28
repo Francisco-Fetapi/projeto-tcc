@@ -239,4 +239,9 @@ export const GlobalStyles = createGlobalStyle`
             color:inherit;
         }
     }
+
+    .paper-drawer {
+        width: 100%;
+        max-width:380px;
+      }
 `;

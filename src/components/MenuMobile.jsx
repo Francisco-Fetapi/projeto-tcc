@@ -2,19 +2,27 @@ import React from "react";
 import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer";
 import IconButton from "@material-ui/core/IconButton";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
 import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
-import MailIcon from "@material-ui/icons/Mail";
-import MenuIcon from "@material-ui/icons/Menu";
 
-export default function MenuMobile() {
+import { useLocation } from "react-router-dom";
+
+import MenuIcon from "@material-ui/icons/Menu";
+import MenuItemMobile from "./MenuItemMobile";
+
+import Home from "@material-ui/icons/Home";
+import { FaUser } from "react-icons/fa";
+import { FaUsers } from "react-icons/fa";
+import { FaTv } from "react-icons/fa";
+import { FaEnvelope } from "react-icons/fa";
+import { FaBell } from "react-icons/fa";
+import { MdGroup } from "react-icons/md";
+
+export default function MenuMobile({ info }) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+  const { pathname } = useLocation();
 
   return (
     <div className="menu-mobile" style={{ display: "none" }}>
@@ -38,30 +46,60 @@ export default function MenuMobile() {
           paper: "paper-drawer",
         }}
         ModalProps={{
-          keepMounted: true, // Better open performance on mobile.
+          keepMounted: true,
         }}
       >
         <List>
-          {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
+          <MenuItemMobile
+            rota="/"
+            active={"/" === pathname}
+            icon={<Home />}
+            text="Página inicial"
+          />
+          <MenuItemMobile
+            rota="/perfil"
+            active={"/perfil" === pathname}
+            icon={<FaUser />}
+            text="Perfil"
+          />
+          <MenuItemMobile
+            rota="/mensagens"
+            active={"/mensagens" === pathname}
+            icon={<FaEnvelope />}
+            badge={info.mensagens}
+            badgeMax={9}
+            text="Mensagens"
+          />
+          <MenuItemMobile
+            rota="/notificacoes"
+            active={"/notificacoes" === pathname}
+            icon={<FaBell />}
+            badge={info.notificacoes}
+            badgeMax={99}
+            text="Notificações"
+          />
+          <MenuItemMobile
+            rota="/amigos"
+            active={"/amigos" === pathname}
+            badge={info.pedidos_de_amizade}
+            badgeMax={9}
+            icon={<FaUsers />}
+            text="Amigos"
+          />
+          <MenuItemMobile
+            rota="/videos"
+            active={"/videos" === pathname}
+            icon={<FaTv />}
+            text="Videos"
+          />
+          <MenuItemMobile
+            rota="/atores"
+            active={"/atores" === pathname}
+            icon={<MdGroup />}
+            text="Atores"
+          />
         </List>
         <Divider />
-        <List>
-          {["All mail", "Trash", "Spam"].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
       </Drawer>
     </div>
   );
