@@ -26,8 +26,7 @@ function Badge({ children, ...props }) {
 export default function MenuSecondary_({ info }) {
   const theme = useTheme();
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const { usuario, dark } = useSelector(selectAll);
-  const Disparar = useDispatch();
+  const { usuario } = useSelector(selectAll);
 
   const handleClick = useCallback((event) => {
     setAnchorEl(event.currentTarget);
@@ -36,15 +35,6 @@ export default function MenuSecondary_({ info }) {
   const handleClose = useCallback(() => {
     setAnchorEl(null);
   }, []);
-
-  const mudarTema = useCallback(() => {
-    if (!dark) {
-      localStorage.setItem("dark", true);
-    } else {
-      localStorage.removeItem("dark");
-    }
-    Disparar(SET_STATE("dark", !dark));
-  }, [dark]);
 
   return (
     <MenuSecondary>
@@ -88,8 +78,6 @@ export default function MenuSecondary_({ info }) {
         anchorEl={anchorEl}
         handleClose={handleClose}
         usuario={usuario}
-        dark={dark}
-        mudarTema={mudarTema}
       />
     </MenuSecondary>
   );
