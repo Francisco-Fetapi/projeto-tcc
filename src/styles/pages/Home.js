@@ -134,6 +134,12 @@ export const MainContainer = styled.div`
     width: 100%;
     max-width: 600px;
     margin: 0 auto;
+
+    @media (max-width: 545px) {
+      & {
+        padding: 15px;
+      }
+    }
     h5 {
       text-transform: uppercase;
       font-size: 22px;

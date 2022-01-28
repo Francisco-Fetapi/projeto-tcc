@@ -103,6 +103,7 @@ export const GlobalStyles = createGlobalStyle`
           padding:15px 20px;
           padding-bottom:0px;
           border-radius:20px;
+          
           img{
               width:60px;
               height:60px;
@@ -131,6 +132,11 @@ export const GlobalStyles = createGlobalStyle`
               }
               .MuiButton-root{
                   font-size:.75em;
+              }
+          }
+          @media(max-width:515px){
+              .buttons-post-videos{
+                  display:none;
               }
           }
       }
