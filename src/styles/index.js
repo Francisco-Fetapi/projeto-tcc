@@ -197,9 +197,12 @@ export const MaisSobreVoce = {
 };
 
 export const MenuItemMobileStyled = styled.div`
+  background: ${(props) => (props.active ? props.color : "")};
+  color: ${(props) => (props.active ? "#F0F0F0" : "")};
   svg {
     width: 20px !important;
     height: 20px !important;
+    color: ${(props) => (props.active ? "#F0F0F0" : "")};
   }
   :first-child {
     svg {

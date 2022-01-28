@@ -1,7 +1,6 @@
-import React, { useCallback } from "react";
+import React from "react";
 import Divider from "@material-ui/core/Divider";
 import Box from "@material-ui/core/Box";
-import Grid from "@material-ui/core/Grid";
 import Drawer from "@material-ui/core/Drawer";
 import IconButton from "@material-ui/core/IconButton";
 import List from "@material-ui/core/List";
@@ -27,7 +26,7 @@ import MenuHeaderInfo from "./MenuHeaderInfo";
 export default function MenuMobile({ info }) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
+    setMobileOpen((state) => !state);
   };
   const { pathname } = useLocation();
   const { usuario } = useSelector(selectAll);
