@@ -1,6 +1,5 @@
 import React from "react";
 
-import { Text } from "../styles";
 import Box from "@material-ui/core/Box";
 import Menu from "@material-ui/core/Menu";
 
@@ -30,11 +29,6 @@ export default function MenuDesktop({ anchorEl, handleClose, usuario }) {
         <MenuHeaderInfo usuario={usuario} />
         <Box>
           <MenuHeaderMain />
-        </Box>
-        <Box>
-          <Text align="center" color="textSecondary" variant="subtitle2">
-            Social Movies Space © {new Date().getFullYear()}
-          </Text>
         </Box>
       </Box>
     </Menu>

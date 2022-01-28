@@ -112,7 +112,7 @@ export default function MenuMobile({ info }) {
           />
         </List>
 
-        <Box>
+        <Box pb={2}>
           <MenuHeaderMain />
         </Box>
       </Drawer>

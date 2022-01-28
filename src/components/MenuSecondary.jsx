@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import { MenuSecondary, Text } from "../styles";
+import { MenuSecondary } from "../styles";
 import Box from "@material-ui/core/Box";
 import MuiBadge from "@material-ui/core/Badge";
 import IconButton from "@material-ui/core/IconButton";
@@ -12,8 +12,6 @@ import { FaChevronDown } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { selectAll } from "../store/App.selectors";
 
-import { useDispatch } from "react-redux";
-import { SET_STATE } from "../store/App.actions";
 import MenuDesktop from "./MenuDesktop";
 
 function Badge({ children, ...props }) {
