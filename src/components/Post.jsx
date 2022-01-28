@@ -42,10 +42,6 @@ function SubHeader({ tempo, publico }) {
     </Box>
   );
 }
-function NumeroComentarios({ comentarios }) {
-  if (!comentarios) return <span />;
-  return <b>({comentarios})</b>;
-}
 
 export default function Post({
   user,
@@ -119,26 +115,33 @@ export default function Post({
           )}
         </CardContent>
         <Box className="post-acoes">
-          {reacoes > 0 && !a_carregar && (
-            <Box ml={2} mt={2} display="flex" justifyContent="flex-start">
-              <Box>
-                <img src="./img/like.png" alt="like" />
-                <img src="./img/love.png" alt="love" />
+          <Box ml={2} mt={2} display="flex" justifyContent="space-between">
+            {reacoes > 0 && !a_carregar && (
+              <Box display="flex" alignItems="center">
+                <Box>
+                  <img src="./img/like.png" alt="like" />
+                  <img src="./img/love.png" alt="love" />
+                </Box>
+                <Box ml={0.5}>
+                  <Text>{reacoes}</Text>
+                </Box>
               </Box>
-              <Box ml={0.5}>
-                <Text>{reacoes}</Text>
+            )}
+            {comentarios > 0 && (
+              <Box mr={2}>
+                <Text color="textSecondary" variant="subtitle2">
+                  {comentarios} comentarios
+                </Text>
               </Box>
-            </Box>
-          )}
+            )}
+          </Box>
+
           {!a_carregar && <Divider />}
           {!a_carregar ? (
             <ButtonGroup size="small" fullWidth>
               <Button startIcon={<ThumbUpIcon />}>Gostar</Button>
 
-              <Button startIcon={<ModeCommentIcon />}>
-                Comentar &nbsp;
-                <NumeroComentarios comentarios={comentarios} />
-              </Button>
+              <Button startIcon={<ModeCommentIcon />}>Comentar</Button>
 
               <Button startIcon={<SaveAltIcon />}>Guardar</Button>
             </ButtonGroup>
