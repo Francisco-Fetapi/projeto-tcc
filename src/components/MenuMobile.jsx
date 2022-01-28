@@ -21,7 +21,7 @@ import { MdGroup } from "react-icons/md";
 import { selectAll } from "~/store/App.selectors";
 import { useSelector } from "react-redux";
 
-import { MenuHeaderMain } from "./MenuDesktop";
+import MenuHeaderMain from "./MenuHeaderMain";
 import MenuHeaderInfo from "./MenuHeaderInfo";
 
 export default function MenuMobile({ info }) {
