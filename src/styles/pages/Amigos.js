@@ -6,6 +6,12 @@ export const Amigos = {
   Container: styled.div`
     .main {
       padding: 30px 40px;
+
+      @media (max-width: 600px) {
+        & {
+          padding: 30px 15px;
+        }
+      }
     }
     .pedido {
       width: 100%;
