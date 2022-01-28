@@ -147,7 +147,8 @@ export const ContainerFormLogin = styled.div`
   }
   @media (max-height: 450px) {
     & {
-      margin: 20px auto;
+      margin-top: 20px;
+      margin-bottom: 20px;
     }
   }
 `;

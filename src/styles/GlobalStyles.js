@@ -241,7 +241,7 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     .paper-drawer {
-        width: 100%;
+        width: 90%;
         max-width:380px;
       }
 `;
