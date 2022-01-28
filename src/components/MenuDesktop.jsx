@@ -19,30 +19,7 @@ import useUsuario from "../hooks/useUsuario";
 import { useDispatch, useSelector } from "react-redux";
 import { SET_STATE } from "~/store/App.actions";
 import { selectAll } from "~/store/App.selectors";
-
-export function MenuHeaderInfo({ usuario }) {
-  return (
-    <Grid container spacing={1}>
-      <Grid item>
-        <img
-          src={usuario.foto_perfil}
-          alt="Foto do usuario"
-          width={64}
-          height={64}
-          style={{ borderRadius: "50%" }}
-        />
-      </Grid>
-      <Grid item>
-        <Box>
-          <Text>{usuario.nome}</Text>
-        </Box>
-        <Text color="textSecondary" variant="subtitle1">
-          {usuario.email}
-        </Text>
-      </Grid>
-    </Grid>
-  );
-}
+import MenuHeaderInfo from "./MenuHeaderInfo";
 
 export function MenuHeaderMain() {
   const Disparar = useDispatch();
