@@ -116,6 +116,12 @@ export const Perfil = {
     width: 90%;
     margin: 0 auto;
     margin-bottom: 30px;
+    @media (max-width: 890px) {
+      & {
+        grid-template-columns: 1fr;
+        row-gap: 10px;
+      }
+    }
     .foto-nome-bio {
       display: grid;
       grid-template-columns: auto 1fr;
@@ -229,6 +235,19 @@ export const Perfil = {
     gap: 10px;
     min-height: 420px;
 
+    @media (max-width: 990px) {
+      & {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      .fotos,
+      .amigos {
+        min-height: 300px;
+        padding-bottom: 80px !important;
+      }
+    }
+
     .progress {
       position: absolute;
       top: 0;
@@ -267,6 +286,7 @@ export const Perfil = {
       padding: 30px;
       padding-bottom: 5px;
       width: 100%;
+      min-width: 460px;
       border-radius: 10px;
       position: relative;
 
@@ -281,7 +301,7 @@ export const Perfil = {
         }
         figure {
           margin-left: 0px;
-          zoom: 0.8;
+          zoom: 0.75;
           figcaption p {
             font-weight: bold;
           }
@@ -394,6 +414,8 @@ export const Perfil = {
     .amigos {
       .fotos-grid {
         grid-template-columns: 1fr 1fr 1fr 1fr;
+        padding: 0px;
+        margin: 0px;
       }
     }
   `,
