@@ -28,7 +28,7 @@ export default function MenuItemMobile({
       <ListItem button key={text} onClick={goTo}>
         <ListItemIcon>{icon}</ListItemIcon>
         <ListItemText primary={text} />
-        {badge && badge > 0 && (
+        {badge != null && badge > 0 && (
           <ListItemSecondaryAction>
             <Badge badgeContent={badge} max={badgeMax}>
               <div style={{ marginRight: 20 }} />
