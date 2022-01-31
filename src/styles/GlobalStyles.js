@@ -8,6 +8,7 @@ const colorPrimary = "#2196f3";
 
 export const GlobalStyles = createGlobalStyle`
 
+
     /* AJUSTES NO TEMA ESCURO */
     .dark{
         ${HeaderContainer}{

@@ -268,7 +268,7 @@ export const Perfil = {
       .fotos,
       .amigos {
         min-height: 300px;
-        padding-bottom: 80px !important;
+        padding-bottom: 60px !important;
       }
     }
 
