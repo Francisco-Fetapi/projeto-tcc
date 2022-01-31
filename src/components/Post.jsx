@@ -127,7 +127,7 @@ export default function Post({
                 </Box>
               </Box>
             )}
-            {comentarios > 0 && (
+            {comentarios > 0 && !a_carregar && (
               <Box mr={2}>
                 <Text color="textSecondary" variant="subtitle2">
                   {comentarios} comentarios
