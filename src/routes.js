@@ -10,6 +10,7 @@ import Series from "./pages/Series";
 import Filmes from "./pages/Filmes";
 import Videos from "./pages/Videos";
 import Atores from "./pages/Atores";
+import LinhaDoTempo from "./pages/LinhaDoTempo";
 
 export default function routes() {
   return (
@@ -29,6 +30,7 @@ export default function routes() {
       <Route path="/filmes" element={<Filmes />} />
       <Route path="/videos" element={<Videos />} />
       <Route path="/atores" element={<Atores />} />
+      <Route path="/minha-linha-do-tempo" element={<LinhaDoTempo />} />
     </Routes>
   );
 }

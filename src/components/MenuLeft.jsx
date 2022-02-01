@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -56,6 +56,14 @@ export default function MenuLeft() {
   const a_carregar = !usuario.id;
   const fotoPerfil = usuario.foto_perfil;
   const [maisItens, setMaisItens] = useState(false);
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    const rotas_de_baixo = ["/atores", "/minha-linha-do-tempo"];
+    if (rotas_de_baixo.includes(pathname)) {
+      setMaisItens(true);
+    }
+  }, []);
 
   return (
     <>
