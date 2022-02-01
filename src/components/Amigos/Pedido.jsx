@@ -16,13 +16,28 @@ export default function Pedido({ user, setPedidos }) {
   const [loading, setLoading] = useState(false);
   const { PedidoDeAmizade } = useUsuario();
 
+  console.log(user);
   return (
     <Box className="pedido">
       <Paper variant="outlined" className="dados">
-        <Text variant="h6">{primeiroEUltimoNome(user)}</Text>
-        <Box mt={2}>
+        <Text variant="h6">
+          {mostrarXCharOntText(primeiroEUltimoNome(user), 18)}
+        </Text>
+        <Text variant="subtitle2" color="textSecondary">
+          {mostrarXCharOntText(user.email, 25)}
+        </Text>
+        <Text variant="subtitle2" color="textSecondary">
+          {mostrarXCharOntText(
+            `${user.pais}, ${user.estado}, ${user.cidade}`,
+            30
+          )}
+        </Text>
+        <Box mt={1}>
           <Text variant="subtitle2">
-            {mostrarXCharOntText(user.mini_biografia, 110)}
+            Gosta de: <b>{user.genero_favorito}</b>
+          </Text>
+          <Text variant="subtitle2">
+            Não gosta de: <b>{user.genero_n_favorito}</b>
           </Text>
         </Box>
         <Box component="figure">
