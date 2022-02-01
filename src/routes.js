@@ -8,6 +8,7 @@ import Perfil from "./pages/Perfil";
 import Amigos from "./pages/Amigos";
 import Series from "./pages/Series";
 import Filmes from "./pages/Filmes";
+import Videos from "./pages/Videos";
 
 export default function routes() {
   return (
@@ -25,6 +26,7 @@ export default function routes() {
       <Route path="/amigos" element={<Amigos />} />
       <Route path="/series" element={<Series />} />
       <Route path="/filmes" element={<Filmes />} />
+      <Route path="/videos" element={<Videos />} />
     </Routes>
   );
 }
