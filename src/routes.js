@@ -7,6 +7,7 @@ import MaisSobreVoce from "./pages/MaisSobreVoce";
 import Perfil from "./pages/Perfil";
 import Amigos from "./pages/Amigos";
 import Series from "./pages/Series";
+import Filmes from "./pages/Filmes";
 
 export default function routes() {
   return (
@@ -23,6 +24,7 @@ export default function routes() {
       <Route path="/perfil" element={<Perfil />} />
       <Route path="/amigos" element={<Amigos />} />
       <Route path="/series" element={<Series />} />
+      <Route path="/filmes" element={<Filmes />} />
     </Routes>
   );
 }
