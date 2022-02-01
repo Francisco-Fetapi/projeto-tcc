@@ -116,7 +116,7 @@ export default function Fotos() {
                 img={img.url_resized}
                 imgFull={img.url_original}
                 key={key}
-                tempo={key + 1}
+                tempo={img.tempo}
                 selecionar={() => {
                   setConfirm(true);
                   setFotoSelecionada(img.id);
@@ -130,7 +130,7 @@ export default function Fotos() {
                 img={img.url_resized}
                 imgFull={img.url_original}
                 key={key}
-                tempo={key + 1}
+                tempo={img.tempo}
                 selecionar={() => {
                   setConfirm(true);
                   setFotoSelecionada(img.id);

@@ -7,7 +7,12 @@ import { useNavigate } from "react-router-dom";
 export default function MenuHeaderInfo({ usuario }) {
   const navigate = useNavigate();
   return (
-    <Grid container spacing={1} onClick={() => navigate("/perfil")}>
+    <Grid
+      style={{ cursor: "pointer" }}
+      container
+      spacing={1}
+      onClick={() => navigate("/perfil")}
+    >
       <Grid item>
         <img
           src={usuario.foto_perfil}

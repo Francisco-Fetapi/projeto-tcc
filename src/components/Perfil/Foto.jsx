@@ -10,7 +10,7 @@ export default function Foto({ img, imgFull, selecionar, tempo, preview }) {
     <Box component="figure">
       <img src={img} alt="user" />
       <div className={`fundo-preto-1 ${preview ? "preview" : ""}`}>
-        {!preview && <p>Há {tempo} dia(s)</p>}
+        {!preview && <p>{tempo}</p>}
         {preview && "Pré-visualização"}
       </div>
       {!preview && (

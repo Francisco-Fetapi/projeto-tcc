@@ -119,8 +119,16 @@ export default function Post({
             {reacoes > 0 && !a_carregar && (
               <Box display="flex" alignItems="center">
                 <Box>
-                  <img src="./img/like.png" alt="like" />
-                  <img src="./img/love.png" alt="love" />
+                  <img
+                    src="./img/like.png"
+                    alt="like"
+                    style={{ filter: "hue-rotate(-45deg)" }}
+                  />
+                  <img
+                    src="./img/love.png"
+                    alt="love"
+                    style={{ filter: "hue-rotate(35deg)" }}
+                  />
                 </Box>
                 <Box ml={0.5}>
                   <Text>{reacoes}</Text>
