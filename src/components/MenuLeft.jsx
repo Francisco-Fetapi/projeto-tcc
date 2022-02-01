@@ -20,21 +20,22 @@ import { selectAll } from "../store/App.selectors";
 import Skeleton from "@material-ui/lab/Skeleton";
 import { primeiroEUltimoNome } from "../helpers";
 import { MdGroup } from "react-icons/md";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import useTheme from "@material-ui/core/styles/useTheme";
 
 function ListItemWithSkeleton({ a_carregar, className, icon, label, rota }) {
   const { pathname } = useLocation();
+  const navigate = useNavigate();
   const theme = useTheme();
   return (
-    // className={pathname===rota?"menu-left-item-active":""}
     <ListItem
       button
       style={
         pathname === rota && !a_carregar
-          ? { background: theme.palette.primary.main }
+          ? { background: theme.palette.primary.main, pointerEvents: "none" }
           : {}
       }
+      onClick={() => navigate(rota)}
     >
       <ListItemAvatar>
         <Avatar className={!a_carregar ? className : "skeleton"}>

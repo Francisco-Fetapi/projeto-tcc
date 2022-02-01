@@ -6,6 +6,7 @@ import ConfirmarEmail from "./pages/ConfirmarEmail";
 import MaisSobreVoce from "./pages/MaisSobreVoce";
 import Perfil from "./pages/Perfil";
 import Amigos from "./pages/Amigos";
+import Series from "./pages/Series";
 
 export default function routes() {
   return (
@@ -21,6 +22,7 @@ export default function routes() {
       <Route path="/mais-sobre-voce" element={<MaisSobreVoce />} />
       <Route path="/perfil" element={<Perfil />} />
       <Route path="/amigos" element={<Amigos />} />
+      <Route path="/series" element={<Series />} />
     </Routes>
   );
 }
