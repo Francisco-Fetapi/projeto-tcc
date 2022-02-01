@@ -9,6 +9,7 @@ import Amigos from "./pages/Amigos";
 import Series from "./pages/Series";
 import Filmes from "./pages/Filmes";
 import Videos from "./pages/Videos";
+import Atores from "./pages/Atores";
 
 export default function routes() {
   return (
@@ -27,6 +28,7 @@ export default function routes() {
       <Route path="/series" element={<Series />} />
       <Route path="/filmes" element={<Filmes />} />
       <Route path="/videos" element={<Videos />} />
+      <Route path="/atores" element={<Atores />} />
     </Routes>
   );
 }
