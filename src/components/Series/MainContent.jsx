@@ -1,9 +1,6 @@
 import React from "react";
+import PaginaEmConstrucao from "../PaginaEmConstrucao";
 
 export default function MainContent() {
-  return (
-    <div style={{ padding: 20 }}>
-      <h1>Página "Séries"</h1>
-    </div>
-  );
+  return <PaginaEmConstrucao pagina="Series" />;
 }
