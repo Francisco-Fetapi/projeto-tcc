@@ -2,6 +2,7 @@ import { createGlobalStyle } from "styled-components";
 import { HeaderContainer } from "./";
 import { MainContainer } from "./pages/Home";
 import { LoginBanner } from "./pages/LoginAndSignUp";
+import { NotFound } from "./pages/NotFound";
 
 // const colorPrimary = "#303F9F";
 const colorPrimary = "#2196f3";
@@ -38,6 +39,12 @@ export const GlobalStyles = createGlobalStyle`
         }
         .sugestoes .sugestao figure{
             background:#262626;
+        }
+
+        ${NotFound.Container}{
+            h1{
+                text-shadow: 1px 1px 1px white;
+            }
         }
         
     }

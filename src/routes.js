@@ -12,6 +12,8 @@ import Videos from "./pages/Videos";
 import Atores from "./pages/Atores";
 import LinhaDoTempo from "./pages/LinhaDoTempo";
 
+import NotFound from "./pages/NotFound";
+
 export default function routes() {
   return (
     <Routes>
@@ -31,6 +33,8 @@ export default function routes() {
       <Route path="/videos" element={<Videos />} />
       <Route path="/atores" element={<Atores />} />
       <Route path="/minha-linha-do-tempo" element={<LinhaDoTempo />} />
+
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }
