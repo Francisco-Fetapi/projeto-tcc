@@ -20,10 +20,22 @@ import { selectAll } from "../store/App.selectors";
 import Skeleton from "@material-ui/lab/Skeleton";
 import { primeiroEUltimoNome } from "../helpers";
 import { MdGroup } from "react-icons/md";
+import { useLocation } from "react-router-dom";
+import useTheme from "@material-ui/core/styles/useTheme";
 
-function ListItemWithSkeleton({ a_carregar, className, icon, label }) {
+function ListItemWithSkeleton({ a_carregar, className, icon, label, rota }) {
+  const { pathname } = useLocation();
+  const theme = useTheme();
   return (
-    <ListItem button>
+    // className={pathname===rota?"menu-left-item-active":""}
+    <ListItem
+      button
+      style={
+        pathname === rota && !a_carregar
+          ? { background: theme.palette.primary.main }
+          : {}
+      }
+    >
       <ListItemAvatar>
         <Avatar className={!a_carregar ? className : "skeleton"}>
           {!a_carregar && icon}
@@ -80,24 +92,28 @@ export default function MenuLeft() {
             label="Series"
             className="avatar_series"
             icon={<SerieIcon />}
+            rota="/series"
           />
           <ListItemWithSkeleton
             a_carregar={a_carregar}
             label="Filmes"
             className="avatar_filmes"
             icon={<FilmeIcon />}
+            rota="/filmes"
           />
           <ListItemWithSkeleton
             a_carregar={a_carregar}
             label="Amigos"
             className="avatar_amigos"
             icon={<FaUsers />}
+            rota="/amigos"
           />
           <ListItemWithSkeleton
             a_carregar={a_carregar}
             label="Videos"
             className="avatar_videos"
             icon={<FaTv />}
+            rota="/videos"
           />
           {maisItens && (
             <>
@@ -106,12 +122,14 @@ export default function MenuLeft() {
                 label="Atores"
                 className="avatar_atores"
                 icon={<MdGroup />}
+                rota="/atores"
               />
               <ListItemWithSkeleton
                 a_carregar={a_carregar}
                 label="Linha do tempo"
                 className="avatar_tempo"
                 icon={<FaClock />}
+                rota="/minha-linha-do-tempo"
               />
             </>
           )}
@@ -122,7 +140,7 @@ export default function MenuLeft() {
                   <FaChevronDown
                     style={{
                       transition: "all 1s ease-in-out",
-                      transform: `rotate(${maisItens ? "0" : "-180deg"})`,
+                      transform: `rotate(${!maisItens ? "0" : "-180deg"})`,
                     }}
                   />
                 </Avatar>

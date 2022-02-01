@@ -118,6 +118,10 @@ export const MainContainer = styled.div`
   .menu-left {
     left: 0;
     right: auto;
+
+    /* .menu-left-item-active{
+      background:;
+    } */
   }
   .menu-right {
     padding-top: 30px;
