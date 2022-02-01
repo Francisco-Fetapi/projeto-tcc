@@ -14,14 +14,18 @@ import { useSelector } from "react-redux";
 
 import Skeleton from "@material-ui/lab/Skeleton";
 import useMovies from "../hooks/useMovies";
+import useUsuario from "../hooks/useUsuario";
 
 export default function MenuLeft() {
   const { series } = useSelector(selectAll);
   const { carregar } = useMovies("series");
+  const { logado } = useUsuario();
   const a_carregar = !series.length;
 
   useEffect(() => {
-    carregar();
+    if (logado) {
+      carregar();
+    }
   }, []);
 
   return (

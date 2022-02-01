@@ -2,11 +2,15 @@ import React, { useEffect } from "react";
 import { IMG_USER_PADRAO } from "../API";
 import Post from "./Post";
 import usePosts from "../hooks/usePosts";
+import useUsuario from "~/hooks/useUsuario";
 
 export default function Posts() {
   const { carregar } = usePosts();
+  const { logado } = useUsuario();
   useEffect(() => {
-    carregar();
+    if (logado) {
+      carregar();
+    }
   }, []);
   const user = {
     nome: "Nome do usuario",
