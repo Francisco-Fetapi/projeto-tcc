@@ -160,6 +160,9 @@ export const MainContainer = styled.div`
     & {
       grid-template-columns: 1fr 2fr;
     }
+    &:last-child {
+      margin-left: 30px;
+    }
     .menu-right {
       display: none;
     }
@@ -171,6 +174,7 @@ export const MainContainer = styled.div`
     & {
       grid-template-columns: 1fr;
     }
+
     .menu-left {
       display: none;
     }

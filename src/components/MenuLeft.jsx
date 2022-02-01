@@ -32,7 +32,11 @@ function ListItemWithSkeleton({ a_carregar, className, icon, label, rota }) {
       button
       style={
         pathname === rota && !a_carregar
-          ? { background: theme.palette.primary.main, pointerEvents: "none" }
+          ? {
+              background: theme.palette.primary.main,
+              pointerEvents: "none",
+              color: "white",
+            }
           : {}
       }
       onClick={() => navigate(rota)}
