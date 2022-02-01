@@ -27,7 +27,7 @@ import ModalEditarPerfil from "../Modals/ModalEditarPerfil";
 import ModalVerPerfil from "../Modals/ModalVerPerfil";
 import ModalAlterarEmail from "../Modals/ModalAlterarEmail";
 import { useSelector } from "react-redux";
-import { selectAll } from "~/store/App.selectors";
+import { selectAppState } from "~/store/App.selectors";
 
 import Skeleton from "@material-ui/lab/Skeleton";
 import useModal from "~/hooks/useModal";
@@ -61,7 +61,7 @@ export default function InfoUsuario() {
   const [modal3, abrirModal3, , setModal3] = useModal();
   const [modal4, abrirModal4, , setModal4] = useModal();
 
-  const { usuario } = useSelector(selectAll);
+  const usuario = useSelector(selectAppState("usuario"));
 
   const fotoPerfilInicial = usuario.foto_perfil || "";
   const a_carregar = !usuario.id;

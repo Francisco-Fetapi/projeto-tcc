@@ -7,13 +7,13 @@ import { Formik, Form } from "formik";
 import useUsuario from "~/hooks/useUsuario";
 
 import { useSelector } from "react-redux";
-import { selectAll } from "~/store/App.selectors";
+import { selectAppState } from "~/store/App.selectors";
 import LinearProgress from "../Progress/Linear.jsx";
 import useLinearProgress from "~/hooks/useLinearProgress";
 
 export default function FormAddPost({ setModal }) {
   const { alterarBiografia } = useUsuario();
-  const { usuario } = useSelector(selectAll);
+  const usuario = useSelector(selectAppState("usuario"));
   const LoadingLinear = useLinearProgress();
 
   function alterar(values, actions) {

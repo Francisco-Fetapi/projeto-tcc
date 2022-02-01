@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import { SET_STATE } from "../store/App.actions";
-import { selectAll } from "../store/App.selectors";
+import { selectAppState } from "../store/App.selectors";
 
 export default function useLinearProgress() {
   const Disparar = useDispatch();
-  const estado = useSelector(selectAll);
+  const estado = useSelector(selectAppState("circularProgress"));
 
   const aberto = estado.circularProgress;
 

@@ -8,11 +8,11 @@ import "slick-carousel/slick/slick-theme.css";
 import useUsuario from "./hooks/useUsuario";
 import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { selectAll } from "./store/App.selectors";
+import { selectAppState } from "./store/App.selectors";
 
 function App() {
   const { getDadosUsuarioByToken, token, logado } = useUsuario();
-  const { usuario } = useSelector(selectAll);
+  const usuario = useSelector(selectAppState("usuario"));
   const { pathname } = useLocation();
   const routes_not_user = ["/login", "/signup"];
   useEffect(() => {

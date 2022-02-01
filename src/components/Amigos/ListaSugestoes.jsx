@@ -7,13 +7,13 @@ import Sugestao from "./Sugestao";
 
 import Button from "@material-ui/core/Button";
 import useUsuario from "~/hooks/useUsuario";
-import { selectAll } from "~/store/App.selectors";
+import { selectAppState } from "~/store/App.selectors";
 import { primeiroNome } from "~/helpers";
 import { useSelector } from "react-redux";
 
 export default function ListaSugestoes() {
   const { getSugestoes } = useUsuario();
-  const { usuario } = useSelector(selectAll);
+  const usuario = useSelector(selectAppState("usuario"));
   const [paginate, setPaginate] = useState({
     current_page: 1,
     last_page: 1,

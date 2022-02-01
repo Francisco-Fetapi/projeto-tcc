@@ -18,7 +18,7 @@ import { Text } from "~/styles";
 import { FaUser } from "react-icons/fa";
 
 import { useSelector } from "react-redux";
-import { selectAll } from "~/store/App.selectors";
+import { selectAppState } from "~/store/App.selectors";
 import useUsuario from "~/hooks/useUsuario";
 
 import LinearProgress from "../Progress/Linear.jsx";
@@ -35,7 +35,7 @@ function RadioGroup({ children, id }) {
 export default function FormEditarPerfil({ setModal }) {
   const paisesArray = Object.keys(paises);
   const { updatePerfil } = useUsuario();
-  const { usuario } = useSelector(selectAll);
+  const usuario = useSelector(selectAppState("usuario"));
   const LoadingLinear = useLinearProgress();
   const { alert, alertar, fechar } = useAlert();
   function atualizarPerfil(values, actions) {

@@ -19,7 +19,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import { Text } from "../styles";
 
 import { FaClock, FaGlobe, FaUsers } from "react-icons/fa";
-import { selectAll } from "../store/App.selectors";
+import { selectAppState } from "../store/App.selectors";
 import { useSelector } from "react-redux";
 
 import Skeleton from "@material-ui/lab/Skeleton";
@@ -53,7 +53,7 @@ export default function Post({
   img,
 }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const { posts } = useSelector(selectAll);
+  const posts = useSelector(selectAppState("posts"));
   const a_carregar = !posts.length;
 
   const handleClick = (event) => {

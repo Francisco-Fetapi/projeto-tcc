@@ -12,12 +12,12 @@ import AddCircle from "@material-ui/icons/AddCircle";
 import { Formik, Form } from "formik";
 
 import { useSelector } from "react-redux";
-import { selectAll } from "~/store/App.selectors";
+import { selectAppState } from "~/store/App.selectors";
 
 import Skeleton from "@material-ui/lab/Skeleton";
 
 export default function FormAddPost() {
-  const { usuario } = useSelector(selectAll);
+  const usuario = useSelector(selectAppState("usuario"));
   const fotoPerfil = usuario.foto_perfil;
 
   const a_carregar = !usuario.id;

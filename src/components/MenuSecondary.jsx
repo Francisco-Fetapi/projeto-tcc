@@ -10,7 +10,7 @@ import { FaBell } from "react-icons/fa";
 import { FaChevronDown } from "react-icons/fa";
 
 import { useSelector } from "react-redux";
-import { selectAll } from "../store/App.selectors";
+import { selectAppState } from "../store/App.selectors";
 
 import MenuDesktop from "./MenuDesktop";
 
@@ -24,7 +24,7 @@ function Badge({ children, ...props }) {
 export default function MenuSecondary_({ info }) {
   const theme = useTheme();
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const { usuario } = useSelector(selectAll);
+  const usuario = useSelector(selectAppState("usuario"));
 
   const handleClick = useCallback((event) => {
     setAnchorEl(event.currentTarget);

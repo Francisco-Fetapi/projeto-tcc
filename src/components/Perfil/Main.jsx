@@ -10,7 +10,7 @@ import MarcadosParaMaisTarde from "./MarcadosParaMaisTarde";
 import AddPost from "../AddPost";
 import Posts from "../Posts";
 import { useSelector } from "react-redux";
-import { selectAll } from "~/store/App.selectors";
+import { selectAppState } from "~/store/App.selectors";
 
 import Skeleton from "@material-ui/lab/Skeleton";
 
@@ -26,7 +26,7 @@ function PubsSavedsAndFavoritos({ className }) {
 }
 
 export default function Main() {
-  const { usuario } = useSelector(selectAll);
+  const usuario = useSelector(selectAppState("usuario"));
   const a_carregar = !usuario.id;
   return (
     <Perfil.Container>

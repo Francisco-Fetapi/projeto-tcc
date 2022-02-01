@@ -5,11 +5,11 @@ import { useEffect } from "react";
 import { alterarLarguraDoModal } from "~/helpers/LoginAndSignUp";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { selectAll } from "~/store/App.selectors";
+import { selectAppState } from "~/store/App.selectors";
 
 export default function ModalEditarPerfil(props) {
   const [propsModal, setPropsModal] = useState({});
-  const { usuario } = useSelector(selectAll);
+  const usuario = useSelector(selectAppState("usuario"));
 
   useEffect(() => {
     window.onresize = () => alterarLarguraDoModal(setPropsModal, 410);

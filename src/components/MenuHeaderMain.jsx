@@ -14,13 +14,13 @@ import PaletteIcon from "@material-ui/icons/Palette";
 import useUsuario from "../hooks/useUsuario";
 import { useDispatch, useSelector } from "react-redux";
 import { SET_STATE } from "~/store/App.actions";
-import { selectAll } from "~/store/App.selectors";
+import { selectAppState } from "~/store/App.selectors";
 import { Text } from "~/styles";
 import { useNavigate } from "react-router-dom";
 
 export default function MenuHeaderMain() {
   const Disparar = useDispatch();
-  const { dark } = useSelector(selectAll);
+  const dark = useSelector(selectAppState("dark"));
   const { logout } = useUsuario();
   const navigate = useNavigate();
   const mudarTema = useCallback(() => {

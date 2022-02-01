@@ -6,13 +6,13 @@ import FormAddPost from "./Forms/FormAddPost";
 
 import { useSelector } from "react-redux";
 import Skeleton from "@material-ui/lab/Skeleton";
-import { selectAll } from "../store/App.selectors";
+import { selectAppState } from "../store/App.selectors";
 
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 
 export default function AddPost() {
-  const { usuario } = useSelector(selectAll);
+  const usuario = useSelector(selectAppState("usuario"));
   const a_carregar = !usuario.id;
 
   const [anchorEl, setAnchorEl] = React.useState(null);

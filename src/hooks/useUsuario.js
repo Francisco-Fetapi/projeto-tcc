@@ -14,7 +14,6 @@ export default function useUsuario() {
   const navigate = useNavigate();
   const Disparar = useDispatch();
   const dados_form_criar_conta = useSelector(selectAll);
-  const store = useSelector(selectAll);
 
   let info = {};
 
@@ -116,7 +115,7 @@ export default function useUsuario() {
           navigate("/mais-sobre-voce");
         }, 3000);
       }
-      console.log(store);
+      
     },
     async reenviarCodigo(LoadingLinear, alertar) {
       LoadingLinear.mostrar();

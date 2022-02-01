@@ -17,7 +17,7 @@ import { FaTv } from "react-icons/fa";
 import { FaEnvelope } from "react-icons/fa";
 import { FaBell } from "react-icons/fa";
 import { MdGroup } from "react-icons/md";
-import { selectAll } from "~/store/App.selectors";
+import { selectAppState } from "~/store/App.selectors";
 import { useSelector } from "react-redux";
 
 import MenuHeaderMain from "./MenuHeaderMain";
@@ -29,7 +29,7 @@ export default function MenuMobile({ info }) {
     setMobileOpen((state) => !state);
   };
   const { pathname } = useLocation();
-  const { usuario } = useSelector(selectAll);
+  const usuario = useSelector(selectAppState("usuario"));
 
   return (
     <div className="menu-mobile" style={{ display: "none" }}>

@@ -9,12 +9,12 @@ import { useRef } from "react";
 import Done from "@material-ui/icons/Done";
 import Clear from "@material-ui/icons/Clear";
 import { useSelector } from "react-redux";
-import { selectAll } from "~/store/App.selectors";
+import { selectAppState } from "~/store/App.selectors";
 import LinearProgress from "../Progress/Linear.jsx";
 import useLinearProgress from "~/hooks/useLinearProgress";
 
 export default function Banner() {
-  const { usuario } = useSelector(selectAll);
+  const usuario = useSelector(selectAppState("usuario"));
   const { exibirFoto2ASerAlterada, alterarFotoDeCapa } = useUsuario();
   const fotoCapaInicial = usuario.foto_capa || "";
   const inputFile = useRef();

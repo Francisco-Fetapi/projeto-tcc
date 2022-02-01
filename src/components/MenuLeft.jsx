@@ -15,7 +15,7 @@ import SerieIcon from "@material-ui/icons/OndemandVideo";
 import FilmeIcon from "@material-ui/icons/Videocam";
 
 import { useSelector } from "react-redux";
-import { selectAll } from "../store/App.selectors";
+import { selectAppState } from "../store/App.selectors";
 
 import Skeleton from "@material-ui/lab/Skeleton";
 import { primeiroEUltimoNome } from "../helpers";
@@ -56,7 +56,7 @@ function ListItemWithSkeleton({ a_carregar, className, icon, label, rota }) {
 }
 
 export default function MenuLeft() {
-  const { usuario } = useSelector(selectAll);
+  const usuario = useSelector(selectAppState("usuario"));
   const a_carregar = !usuario.id;
   const fotoPerfil = usuario.foto_perfil;
   const [maisItens, setMaisItens] = useState(false);

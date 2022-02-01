@@ -3,11 +3,11 @@ import Box from "@material-ui/core/Box";
 import { Text } from "~/styles";
 import { Perfil } from "~/styles/pages/Perfil";
 import { useSelector } from "react-redux";
-import { selectAll } from "~/store/App.selectors";
+import { selectAppState } from "~/store/App.selectors";
 import { formatarData } from "~/helpers";
 
 export default function InfoPerfil() {
-  const { usuario } = useSelector(selectAll);
+  const usuario = useSelector(selectAppState("usuario"));
 
   return (
     <Perfil.InfoPerfil>

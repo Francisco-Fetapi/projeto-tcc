@@ -9,17 +9,19 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 
 import { Text } from "../styles";
-import { selectAll } from "../store/App.selectors";
+import { selectAppState } from "../store/App.selectors";
 import { useSelector } from "react-redux";
 
 import Skeleton from "@material-ui/lab/Skeleton";
 import useMovies from "../hooks/useMovies";
 import useUsuario from "../hooks/useUsuario";
+import { useNavigate } from "react-router-dom";
 
 export default function MenuLeft() {
-  const { series } = useSelector(selectAll);
+  const series = useSelector(selectAppState("series"));
   const { carregar } = useMovies("series");
   const { logado } = useUsuario();
+  const navigate = useNavigate();
   const a_carregar = !series.length;
 
   useEffect(() => {
@@ -66,7 +68,11 @@ export default function MenuLeft() {
             ))}
         </List>
         <Box my={1} display="flex" justifyContent="center">
-          {!a_carregar && <Button color="primary">Ver mais séries</Button>}
+          {!a_carregar && (
+            <Button color="primary" onClick={() => navigate("/series")}>
+              Ver mais séries
+            </Button>
+          )}
         </Box>
         <br />
         <Divider />
@@ -108,7 +114,11 @@ export default function MenuLeft() {
             ))}
         </List>
         <Box my={1} display="flex" justifyContent="center">
-          {!a_carregar && <Button color="primary">Ver mais filmes</Button>}
+          {!a_carregar && (
+            <Button color="primary" onClick={() => navigate("/filmes")}>
+              Ver mais filmes
+            </Button>
+          )}
         </Box>
       </div>
     </>
