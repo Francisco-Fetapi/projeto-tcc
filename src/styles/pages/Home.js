@@ -59,6 +59,12 @@ export const MainContainer = styled.div`
     .MuiAvatar-root.avatar_videos {
       background: linear-gradient(121deg, cyan, #0e257f);
     }
+    .MuiAvatar-root.avatar_atores {
+      background: linear-gradient(121deg, #fa1a2a, #0e257f);
+    }
+    .MuiAvatar-root.avatar_tempo {
+      background: linear-gradient(121deg, #ff5af5, #0e257f);
+    }
     .lista-atividades {
       .nao-lida {
         background: #ddd !important;

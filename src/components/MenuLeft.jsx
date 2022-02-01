@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -8,7 +8,7 @@ import Divider from "@material-ui/core/Divider";
 
 import AtividadesRecentes from "./AtividadesRecentes";
 
-import { FaUsers } from "react-icons/fa";
+import { FaClock, FaUsers } from "react-icons/fa";
 import { FaTv } from "react-icons/fa";
 import { FaChevronDown } from "react-icons/fa";
 import SerieIcon from "@material-ui/icons/OndemandVideo";
@@ -19,6 +19,7 @@ import { selectAll } from "../store/App.selectors";
 
 import Skeleton from "@material-ui/lab/Skeleton";
 import { primeiroEUltimoNome } from "../helpers";
+import { MdGroup } from "react-icons/md";
 
 function ListItemWithSkeleton({ a_carregar, className, icon, label }) {
   return (
@@ -41,6 +42,7 @@ export default function MenuLeft() {
   const { usuario } = useSelector(selectAll);
   const a_carregar = !usuario.id;
   const fotoPerfil = usuario.foto_perfil;
+  const [maisItens, setMaisItens] = useState(false);
 
   return (
     <>
@@ -97,14 +99,35 @@ export default function MenuLeft() {
             className="avatar_videos"
             icon={<FaTv />}
           />
+          {maisItens && (
+            <>
+              <ListItemWithSkeleton
+                a_carregar={a_carregar}
+                label="Atores"
+                className="avatar_atores"
+                icon={<MdGroup />}
+              />
+              <ListItemWithSkeleton
+                a_carregar={a_carregar}
+                label="Linha do tempo"
+                className="avatar_tempo"
+                icon={<FaClock />}
+              />
+            </>
+          )}
           {!a_carregar && (
-            <ListItem button>
+            <ListItem button onClick={() => setMaisItens((state) => !state)}>
               <ListItemAvatar>
                 <Avatar>
-                  <FaChevronDown />
+                  <FaChevronDown
+                    style={{
+                      transition: "all 1s ease-in-out",
+                      transform: `rotate(${maisItens ? "0" : "-180deg"})`,
+                    }}
+                  />
                 </Avatar>
               </ListItemAvatar>
-              <ListItemText primary="Ver mais" />
+              <ListItemText primary={maisItens ? "Ver menos" : "Ver mais"} />
             </ListItem>
           )}
           <br />

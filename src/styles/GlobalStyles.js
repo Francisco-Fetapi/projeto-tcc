@@ -26,7 +26,7 @@ export const GlobalStyles = createGlobalStyle`
             }
             .MuiAvatar-root{
                 svg{
-                    color:white;
+                    color:white !important;
                 }
             }
         }

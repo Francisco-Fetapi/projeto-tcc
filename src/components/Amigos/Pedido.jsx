@@ -16,7 +16,6 @@ export default function Pedido({ user, setPedidos }) {
   const [loading, setLoading] = useState(false);
   const { PedidoDeAmizade } = useUsuario();
 
-  console.log(user);
   return (
     <Box className="pedido">
       <Paper variant="outlined" className="dados">
