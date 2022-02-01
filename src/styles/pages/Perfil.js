@@ -58,8 +58,8 @@ export const Perfil = {
           border-radius: 50%;
         }
         .img {
-          width: 90px;
-          height: 90px;
+          width: 80px;
+          height: 80px;
         }
         .info {
           margin-left: -20px;

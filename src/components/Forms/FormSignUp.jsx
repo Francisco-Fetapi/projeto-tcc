@@ -146,9 +146,19 @@ export default function FormSignUp({ handleClose }) {
             <Box my={2}>
               <Text variant="subtitle2" color="textSecondary">
                 Ao clicares em Regista-te, aceitas os nossos{" "}
-                <Link to="/">Termos</Link>, a nossa
-                <Link to="/"> Política de privacidade</Link> e a nossa{" "}
-                <Link to="/"> Política de cookies</Link>{" "}
+                <Link target="__blank" to="/sobre#termos">
+                  Termos
+                </Link>
+                , a nossa
+                <Link target="__blank" to="/sobre#politica-de-privacidade">
+                  {" "}
+                  Política de privacidade
+                </Link>{" "}
+                e a nossa{" "}
+                <Link target="__blank" to="/sobre#politica-de-cookies">
+                  {" "}
+                  Política de cookies
+                </Link>{" "}
               </Text>
             </Box>
 

@@ -16,11 +16,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { SET_STATE } from "~/store/App.actions";
 import { selectAll } from "~/store/App.selectors";
 import { Text } from "~/styles";
+import { useNavigate } from "react-router-dom";
 
 export default function MenuHeaderMain() {
   const Disparar = useDispatch();
   const { dark } = useSelector(selectAll);
   const { logout } = useUsuario();
+  const navigate = useNavigate();
   const mudarTema = useCallback(() => {
     if (!dark) {
       localStorage.setItem("dark", true);
@@ -33,7 +35,7 @@ export default function MenuHeaderMain() {
     <>
       <List style={{ userSelect: "none", cursor: "pointer" }}>
         <Divider />
-        <ListItem>
+        <ListItem onClick={() => navigate("/sobre#feedback")}>
           <ListItemAvatar>
             <FeedbackIcon />
           </ListItemAvatar>
