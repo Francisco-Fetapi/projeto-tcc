@@ -105,8 +105,9 @@ export const Perfil = {
       /* display: flex !important;
       flex-flow: row wrap; */
       display: grid !important;
-      grid-template-columns: 1fr 1fr 1fr;
       padding: 0 20px;
+      grid-template-columns: repeat(3, 1fr);
+
       cursor: grabbing;
     }
     .movie {
@@ -134,6 +135,19 @@ export const Perfil = {
 
         :hover {
           background: rgba(0, 0, 0, 0.8);
+        }
+      }
+    }
+
+    .marcados_pra_mais_tarde_box {
+      @media (max-width: 495px) {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        .lista-movies {
+          grid-template-columns: auto auto auto;
+          justify-content: center;
+          padding: 0px;
         }
       }
     }
