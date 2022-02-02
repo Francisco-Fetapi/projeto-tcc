@@ -38,9 +38,17 @@ export default function Main() {
         <PubsSavedsAndFavoritos />
         <Box>
           <MarcadosParaMaisTarde />
+          <Box mt={8} className="posts-desktop">
+            <Box>
+              <AddPost />
+            </Box>
+            <Box>
+              <Posts />
+            </Box>
+          </Box>
         </Box>
       </Box>
-      <Box className="grid-2">
+      <Box className="grid-2 posts-mobile">
         <Box>
           <AddPost />
         </Box>

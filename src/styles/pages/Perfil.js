@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 export const Perfil = {
   Container: styled.div`
+    overflow-x: hidden;
     width: 100%;
     max-width: 1000px;
     margin: 0 auto;
@@ -100,10 +101,12 @@ export const Perfil = {
       @media (max-width: 620px) {
         zoom: 0.8;
       }
+      @media (max-width: 475px) {
+        width: auto !important;
+        max-width: auto !important;
+      }
     }
     .lista-movies {
-      /* display: flex !important;
-      flex-flow: row wrap; */
       display: grid !important;
       padding: 0 20px;
       grid-template-columns: repeat(3, 1fr);
@@ -149,6 +152,28 @@ export const Perfil = {
           justify-content: center;
           padding: 0px;
         }
+      }
+      /* @media (max-width: 450px) {
+        grid-template-columns: auto auto;
+      } */
+    }
+    .posts-desktop {
+      display: block;
+      padding: 0 30px;
+
+      @media (max-width: 965px) {
+        padding: 0 70px;
+      }
+    }
+    .posts-mobile {
+      display: none;
+    }
+    @media (max-width: 530px) {
+      .posts-desktop {
+        display: none;
+      }
+      .posts-mobile {
+        display: block;
       }
     }
   `,
