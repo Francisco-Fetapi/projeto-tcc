@@ -34,18 +34,20 @@ export default function Main() {
       {a_carregar && <Skeleton variant="rect" width="100%" height={300} />}
       <InfoUsuario />
       <FotosEAmigos />
-      {/* <Box className="grid-2">
+      <Box className="grid-2">
         <PubsSavedsAndFavoritos />
         <Box>
           <MarcadosParaMaisTarde />
-          <Box my={10}>
-            <AddPost />
-          </Box>
-          <Box>
-            <Posts />
-          </Box>
         </Box>
-      </Box> */}
+      </Box>
+      <Box className="grid-2">
+        <Box>
+          <AddPost />
+        </Box>
+        <Box>
+          <Posts />
+        </Box>
+      </Box>
     </Perfil.Container>
   );
 }

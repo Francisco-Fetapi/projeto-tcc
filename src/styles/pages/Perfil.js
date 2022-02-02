@@ -26,11 +26,11 @@ export const Perfil = {
           column-gap: 0px;
         }
       }
-      @media (max-width: 615px) {
+      /* @media (max-width: 615px) {
         & {
           width: 80%;
         }
-      }
+      } */
       .MuiListItem-gutters {
         padding-left: 0px;
       }
@@ -96,14 +96,21 @@ export const Perfil = {
     .movies {
       width: 100%;
       max-width: 600px;
+
+      @media (max-width: 620px) {
+        zoom: 0.8;
+      }
     }
     .lista-movies {
-      display: flex !important;
-      flex-flow: row wrap;
+      /* display: flex !important;
+      flex-flow: row wrap; */
+      display: grid !important;
+      grid-template-columns: 1fr 1fr 1fr;
+      padding: 0 20px;
       cursor: grabbing;
     }
     .movie {
-      width: 150px;
+      /* width: 150px; */
       height: 190px;
       position: relative;
       margin: 5px;
