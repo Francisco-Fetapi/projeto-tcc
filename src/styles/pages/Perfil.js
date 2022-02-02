@@ -321,7 +321,7 @@ export const Perfil = {
     grid-template-columns: 1fr 1fr;
     justify-content: center;
     gap: 10px;
-    min-height: 420px;
+    min-height: 400px;
 
     @media (max-width: 990px) {
       & {
@@ -333,7 +333,7 @@ export const Perfil = {
       .fotos,
       .amigos {
         min-height: 300px;
-        padding-bottom: 60px !important;
+        padding-bottom: 40px !important;
       }
     }
 
@@ -500,6 +500,9 @@ export const Perfil = {
         }
       }
       .msg-sem-amigos {
+        @media (max-width: 990px) {
+          transform: translateY(30px);
+        }
         img {
           width: 300px;
           height: 250px;
