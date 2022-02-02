@@ -11,6 +11,8 @@ import { selectAppState } from "~/store/App.selectors";
 import { primeiroNome } from "~/helpers";
 import { useSelector } from "react-redux";
 
+import FormSearch from "../Forms/FormSearch";
+
 export default function ListaSugestoes() {
   const { getSugestoes } = useUsuario();
   const usuario = useSelector(selectAppState("usuario"));
@@ -36,65 +38,96 @@ export default function ListaSugestoes() {
   function carregarMais() {
     getSugestoes({ setPaginate, setLoading }, paginate.current_page + 1);
   }
+  function procurar(values) {
+    console.log(values);
+  }
   return (
-    <Paper elevation={2} className="lista-sugestoes">
-      <Box
-        className="desc"
-        display="flex"
-        flexDirection="column"
-        justifyContent="center"
-      >
-        {usuario.id && (
-          <Text align="center" variant="h6">
-            {primeiroNome(usuario)}, deseja receber ainda mais atualizações?
-          </Text>
-        )}
-        {!usuario.id && (
-          <Text align="center" variant="h6">
-            Desejas receber ainda mais atualizações?
-          </Text>
-        )}
+    <Box mt={10}>
+      {/* <FormSearch
+        placeholder="procurar pessoas interessantes"
+        id="search_tudo"
+        procurar={procurar}
+      /> */}
+      <Paper elevation={2} className="lista-sugestoes">
+        <Box
+          className="desc"
+          display="flex"
+          flexDirection="column"
+          justifyContent="center"
+        >
+          {usuario.id && (
+            <Text align="center" variant="h6">
+              {primeiroNome(usuario)}, deseja receber ainda mais atualizações?
+            </Text>
+          )}
+          {!usuario.id && (
+            <Text align="center" variant="h6">
+              Desejas receber ainda mais atualizações?
+            </Text>
+          )}
 
-        <Box mt={2}>
-          <Text align="center" variant="subtitle2" color="textSecondary">
-            Adicione essas pessoas que talvez você conheça a sua lista de amigos
-            para ver mais atualizações
-          </Text>
+          <Box mt={2}>
+            <Text align="center" variant="subtitle2" color="textSecondary">
+              Adicione essas pessoas que talvez você conheça a sua lista de
+              amigos para ver mais atualizações
+            </Text>
+          </Box>
         </Box>
-      </Box>
-      <Box className="sugestoes">
-        {usuarios.map((usuario, key) => (
-          <Sugestao
-            usuario={usuario}
-            setUsuarios={setUsuarios}
-            key={usuario.id}
-          />
-        ))}
-      </Box>
-      {loading && (
-        <Box display="flex" my={2} justifyContent="center">
-          <CircularProgress color="secondary" />
+        <Box
+          mb={5}
+          px={2}
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+        >
+          <Box style={{ maxWidth: "480px", width: "90%" }}>
+            <FormSearch
+              placeholder="Procure pessoas interessantes"
+              id="search_tudo"
+              procurar={procurar}
+            />
+            <Box width={0.85}>
+              <Text color="textSecondary" variant="subtitle2">
+                Pesquise pessoas pelo seu nome para melhor filtrar os
+                resultados.
+              </Text>
+            </Box>
+          </Box>
         </Box>
-      )}
-      {paginate.current_page < paginate.last_page && (
-        <Box mt={2} display="flex" justifyContent="center">
-          <Button
-            startIcon={<CircularProgress size="small" />}
-            color="secondary"
-            variant="text"
-            onClick={carregarMais}
-          >
-            Carregar mais
-          </Button>
+        <Box className="sugestoes">
+          {usuarios.map((usuario, key) => (
+            <Sugestao
+              usuario={usuario}
+              setUsuarios={setUsuarios}
+              key={usuario.id}
+            />
+          ))}
         </Box>
-      )}
-      {paginate.current_page === paginate.last_page && paginate.total !== 0 && (
-        <Box mt={2}>
-          <Text color="textSecondary" align="center" variant="subtitle2">
-            Todos os usuarios já foram exibidos
-          </Text>
-        </Box>
-      )}
-    </Paper>
+        {loading && (
+          <Box display="flex" my={2} justifyContent="center">
+            <CircularProgress color="secondary" />
+          </Box>
+        )}
+        {paginate.current_page < paginate.last_page && (
+          <Box mt={2} display="flex" justifyContent="center">
+            <Button
+              startIcon={<CircularProgress size="small" />}
+              color="secondary"
+              variant="text"
+              onClick={carregarMais}
+            >
+              Carregar mais
+            </Button>
+          </Box>
+        )}
+        {paginate.current_page === paginate.last_page && paginate.total !== 0 && (
+          <Box mt={2}>
+            <Text color="textSecondary" align="center" variant="subtitle2">
+              Todos os usuarios já foram exibidos
+            </Text>
+          </Box>
+        )}
+      </Paper>
+    </Box>
   );
 }

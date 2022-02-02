@@ -66,7 +66,7 @@ export const Amigos = {
       }
     }
     .lista-sugestoes {
-      margin-top: 50px;
+      /* margin-top: 50px; */
       padding-bottom: 10px;
       .desc {
         padding: 40px;

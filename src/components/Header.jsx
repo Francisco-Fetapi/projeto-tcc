@@ -29,6 +29,9 @@ export default function Header() {
     () => getInfoHeader(setHeader, LoadingLinear),
     []
   );
+  function procurar(values) {
+    console.log(values);
+  }
   return (
     <>
       <LinearProgress aberto={LoadingLinear.loading} />
@@ -57,7 +60,13 @@ export default function Header() {
               </tspan>
             </text>
           </svg>
-          <FormSearch />
+          <Box ml={5} className="header-form-search">
+            <FormSearch
+              placeholder="procurar filmes,series e pessoas"
+              id="search_tudo"
+              procurar={procurar}
+            />
+          </Box>
         </Box>
         <Box
           flexGrow={1}
