@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Text } from "~/styles";
 import Dialog from "@material-ui/core/Dialog";
 import MuiDialogContent from "@material-ui/core/DialogContent";
@@ -11,6 +11,7 @@ import CloseIcon from "@material-ui/icons/Close";
 import { useNavigate } from "react-router-dom";
 
 import Slide from "@material-ui/core/Slide";
+import { alterarLarguraDoModal } from "~/helpers/LoginAndSignUp";
 
 const styles = (theme) => ({
   root: {
@@ -64,6 +65,7 @@ export default function FormDialog({
   open,
   setModal,
   direction,
+  setPropsModal,
   ...props
 }) {
   const navigate = useNavigate();
@@ -72,6 +74,17 @@ export default function FormDialog({
 
     setModal(false);
   }
+  useEffect(() => {
+    function alterarLargura() {
+      alterarLarguraDoModal(setPropsModal, 500);
+    }
+    window.addEventListener("resize", alterarLargura);
+    window.addEventListener("load", alterarLargura);
+    return () => {
+      window.removeEventListener("resize", alterarLargura);
+      window.removeEventListener("load", alterarLargura);
+    };
+  }, []);
 
   return (
     <ModalSignUp>

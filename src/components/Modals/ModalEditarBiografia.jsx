@@ -6,24 +6,18 @@ import { alterarLarguraDoModal } from "~/helpers/LoginAndSignUp";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { selectAppState } from "~/store/App.selectors";
+import { primeiroNome } from "~/helpers/index.js";
 
 export default function ModalEditarPerfil(props) {
   const [propsModal, setPropsModal] = useState({});
   const usuario = useSelector(selectAppState("usuario"));
 
-  useEffect(() => {
-    window.onresize = () => alterarLarguraDoModal(setPropsModal, 410);
-    window.onload = () => alterarLarguraDoModal(setPropsModal, 410);
-    return () => {
-      window.onresize = null;
-      window.onload = null;
-    };
-  }, []);
   return (
     <TemplateModal
       nomeModal="modalEditarBiografia"
-      titulo={`${usuario.nome} - Editar Biografia`}
+      titulo={`${primeiroNome(usuario)} - Editar Biografia`}
       subtitulo="Informações sobre você que melhor te descrevem."
+      setPropsModal={setPropsModal}
       {...propsModal}
       {...props}
     >

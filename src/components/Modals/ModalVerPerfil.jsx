@@ -1,30 +1,23 @@
 import React from "react";
 import TemplateModal from "./Template.jsx";
-import { useEffect } from "react";
-import { alterarLarguraDoModal } from "~/helpers/LoginAndSignUp";
 import { useState } from "react";
 
 import InfoPerfil from "../Perfil/InfoPerfil.jsx";
 import { useSelector } from "react-redux";
 import { selectAppState } from "~/store/App.selectors";
+import { primeiroNome } from "~/helpers/index.js";
 
 export default function ModalEditarPerfil(props) {
   const [propsModal, setPropsModal] = useState({});
 
   const usuario = useSelector(selectAppState("usuario"));
-  useEffect(() => {
-    window.onresize = () => alterarLarguraDoModal(setPropsModal, 410);
-    window.onload = () => alterarLarguraDoModal(setPropsModal, 410);
-    return () => {
-      window.onresize = null;
-      window.onload = null;
-    };
-  }, []);
+
   return (
     <TemplateModal
       nomeModal="modalVerPerfil"
-      titulo={`${usuario.nome} - Perfil`}
+      titulo={`${primeiroNome(usuario)} - Perfil`}
       subtitulo="Todos os dados da sua conta."
+      setPropsModal={setPropsModal}
       {...propsModal}
       {...props}
     >
