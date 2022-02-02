@@ -57,7 +57,8 @@ export default function Menu({ info }) {
         className="menuItem-hide-on-mobile"
       />
       <MenuItem
-        rota="/"
+        rota="/atores"
+        active={"/atores" === pathname}
         icon={<MdGroup />}
         className="menuItem-hide-on-mobile"
       />

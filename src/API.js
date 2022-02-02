@@ -74,7 +74,7 @@ const API = {
   async logout() {
     let { data } = await api.get("/usuario/logout");
     api.defaults.params.token = null;
-    localStorage.clear();
+    localStorage.removeItem("token");
     return data;
   },
   async getDadosUsuarioByToken(token) {

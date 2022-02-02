@@ -17,6 +17,9 @@ import { FaTv } from "react-icons/fa";
 import { FaEnvelope } from "react-icons/fa";
 import { FaBell } from "react-icons/fa";
 import { MdGroup } from "react-icons/md";
+import SerieIcon from "@material-ui/icons/OndemandVideo";
+import FilmeIcon from "@material-ui/icons/Videocam";
+
 import { selectAppState } from "~/store/App.selectors";
 import { useSelector } from "react-redux";
 
@@ -102,6 +105,18 @@ export default function MenuMobile({ info }) {
             active={"/videos" === pathname}
             icon={<FaTv />}
             text="Videos"
+          />
+          <MenuItemMobile
+            rota="/filmes"
+            active={"/filmes" === pathname}
+            icon={<FilmeIcon />}
+            text="Filmes"
+          />
+          <MenuItemMobile
+            rota="/series"
+            active={"/series" === pathname}
+            icon={<SerieIcon />}
+            text="Series"
           />
           <MenuItemMobile
             rota="/atores"
