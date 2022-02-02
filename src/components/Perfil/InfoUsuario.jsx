@@ -155,7 +155,7 @@ export default function InfoUsuario() {
             </Text>
 
             <Text variant="subtitle2" color="textSecondary">
-              <Box display="flex" alignItems="center">
+              <Box className="alterar-email-box">
                 {a_carregar ? (
                   <Skeleton
                     variant="rect"

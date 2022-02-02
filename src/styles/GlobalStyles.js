@@ -8,7 +8,10 @@ import { NotFound } from "./pages/NotFound";
 const colorPrimary = "#2196f3";
 
 export const GlobalStyles = createGlobalStyle`
-
+    /* :root,html,body{
+        width:100vh;
+        height:100vh;
+    } */
 
     /* AJUSTES NO TEMA ESCURO */
     .dark{

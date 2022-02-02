@@ -145,10 +145,15 @@ export const Perfil = {
         row-gap: 10px;
       }
     }
+    @media (max-width: 440px) {
+      width: 100%;
+      padding: 0 10px;
+    }
     .foto-nome-bio {
       display: grid;
       grid-template-columns: auto 1fr;
       column-gap: 20px;
+
       figure {
         position: relative;
         width: 90px;
@@ -197,14 +202,27 @@ export const Perfil = {
           }
         }
       }
-      .alterar_email {
-        cursor: pointer;
-        user-select: none;
-        :hover {
-          opacity: 0.8;
+
+      .alterar-email-box {
+        display: flex;
+        align-items: center;
+
+        .alterar_email {
+          cursor: pointer;
+          user-select: none;
+          :hover {
+            opacity: 0.8;
+          }
+          :active {
+            opacity: 0.5;
+          }
         }
-        :active {
-          opacity: 0.5;
+        @media (max-width: 440px) {
+          display: block;
+          .alterar_email {
+            margin-left: 0px;
+            justify-content: center;
+          }
         }
       }
     }
@@ -227,6 +245,7 @@ export const Perfil = {
     background: url(${({ img }) => img});
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center center;
     /* background: ; */
     display: flex;
     align-items: flex-end;
@@ -446,6 +465,10 @@ export const Perfil = {
         grid-template-columns: 1fr 1fr 1fr 1fr;
         padding: 0px;
         margin: 0px;
+
+        @media (max-width: 480px) {
+          grid-template-columns: 1fr 1fr 1fr;
+        }
       }
     }
   `,

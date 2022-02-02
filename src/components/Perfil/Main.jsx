@@ -34,7 +34,7 @@ export default function Main() {
       {a_carregar && <Skeleton variant="rect" width="100%" height={300} />}
       <InfoUsuario />
       <FotosEAmigos />
-      <Box className="grid-2">
+      {/* <Box className="grid-2">
         <PubsSavedsAndFavoritos />
         <Box>
           <MarcadosParaMaisTarde />
@@ -45,7 +45,7 @@ export default function Main() {
             <Posts />
           </Box>
         </Box>
-      </Box>
+      </Box> */}
     </Perfil.Container>
   );
 }
