@@ -216,7 +216,7 @@ export const GlobalStyles = createGlobalStyle`
       .MuiDialogContent-root{
         min-width:500px;
         @media(max-width:590px){
-            min-width:420px
+            min-width:auto;
         }
       }
 
