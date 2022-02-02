@@ -28,7 +28,11 @@ export default function LoginAndSignUp({ page }) {
   }, [page]);
 
   return (
-    <Container background={theme.palette.primary.main}>
+    <Container
+      background={
+        theme.palette.type === "light" ? theme.palette.primary.main : "#303030"
+      }
+    >
       <Paper className="paper" elevation={20}>
         <LoginBanner>
           <TextBanner />

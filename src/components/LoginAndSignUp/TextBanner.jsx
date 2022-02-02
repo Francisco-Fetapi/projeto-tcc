@@ -15,7 +15,11 @@ export default function TextBanner() {
     navigate("/criar-conta");
   }
   return (
-    <BannerContainer colorPrimary={theme.palette.primary.main}>
+    <BannerContainer
+      colorPrimary={
+        theme.palette.type === "light" ? theme.palette.primary.main : "#131313"
+      }
+    >
       <QuadradoBanner>Rede Social</QuadradoBanner>
       <Text className="titulo1" variant="subtitle2">
         Junte-se a nós
