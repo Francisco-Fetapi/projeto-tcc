@@ -8,7 +8,7 @@ import Add from "@material-ui/icons/AddCircle";
 import { Text } from "~/styles";
 import { BASE_URL } from "~/API";
 
-import { primeiroEUltimoNome } from "~/helpers";
+import { mostrarXCharOntText, primeiroEUltimoNome } from "~/helpers";
 
 import useUsuario from "~/hooks/useUsuario";
 
@@ -30,7 +30,10 @@ export default function Sugestao({ usuario, setUsuarios }) {
         <Text align="center">{primeiroEUltimoNome(usuario)}</Text>
         <Box flexGrow={1} />
         <Text color="textSecondary" variant="subtitle2">
-          {`de ${usuario.pais},${usuario.estado},${usuario.cidade}`}
+          {mostrarXCharOntText(
+            `de ${usuario.pais},${usuario.estado},${usuario.cidade}`,
+            24
+          )}
         </Text>
         <Text
           color="textSecondary"
