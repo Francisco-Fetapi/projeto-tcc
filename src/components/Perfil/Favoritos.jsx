@@ -22,8 +22,14 @@ export default function Favoritos() {
         favoritos.classList.remove("fixed");
       }
     };
+    window.onresize = function () {
+      if (window.innerWidth <= 915) {
+        favoritos.classList.remove("fixed");
+      }
+    };
     return () => {
       document.onscroll = null;
+      window.onresize = null;
     };
   }, []);
 

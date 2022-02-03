@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import { Text } from "~/styles";
+import { Text, Link } from "~/styles";
 import { Perfil } from "~/styles/pages/Perfil";
 import Box from "@material-ui/core/Box";
 import { FaCamera } from "react-icons/fa";
@@ -16,7 +16,14 @@ import Home from "@material-ui/icons/Home";
 import ThumbDown from "@material-ui/icons/ThumbDown";
 import ThumbUp from "@material-ui/icons/ThumbUp";
 
-import { FaPencilAlt, FaPlus } from "react-icons/fa";
+import {
+  FaPencilAlt,
+  FaPlus,
+  FaUsers,
+  FaTv,
+  FaList,
+  FaSave,
+} from "react-icons/fa";
 import useUsuario from "~/hooks/useUsuario";
 import Done from "@material-ui/icons/Done";
 import Clear from "@material-ui/icons/Clear";
@@ -34,6 +41,17 @@ import useModal from "~/hooks/useModal";
 
 import LinearProgress from "../Progress/Linear.jsx";
 import useLinearProgress from "~/hooks/useLinearProgress";
+
+function LinkPerfil({ to, icon, children }) {
+  return (
+    <Link to={to}>
+      <Box mr={1} display="flex" alignItems="center">
+        {icon}
+      </Box>{" "}
+      {children}
+    </Link>
+  );
+}
 
 function ListItemWithSkeleton({ a_carregar, className, Icon, children }) {
   if (a_carregar) {
@@ -272,6 +290,26 @@ export default function InfoUsuario() {
           </Box>
         </Box>
       </Perfil.Info>
+      <Box
+        className="links_perfil"
+        my={2}
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+      >
+        <LinkPerfil to="/registo-de-atividade" icon={<FaList />}>
+          Registo de atividade
+        </LinkPerfil>
+        <LinkPerfil to="/amigos" icon={<FaUsers />}>
+          Amigos
+        </LinkPerfil>
+        <LinkPerfil to="/movies-favoritos" icon={<FaTv />}>
+          Filmes/Séries favoritos
+        </LinkPerfil>
+        <LinkPerfil to="/publicoes-guardadas" icon={<FaSave />}>
+          Publicações guardadas
+        </LinkPerfil>
+      </Box>
       <Divider />
       <ModalEditarBiografia open={modal1} setModal={setModal1} />
       <ModalEditarPerfil open={modal2} setModal={setModal2} />

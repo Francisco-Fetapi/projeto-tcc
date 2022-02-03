@@ -27,13 +27,26 @@ export const Perfil = {
           column-gap: 0px;
         }
       }
-      /* @media (max-width: 615px) {
-        & {
-          width: 80%;
-        }
-      } */
+
       .MuiListItem-gutters {
         padding-left: 0px;
+      }
+    }
+    .links_perfil {
+      display: none;
+      flex-flow: row wrap;
+      @media (max-width: 915px) {
+        display: flex;
+      }
+      a {
+        display: flex;
+        align-items: center;
+        margin: 5px 8px !important;
+        /* color: inherit !important; */
+        text-decoration: none;
+        :hover {
+          opacity: 0.9;
+        }
       }
     }
     .publicacoes-guardadas {
