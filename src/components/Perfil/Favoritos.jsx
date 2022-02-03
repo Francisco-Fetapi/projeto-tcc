@@ -4,11 +4,14 @@ import List from "@material-ui/core/List";
 import Button from "@material-ui/core/Button";
 import { Text } from "~/styles";
 import Favorito from "./Favorito";
+import { useNavigate } from "react-router-dom";
 
 export default function Favoritos() {
+  const navigate = useNavigate();
   useEffect(() => {
     const favoritos = document.querySelector(".favoritos");
     const parent_favoritos = favoritos.parentElement;
+
     document.onscroll = function () {
       const favoritos_visivel =
         window.pageYOffset >= parent_favoritos.offsetTop - 80;
@@ -26,8 +29,21 @@ export default function Favoritos() {
 
   return (
     <List mt={3} className="favoritos">
-      <Box mb={2}>
+      <Box
+        mb={2}
+        style={{ zoom: ".85" }}
+        display="flex"
+        justifyContent="space-between"
+        alignItems="center"
+      >
         <Text variant="h6">FAVORITOS</Text>
+        <Button
+          color="default"
+          variant="text"
+          onClick={() => navigate("/movies-favoritos")}
+        >
+          Ver mais
+        </Button>
       </Box>
       <Box>
         {["matrix.jpg", "TWD.jpg", "lucifer.jpg"].map((item) => (
