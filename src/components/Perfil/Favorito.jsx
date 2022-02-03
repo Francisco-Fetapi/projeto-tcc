@@ -14,7 +14,9 @@ export default function Favorito({ imgMovie }) {
         <img src={`./img/${imgMovie}`} alt="Matrix" />
       </Box>
       <Box className="info">
-        <Text variant="h6">Nome do Movie</Text>
+        <Text variant="h6" style={{ fontSize: 16 }}>
+          Nome do Movie
+        </Text>
         <Box>
           <Box display="flex" alignItems="center" component="figure" mr={1.2}>
             <img src="./img/user1.jpg" alt="user" />

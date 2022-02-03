@@ -87,7 +87,7 @@ export default function ListaSugestoes() {
           </Box>
         </Box>
         <Box className="sugestoes">
-          {usuarios.map((usuario, key) => (
+          {usuarios.map((usuario) => (
             <Amigo
               usuario={usuario}
               setUsuarios={setUsuarios}
@@ -97,7 +97,7 @@ export default function ListaSugestoes() {
         </Box>
         {loading && (
           <Box display="flex" my={2} justifyContent="center">
-            <CircularProgress color="default" />
+            <CircularProgress color="inherit" />
           </Box>
         )}
         {paginate.current_page < paginate.last_page && (

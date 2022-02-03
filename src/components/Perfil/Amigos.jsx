@@ -4,6 +4,10 @@ import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import { Text } from "~/styles";
 
+import IconButton from "@material-ui/core/IconButton";
+import Tooltip from "@material-ui/core/Tooltip";
+import EyeIcon from "@material-ui/icons/RemoveRedEye";
+
 import Pagination from "@material-ui/lab/Pagination";
 import { useNavigate } from "react-router-dom";
 import useUsuario from "~/hooks/useUsuario";
@@ -39,13 +43,23 @@ export default function Amigos() {
           <CircularProgress />
         </Box>
       )}
-      <Text variant="h6">Amigos</Text>
-      <Text variant="subtitle2" color="textSecondary">
-        {paginate.total === 0 && loading && "Carregando..."}
-        {paginate.total === 0 && !loading && "Sem amigos"}
-        {paginate.total === 1 && " 1 amigo"}
-        {paginate.total > 1 && `${paginate.total} amigos`}
-      </Text>
+      <Box display="flex" justifyContent="space-between" alignItems="center">
+        <Box>
+          <Text variant="h6">Amigos</Text>
+          <Text variant="subtitle2" color="textSecondary">
+            {paginate.total === 0 && loading && "Carregando..."}
+            {paginate.total === 0 && !loading && "Sem amigos"}
+            {paginate.total === 1 && " 1 amigo"}
+            {paginate.total > 1 && `${paginate.total} amigos`}
+          </Text>
+        </Box>
+        <Tooltip title="Ver amigos" arrow>
+          <IconButton onClick={() => navigate("/amigos")}>
+            <EyeIcon />
+          </IconButton>
+        </Tooltip>
+      </Box>
+
       {!loading && (
         <Box mt={2} className="fotos-grid">
           {amigos.map((amigo) => (
