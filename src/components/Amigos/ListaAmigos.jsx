@@ -97,7 +97,7 @@ export default function ListaSugestoes() {
         </Box>
         {loading && (
           <Box display="flex" my={2} justifyContent="center">
-            <CircularProgress color="secondary" />
+            <CircularProgress color="default" />
           </Box>
         )}
         {paginate.current_page < paginate.last_page && (
