@@ -13,8 +13,8 @@ import { primeiroNome } from "~/helpers";
 import { useSelector } from "react-redux";
 import { selectAppState } from "~/store/App.selectors";
 
-export default function ListaSugestoes() {
-  const { getSugestoes } = useUsuario();
+export default function ListaAmigos() {
+  const { getAmigos } = useUsuario();
   const [paginate, setPaginate] = useState({
     current_page: 1,
     last_page: 1,
@@ -24,10 +24,11 @@ export default function ListaSugestoes() {
   const [usuarios, setUsuarios] = useState([]);
   const [loading, setLoading] = useState(true);
   const usuario = useSelector(selectAppState("usuario"));
+  const [termo, setTermo] = useState("");
 
   useEffect(() => {
     if (usuarios.length === 0 || paginate.data.length === 0) {
-      getSugestoes({ setPaginate, setLoading });
+      getAmigos({ setPaginate, setLoading, termo });
     }
   }, []);
   useEffect(() => {
@@ -36,10 +37,17 @@ export default function ListaSugestoes() {
     }
   }, [paginate]);
   function carregarMais() {
-    getSugestoes({ setPaginate, setLoading }, paginate.current_page + 1);
+    getAmigos({ setPaginate, setLoading, termo }, paginate.current_page + 1);
   }
   function procurar(values) {
+    setTermo(values.search);
     console.log(values);
+  }
+  useEffect(() => {
+    console.log("Pesquisado");
+  }, [termo]);
+  if (!loading && paginate.total === 0 && !termo) {
+    return <div />;
   }
   return (
     <Box mt={10}>
@@ -88,11 +96,7 @@ export default function ListaSugestoes() {
         </Box>
         <Box className="sugestoes">
           {usuarios.map((usuario) => (
-            <Amigo
-              usuario={usuario}
-              setUsuarios={setUsuarios}
-              key={usuario.id}
-            />
+            <Amigo usuario={usuario} key={usuario.id} />
           ))}
         </Box>
         {loading && (
@@ -116,6 +120,13 @@ export default function ListaSugestoes() {
           <Box mt={2}>
             <Text color="textSecondary" align="center" variant="subtitle2">
               Todos os usuarios já foram exibidos
+            </Text>
+          </Box>
+        )}
+        {!loading && paginate.total === 0 && (
+          <Box mt={2} mb={1}>
+            <Text color="textSecondary" align="center" variant="subtitle2">
+              Nenhum amigo encontrado.
             </Text>
           </Box>
         )}

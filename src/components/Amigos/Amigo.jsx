@@ -4,19 +4,18 @@ import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 
 import { Text } from "~/styles";
-import { BASE_URL } from "~/API";
 
 import { mostrarXCharOntText, primeiroEUltimoNome } from "~/helpers";
 import { useNavigate } from "react-router-dom";
 import RemoveRedEye from "@material-ui/icons/RemoveRedEye";
 
-export default function Amigo({ usuario, setUsuarios }) {
+export default function Amigo({ usuario }) {
   const navigate = useNavigate();
 
   return (
     <Paper variant="outlined" className="sugestao">
       <Box component="figure">
-        <img src={`${BASE_URL}/${usuario.foto_perfil}`} alt="Imagem usuario" />
+        <img src={usuario.foto_perfil} alt="Imagem usuario" />
       </Box>
       <Box
         className="info"
