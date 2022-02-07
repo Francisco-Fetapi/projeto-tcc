@@ -32,6 +32,12 @@ export default function ListaAmigos() {
     }
   }, []);
   useEffect(() => {
+    if (
+      JSON.stringify(usuarios) === JSON.stringify(paginate.data) &&
+      usuarios.length > 0
+    ) {
+      return false;
+    }
     if (paginate.total > usuarios.length) {
       setUsuarios([...usuarios, ...paginate.data]);
     }
@@ -39,7 +45,13 @@ export default function ListaAmigos() {
   function carregarMais() {
     getAmigos({ setPaginate, setLoading, termo }, paginate.current_page + 1);
   }
+  function resetarResultados() {
+    getAmigos({ setPaginate, setLoading, termo });
+  }
   function procurar(values) {
+    if (paginate.data.length >= 0) {
+      resetarResultados();
+    }
     setTermo(values.search);
     console.log(values);
   }
@@ -84,7 +96,7 @@ export default function ListaAmigos() {
           <Box style={{ maxWidth: "480px", width: "90%" }}>
             <FormSearch
               placeholder="Procure amigos"
-              id="search_tudo"
+              id="search"
               procurar={procurar}
             />
             <Box width={0.85}>

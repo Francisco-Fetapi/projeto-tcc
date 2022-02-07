@@ -31,6 +31,12 @@ export default function ListaSugestoes() {
     }
   }, []);
   useEffect(() => {
+    if (
+      JSON.stringify(usuarios) === JSON.stringify(paginate.data) &&
+      usuarios.length > 0
+    ) {
+      return false;
+    }
     if (paginate.total > usuarios.length) {
       setUsuarios([...usuarios, ...paginate.data]);
     }
@@ -78,7 +84,7 @@ export default function ListaSugestoes() {
           <Box style={{ maxWidth: "480px", width: "90%" }}>
             <FormSearch
               placeholder="Procure pessoas interessantes"
-              id="search_tudo"
+              id="search"
               procurar={procurar}
             />
             <Box width={0.85}>

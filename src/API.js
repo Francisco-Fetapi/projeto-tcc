@@ -135,10 +135,11 @@ const API = {
     const { data } = await api.post("/usuario/galeria/eliminar", { id_foto });
     return data;
   },
-  async getAmigos(page = 0) {
+  async getAmigos(page = 0, termo) {
     const { data } = await api.get("/usuario/amigos", {
-      params: { page },
+      params: { page, termo },
     });
+    console.log(termo);
     return data;
   },
   async getPedidosDeAmizade() {

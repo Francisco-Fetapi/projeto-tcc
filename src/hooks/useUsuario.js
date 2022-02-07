@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import API from "../API";
+import API from "~/API";
 import {
   parsearCampo,
   parsearErros,
@@ -115,7 +115,6 @@ export default function useUsuario() {
           navigate("/mais-sobre-voce");
         }, 3000);
       }
-      
     },
     async reenviarCodigo(LoadingLinear, alertar) {
       LoadingLinear.mostrar();
@@ -362,9 +361,9 @@ export default function useUsuario() {
       setLoading(false);
       setPaginate(res);
     },
-    async getAmigos({ setPaginate, setLoading }, page) {
+    async getAmigos({ setPaginate, setLoading, termo }, page) {
       setLoading(true);
-      let res = await API.getAmigos(page);
+      let res = await API.getAmigos(page, termo);
       setLoading(false);
       console.log(res);
       setPaginate(res);

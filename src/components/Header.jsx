@@ -63,7 +63,7 @@ export default function Header() {
           <Box ml={5} className="header-form-search">
             <FormSearch
               placeholder="procurar filmes,series e pessoas"
-              id="search_tudo"
+              id="search"
               procurar={procurar}
             />
           </Box>
