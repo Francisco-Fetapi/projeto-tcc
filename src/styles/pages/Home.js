@@ -145,11 +145,26 @@ export const MainContainer = styled.div`
     max-width: 600px;
     margin: 0 auto;
 
-    @media (max-width: 545px) {
+    @media (max-width: 615px) {
+      padding-top: 10px;
+    }
+
+    @media (max-width: 570px) {
+      transform: translateX(-5%);
+      padding: 10px;
+      width: 105%;
+    }
+    @media (max-width: 450px) {
+      zoom: 0.85;
+      .AddPost {
+      }
+    }
+
+    /* @media (max-width: 545px) {
       & {
         padding: 15px;
       }
-    }
+    } */
     h5 {
       text-transform: uppercase;
       font-size: 22px;

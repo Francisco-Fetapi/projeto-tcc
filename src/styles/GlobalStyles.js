@@ -108,12 +108,19 @@ export const GlobalStyles = createGlobalStyle`
           svg{
           color:${colorPrimary};
       }
+      
       }
       
       .paper{
           padding:15px 20px;
           padding-bottom:0px;
           border-radius:20px;
+
+          .img-post{
+                @media(max-width:415px){
+                    display: none;
+                }
+            }
           
           img{
               width:60px;

@@ -36,6 +36,7 @@ export default function FormAddPost() {
                 width={64}
                 height={54}
                 style={{ marginRight: 10 }}
+                className="img-post"
               />
             )}
             {!a_carregar && (
@@ -43,6 +44,7 @@ export default function FormAddPost() {
                 src={fotoPerfil}
                 alt="imagem do usuario"
                 style={{ width: 64, height: 54 }}
+                className="img-post"
               />
             )}
 
