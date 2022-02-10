@@ -12,6 +12,11 @@ export const Amigos = {
           padding: 30px 15px;
         }
       }
+      @media (max-width: 840px) {
+        & {
+          transform: translateX(-3%);
+        }
+      }
     }
     .pedido {
       width: 100%;
@@ -76,6 +81,16 @@ export const Amigos = {
         grid-template-columns: 1fr 1fr;
         gap: 10px;
         margin: 0 10px;
+
+        @media (max-width: 500px) {
+          grid-template-columns: 1fr;
+          margin: auto;
+          justify-content: center;
+          padding: 0 10px;
+          .sugestao {
+            margin: auto !important;
+          }
+        }
       }
       .sugestao {
         width: 100%;
