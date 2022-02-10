@@ -132,6 +132,9 @@ export const GlobalStyles = createGlobalStyle`
           .MuiFormControl-root{
               width:100%;
               margin-right:40px;
+              @media(max-width:350px){
+                  margin-right:5px;
+              }
           }
           .MuiInputBase-multiline{
               padding:13px 17px;
