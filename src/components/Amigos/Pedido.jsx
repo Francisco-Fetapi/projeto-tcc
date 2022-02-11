@@ -19,12 +19,16 @@ export default function Pedido({ user, setPedidos }) {
   return (
     <Box className="pedido">
       <Paper variant="outlined" className="dados">
-        <Text variant="h6">
-          {mostrarXCharOntText(primeiroEUltimoNome(user), 18)}
-        </Text>
-        <Text variant="subtitle2" color="textSecondary">
-          {mostrarXCharOntText(user.email, 25)}
-        </Text>
+        <abbr title={user.nome}>
+          <Text variant="h6">
+            {mostrarXCharOntText(primeiroEUltimoNome(user), 18)}
+          </Text>
+        </abbr>
+        <abbr title={user.email}>
+          <Text variant="subtitle2" color="textSecondary">
+            {mostrarXCharOntText(user.email, 25)}
+          </Text>
+        </abbr>
         <Text variant="subtitle2" color="textSecondary">
           {mostrarXCharOntText(
             `${user.pais}, ${user.estado}, ${user.cidade}`,

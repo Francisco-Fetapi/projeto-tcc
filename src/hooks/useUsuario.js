@@ -355,9 +355,9 @@ export default function useUsuario() {
         }
       },
     },
-    async getSugestoes({ setPaginate, setLoading }, page) {
+    async getSugestoes({ setPaginate, setLoading, termo }, page) {
       setLoading(true);
-      let res = await API.getSugestoes(page);
+      let res = await API.getSugestoes(page, termo);
       setLoading(false);
       setPaginate(res);
     },

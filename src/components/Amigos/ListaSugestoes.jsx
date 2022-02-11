@@ -24,10 +24,11 @@ export default function ListaSugestoes() {
   });
   const [usuarios, setUsuarios] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [termo, setTermo] = useState("");
 
   useEffect(() => {
     if (usuarios.length === 0 || paginate.data.length === 0) {
-      getSugestoes({ setPaginate, setLoading });
+      getSugestoes({ setPaginate, setLoading, termo });
     }
   }, []);
   useEffect(() => {
@@ -42,11 +43,16 @@ export default function ListaSugestoes() {
     }
   }, [paginate]);
   function carregarMais() {
-    getSugestoes({ setPaginate, setLoading }, paginate.current_page + 1);
+    getSugestoes({ setPaginate, setLoading, termo }, paginate.current_page + 1);
   }
   function procurar(values) {
-    console.log(values);
+    setTermo(values.search);
+    setUsuarios([]);
+    setLoading(true);
   }
+  useEffect(() => {
+    getSugestoes({ setPaginate, setLoading, termo });
+  }, [termo]);
   return (
     <Box mt={10}>
       <Paper elevation={2} className="lista-sugestoes">
@@ -121,10 +127,17 @@ export default function ListaSugestoes() {
             </Button>
           </Box>
         )}
-        {paginate.current_page === paginate.last_page && paginate.total !== 0 && (
+        {!loading && paginate.total === paginate.current_page && !termo && (
           <Box mt={2}>
             <Text color="textSecondary" align="center" variant="subtitle2">
               Todos os usuarios já foram exibidos
+            </Text>
+          </Box>
+        )}
+        {!loading && termo && usuarios.length === 0 && (
+          <Box mt={2} mb={1}>
+            <Text color="textSecondary" align="center" variant="subtitle2">
+              Nenhum amigo encontrado.
             </Text>
           </Box>
         )}

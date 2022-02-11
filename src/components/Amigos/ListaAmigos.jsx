@@ -126,7 +126,7 @@ export default function ListaAmigos() {
             </Button>
           </Box>
         )}
-        {!loading && paginate.total !== 0 && !termo && (
+        {!loading && paginate.total === paginate.current_page && !termo && (
           <Box mt={2}>
             <Text color="textSecondary" align="center" variant="subtitle2">
               Todos os usuarios já foram exibidos

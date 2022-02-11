@@ -113,9 +113,9 @@ const API = {
     let { data } = await api.post("/alterar-senha", dados);
     return data;
   },
-  async getSugestoes(page = 0) {
+  async getSugestoes(page = 0, search) {
     let { data } = await api.get("/usuario/sugestoes-de-amizade", {
-      params: { page },
+      params: { page, search },
     });
     return data;
   },

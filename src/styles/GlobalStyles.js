@@ -265,4 +265,7 @@ export const GlobalStyles = createGlobalStyle`
         width: 90%;
         max-width:380px;
       }
+      abbr{
+          text-decoration:none;
+      }
 `;

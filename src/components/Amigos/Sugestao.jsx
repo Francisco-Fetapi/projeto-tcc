@@ -27,7 +27,9 @@ export default function Sugestao({ usuario, setUsuarios }) {
         alignItems="center"
         mt={4.5}
       >
-        <Text align="center">{primeiroEUltimoNome(usuario)}</Text>
+        <abbr title={usuario.nome}>
+          <Text align="center">{primeiroEUltimoNome(usuario)}</Text>
+        </abbr>
         <Box flexGrow={1} />
         <Text color="textSecondary" variant="subtitle2">
           {mostrarXCharOntText(
