@@ -29,6 +29,7 @@ export const Amigos = {
     .pedido {
       width: 100%;
       max-width: 370px;
+      min-width: 250px;
       .dados {
         border-radius: 7px;
         padding: 20px 25px;
@@ -70,6 +71,43 @@ export const Amigos = {
       .slick-list {
         width: 100% !important;
       }
+      @media (max-width: 630px) {
+        display: none !important;
+      }
+    }
+    .slider-mobile-container {
+      margin-top: 20px;
+      width: 90%;
+      max-width: 480px;
+      overflow-x: hidden;
+      display: flex;
+    }
+    .slider-pedidos-mobile {
+      display: none;
+      width: 100%;
+      max-width: 490px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+      &::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+        background: #d4d4d4;
+        border-radius: 10px;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.4);
+      }
+      @media (max-width: 630px) {
+        display: flex;
+      }
+      @media (max-width: 560px) {
+        flex-direction: column;
+        height: 320px;
+        padding-right: 30px;
+        .pedido {
+          margin-bottom: 30px;
+        }
+      }
     }
     .pedidos {
       display: flex !important;
@@ -82,17 +120,6 @@ export const Amigos = {
           width: 300px !important;
         }
       }
-      /* @media (max-width: 510px) {
-        .slick-track {
-          display: flex;
-          flex-direction: column;
-          width: auto !important;
-        }
-        .slick-list {
-          max-height: 300px;
-          overflow-y: auto;
-        }
-      } */
     }
     .lista-sugestoes {
       /* margin-top: 50px; */

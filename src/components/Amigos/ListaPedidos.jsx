@@ -9,49 +9,25 @@ import useUsuario from "~/hooks/useUsuario";
 import Skeleton from "@material-ui/lab/Skeleton";
 
 export default function ListaPedidos() {
-  const [itemsMostrar, setItemsMostrar] = useState(2);
   const settings = {
     dots: true,
     infinite: false,
     speed: 300,
-    slidesToShow: itemsMostrar,
-    slidesToScroll: itemsMostrar,
+    slidesToShow: 2,
+    slidesToScroll: 2,
     arrows: false,
   };
-  console.log(settings);
+
   const { getPedidosDeAmizade } = useUsuario();
   const [pedidos, setPedidos] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  let larguraInicialDoSlide = null;
 
   useEffect(() => {
     if (pedidos.length === 0) {
       getPedidosDeAmizade({ setLoading, setPedidos });
     }
   }, []);
-  useEffect(() => {
-    function ajustarItems() {
-      const slide = document.querySelector(".slick-slide");
-      if (window.innerWidth <= 530) {
-        setItemsMostrar(1);
-        if (slide) slide.style.width = "100px";
-      } else {
-        setItemsMostrar(2);
-        if (slide) slide.style.width = "500px";
-      }
-      console.log(window.innerWidth);
-    }
-    window.onresize = ajustarItems;
-    window.onload = ajustarItems;
 
-    return () => {
-      window.onresize = null;
-    };
-  }, []);
-  useEffect(() => {
-    console.log(pedidos);
-  }, [pedidos]);
   return (
     <Box className="lista-pedidos">
       {loading && (
@@ -81,6 +57,13 @@ export default function ListaPedidos() {
                 <Pedido user={user} key={user.id} setPedidos={setPedidos} />
               ))}
             </Slider>
+          </Box>
+          <Box className="slider-mobile-container">
+            <Box className="slider-pedidos-mobile">
+              {pedidos.map((user) => (
+                <Pedido user={user} key={user.id} setPedidos={setPedidos} />
+              ))}
+            </Box>
           </Box>
         </>
       )}
