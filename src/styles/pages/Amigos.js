@@ -18,6 +18,14 @@ export const Amigos = {
         }
       }
     }
+    .slider-pedidos {
+      @media (max-width: 570px) {
+        zoom: 0.9;
+      }
+      @media (max-width: 510px) {
+        zoom: 1;
+      }
+    }
     .pedido {
       width: 100%;
       max-width: 370px;
@@ -69,6 +77,22 @@ export const Amigos = {
       .pedido {
         margin: 10px;
       }
+      @media (max-width: 500px) {
+        .slick-slide {
+          width: 300px !important;
+        }
+      }
+      /* @media (max-width: 510px) {
+        .slick-track {
+          display: flex;
+          flex-direction: column;
+          width: auto !important;
+        }
+        .slick-list {
+          max-height: 300px;
+          overflow-y: auto;
+        }
+      } */
     }
     .lista-sugestoes {
       /* margin-top: 50px; */
@@ -82,7 +106,7 @@ export const Amigos = {
         gap: 10px;
         margin: 0 10px;
 
-        @media (max-width: 500px) {
+        @media (max-width: 535px) {
           grid-template-columns: 1fr;
           margin: auto;
           justify-content: center;

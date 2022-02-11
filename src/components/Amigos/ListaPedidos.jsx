@@ -9,22 +9,45 @@ import useUsuario from "~/hooks/useUsuario";
 import Skeleton from "@material-ui/lab/Skeleton";
 
 export default function ListaPedidos() {
+  const [itemsMostrar, setItemsMostrar] = useState(2);
   const settings = {
     dots: true,
     infinite: false,
     speed: 300,
-    slidesToShow: 2,
-    slidesToScroll: 2,
+    slidesToShow: itemsMostrar,
+    slidesToScroll: itemsMostrar,
     arrows: false,
   };
+  console.log(settings);
   const { getPedidosDeAmizade } = useUsuario();
   const [pedidos, setPedidos] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  let larguraInicialDoSlide = null;
 
   useEffect(() => {
     if (pedidos.length === 0) {
       getPedidosDeAmizade({ setLoading, setPedidos });
     }
+  }, []);
+  useEffect(() => {
+    function ajustarItems() {
+      const slide = document.querySelector(".slick-slide");
+      if (window.innerWidth <= 530) {
+        setItemsMostrar(1);
+        if (slide) slide.style.width = "100px";
+      } else {
+        setItemsMostrar(2);
+        if (slide) slide.style.width = "500px";
+      }
+      console.log(window.innerWidth);
+    }
+    window.onresize = ajustarItems;
+    window.onload = ajustarItems;
+
+    return () => {
+      window.onresize = null;
+    };
   }, []);
   useEffect(() => {
     console.log(pedidos);
