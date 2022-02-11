@@ -49,14 +49,12 @@ export default function ListaAmigos() {
     getAmigos({ setPaginate, setLoading, termo });
   }
   function procurar(values) {
-    if (paginate.data.length >= 0) {
-      resetarResultados();
-    }
     setTermo(values.search);
-    console.log(values);
+    setUsuarios([]);
+    setLoading(true);
   }
   useEffect(() => {
-    console.log("Pesquisado");
+    getAmigos({ setPaginate, setLoading, termo });
   }, [termo]);
   if (!loading && paginate.total === 0 && !termo) {
     return <div />;
@@ -128,14 +126,14 @@ export default function ListaAmigos() {
             </Button>
           </Box>
         )}
-        {paginate.current_page === paginate.last_page && paginate.total !== 0 && (
+        {!loading && paginate.total !== 0 && !termo && (
           <Box mt={2}>
             <Text color="textSecondary" align="center" variant="subtitle2">
               Todos os usuarios já foram exibidos
             </Text>
           </Box>
         )}
-        {!loading && paginate.total === 0 && (
+        {!loading && termo && usuarios.length === 0 && (
           <Box mt={2} mb={1}>
             <Text color="textSecondary" align="center" variant="subtitle2">
               Nenhum amigo encontrado.
