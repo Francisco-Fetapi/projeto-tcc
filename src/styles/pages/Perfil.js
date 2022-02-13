@@ -300,7 +300,6 @@ export const Perfil = {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
-    /* background: ; */
     display: flex;
     align-items: flex-end;
 
@@ -320,6 +319,10 @@ export const Perfil = {
         .MuiButton-root {
           margin: 20px;
           background: #fdfdfd;
+
+          @media (max-width: 480px) {
+            zoom: 0.85;
+          }
         }
       }
     }
