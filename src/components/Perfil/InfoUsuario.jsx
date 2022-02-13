@@ -290,26 +290,28 @@ export default function InfoUsuario() {
           </Box>
         </Box>
       </Perfil.Info>
-      <Box
-        className="links_perfil"
-        my={2}
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-      >
-        <LinkPerfil to="/registo-de-atividade" icon={<FaList />}>
-          Registo de atividade
-        </LinkPerfil>
-        <LinkPerfil to="/amigos" icon={<FaUsers />}>
-          Amigos
-        </LinkPerfil>
-        <LinkPerfil to="/movies-favoritos" icon={<FaTv />}>
-          Filmes/Séries favoritos
-        </LinkPerfil>
-        <LinkPerfil to="/publicacoes-guardadas" icon={<FaSave />}>
-          Publicações guardadas
-        </LinkPerfil>
-      </Box>
+      {!a_carregar && (
+        <Box
+          className="links_perfil"
+          my={2}
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <LinkPerfil to="/registo-de-atividade" icon={<FaList />}>
+            Registo de atividade
+          </LinkPerfil>
+          <LinkPerfil to="/amigos" icon={<FaUsers />}>
+            Amigos
+          </LinkPerfil>
+          <LinkPerfil to="/movies-favoritos" icon={<FaTv />}>
+            Filmes/Séries favoritos
+          </LinkPerfil>
+          <LinkPerfil to="/publicacoes-guardadas" icon={<FaSave />}>
+            Publicações guardadas
+          </LinkPerfil>
+        </Box>
+      )}
       <Divider />
       <ModalEditarBiografia open={modal1} setModal={setModal1} />
       <ModalEditarPerfil open={modal2} setModal={setModal2} />
