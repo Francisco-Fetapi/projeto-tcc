@@ -305,7 +305,7 @@ export default function InfoUsuario() {
             Amigos
           </LinkPerfil>
           <LinkPerfil to="/movies-favoritos" icon={<FaTv />}>
-            Filmes/Séries favoritos
+            Favoritos
           </LinkPerfil>
           <LinkPerfil to="/publicacoes-guardadas" icon={<FaSave />}>
             Publicações guardadas

@@ -189,6 +189,11 @@ export const Perfil = {
         display: block;
       }
     }
+    @media (max-width: 450px) {
+      .posts-mobile {
+        zoom: 0.85;
+      }
+    }
   `,
   Main: styled.div``,
   Info: styled.div`

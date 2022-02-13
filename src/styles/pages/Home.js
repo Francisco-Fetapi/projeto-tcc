@@ -136,8 +136,6 @@ export const MainContainer = styled.div`
     }
     @media (max-width: 450px) {
       zoom: 0.85;
-      .AddPost {
-      }
     }
 
     /* @media (max-width: 545px) {
