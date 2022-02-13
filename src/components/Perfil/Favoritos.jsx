@@ -37,19 +37,11 @@ export default function Favoritos() {
     <List mt={3} className="favoritos">
       <Box
         mb={2}
-        style={{ zoom: ".85" }}
         display="flex"
         justifyContent="space-between"
         alignItems="center"
       >
         <Text variant="h6">FAVORITOS</Text>
-        <Button
-          color="default"
-          variant="text"
-          onClick={() => navigate("/movies-favoritos")}
-        >
-          Ver mais
-        </Button>
       </Box>
       <Box>
         {["matrix.jpg", "TWD.jpg", "lucifer.jpg"].map((item) => (
@@ -57,7 +49,9 @@ export default function Favoritos() {
         ))}
       </Box>
       <Box mt={1} display="flex" justifyContent="center">
-        <Button color="primary">Carregar mais</Button>
+        <Button color="primary" onClick={() => navigate("/movies-favoritos")}>
+          Visualizar todos
+        </Button>
       </Box>
     </List>
   );

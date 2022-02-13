@@ -11,19 +11,11 @@ export default function PublicacoesGuardadas() {
     <Box>
       <Box
         mb={2}
-        style={{ zoom: ".85" }}
         display="flex"
         justifyContent="space-between"
         alignItems="center"
       >
         <Text variant="h6">PUBLICAÇÕES GUARDADAS</Text>
-        <Button
-          color="default"
-          variant="text"
-          onClick={() => navigate("/publicacoes-guardadas")}
-        >
-          Ver mais
-        </Button>
       </Box>
       <Box>
         {[1, 2, 3].map((item) => (
@@ -34,7 +26,12 @@ export default function PublicacoesGuardadas() {
         ))}
       </Box>
       <Box mt={1} display="flex" justifyContent="center">
-        <Button color="primary">Carregar mais</Button>
+        <Button
+          color="primary"
+          onClick={() => navigate("/publicacoes-guardadas")}
+        >
+          Visualizar todas
+        </Button>
       </Box>
     </Box>
   );
