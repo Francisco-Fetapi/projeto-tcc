@@ -88,15 +88,7 @@ export const Amigos = {
       max-width: 490px;
       overflow-x: auto;
       padding-bottom: 10px;
-      &::-webkit-scrollbar {
-        width: 10px;
-        height: 10px;
-        background: #d4d4d4;
-        border-radius: 10px;
-      }
-      &::-webkit-scrollbar-thumb {
-        background: rgba(0, 0, 0, 0.4);
-      }
+
       @media (max-width: 630px) {
         display: flex;
       }

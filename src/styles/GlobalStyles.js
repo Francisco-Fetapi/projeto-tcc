@@ -12,6 +12,27 @@ export const GlobalStyles = createGlobalStyle`
         width:100vh;
         height:100vh;
     } */
+    *{
+        &::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+        background: #d4d4d4;
+        border-radius: 10px;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.4);
+      }
+    }
+    body{
+        &::-webkit-scrollbar {
+        width: 12px;
+        height: 8px;
+        border-radius: 2px;
+      }
+       &::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.6);
+      } 
+    }
 
     /* AJUSTES NO TEMA ESCURO */
     .dark{

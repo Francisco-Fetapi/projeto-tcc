@@ -98,34 +98,14 @@ export const MainContainer = styled.div`
       }
     }
   }
-  .menu-left::-webkit-scrollbar,
-  .menu-right::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-    background: #d4d4d4;
-  }
-  .menu-right::-webkit-scrollbar {
-    display: none;
-  }
-  .menu-right:hover::-webkit-scrollbar {
-    display: block;
-  }
-  .menu-left::-webkit-scrollbar-thumb,
-  .menu-right::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 2px;
-  }
+
   .menu-left {
     left: 0;
     right: auto;
-
-    /* .menu-left-item-active{
-      background:;
-    } */
   }
   .menu-right {
     padding-top: 30px;
-    right: 0;
+    right: 10px;
     left: auto;
     .MuiListItem-root {
       padding-top: 9px;
