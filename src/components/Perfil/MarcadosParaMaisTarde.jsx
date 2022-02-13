@@ -18,9 +18,7 @@ export default function MarcadosParaMaisTarde() {
   };
   return (
     <Box className="marcados_pra_mais_tarde_box">
-      <Text variant="h6" style={{ zoom: ".85" }}>
-        MARCADOS PARA MAIS TARDE
-      </Text>
+      <Text variant="h6">MARCADOS PARA MAIS TARDE</Text>
       <Box className="movies" mt={2}>
         <Slider {...settings}>
           {[-1, 0, 1, 2].map((lista) => {

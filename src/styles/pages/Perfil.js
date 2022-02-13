@@ -96,16 +96,6 @@ export const Perfil = {
       overflow-y: auto;
       padding-top: 90px;
       padding-right: 30px;
-
-      &::-webkit-scrollbar {
-        width: 6px;
-        height: 6px;
-        background: #d4d4d4;
-      }
-      &::-webkit-scrollbar-thumb {
-        background: rgba(0, 0, 0, 0.2);
-        border-radius: 2px;
-      }
     }
     .movies {
       width: 100%;
