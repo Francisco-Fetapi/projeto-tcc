@@ -199,6 +199,10 @@ export const MaisSobreVoce = {
 export const MenuItemMobileStyled = styled.div`
   background: ${(props) => (props.active ? props.color : "")};
   color: ${(props) => (props.active ? "#F0F0F0" : "")};
+  .MuiListItem-button {
+    padding: 12px 12px;
+  }
+
   svg {
     width: 20px !important;
     height: 20px !important;
