@@ -60,7 +60,7 @@ export default function MenuMobile({ info }) {
         }}
       >
         <Box p={2}>
-          <MenuHeaderInfo usuario={usuario} />
+          <MenuHeaderInfo usuario={usuario} fechar={handleDrawerToggle} />
         </Box>
         <Divider />
         <List>

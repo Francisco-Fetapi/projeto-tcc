@@ -285,6 +285,16 @@ export const GlobalStyles = createGlobalStyle`
     .paper-drawer {
         width: 90%;
         max-width:380px;
+        .menu-header-container{
+            position:relative;
+            z-index:99999999;
+            .close_menu{
+                position: absolute;
+                top:-10px;
+                right:-10px;
+            }
+        }
+
       }
       abbr{
           text-decoration:none;
