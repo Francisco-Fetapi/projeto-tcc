@@ -21,7 +21,6 @@ function useMovies(tipo) {
   const dados = {
     async carregar() {
       const data = await get();
-      console.log(data);
       Disparar(SET_STATE(tipo, data));
     },
   };

@@ -27,8 +27,6 @@ function App() {
     window.scrollTo(0, 0);
   }, [pathname]);
 
-  console.log("App Renderizou");
-
   return (
     <Theme>
       <GlobalStyles />

@@ -83,6 +83,7 @@ const API = {
   },
   async getInfoHeader() {
     let { data } = await api.get("/usuario/info-header");
+    console.log(data);
     return data;
   },
   async alterarFotoDeCapa(foto) {
@@ -156,6 +157,10 @@ const API = {
   },
   async enviarPedidoDeAmizade(id_amigo) {
     const { data } = await api.post("/usuario/enviar-pedido", { id_amigo });
+    return data;
+  },
+  async getUsuarioById(id) {
+    const { data } = await api.get(`/usuario/${id}`);
     return data;
   },
 };

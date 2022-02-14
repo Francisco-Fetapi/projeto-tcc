@@ -60,7 +60,6 @@ export default function useUsuario() {
         info.logout();
         navigate("/login");
       }
-      console.log(res);
     },
     async getInfoHeader(setState, LoadingLinear) {
       LoadingLinear?.mostrar();

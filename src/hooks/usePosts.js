@@ -16,7 +16,6 @@ function usePost() {
   const dados = {
     async carregar() {
       const data = await get();
-      console.log(data);
       Disparar(SET_STATE("posts", data));
     },
   };
