@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import API from "~/API";
 import { Usuario } from "~/styles/pages/Usuario";
+import Box from "@material-ui/core/Box";
 
 export default function MainContent() {
   const { id } = useParams();
@@ -20,6 +21,8 @@ export default function MainContent() {
           <img src={usuario.foto_perfil} alt="Foto de perfil" />
         </figure>
       </Usuario.FotoDeCapa>
+
+      <Box></Box>
     </div>
   );
 }
