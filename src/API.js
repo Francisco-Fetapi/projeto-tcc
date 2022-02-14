@@ -83,7 +83,6 @@ const API = {
   },
   async getInfoHeader() {
     let { data } = await api.get("/usuario/info-header");
-    console.log(data);
     return data;
   },
   async alterarFotoDeCapa(foto) {
