@@ -5,7 +5,7 @@ import { Text } from "~/styles";
 export default function Movie({ nome, img }) {
   return (
     <Box className="movie">
-      <img src={`./img/${img}`} alt={nome} />
+      <img src={`/img/${img}`} alt={nome} />
       <figcaption>
         <Text align="center">{nome}</Text>
       </figcaption>

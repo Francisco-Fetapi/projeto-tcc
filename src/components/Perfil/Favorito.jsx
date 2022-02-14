@@ -7,7 +7,7 @@ export default function Favorito({ imgMovie }) {
   return (
     <Box className="favorito-grid" mt={3.3}>
       <Box className="img">
-        <img src={`./img/${imgMovie}`} alt="Matrix" />
+        <img src={`/img/${imgMovie}`} alt="Matrix" />
       </Box>
       <Box className="info">
         <Text variant="h6" style={{ fontSize: 16 }}>
@@ -15,9 +15,9 @@ export default function Favorito({ imgMovie }) {
         </Text>
         <Box>
           <Box display="flex" alignItems="center" component="figure" mr={1.2}>
-            <img src="./img/user1.jpg" alt="user" />
-            <img src="./img/user4.jpg" alt="user" />
-            <img src="./img/user3.jpg" alt="user" />
+            <img src="/img/user1.jpg" alt="user" />
+            <img src="/img/user4.jpg" alt="user" />
+            <img src="/img/user3.jpg" alt="user" />
           </Box>
           <Text variant="subtitle2" color="textSecondary">
             João e 5 outras pessoas favoritaram

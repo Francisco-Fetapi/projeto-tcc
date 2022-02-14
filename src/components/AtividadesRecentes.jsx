@@ -46,7 +46,7 @@ export default function AtividadesRecentes() {
         >
           <ListItemAvatar>
             <Avatar className="atvidade-icon">
-              <img src={`./img/${item.icon}`} alt={item.icon} />
+              <img src={`/img/${item.icon}`} alt={item.icon} />
             </Avatar>
           </ListItemAvatar>
           <ListItemText

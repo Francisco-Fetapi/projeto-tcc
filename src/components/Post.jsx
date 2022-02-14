@@ -110,7 +110,7 @@ export default function Post({
           )}
           {img && !a_carregar && (
             <Box mt={3} className="imagem-post">
-              <img src={`./img/${img}`} alt="imagem" />
+              <img src={`/img/${img}`} alt="imagem" />
             </Box>
           )}
         </CardContent>
@@ -120,12 +120,12 @@ export default function Post({
               <Box display="flex" alignItems="center">
                 <Box>
                   <img
-                    src="./img/like.png"
+                    src="/img/like.png"
                     alt="like"
                     style={{ filter: "hue-rotate(-45deg)" }}
                   />
                   <img
-                    src="./img/love.png"
+                    src="/img/love.png"
                     alt="love"
                     style={{ filter: "hue-rotate(35deg)" }}
                   />

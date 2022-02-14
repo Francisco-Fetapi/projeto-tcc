@@ -45,7 +45,7 @@ export default function MenuLeft() {
           {series.slice(0, 3).map((item) => (
             <ListItem button key={item.nome}>
               <ListItemAvatar>
-                <img src={`./img/${item.img}`} alt={item.nome} />
+                <img src={`/img/${item.img}`} alt={item.nome} />
               </ListItemAvatar>
               <ListItemText primary={item.nome} secondary={item.data} />
             </ListItem>
@@ -91,7 +91,7 @@ export default function MenuLeft() {
             .map((item) => (
               <ListItem button key={item.nome}>
                 <ListItemAvatar>
-                  <img src={`./img/${item.img}`} alt={item.nome} />
+                  <img src={`/img/${item.img}`} alt={item.nome} />
                 </ListItemAvatar>
                 <ListItemText primary={item.nome} secondary={item.data} />
               </ListItem>

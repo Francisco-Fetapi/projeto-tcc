@@ -100,7 +100,7 @@ export default function Amigos() {
             alignItems="center"
           >
             <img
-              src="./img/info_amigos_add.png"
+              src="/img/info_amigos_add.png"
               alt="Logo a dizer pra se conectar com amigos"
             />
             <Text variant="subtitle2" color="textSecondary" align="center">
