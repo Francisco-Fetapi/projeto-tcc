@@ -101,9 +101,9 @@ export default function FormAddPost() {
             )}
             {!a_carregar && (
               <ButtonGroup fullWidth variant="text" color="primary">
-                <Button startIcon={<FaVideo />} className="buttons-post-videos">
+                {/* <Button startIcon={<FaVideo />} className="buttons-post-videos">
                   Videos
-                </Button>
+                </Button> */}
                 <Button startIcon={<FaPhotoVideo />}>Foto</Button>
                 <Button startIcon={<FaEye />}>A Assistir</Button>
                 <Button startIcon={<AddCircle />}>Mais</Button>

@@ -167,6 +167,9 @@ export const Perfil = {
       @media (max-width: 965px) {
         padding: 0 70px;
       }
+      @media (max-width: 615px) {
+        padding: 0 30px;
+      }
     }
     .posts-mobile {
       display: none;
