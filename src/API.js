@@ -125,9 +125,9 @@ const API = {
     const { data } = await api.post("/usuario/galeria/add", formData);
     return data;
   },
-  async getFotosDaGaleria(page = 0) {
+  async getFotosDaGaleria(page = 0,id_usuario) {
     const { data } = await api.get("/usuario/galeria", {
-      params: { page },
+      params: { page,id_usuario },
     });
     return data;
   },

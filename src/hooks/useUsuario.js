@@ -333,9 +333,9 @@ export default function useUsuario() {
         setPreview("");
         console.log(res);
       },
-      async get({ setPaginate, setLoading }, page) {
+      async get({ setPaginate, setLoading,id }, page) {
         setLoading(true);
-        let res = await API.getFotosDaGaleria(page);
+        let res = await API.getFotosDaGaleria(page,id);
         setLoading(false);
 
         setPaginate(res);

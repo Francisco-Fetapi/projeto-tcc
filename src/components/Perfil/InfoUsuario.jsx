@@ -184,32 +184,30 @@ export default function InfoUsuario() {
             </Text>
 
             <Text variant="subtitle2" color="textSecondary">
-              {!perfil_alheio && (
-                <Box className="alterar-email-box">
-                  {a_carregar ? (
-                    <Skeleton
-                      variant="rect"
-                      width="100%"
-                      height={12}
-                      style={{ marginTop: 8 }}
-                    />
-                  ) : (
-                    usuario.email
-                  )}
-                  {!a_carregar && (
-                    <Box
-                      ml={2}
-                      className="alterar_email"
-                      display="flex"
-                      alignItems="center"
-                      onClick={abrirModal4}
-                    >
-                      <Box mr={0.5}>Alterar</Box>
-                      <FaPencilAlt style={{ fontSize: 12 }} />
-                    </Box>
-                  )}
-                </Box>
-              )}
+              <Box className="alterar-email-box">
+                {a_carregar ? (
+                  <Skeleton
+                    variant="rect"
+                    width="100%"
+                    height={12}
+                    style={{ marginTop: 8 }}
+                  />
+                ) : (
+                  usuario.email
+                )}
+                {!a_carregar && !perfil_alheio && (
+                  <Box
+                    ml={2}
+                    className="alterar_email"
+                    display="flex"
+                    alignItems="center"
+                    onClick={abrirModal4}
+                  >
+                    <Box mr={0.5}>Alterar</Box>
+                    <FaPencilAlt style={{ fontSize: 12 }} />
+                  </Box>
+                )}
+              </Box>
             </Text>
             <Box mt={1.3}>
               <Text color="textSecondary" variant="subtitle2">
@@ -326,7 +324,7 @@ export default function InfoUsuario() {
           )}
         </Box>
       </Perfil.Info>
-      {!a_carregar && (
+      {!a_carregar && !perfil_alheio && (
         <Box
           className="links_perfil"
           my={2}

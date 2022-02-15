@@ -17,6 +17,7 @@ import Confirmar from "../Modals/ModalConfirmar";
 
 import useUsuario from "~/hooks/useUsuario";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import { useParams } from "react-router-dom";
 
 export default function Fotos() {
   const [paginate, setPaginate] = useState({
@@ -32,6 +33,8 @@ export default function Fotos() {
   const inputFile = useRef();
   const [preview, setPreview] = useState("");
   const { exibirFoto2ASerAlterada, Galeria } = useUsuario();
+  const { id } = useParams();
+  console.log(id);
 
   const handleChange = (event, value) => {
     setPaginate({ ...paginate, current_page: value });
@@ -40,7 +43,7 @@ export default function Fotos() {
     if (preview === "") inputFile.current.value = "";
   }, [preview]);
   useEffect(() => {
-    Galeria.get({ setPaginate, setLoading }, paginate.current_page);
+    Galeria.get({ setPaginate, setLoading, id }, paginate.current_page);
   }, [paginate.current_page]);
 
   useEffect(() => {
