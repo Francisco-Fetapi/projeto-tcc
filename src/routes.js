@@ -36,7 +36,8 @@ export default function routes() {
       <Route path="/atores" element={<Atores />} />
       <Route path="/publicacoes-guardadas" element={<PostSaveds />} />
       <Route path="/minha-linha-do-tempo" element={<LinhaDoTempo />} />
-      <Route path="/usuario/:id" element={<Usuario />} />
+      {/* <Route path="/usuario/:id" element={<Usuario />} /> */}
+      <Route path="/usuario/:id" element={<Perfil alheio={true} />} />
 
       <Route path="*" element={<NotFound />} />
     </Routes>

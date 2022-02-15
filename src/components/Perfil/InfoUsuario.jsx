@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useContext } from "react";
 import { Text, Link } from "~/styles";
 import { Perfil } from "~/styles/pages/Perfil";
 import Box from "@material-ui/core/Box";
@@ -41,6 +41,7 @@ import useModal from "~/hooks/useModal";
 
 import LinearProgress from "../Progress/Linear.jsx";
 import useLinearProgress from "~/hooks/useLinearProgress";
+import { PerfilContext } from "~/pages/Perfil";
 
 function LinkPerfil({ to, icon, children }) {
   return (
@@ -79,7 +80,17 @@ export default function InfoUsuario() {
   const [modal3, abrirModal3, , setModal3] = useModal();
   const [modal4, abrirModal4, , setModal4] = useModal();
 
-  const usuario = useSelector(selectAppState("usuario"));
+  const Perfil_Context = useContext(PerfilContext);
+  const perfil_alheio = Perfil_Context.alheio;
+  const usuario_logado = useSelector(selectAppState("usuario"));
+  const [usuario, setUsuario] = useState({});
+  useEffect(() => {
+    if (Perfil_Context.alheio) {
+      setUsuario(Perfil_Context.usuario);
+    } else {
+      setUsuario(usuario_logado);
+    }
+  }, [Perfil_Context, usuario_logado]);
 
   const fotoPerfilInicial = usuario.foto_perfil || "";
   const a_carregar = !usuario.id;
@@ -119,7 +130,7 @@ export default function InfoUsuario() {
               id="foto_perfil"
               ref={inputFile}
             />
-            {!a_carregar && (
+            {!a_carregar && !perfil_alheio && (
               <Box component="figcaption">
                 {!fotoDePerfil.includes("base64") && (
                   <Tooltip title="Alterar foto de perfil">
@@ -131,7 +142,7 @@ export default function InfoUsuario() {
               </Box>
             )}
 
-            {fotoDePerfil.includes("base64") && (
+            {fotoDePerfil.includes("base64") && !perfil_alheio && (
               <>
                 <Tooltip title="Cancelar">
                   <div className="left" onClick={cancelar}>
@@ -173,30 +184,32 @@ export default function InfoUsuario() {
             </Text>
 
             <Text variant="subtitle2" color="textSecondary">
-              <Box className="alterar-email-box">
-                {a_carregar ? (
-                  <Skeleton
-                    variant="rect"
-                    width="100%"
-                    height={12}
-                    style={{ marginTop: 8 }}
-                  />
-                ) : (
-                  usuario.email
-                )}
-                {!a_carregar && (
-                  <Box
-                    ml={2}
-                    className="alterar_email"
-                    display="flex"
-                    alignItems="center"
-                    onClick={abrirModal4}
-                  >
-                    <Box mr={0.5}>Alterar</Box>
-                    <FaPencilAlt style={{ fontSize: 12 }} />
-                  </Box>
-                )}
-              </Box>
+              {!perfil_alheio && (
+                <Box className="alterar-email-box">
+                  {a_carregar ? (
+                    <Skeleton
+                      variant="rect"
+                      width="100%"
+                      height={12}
+                      style={{ marginTop: 8 }}
+                    />
+                  ) : (
+                    usuario.email
+                  )}
+                  {!a_carregar && (
+                    <Box
+                      ml={2}
+                      className="alterar_email"
+                      display="flex"
+                      alignItems="center"
+                      onClick={abrirModal4}
+                    >
+                      <Box mr={0.5}>Alterar</Box>
+                      <FaPencilAlt style={{ fontSize: 12 }} />
+                    </Box>
+                  )}
+                </Box>
+              )}
             </Text>
             <Box mt={1.3}>
               <Text color="textSecondary" variant="subtitle2">
@@ -209,21 +222,23 @@ export default function InfoUsuario() {
             </Box>
             <div style={{ flexGrow: 1 }} />
 
-            <Box mt={3} display="flex" justifyContent="center">
-              {!a_carregar && (
-                <Button
-                  color="primary"
-                  startIcon={<FaPencilAlt />}
-                  variant="outlined"
-                  onClick={abrirModal1}
-                >
-                  Editar biografia
-                </Button>
-              )}
-              {a_carregar && (
-                <Skeleton variant="rect" width={183} height={36} />
-              )}
-            </Box>
+            {!perfil_alheio && (
+              <Box mt={3} display="flex" justifyContent="center">
+                {!a_carregar && (
+                  <Button
+                    color="primary"
+                    startIcon={<FaPencilAlt />}
+                    variant="outlined"
+                    onClick={abrirModal1}
+                  >
+                    Editar biografia
+                  </Button>
+                )}
+                {a_carregar && (
+                  <Skeleton variant="rect" width={183} height={36} />
+                )}
+              </Box>
+            )}
           </Box>
         </Box>
         <Box className="mais_info_perfil">
@@ -257,18 +272,42 @@ export default function InfoUsuario() {
               </span>
             </ListItemWithSkeleton>
           </List>
-          <Box mt={3} display="flex" justifyContent="center">
-            {!a_carregar && (
-              <>
-                <Button
-                  color="primary"
-                  startIcon={<AccountCircle />}
-                  variant="outlined"
-                  style={{ marginRight: 10 }}
-                  onClick={abrirModal2}
-                >
-                  Editar perfil
-                </Button>
+          {!perfil_alheio && (
+            <Box mt={3} display="flex" justifyContent="center">
+              {!a_carregar && (
+                <>
+                  <Button
+                    color="primary"
+                    startIcon={<AccountCircle />}
+                    variant="outlined"
+                    style={{ marginRight: 10 }}
+                    onClick={abrirModal2}
+                  >
+                    Editar perfil
+                  </Button>
+                  <Button
+                    color="primary"
+                    onClick={abrirModal3}
+                    startIcon={<FaPlus />}
+                    variant="outlined"
+                  >
+                    Ver mais
+                  </Button>
+                </>
+              )}
+              {a_carregar && (
+                <>
+                  <Box mr={2.2} width={183}>
+                    <Skeleton variant="rect" width={183} height={36} />
+                  </Box>
+                  <Skeleton variant="rect" width={183} height={36} />
+                </>
+              )}
+            </Box>
+          )}
+          {perfil_alheio && (
+            <Box mt={3} display="flex" justifyContent="center">
+              {!a_carregar && (
                 <Button
                   color="primary"
                   onClick={abrirModal3}
@@ -277,17 +316,14 @@ export default function InfoUsuario() {
                 >
                   Ver mais
                 </Button>
-              </>
-            )}
-            {a_carregar && (
-              <>
-                <Box mr={2.2} width={183}>
+              )}
+              {a_carregar && (
+                <>
                   <Skeleton variant="rect" width={183} height={36} />
-                </Box>
-                <Skeleton variant="rect" width={183} height={36} />
-              </>
-            )}
-          </Box>
+                </>
+              )}
+            </Box>
+          )}
         </Box>
       </Perfil.Info>
       {!a_carregar && (

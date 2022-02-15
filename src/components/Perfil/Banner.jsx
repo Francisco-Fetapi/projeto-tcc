@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Perfil } from "~/styles/pages/Perfil";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
@@ -12,9 +12,20 @@ import { useSelector } from "react-redux";
 import { selectAppState } from "~/store/App.selectors";
 import LinearProgress from "../Progress/Linear.jsx";
 import useLinearProgress from "~/hooks/useLinearProgress";
+import { PerfilContext } from "~/pages/Perfil.jsx";
 
 export default function Banner() {
-  const usuario = useSelector(selectAppState("usuario"));
+  // const usuario = useSelector(selectAppState("usuario"));
+  const Perfil_Context = useContext(PerfilContext);
+  const usuario_logado = useSelector(selectAppState("usuario"));
+  const [usuario, setUsuario] = useState({});
+  useEffect(() => {
+    if (Perfil_Context.alheio) {
+      setUsuario(Perfil_Context.usuario);
+    } else {
+      setUsuario(usuario_logado);
+    }
+  }, [Perfil_Context, usuario_logado]);
   const { exibirFoto2ASerAlterada, alterarFotoDeCapa } = useUsuario();
   const fotoCapaInicial = usuario.foto_capa || "";
   const inputFile = useRef();

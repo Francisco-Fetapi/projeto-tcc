@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Perfil } from "~/styles/pages/Perfil";
 import Banner from "./Banner";
 import FotosEAmigos from "./FotosEAmigos";
@@ -13,6 +13,7 @@ import { useSelector } from "react-redux";
 import { selectAppState } from "~/store/App.selectors";
 
 import Skeleton from "@material-ui/lab/Skeleton";
+import { PerfilContext } from "~/pages/Perfil";
 
 function PubsSavedsAndFavoritos({ className }) {
   return (
@@ -26,7 +27,17 @@ function PubsSavedsAndFavoritos({ className }) {
 }
 
 export default function Main() {
-  const usuario = useSelector(selectAppState("usuario"));
+  const Perfil_Context = useContext(PerfilContext);
+  const usuario_logado = useSelector(selectAppState("usuario"));
+  const [usuario, setUsuario] = useState({});
+  useEffect(() => {
+    if (Perfil_Context.alheio) {
+      setUsuario(Perfil_Context.usuario);
+    } else {
+      setUsuario(usuario_logado);
+    }
+  }, [Perfil_Context, usuario_logado]);
+
   const a_carregar = !usuario.id;
   return (
     <Perfil.Container>
