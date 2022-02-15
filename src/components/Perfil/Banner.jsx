@@ -17,6 +17,7 @@ import { PerfilContext } from "~/pages/Perfil.jsx";
 export default function Banner() {
   // const usuario = useSelector(selectAppState("usuario"));
   const Perfil_Context = useContext(PerfilContext);
+  const perfil_alheio = Perfil_Context.alheio;
   const usuario_logado = useSelector(selectAppState("usuario"));
   const [usuario, setUsuario] = useState({});
   useEffect(() => {
@@ -45,51 +46,55 @@ export default function Banner() {
       <LinearProgress aberto={LoadingLinear.loading} />
       <Perfil.Banner img={fotoDeCapa}>
         <div>
-          <div>
-            {!fotoDeCapa.includes("base64") && (
-              <Button
-                startIcon={<FaCamera />}
-                onClick={() => inputFile.current.click()}
-                color="default"
-                variant="contained"
-              >
-                Alterar foto de capa
-              </Button>
-            )}
-            {fotoDeCapa.includes("base64") && (
-              <Box>
-                <Button
-                  startIcon={<Done />}
-                  onClick={() =>
-                    alterarFotoDeCapa(
-                      inputFile.current.files[0],
-                      cancelar,
-                      LoadingLinear
-                    )
-                  }
-                  color="default"
-                  variant="contained"
-                >
-                  Concluir
-                </Button>
-                <Button
-                  startIcon={<Clear />}
-                  onClick={cancelar}
-                  color="default"
-                  variant="contained"
-                >
-                  Cancelar
-                </Button>
-              </Box>
-            )}
-          </div>
-          <input
-            type="file"
-            accept="image/*"
-            ref={inputFile}
-            hidden
-            onChange={(e) => exibirFoto2ASerAlterada(e, setFotoDeCapa)}
-          />
+          {!perfil_alheio && (
+            <>
+              <div>
+                {!fotoDeCapa.includes("base64") && (
+                  <Button
+                    startIcon={<FaCamera />}
+                    onClick={() => inputFile.current.click()}
+                    color="default"
+                    variant="contained"
+                  >
+                    Alterar foto de capa
+                  </Button>
+                )}
+                {fotoDeCapa.includes("base64") && (
+                  <Box>
+                    <Button
+                      startIcon={<Done />}
+                      onClick={() =>
+                        alterarFotoDeCapa(
+                          inputFile.current.files[0],
+                          cancelar,
+                          LoadingLinear
+                        )
+                      }
+                      color="default"
+                      variant="contained"
+                    >
+                      Concluir
+                    </Button>
+                    <Button
+                      startIcon={<Clear />}
+                      onClick={cancelar}
+                      color="default"
+                      variant="contained"
+                    >
+                      Cancelar
+                    </Button>
+                  </Box>
+                )}
+              </div>
+              <input
+                type="file"
+                accept="image/*"
+                ref={inputFile}
+                hidden
+                onChange={(e) => exibirFoto2ASerAlterada(e, setFotoDeCapa)}
+              />
+            </>
+          )}
         </div>
       </Perfil.Banner>
     </>
