@@ -26,8 +26,8 @@ import {
   FaSave,
 } from "react-icons/fa";
 import useUsuario from "~/hooks/useUsuario";
-import Done from "@material-ui/icons/Done";
 import Clear from "@material-ui/icons/Clear";
+import Done from "@material-ui/icons/Done";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 
 import ModalEditarBiografia from "../Modals/ModalEditarBiografia";
@@ -219,17 +219,24 @@ export default function InfoUsuario() {
                   </Box>
                 )}
               </Box>
-              {perfil_alheio && (
+              {perfil_alheio && !a_carregar && (
                 <>
                   <Box>
                     <Text color="textSecondary" style={{ fontSize: 12 }}>
                       Se cadastrou no sistema <b>{usuario.tempo_no_sistema}</b>
                     </Text>
                   </Box>
-                  {usuario.tempo_amizade && (
+                  {usuario.status_amizade === 1 && (
                     <Box>
                       <Text color="textSecondary" style={{ fontSize: 12 }}>
                         Vocês são amigos <b>{usuario.tempo_amizade}</b>
+                      </Text>
+                    </Box>
+                  )}
+                  {usuario.status_amizade === 0 && (
+                    <Box>
+                      <Text color="textSecondary" style={{ fontSize: 12 }}>
+                        O pedido foi enviado <b>{usuario.tempo_amizade}</b>
                       </Text>
                     </Box>
                   )}
@@ -259,7 +266,7 @@ export default function InfoUsuario() {
                   Editar biografia
                 </Button>
               )}
-              {!a_carregar && perfil_alheio && (
+              {!a_carregar && perfil_alheio && usuario.status_amizade === 1 && (
                 <Box>
                   <Button
                     color="default"
@@ -274,6 +281,24 @@ export default function InfoUsuario() {
                     variant="outlined"
                   >
                     Mensagens
+                  </Button>
+                </Box>
+              )}
+              {!a_carregar && perfil_alheio && usuario.status_amizade === 0 && (
+                <Box>
+                  <Button
+                    color="default"
+                    startIcon={<Close />}
+                    variant="outlined"
+                  >
+                    Aceitar pedido
+                  </Button>
+                  <Button
+                    color="default"
+                    startIcon={<Done />}
+                    variant="outlined"
+                  >
+                    Rejeitar pedido
                   </Button>
                 </Box>
               )}

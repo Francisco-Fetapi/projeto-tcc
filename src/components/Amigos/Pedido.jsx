@@ -6,7 +6,7 @@ import ButtonGroup from "@material-ui/core/ButtonGroup";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import useUsuario from "~/hooks/useUsuario";
 
-import { Text } from "~/styles";
+import { Text, Link } from "~/styles";
 
 import Done from "@material-ui/icons/Done";
 import Clear from "@material-ui/icons/Clear";
@@ -20,9 +20,11 @@ export default function Pedido({ user, setPedidos }) {
     <Box className="pedido">
       <Paper variant="outlined" className="dados">
         <abbr title={user.nome}>
-          <Text variant="h6">
-            {mostrarXCharOntText(primeiroEUltimoNome(user), 18)}
-          </Text>
+          <Link to={`/usuario/${user.id}`} nostyle>
+            <Text variant="h6">
+              {mostrarXCharOntText(primeiroEUltimoNome(user), 18)}
+            </Text>
+          </Link>
         </abbr>
         <abbr title={user.email}>
           <Text variant="subtitle2" color="textSecondary">
@@ -44,7 +46,9 @@ export default function Pedido({ user, setPedidos }) {
           </Text>
         </Box>
         <Box component="figure">
-          <img src={user.foto_perfil} alt="foto do usuario" />
+          <Link to={`/usuario/${user.id}`} nostyle>
+            <img src={user.foto_perfil} alt="foto do usuario" />
+          </Link>
         </Box>
         {loading && (
           <Box className="loading">

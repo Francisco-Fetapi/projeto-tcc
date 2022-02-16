@@ -289,6 +289,9 @@ export const Perfil = {
       }
     }
     .mais_info_perfil {
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
       .MuiListItemIcon-root {
         min-width: auto;
         margin-right: 10px;

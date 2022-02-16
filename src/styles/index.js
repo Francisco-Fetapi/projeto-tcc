@@ -7,7 +7,14 @@ export const ContainerBase = styled.main`
   min-height: 100vh;
 `;
 export const Link = styled(LinkRrd)`
+${({nostyle})=>!nostyle && css`
   color: #4baeb9 !important;
+`}
+${({nostyle})=>nostyle && css`
+  color: inherit;
+  text-decoration:none;
+`}
+  
 `;
 export const HeaderContainer = styled.div`
   background: #fff;
