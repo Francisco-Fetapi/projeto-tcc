@@ -38,12 +38,7 @@ export default function AtividadesRecentes() {
         </IconButton>
       </Box>
       {atividades.map((item, key) => (
-        <ListItem
-          divider
-          button
-          key={key}
-          className={key <= 1 ? "nao-lida" : ""}
-        >
+        <ListItem divider button key={key}>
           <ListItemAvatar>
             <Avatar className="atvidade-icon">
               <img src={`/img/${item.icon}`} alt={item.icon} />

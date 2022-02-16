@@ -150,7 +150,14 @@ export default function InfoUsuario() {
                 <Skeleton variant="circle" width={90} height={90} />
               </Box>
             )}
-            {!a_carregar && <img src={fotoDePerfil} alt="imagem do usuario" />}
+            {!a_carregar && !perfil_alheio && (
+              <img src={fotoDePerfil} alt="imagem do usuario" />
+            )}
+            {!a_carregar && perfil_alheio && (
+              <a href={fotoDePerfil} target="__blank">
+                <img src={fotoDePerfil} alt="imagem do usuario" />
+              </a>
+            )}
             <input
               type="file"
               accept="image/*"

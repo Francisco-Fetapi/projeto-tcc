@@ -53,9 +53,7 @@ export const GlobalStyles = createGlobalStyle`
                 background: linear-gradient(150deg, #0a0a0a 40%, #2c2c2c);
             }
             .lista-atividades {
-                .nao-lida {
-                    background: #1c1f1f !important;
-                }
+                
             }
             .MuiAvatar-root{
                 svg{

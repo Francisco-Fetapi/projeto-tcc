@@ -66,9 +66,7 @@ export const MainContainer = styled.div`
       background: linear-gradient(121deg, #ff5af5, #0e257f);
     }
     .lista-atividades {
-      .nao-lida {
-        background: #ddd !important;
-      }
+      
       .MuiListItem-root {
         align-items: flex-start;
       }

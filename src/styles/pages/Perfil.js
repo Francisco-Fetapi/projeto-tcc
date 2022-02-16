@@ -200,6 +200,14 @@ export const Perfil = {
       @media(max-width:965px){
         margin-left:-100px;
       }
+      @media(max-width:890px){
+        margin-left:0px;
+        max-width:500px;
+      }
+      @media(max-width:500px){
+        margin-left:-100px;
+      }
+
     }
     @media (max-width: 890px) {
       & {
