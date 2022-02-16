@@ -14,6 +14,7 @@ import { selectAppState } from "~/store/App.selectors";
 
 import Skeleton from "@material-ui/lab/Skeleton";
 import { PerfilContext } from "~/pages/Perfil";
+import { useLocation } from "react-router-dom";
 
 function PubsSavedsAndFavoritos({ className }) {
   return (
@@ -29,6 +30,7 @@ function PubsSavedsAndFavoritos({ className }) {
 export default function Main() {
   const Perfil_Context = useContext(PerfilContext);
   const usuario_logado = useSelector(selectAppState("usuario"));
+  const { pathname } = useLocation();
   const [usuario, setUsuario] = useState({});
   useEffect(() => {
     if (Perfil_Context.alheio) {
@@ -36,9 +38,10 @@ export default function Main() {
     } else {
       setUsuario(usuario_logado);
     }
-  }, [Perfil_Context, usuario_logado]);
+  }, [Perfil_Context, usuario_logado, pathname]);
 
-  const a_carregar = !usuario.id;
+  const a_carregar =
+    !usuario.id || (Perfil_Context.alheio && Perfil_Context.loadingUsuario);
   return (
     <Perfil.Container>
       {!a_carregar && <Banner />}

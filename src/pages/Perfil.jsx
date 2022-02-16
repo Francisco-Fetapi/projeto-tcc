@@ -11,23 +11,27 @@ export const PerfilContext = createContext();
 export default function Perfil_({ alheio }) {
   const { seNaoLogadoIrParaLogin } = useUsuario();
   const { id } = useParams();
-  console.log("id", id);
   const [usuario, setUsuario] = useState({});
-  useEffect(() => {
-    async function get() {
-      const res = await API.getUsuarioById(id);
-      setUsuario(res);
-    }
-    if (alheio) {
-      get();
-    }
-  }, []);
-  useEffect(seNaoLogadoIrParaLogin, []);
-  console.log(alheio);
+  const [loadingUsuario, setLoadingUsuario] = useState(true);
   const dadosContext = {
     usuario,
     alheio,
+    loadingUsuario,
   };
+  useEffect(() => {
+    async function get() {
+      const res = await API.getUsuarioById(id);
+      setLoadingUsuario(false);
+      setUsuario(res);
+    }
+    if (alheio) {
+      setLoadingUsuario(true);
+      get();
+    }
+  }, [id]);
+  useEffect(seNaoLogadoIrParaLogin, []);
+  console.log(alheio);
+
   return (
     <Box>
       <PerfilContext.Provider value={dadosContext}>

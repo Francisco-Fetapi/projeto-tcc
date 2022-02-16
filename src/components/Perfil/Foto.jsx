@@ -8,7 +8,6 @@ import { useParams } from "react-router-dom";
 export default function Foto({ img, imgFull, selecionar, tempo, preview }) {
   const link = useRef();
   const { id } = useParams();
-  console.log(id);
   const children = (
     <>
       <img src={img} alt="user " />

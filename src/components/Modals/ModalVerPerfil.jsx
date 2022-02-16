@@ -9,7 +9,6 @@ export default function ModalEditarPerfil(props) {
   const [propsModal, setPropsModal] = useState({});
 
   const { usuario } = props;
-  console.log(usuario, true);
 
   return (
     <TemplateModal

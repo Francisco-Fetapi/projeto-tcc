@@ -12,7 +12,6 @@ import Videos from "./pages/Videos";
 import Atores from "./pages/Atores";
 import LinhaDoTempo from "./pages/LinhaDoTempo";
 import PostSaveds from "./pages/PostSaveds";
-import Usuario from "./pages/Usuario";
 
 import NotFound from "./pages/NotFound";
 
@@ -28,7 +27,7 @@ export default function routes() {
       />
       <Route path="/confirmar-email" element={<ConfirmarEmail />} />
       <Route path="/mais-sobre-voce" element={<MaisSobreVoce />} />
-      <Route path="/perfil" element={<Perfil />} />
+      <Route path="/perfil" element={<Perfil alheio={false}/>} />
       <Route path="/amigos" element={<Amigos />} />
       <Route path="/series" element={<Series />} />
       <Route path="/filmes" element={<Filmes />} />
@@ -36,7 +35,6 @@ export default function routes() {
       <Route path="/atores" element={<Atores />} />
       <Route path="/publicacoes-guardadas" element={<PostSaveds />} />
       <Route path="/minha-linha-do-tempo" element={<LinhaDoTempo />} />
-      {/* <Route path="/usuario/:id" element={<Usuario />} /> */}
       <Route path="/usuario/:id" element={<Perfil alheio={true} />} />
 
       <Route path="*" element={<NotFound />} />

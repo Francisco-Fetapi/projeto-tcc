@@ -43,7 +43,7 @@ export default function Fotos() {
   }, [preview]);
   useEffect(() => {
     Galeria.get({ setPaginate, setLoading, id }, paginate.current_page);
-  }, [paginate.current_page]);
+  }, [paginate.current_page, id]);
 
   useEffect(() => {
     setFotos(paginate.data);

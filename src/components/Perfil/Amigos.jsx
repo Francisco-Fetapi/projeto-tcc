@@ -33,7 +33,7 @@ export default function Amigos() {
   };
   useEffect(() => {
     getAmigos({ setPaginate, setLoading, id }, paginate.current_page);
-  }, [paginate.current_page]);
+  }, [paginate.current_page, id]);
 
   useEffect(() => {
     setAmigos(paginate.data);

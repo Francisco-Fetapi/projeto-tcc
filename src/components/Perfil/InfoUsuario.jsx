@@ -42,6 +42,7 @@ import useModal from "~/hooks/useModal";
 import LinearProgress from "../Progress/Linear.jsx";
 import useLinearProgress from "~/hooks/useLinearProgress";
 import { PerfilContext } from "~/pages/Perfil";
+import { useLocation } from "react-router-dom";
 
 function LinkPerfil({ to, icon, children }) {
   return (
@@ -82,18 +83,22 @@ export default function InfoUsuario() {
 
   const Perfil_Context = useContext(PerfilContext);
   const perfil_alheio = Perfil_Context.alheio;
+
   const usuario_logado = useSelector(selectAppState("usuario"));
   const [usuario, setUsuario] = useState({});
+  const { pathname } = useLocation();
   useEffect(() => {
     if (Perfil_Context.alheio) {
       setUsuario(Perfil_Context.usuario);
     } else {
       setUsuario(usuario_logado);
     }
-  }, [Perfil_Context, usuario_logado]);
+    // eslint-disable-next-line
+  }, [Perfil_Context.usuario, usuario_logado, pathname]);
 
   const fotoPerfilInicial = usuario.foto_perfil || "";
-  const a_carregar = !usuario.id;
+  const a_carregar =
+    !usuario.id || (Perfil_Context.alheio && Perfil_Context.loadingUsuario);
   const inputFile = useRef();
   const [fotoDePerfil, setFotoDePerfil] = useState("");
   const LoadingLinear = useLinearProgress();
