@@ -2,13 +2,9 @@ import React from "react";
 import Box from "@material-ui/core/Box";
 import { Text } from "~/styles";
 import { Perfil } from "~/styles/pages/Perfil";
-import { useSelector } from "react-redux";
-import { selectAppState } from "~/store/App.selectors";
 import { formatarData } from "~/helpers";
 
-export default function InfoPerfil() {
-  const usuario = useSelector(selectAppState("usuario"));
-
+export default function InfoPerfil({ usuario }) {
   return (
     <Perfil.InfoPerfil>
       <Box className="dado-grid-2">

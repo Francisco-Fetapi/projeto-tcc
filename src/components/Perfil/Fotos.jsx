@@ -34,7 +34,6 @@ export default function Fotos() {
   const [preview, setPreview] = useState("");
   const { exibirFoto2ASerAlterada, Galeria } = useUsuario();
   const { id } = useParams();
-  console.log(id);
 
   const handleChange = (event, value) => {
     setPaginate({ ...paginate, current_page: value });
@@ -64,7 +63,7 @@ export default function Fotos() {
       )}
       <Box display="flex" justifyContent="space-between">
         <Box>
-          <Text variant="h6">Fotos da Galeria</Text>
+          <Text variant="h6">Galeria de fotos</Text>
           <Text variant="subtitle2" color="textSecondary">
             {paginate.total
               ? `${paginate.total} foto(s)`
@@ -73,7 +72,7 @@ export default function Fotos() {
               : "Nenhuma foto na galeria"}
           </Text>
         </Box>
-        {(fotos.length > 0 || preview) && (
+        {(fotos.length > 0 || preview) && !id && (
           <Box>
             {!preview && (
               <Tooltip title="Adicionar foto" arrow>

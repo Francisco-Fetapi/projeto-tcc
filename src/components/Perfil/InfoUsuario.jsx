@@ -349,7 +349,7 @@ export default function InfoUsuario() {
       <Divider />
       <ModalEditarBiografia open={modal1} setModal={setModal1} />
       <ModalEditarPerfil open={modal2} setModal={setModal2} />
-      <ModalVerPerfil open={modal3} setModal={setModal3} />
+      <ModalVerPerfil usuario={usuario} open={modal3} setModal={setModal3} />
       <ModalAlterarEmail open={modal4} setModal={setModal4} />
     </Box>
   );
