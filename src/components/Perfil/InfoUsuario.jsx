@@ -42,7 +42,7 @@ import useModal from "~/hooks/useModal";
 import LinearProgress from "../Progress/Linear.jsx";
 import useLinearProgress from "~/hooks/useLinearProgress";
 import { PerfilContext } from "~/pages/Perfil";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 
 function LinkPerfil({ to, icon, children }) {
   return (
@@ -87,6 +87,7 @@ export default function InfoUsuario() {
   const usuario_logado = useSelector(selectAppState("usuario"));
   const [usuario, setUsuario] = useState({});
   const { pathname } = useLocation();
+  const { id } = useParams();
   useEffect(() => {
     if (Perfil_Context.alheio) {
       setUsuario(Perfil_Context.usuario);
@@ -329,7 +330,7 @@ export default function InfoUsuario() {
           )}
         </Box>
       </Perfil.Info>
-      {!a_carregar && !perfil_alheio && (
+      {!a_carregar && (
         <Box
           className="links_perfil"
           my={2}
@@ -337,16 +338,25 @@ export default function InfoUsuario() {
           justifyContent="center"
           alignItems="center"
         >
-          <LinkPerfil to="/registo-de-atividade" icon={<FaList />}>
-            Registo de atividade
-          </LinkPerfil>
-          <LinkPerfil to="/amigos" icon={<FaUsers />}>
+          {!perfil_alheio && (
+            <LinkPerfil to="/registo-de-atividade" icon={<FaList />}>
+              Registo de atividade
+            </LinkPerfil>
+          )}
+
+          <LinkPerfil to={id ? `/amigos/${id}` : "/amigos"} icon={<FaUsers />}>
             Amigos
           </LinkPerfil>
-          <LinkPerfil to="/movies-favoritos" icon={<FaTv />}>
+          <LinkPerfil
+            to={id ? `/movies-favoritos/${id}` : "/movies-favoritos"}
+            icon={<FaTv />}
+          >
             Favoritos
           </LinkPerfil>
-          <LinkPerfil to="/publicacoes-guardadas" icon={<FaSave />}>
+          <LinkPerfil
+            to={id ? `/publicacoes-guardadas/${id}` : "/publicacoes-guardadas"}
+            icon={<FaSave />}
+          >
             Publicações guardadas
           </LinkPerfil>
         </Box>
