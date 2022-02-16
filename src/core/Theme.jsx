@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ThemeProvider from "@material-ui/styles/ThemeProvider";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { createTheme } from "@material-ui/core/styles";
@@ -22,6 +22,15 @@ export default function Theme({ children }) {
       secondary: deepOrange,
     },
   });
+
+  useEffect(() => {
+    const body = document.querySelector("body");
+    if (dark) {
+      body.classList.add("dark");
+    } else {
+      body.classList.remove("dark");
+    }
+  }, [theme]);
 
   return (
     <ThemeProvider theme={theme}>

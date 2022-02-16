@@ -23,15 +23,23 @@ export const GlobalStyles = createGlobalStyle`
         background: rgba(0, 0, 0, 0.4);
       }
     }
-    body{
+    body{ 
+        &::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.4);
+        }
         &::-webkit-scrollbar {
-        width: 12px;
-        height: 8px;
-        border-radius: 2px;
+            width: 12px;
+            height: 8px;
+            background: rgba(200, 200, 200, 0.6);
+        }
+      &.dark{
+        &::-webkit-scrollbar {
+            border-radius: 2px;
+        }
+        &::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.6);
+        }
       }
-       &::-webkit-scrollbar-thumb {
-        background: rgba(0, 0, 0, 0.6);
-      } 
     }
 
     /* AJUSTES NO TEMA ESCURO */
