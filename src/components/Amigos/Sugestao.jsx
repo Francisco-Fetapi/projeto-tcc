@@ -5,7 +5,7 @@ import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 import Add from "@material-ui/icons/AddCircle";
-import { Text } from "~/styles";
+import { Text, Link } from "~/styles";
 import { BASE_URL } from "~/API";
 
 import { mostrarXCharOntText, primeiroEUltimoNome } from "~/helpers";
@@ -18,7 +18,12 @@ export default function Sugestao({ usuario, setUsuarios }) {
   return (
     <Paper variant="outlined" className="sugestao">
       <Box component="figure">
-        <img src={`${BASE_URL}/${usuario.foto_perfil}`} alt="Imagem usuario" />
+        <Link to={`/usuario/${usuario.id}`} nosnostyle={true}>
+          <img
+            src={`${BASE_URL}/${usuario.foto_perfil}`}
+            alt="Imagem usuario"
+          />
+        </Link>
       </Box>
       <Box
         className="info"
@@ -28,7 +33,9 @@ export default function Sugestao({ usuario, setUsuarios }) {
         mt={4.5}
       >
         <abbr title={usuario.nome}>
-          <Text align="center">{primeiroEUltimoNome(usuario)}</Text>
+          <Link to={`/usuario/${usuario.id}`} nostyle={true}>
+            <Text align="center">{primeiroEUltimoNome(usuario)}</Text>
+          </Link>
         </abbr>
         <Box flexGrow={1} />
         <Text color="textSecondary" variant="subtitle2">

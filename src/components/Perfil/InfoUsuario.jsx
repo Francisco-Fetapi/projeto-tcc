@@ -266,6 +266,19 @@ export default function InfoUsuario() {
                   Editar biografia
                 </Button>
               )}
+              {!a_carregar &&
+                perfil_alheio &&
+                usuario.status_amizade === undefined && (
+                  <Box>
+                    <Button
+                      color="default"
+                      startIcon={<FaPlus />}
+                      variant="outlined"
+                    >
+                      Adicionar amigo
+                    </Button>
+                  </Box>
+                )}
               {!a_carregar && perfil_alheio && usuario.status_amizade === 1 && (
                 <Box>
                   <Button
@@ -284,24 +297,41 @@ export default function InfoUsuario() {
                   </Button>
                 </Box>
               )}
-              {!a_carregar && perfil_alheio && usuario.status_amizade === 0 && (
-                <Box>
-                  <Button
-                    color="default"
-                    startIcon={<Close />}
-                    variant="outlined"
-                  >
-                    Aceitar pedido
-                  </Button>
-                  <Button
-                    color="default"
-                    startIcon={<Done />}
-                    variant="outlined"
-                  >
-                    Rejeitar pedido
-                  </Button>
-                </Box>
-              )}
+              {!a_carregar &&
+                perfil_alheio &&
+                usuario.status_amizade === 0 &&
+                !usuario.eu_enviei && (
+                  <Box>
+                    <Button
+                      color="default"
+                      startIcon={<Close />}
+                      variant="outlined"
+                    >
+                      Aceitar pedido
+                    </Button>
+                    <Button
+                      color="default"
+                      startIcon={<Done />}
+                      variant="outlined"
+                    >
+                      Rejeitar pedido
+                    </Button>
+                  </Box>
+                )}
+              {!a_carregar &&
+                perfil_alheio &&
+                usuario.status_amizade === 0 &&
+                usuario.eu_enviei && (
+                  <Box>
+                    <Button
+                      color="default"
+                      startIcon={<Close />}
+                      variant="outlined"
+                    >
+                      Cancelar pedido
+                    </Button>
+                  </Box>
+                )}
               {a_carregar && (
                 <Skeleton variant="rect" width={183} height={36} />
               )}

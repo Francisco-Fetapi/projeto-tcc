@@ -20,7 +20,7 @@ export default function Pedido({ user, setPedidos }) {
     <Box className="pedido">
       <Paper variant="outlined" className="dados">
         <abbr title={user.nome}>
-          <Link to={`/usuario/${user.id}`} nostyle>
+          <Link to={`/usuario/${user.id}`} nostyle={true}>
             <Text variant="h6">
               {mostrarXCharOntText(primeiroEUltimoNome(user), 18)}
             </Text>
@@ -46,7 +46,7 @@ export default function Pedido({ user, setPedidos }) {
           </Text>
         </Box>
         <Box component="figure">
-          <Link to={`/usuario/${user.id}`} nostyle>
+          <Link to={`/usuario/${user.id}`} nostyle={true}>
             <img src={user.foto_perfil} alt="foto do usuario" />
           </Link>
         </Box>
