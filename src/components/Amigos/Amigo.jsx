@@ -43,7 +43,7 @@ export default function Amigo({ usuario }) {
         </Text>
         <Box mt={2} display="flex" justifyContent="center">
           <Button
-            onClick={() => navigate("/amigo/" + usuario.id)}
+            onClick={() => navigate("/usuario/" + usuario.id)}
             variant="outlined"
             color="default"
             startIcon={<RemoveRedEye />}
