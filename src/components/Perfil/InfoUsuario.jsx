@@ -115,6 +115,7 @@ export default function InfoUsuario() {
   function limparInputFile() {
     inputFile.current.value = "";
   }
+  console.log(Perfil_Context.usuario);
 
   return (
     <Box mb={5}>
@@ -214,6 +215,22 @@ export default function InfoUsuario() {
                   </Box>
                 )}
               </Box>
+              {perfil_alheio && (
+                <>
+                  <Box>
+                    <Text color="textSecondary" style={{ fontSize: 12 }}>
+                      Se cadastrou no sistema <b>{usuario.tempo_no_sistema}</b>
+                    </Text>
+                  </Box>
+                  {usuario.tempo_amizade && (
+                    <Box>
+                      <Text color="textSecondary" style={{ fontSize: 12 }}>
+                        Vocês são amigos <b>{usuario.tempo_amizade}</b>
+                      </Text>
+                    </Box>
+                  )}
+                </>
+              )}
             </Text>
             <Box mt={1.3} className="perfil-biografia">
               <Text color="textSecondary" variant="subtitle2">
@@ -224,6 +241,7 @@ export default function InfoUsuario() {
                 )}
               </Text>
             </Box>
+
             <div style={{ flexGrow: 1 }} />
 
             {!perfil_alheio && (
