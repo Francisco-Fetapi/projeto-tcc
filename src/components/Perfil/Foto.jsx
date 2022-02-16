@@ -12,7 +12,7 @@ export default function Foto({ img, imgFull, selecionar, tempo, preview }) {
   return (
     <Box
       component="figure"
-      onClick={link.current?.click()}
+      onClick={() => link.current?.click()}
       style={id ? { cursor: "pointer" } : null}
     >
       <img src={img} alt="user" />
