@@ -374,12 +374,13 @@ export default function useUsuario() {
         setUsuario(res2);
         return res;
       },
-      async  rejeitar({LoadingLinear,setUsuario},id) {
+      async  rejeitar({LoadingLinear,setUsuario,setConfirm},id) {
         LoadingLinear.mostrar();
         const res = await API.rejeitarPedidoDeAmizade(id);
         const res2 = await API.getUsuarioById(id);
         LoadingLinear.ocultar();
         setUsuario(res2);
+        setConfirm(false);
         return res;
       },
       async  adicionar({LoadingLinear,setUsuario},id) {

@@ -45,6 +45,8 @@ import useLinearProgress from "~/hooks/useLinearProgress";
 import { PerfilContext } from "~/pages/Perfil";
 import { useLocation, useParams } from "react-router-dom";
 import API from "~/API";
+import Confirmar from "../Modals/ModalConfirmar";
+import { primeiroEUltimoNome } from "~/helpers";
 
 function LinkPerfil({ to, icon, children }) {
   return (
@@ -92,6 +94,7 @@ export default function InfoUsuario() {
   const usuario_logado = useSelector(selectAppState("usuario"));
   const [usuario, setUsuario] = useState({});
   const { pathname } = useLocation();
+  const [confirm, setConfirm] = useState(false);
   const { id } = useParams();
   useEffect(() => {
     if (Perfil_Context.alheio) {
@@ -120,11 +123,25 @@ export default function InfoUsuario() {
   function limparInputFile() {
     inputFile.current.value = "";
   }
-  console.log(Perfil_Context.usuario);
+  function removerAmizade() {
+    Amigo.rejeitar({ LoadingLinear, setUsuario, setConfirm }, usuario.id);
+  }
 
   return (
     <Box mb={5}>
       <LinearProgress aberto={LoadingLinear.loading} />
+      {perfil_alheio && usuario.nome && (
+        <Confirmar
+          open={confirm}
+          onClose={() => setConfirm(false)}
+          onSim={removerAmizade}
+        >
+          <Text>
+            Você está prestes a remover amizade com &nbsp;
+            <b>{primeiroEUltimoNome(usuario)}</b>
+          </Text>
+        </Confirmar>
+      )}
       <Perfil.Info>
         <Box className="foto-nome-bio">
           <Box component="figure">
@@ -292,9 +309,7 @@ export default function InfoUsuario() {
                     color="default"
                     startIcon={<Close />}
                     variant="outlined"
-                    onClick={() =>
-                      Amigo.rejeitar({ LoadingLinear, setUsuario }, usuario.id)
-                    }
+                    onClick={() => setConfirm(true)}
                   >
                     Remover amizade
                   </Button>
