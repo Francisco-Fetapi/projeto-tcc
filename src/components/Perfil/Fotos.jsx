@@ -160,18 +160,44 @@ export default function Fotos() {
                 justifyContent="center"
                 alignItems="center"
               >
-                <AddAPhotoIcon
-                  onClick={() => inputFile.current.click()}
-                  className="foto"
-                />
-                <Text variant="subtitle2" color="textSecondary" align="center">
-                  Adicione sua primeira foto clicando no icone acima.
-                </Text>
+                {!id ? (
+                  <>
+                    <AddAPhotoIcon
+                      onClick={() => inputFile.current.click()}
+                      className="foto"
+                    />
+                    <Text
+                      variant="subtitle2"
+                      color="textSecondary"
+                      align="center"
+                    >
+                      Adicione sua primeira foto clicando no icone acima.
+                    </Text>
+                  </>
+                ) : (
+                  <>
+                    <AddAPhotoIcon className="foto" />
+                    <Text
+                      variant="subtitle2"
+                      color="textSecondary"
+                      align="center"
+                    >
+                      Sem fotos até o momento.
+                    </Text>
+                  </>
+                )}
               </Box>
-              <Text variant="subtitle2" color="textSecondary" align="center">
-                Esse é o espaço onde você poderá guardar as fotos de filmes e
-                seriados que mais te agradam.
-              </Text>
+              {!id ? (
+                <Text variant="subtitle2" color="textSecondary" align="center">
+                  Esse é o espaço onde você poderá guardar as fotos de filmes e
+                  seriados que mais te agradam.
+                </Text>
+              ) : (
+                <Text variant="subtitle2" color="textSecondary" align="center">
+                  Esse é o espaço onde este usuário guardará as fotos de filmes
+                  e seriados que mais lhe agradam.
+                </Text>
+              )}
             </>
           )}
         </Box>
