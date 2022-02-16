@@ -176,7 +176,10 @@ export default function Fotos() {
                   </>
                 ) : (
                   <>
-                    <AddAPhotoIcon className="foto" />
+                    <AddAPhotoIcon
+                      className="foto"
+                      style={{ pointerEvents: "none" }}
+                    />
                     <Text
                       variant="subtitle2"
                       color="textSecondary"
