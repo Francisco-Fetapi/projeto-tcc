@@ -14,6 +14,8 @@ import useUsuario from "~/hooks/useUsuario";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Amigo from "./Amigo";
 
+import { useParams } from "react-router-dom";
+
 export default function Amigos() {
   const [paginate, setPaginate] = useState({
     current_page: 1,
@@ -25,11 +27,12 @@ export default function Amigos() {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const { getAmigos } = useUsuario();
+  const { id } = useParams();
   const handleChange = (event, value) => {
     setPaginate({ ...paginate, current_page: value });
   };
   useEffect(() => {
-    getAmigos({ setPaginate, setLoading }, paginate.current_page);
+    getAmigos({ setPaginate, setLoading, id }, paginate.current_page);
   }, [paginate.current_page]);
 
   useEffect(() => {
@@ -47,14 +50,16 @@ export default function Amigos() {
         <Box>
           <Text variant="h6">Amigos</Text>
           <Text variant="subtitle2" color="textSecondary">
-            {paginate.total === 0 && loading && "Carregando..."}
+            {paginate.total === 0 && loading && "Carregando...."}
             {paginate.total === 0 && !loading && "Sem amigos"}
             {paginate.total === 1 && " 1 amigo"}
             {paginate.total > 1 && `${paginate.total} amigos`}
           </Text>
         </Box>
         <Tooltip title="Ver amigos" arrow>
-          <IconButton onClick={() => navigate("/amigos")}>
+          <IconButton
+            onClick={() => navigate(id ? `/amigos/${id}` : "/amigos")}
+          >
             <EyeIcon />
           </IconButton>
         </Tooltip>
@@ -103,20 +108,30 @@ export default function Amigos() {
               src="/img/info_amigos_add.png"
               alt="Logo a dizer pra se conectar com amigos"
             />
-            <Text variant="subtitle2" color="textSecondary" align="center">
-              Conecte-se com as pessoas nessa jornada incrivel. Quanto mais
-              amigos tiver mais atualizado você fica sobre as suas atividades.
-            </Text>
+            {!id ? (
+              <Text variant="subtitle2" color="textSecondary" align="center">
+                Conecte-se com as pessoas nessa jornada incrivel. Quanto mais
+                amigos tiver mais atualizado você fica sobre as suas atividades.
+              </Text>
+            ) : (
+              <Text variant="subtitle2" color="textSecondary" align="center">
+                Ao se conectar com as pessoas a jornada fica melhor. Quanto mais
+                amigos se tiver mais atualizado se fica sobre as suas
+                atividades.
+              </Text>
+            )}
           </Box>
-          <Box mt={1}>
-            <Button
-              variant="text"
-              color="secondary"
-              onClick={() => navigate("/amigos")}
-            >
-              Adicionar amigos
-            </Button>
-          </Box>
+          {!id && (
+            <Box mt={1}>
+              <Button
+                variant="text"
+                color="secondary"
+                onClick={() => navigate("/amigos")}
+              >
+                Adicionar amigos
+              </Button>
+            </Box>
+          )}
         </Box>
       )}
       {!loading && paginate.total > 0 && paginate.total < 8 && (
@@ -128,17 +143,27 @@ export default function Amigos() {
           className="paginate"
           px={1}
         >
-          <Text variant="subtitle2" color="textSecondary" align="center">
-            Quanto mais amigos tiver mais atualizado você fica sobre as suas
-            atividades.
-          </Text>
-          <Button
-            variant="text"
-            color="secondary"
-            onClick={() => navigate("/amigos")}
-          >
-            Adicionar amigos
-          </Button>
+          {!id ? (
+            <Text variant="subtitle2" color="textSecondary" align="center">
+              Quanto mais amigos tiver mais atualizado você fica sobre as suas
+              atividades.
+            </Text>
+          ) : (
+            <Text variant="subtitle2" color="textSecondary" align="center">
+              Quanto mais amigos se tiver mais atualizado se fica sobre as suas
+              atividades.
+            </Text>
+          )}
+
+          {!id && (
+            <Button
+              variant="text"
+              color="secondary"
+              onClick={() => navigate("/amigos")}
+            >
+              Adicionar amigos
+            </Button>
+          )}
         </Box>
       )}
     </Paper>

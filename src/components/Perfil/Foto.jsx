@@ -9,13 +9,9 @@ export default function Foto({ img, imgFull, selecionar, tempo, preview }) {
   const link = useRef();
   const { id } = useParams();
   console.log(id);
-  return (
-    <Box
-      component="figure"
-      onClick={() => link.current?.click()}
-      style={id ? { cursor: "pointer" } : null}
-    >
-      <img src={img} alt="user" />
+  const children = (
+    <>
+      <img src={img} alt="user " />
       <div className={`fundo-preto-1 ${preview ? "preview" : ""}`}>
         {!preview && <p>{tempo}</p>}
         {preview && "Pré-visualização"}
@@ -37,6 +33,17 @@ export default function Foto({ img, imgFull, selecionar, tempo, preview }) {
             </>
           )}
         </div>
+      )}
+    </>
+  );
+  return (
+    <Box component="figure" style={id ? { cursor: "pointer" } : null}>
+      {id ? (
+        <a href={imgFull} target="__blank">
+          {children}
+        </a>
+      ) : (
+        children
       )}
     </Box>
   );

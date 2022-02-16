@@ -135,9 +135,9 @@ const API = {
     const { data } = await api.post("/usuario/galeria/eliminar", { id_foto });
     return data;
   },
-  async getAmigos(page = 0, search) {
+  async getAmigos(page = 0, search,id_usuario) {
     const { data } = await api.get("/usuario/amigos", {
-      params: { page, search },
+      params: { page, search,id_usuario },
     });
     console.log(search);
     return data;

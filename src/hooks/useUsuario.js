@@ -360,11 +360,11 @@ export default function useUsuario() {
       setLoading(false);
       setPaginate(res);
     },
-    async getAmigos({ setPaginate, setLoading, termo }, page) {
+    async getAmigos({ setPaginate, setLoading, termo,id }, page) {
       setLoading(true);
-      let res = await API.getAmigos(page, termo);
+      let res = await API.getAmigos(page, termo,id);
       setLoading(false);
-      console.log(res);
+      console.log(id,res);
       setPaginate(res);
     },
     async getPedidosDeAmizade({ setLoading, setPedidos }) {
