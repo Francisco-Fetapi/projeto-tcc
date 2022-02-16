@@ -53,9 +53,11 @@ export default function Main() {
         <Box>
           <MarcadosParaMaisTarde />
           <Box mt={8} className="posts-desktop">
-            <Box>
-              <AddPost />
-            </Box>
+            {!Perfil_Context.alheio && (
+              <Box>
+                <AddPost />
+              </Box>
+            )}
             <Box>
               <Posts />
             </Box>
