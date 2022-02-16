@@ -44,6 +44,7 @@ import LinearProgress from "../Progress/Linear.jsx";
 import useLinearProgress from "~/hooks/useLinearProgress";
 import { PerfilContext } from "~/pages/Perfil";
 import { useLocation, useParams } from "react-router-dom";
+import API from "~/API";
 
 function LinkPerfil({ to, icon, children }) {
   return (
@@ -78,7 +79,7 @@ function ListItemWithSkeleton({ a_carregar, className, Icon, children }) {
 }
 
 export default function InfoUsuario() {
-  const { exibirFotoASerAlterada, alterarFotoDePerfil } = useUsuario();
+  const { exibirFotoASerAlterada, alterarFotoDePerfil, Amigo } = useUsuario();
 
   const [modal1, abrirModal1, , setModal1] = useModal();
   const [modal2, abrirModal2, , setModal2] = useModal();
@@ -274,6 +275,12 @@ export default function InfoUsuario() {
                       color="default"
                       startIcon={<FaPlus />}
                       variant="outlined"
+                      onClick={() =>
+                        Amigo.adicionar(
+                          { LoadingLinear, setUsuario },
+                          usuario.id
+                        )
+                      }
                     >
                       Adicionar amigo
                     </Button>
@@ -285,6 +292,9 @@ export default function InfoUsuario() {
                     color="default"
                     startIcon={<Close />}
                     variant="outlined"
+                    onClick={() =>
+                      Amigo.rejeitar({ LoadingLinear, setUsuario }, usuario.id)
+                    }
                   >
                     Remover amizade
                   </Button>
@@ -292,6 +302,7 @@ export default function InfoUsuario() {
                     color="default"
                     startIcon={<FaEnvelope />}
                     variant="outlined"
+                    onClick={() => Amigo.mensagens(usuario.id)}
                   >
                     Mensagens
                   </Button>
@@ -306,6 +317,9 @@ export default function InfoUsuario() {
                       color="default"
                       startIcon={<Close />}
                       variant="outlined"
+                      onClick={() =>
+                        Amigo.aceitar({ LoadingLinear, setUsuario }, usuario.id)
+                      }
                     >
                       Aceitar pedido
                     </Button>
@@ -313,6 +327,12 @@ export default function InfoUsuario() {
                       color="default"
                       startIcon={<Done />}
                       variant="outlined"
+                      onClick={() =>
+                        Amigo.rejeitar(
+                          { LoadingLinear, setUsuario },
+                          usuario.id
+                        )
+                      }
                     >
                       Rejeitar pedido
                     </Button>
@@ -327,6 +347,12 @@ export default function InfoUsuario() {
                       color="default"
                       startIcon={<Close />}
                       variant="outlined"
+                      onClick={() =>
+                        Amigo.cancelarPedido(
+                          { LoadingLinear, setUsuario },
+                          usuario.id
+                        )
+                      }
                     >
                       Cancelar pedido
                     </Button>

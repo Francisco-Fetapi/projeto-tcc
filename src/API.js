@@ -152,6 +152,10 @@ const API = {
     const { data } = await api.post("/usuario/rejeitar-pedido", { id_amigo });
     return data;
   },
+  async cancelarPedidoDeAmizade(id_amigo) {
+    const { data } = await api.post("/usuario/cancelar-pedido", { id_amigo });
+    return data;
+  },
   async enviarPedidoDeAmizade(id_amigo) {
     const { data } = await api.post("/usuario/enviar-pedido", { id_amigo });
     return data;

@@ -365,6 +365,43 @@ export default function useUsuario() {
       setPedidos(res);
       // setPaginate(res);
     },
+    Amigo: {
+      async aceitar({LoadingLinear,setUsuario},id) {
+        LoadingLinear.mostrar();
+        const res = await API.aceitarPedidoDeAmizade(id);
+        const res2 = await API.getUsuarioById(id);
+        LoadingLinear.ocultar();
+        setUsuario(res2);
+        return res;
+      },
+      async  rejeitar({LoadingLinear,setUsuario},id) {
+        LoadingLinear.mostrar();
+        const res = await API.rejeitarPedidoDeAmizade(id);
+        const res2 = await API.getUsuarioById(id);
+        LoadingLinear.ocultar();
+        setUsuario(res2);
+        return res;
+      },
+      async  adicionar({LoadingLinear,setUsuario},id) {
+        LoadingLinear.mostrar();
+        const res = await API.enviarPedidoDeAmizade(id);
+        const res2 = await API.getUsuarioById(id);
+        LoadingLinear.ocultar();
+        setUsuario(res2);
+        return res;
+      },
+      mensagens(id) {
+        navigate(`/mensagens/${id}`);
+      },
+      async cancelarPedido ({LoadingLinear,setUsuario},id) {
+        LoadingLinear.mostrar();
+        const res = await API.cancelarPedidoDeAmizade(id);
+        const res2 = await API.getUsuarioById(id);
+        LoadingLinear.ocultar();
+        setUsuario(res2);
+        return res;
+      },
+    },
     PedidoDeAmizade: {
       async aceitar({ setLoading, setPedidos }, id) {
         setLoading(true);

@@ -18,7 +18,7 @@ export default function Sugestao({ usuario, setUsuarios }) {
   return (
     <Paper variant="outlined" className="sugestao">
       <Box component="figure">
-        <Link to={`/usuario/${usuario.id}`} nosnostyle={true}>
+        <Link to={`/usuario/${usuario.id}`} nostyle={true}>
           <img
             src={`${BASE_URL}/${usuario.foto_perfil}`}
             alt="Imagem usuario"
