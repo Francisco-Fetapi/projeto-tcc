@@ -6,7 +6,6 @@ const on_production = process.env.NODE_ENV === "production";
 export const BASE_URL = on_production
   ? "https://socialmoviesspace.herokuapp.com"
   : "http://localhost:8000";
-console.log(process.env.NODE_ENV, BASE_URL);
 
 export const IMG_USER_PADRAO = `${BASE_URL}/img/user.jpg`;
 export const IMG_CAPA_PADRAO = `${BASE_URL}/img/fundo-perfil.png`;
@@ -139,7 +138,6 @@ const API = {
     const { data } = await api.get("/usuario/amigos", {
       params: { page, search,id_usuario },
     });
-    console.log(search);
     return data;
   },
   async getPedidosDeAmizade() {

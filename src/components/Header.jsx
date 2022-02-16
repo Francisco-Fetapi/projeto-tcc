@@ -22,7 +22,6 @@ export default function Header() {
   const LoadingLinear = useLinearProgress();
   const theme = useTheme();
   useEffect(() => {
-    console.log(header);
     getInfoHeader(setHeader);
   }, []);
   const refresh = useCallback(

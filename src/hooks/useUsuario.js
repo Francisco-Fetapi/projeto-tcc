@@ -80,7 +80,7 @@ export default function useUsuario() {
       const foto = document.querySelector("#foto").files[0];
       LoadingLinear.mostrar();
       let res = await API.enviarDadosCriarConta(values);
-      console.log(res);
+      
       LoadingLinear.ocultar();
       if (res.status === "error") {
         let erros = parsearErros(res.erros);
@@ -124,7 +124,7 @@ export default function useUsuario() {
     },
     alterarSenha: {
       async inserirEmail(values, actions, setForm2, setAllData, LoadingLinear) {
-        console.log(values);
+        
         LoadingLinear.mostrar();
         let res = await API.alterarSenha(values);
         LoadingLinear.ocultar();
@@ -134,7 +134,7 @@ export default function useUsuario() {
         } else {
           actions.setErrors(res.erros);
         }
-        console.log(res);
+        
       },
       async inserirCodigo(
         values,
@@ -146,7 +146,7 @@ export default function useUsuario() {
         LoadingLinear
       ) {
         const allValues = { ...allData, ...values };
-        console.log(allValues);
+        
         LoadingLinear.mostrar();
         let res = await API.alterarSenha(allValues);
         LoadingLinear.ocultar();
@@ -157,10 +157,9 @@ export default function useUsuario() {
         } else {
           actions.setErrors(res.erros);
         }
-        console.log(res);
+        
       },
       async concluir(values, actions, LoadingLinear) {
-        console.log(values);
         LoadingLinear.mostrar();
         let res = await API.alterarSenha(values);
         LoadingLinear.ocultar();
@@ -182,7 +181,6 @@ export default function useUsuario() {
         setDataForm1,
         LoadingLinear
       ) {
-        console.log(values);
         LoadingLinear.mostrar();
         let res = await API.alterarEmail(values);
         LoadingLinear.ocultar();
@@ -195,7 +193,6 @@ export default function useUsuario() {
         }
       },
       async inserirCodigo(values, actions, { setModal, LoadingLinear }) {
-        console.log(values);
         LoadingLinear.mostrar();
         let res = await API.alterarEmail(values);
         LoadingLinear.ocultar();
@@ -216,8 +213,6 @@ export default function useUsuario() {
         let erros = parsearErros(res.erros);
         let primeiro_erro = showFirstError(erros);
         actions.setErrors(primeiro_erro);
-        console.log(values);
-        console.log(primeiro_erro);
         LoadingLinear.ocultar();
       } else {
         const dados = {
@@ -253,7 +248,6 @@ export default function useUsuario() {
         fr.onload = function (e) {
           if (setX) {
             setX(e.target.result);
-            console.log("renderizou");
           } else {
             img.current.src = e.target.result;
           }
@@ -274,7 +268,7 @@ export default function useUsuario() {
       let res = await API.alterarFotoDeCapa(foto);
       LoadingLinear.ocultar();
       if (res.status === "success") {
-        console.log(res);
+        
         Disparar(SET_STATE_USER("foto_capa", res.foto_capa));
         concluir();
       }
@@ -288,7 +282,7 @@ export default function useUsuario() {
         Disparar(SET_STATE_USER("foto_perfil", res.foto_perfil));
         cleanInput(); //value = ""
       }
-      console.log(res);
+      
     },
     async alterarBiografia(values, actions, { setModal, LoadingLinear }) {
       if (!values.mini_biografia) {
@@ -331,7 +325,6 @@ export default function useUsuario() {
         this.get({ setPaginate, setLoading }, 0);
         setLoading(false);
         setPreview("");
-        console.log(res);
       },
       async get({ setPaginate, setLoading,id }, page) {
         setLoading(true);
@@ -344,7 +337,6 @@ export default function useUsuario() {
         setConfirm(false);
         setLoading(true);
         let res = await API.eliminarFotoGaleria(id);
-        console.log(res);
         if (res.status === "success") {
           const page_atual =
             paginate.current_page < paginate.last_page
@@ -364,7 +356,6 @@ export default function useUsuario() {
       setLoading(true);
       let res = await API.getAmigos(page, termo,id);
       setLoading(false);
-      console.log(id,res);
       setPaginate(res);
     },
     async getPedidosDeAmizade({ setLoading, setPedidos }) {

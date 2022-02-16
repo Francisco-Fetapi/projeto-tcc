@@ -30,7 +30,6 @@ export default function Perfil_({ alheio }) {
     }
   }, [id]);
   useEffect(seNaoLogadoIrParaLogin, []);
-  console.log(alheio);
 
   return (
     <Box>

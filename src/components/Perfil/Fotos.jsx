@@ -50,7 +50,6 @@ export default function Fotos() {
   }, [paginate.data]);
 
   function apagarFoto(id) {
-    console.log(id);
     Galeria.eliminar({ setPaginate, setLoading, setConfirm, paginate }, id);
   }
 
