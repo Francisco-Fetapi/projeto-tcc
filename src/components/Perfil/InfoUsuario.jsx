@@ -2,8 +2,8 @@ import React, { useRef, useState, useEffect, useContext } from "react";
 import { Text, Link } from "~/styles";
 import { Perfil } from "~/styles/pages/Perfil";
 import Box from "@material-ui/core/Box";
-import { FaCamera } from "react-icons/fa";
-import Button from "@material-ui/core/Button";
+import { FaCamera, FaEnvelope } from "react-icons/fa";
+import ButtonMui from "@material-ui/core/Button";
 
 import Divider from "@material-ui/core/Divider";
 import Tooltip from "@material-ui/core/Tooltip";
@@ -13,6 +13,7 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 
 import Home from "@material-ui/icons/Home";
+import Close from "@material-ui/icons/Close";
 import ThumbDown from "@material-ui/icons/ThumbDown";
 import ThumbUp from "@material-ui/icons/ThumbUp";
 
@@ -53,6 +54,9 @@ function LinkPerfil({ to, icon, children }) {
       {children}
     </Link>
   );
+}
+function Button(props) {
+  return <ButtonMui {...props} style={{ zoom: 0.85, margin: 4 }} />;
 }
 
 function ListItemWithSkeleton({ a_carregar, className, Icon, children }) {
@@ -244,23 +248,39 @@ export default function InfoUsuario() {
 
             <div style={{ flexGrow: 1 }} />
 
-            {!perfil_alheio && (
-              <Box mt={3} display="flex" justifyContent="center">
-                {!a_carregar && (
+            <Box mt={3} display="flex" justifyContent="center">
+              {!a_carregar && !perfil_alheio && (
+                <Button
+                  color="default"
+                  startIcon={<FaPencilAlt />}
+                  variant="outlined"
+                  onClick={abrirModal1}
+                >
+                  Editar biografia
+                </Button>
+              )}
+              {!a_carregar && perfil_alheio && (
+                <Box>
                   <Button
-                    color="primary"
-                    startIcon={<FaPencilAlt />}
+                    color="default"
+                    startIcon={<Close />}
                     variant="outlined"
-                    onClick={abrirModal1}
                   >
-                    Editar biografia
+                    Remover amizade
                   </Button>
-                )}
-                {a_carregar && (
-                  <Skeleton variant="rect" width={183} height={36} />
-                )}
-              </Box>
-            )}
+                  <Button
+                    color="default"
+                    startIcon={<FaEnvelope />}
+                    variant="outlined"
+                  >
+                    Mensagens
+                  </Button>
+                </Box>
+              )}
+              {a_carregar && (
+                <Skeleton variant="rect" width={183} height={36} />
+              )}
+            </Box>
           </Box>
         </Box>
         <Box className="mais_info_perfil">
@@ -299,7 +319,7 @@ export default function InfoUsuario() {
               {!a_carregar && (
                 <>
                   <Button
-                    color="primary"
+                    color="default"
                     startIcon={<AccountCircle />}
                     variant="outlined"
                     style={{ marginRight: 10 }}
@@ -308,7 +328,7 @@ export default function InfoUsuario() {
                     Editar perfil
                   </Button>
                   <Button
-                    color="primary"
+                    color="default"
                     onClick={abrirModal3}
                     startIcon={<FaPlus />}
                     variant="outlined"
@@ -331,7 +351,7 @@ export default function InfoUsuario() {
             <Box mt={3} display="flex" justifyContent="center">
               {!a_carregar && (
                 <Button
-                  color="primary"
+                  color="default"
                   onClick={abrirModal3}
                   startIcon={<FaPlus />}
                   variant="outlined"
