@@ -215,7 +215,7 @@ export default function InfoUsuario() {
                 )}
               </Box>
             </Text>
-            <Box mt={1.3}>
+            <Box mt={1.3} className="perfil-biografia">
               <Text color="textSecondary" variant="subtitle2">
                 {a_carregar ? (
                   <Skeleton variant="rect" width="100%" height={72} />

@@ -196,6 +196,11 @@ export const Perfil = {
     width: 90%;
     margin: 0 auto;
     margin-bottom: 30px;
+    .perfil-biografia{
+      @media(max-width:965px){
+        margin-left:-100px;
+      }
+    }
     @media (max-width: 890px) {
       & {
         grid-template-columns: 1fr;
