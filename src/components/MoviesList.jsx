@@ -1,6 +1,6 @@
 import React from "react";
 import { Movie } from "~/styles";
-import MovieCard from "../MovieCard";
+import MovieCard from "./MovieCard";
 
 export default function SeriesList({ movies }) {
   return (
