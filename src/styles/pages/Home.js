@@ -10,7 +10,12 @@ export const MainContainer = styled.div`
   .item-usuario {
     /* background: linear-gradient(150deg, #c5f0f2, #0e257f); */
     background: linear-gradient(150deg, #2196f3, #4796f9);
-    color: white;
+    .MuiListItemText-primary{
+      color: white !important;
+    }
+    .MuiListItemText-secondary{
+      color: #F4F4F4 !important;
+    }
   }
 
   .item-foto-usuario {

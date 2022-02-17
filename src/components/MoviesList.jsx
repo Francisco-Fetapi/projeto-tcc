@@ -10,7 +10,7 @@ export default function SeriesList({ movies }) {
     <div>
       <Movie.List>
         {movies.concat(movies).map((movie, key) => (
-          <MovieCard key={movie.nome} movie={{ ...movie, id: key }} />
+          <MovieCard key={key} movie={{ ...movie, id: key }} />
         ))}
       </Movie.List>
       {loading && (
