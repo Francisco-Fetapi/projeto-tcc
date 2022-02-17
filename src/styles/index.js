@@ -223,3 +223,24 @@ export const MenuItemMobileStyled = styled.div`
     }
   }
 `;
+
+export const Movie = {
+  Container:styled.div`
+  margin: 20px 0px;
+  p {
+    font-weight: bold;
+  }`,
+  List:styled.div`
+    display: grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    zoom:.85;
+  `,
+  Content:styled.div`
+      margin: 0 50px;
+      @media(max-width:705px){
+        margin: 0;
+        transform:translateX(-15px);
+      }
+  `
+}
