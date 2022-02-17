@@ -235,6 +235,11 @@ export const Movie = {
     grid-template-columns:1fr 1fr;
     gap:10px;
     zoom:.85;
+    padding:10px 0px;
+    @media(max-width:530px){
+        grid-template-columns: 1fr;
+        zoom:1;
+      }
   `,
   Content:styled.div`
       margin: 0 50px;

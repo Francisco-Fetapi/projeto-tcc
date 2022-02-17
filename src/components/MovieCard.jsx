@@ -11,6 +11,7 @@ import FormatListBulleted from "@material-ui/icons/FormatListBulleted";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import { Text } from "~/styles";
 import { mostrarXCharOntText } from "~/helpers";
+import { useNavigate } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MovieCard({ movie }) {
   const classes = useStyles();
+  const navigate = useNavigate();
 
   return (
     <Card>
@@ -32,7 +34,7 @@ export default function MovieCard({ movie }) {
         image={`/img/${movie.img}`}
         title={movie.title}
       />
-      <CardActionArea>
+      <CardActionArea onClick={() => navigate(`/movie/${movie.id}`)}>
         <CardContent>
           <abbr title={movie.nome}>
             <Text variant="h6">{mostrarXCharOntText(movie.nome, 20)}</Text>
