@@ -1,0 +1,39 @@
+[
+    { 
+        "nome": "Tom Cruise", 
+        "img": "ator1.jpg"
+    },
+    {
+      "nome": "Nicolas Cage",
+      "img": "ator2.jpg"
+    },
+    { 
+        "nome": "Tom Holland",
+        "img": "ator3.jpg"
+    },
+    {
+      "nome": "Tom Hanks",
+      "img": "ator7.jpg"
+    },
+    {
+      "nome": "Jon Favreau",
+      "img": "ator4.jpg"
+    },
+    {
+      "nome": "Keanu Reeves",
+      "img": "ator5.jpg"
+    },
+    {
+        "nome": "Tom Hanks",
+        "img": "ator6.jpg"
+      },
+    {
+        "nome": "Marisa Tomey",
+        "img": "ator8.jpg"
+      },
+      {
+        "nome": "Tom Cruise", 
+        "img": "ator1.jpg"
+      }
+  ]
+  

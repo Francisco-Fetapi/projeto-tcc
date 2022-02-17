@@ -1,9 +1,10 @@
 import React from "react";
 import Box from "@material-ui/core/Box";
 import MoviesHeader from "~/components/MoviesHeader";
-// import movies from "~/mock/series.json";
+import atores from "~/mock/atores.json";
 import { Movie } from "~/styles";
 import FormSearch from "../Forms/FormSearch";
+import AtoresList from "./AtoresList";
 
 export default function MainContent() {
   function procurar(values) {
@@ -22,7 +23,7 @@ export default function MainContent() {
           procurar={procurar}
         />
       </Box>
-      {/* <MoviesList movies={movies} /> */}
+      <AtoresList atores={atores} />
     </Movie.Content>
   );
 }

@@ -1,20 +1,20 @@
 import React, { useState } from "react";
-import { Movie } from "~/styles";
-import MovieCard from "./MovieCard";
+import { Atores } from "~/styles/pages/Atores";
+import AtorItem from "./AtorItem";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Box from "@material-ui/core/Box";
 
-export default function SeriesList({ movies }) {
+export default function AtoresList({ atores }) {
   const [loading, setLoading] = useState(true);
   return (
     <div>
-      <Movie.List>
-        {movies.concat(movies).map((movie, key) => (
-          <MovieCard key={key} movie={{ ...movie, id: key }} />
+      <Atores.List>
+        {atores.map((ator, key) => (
+          <AtorItem key={key} ator={ator} />
         ))}
-      </Movie.List>
+      </Atores.List>
       {loading && (
-        <Box my={2} display="flex" justifyContent="center">
+        <Box mt={5} mb={2} display="flex" justifyContent="center">
           <CircularProgress color="inherit" />
         </Box>
       )}
