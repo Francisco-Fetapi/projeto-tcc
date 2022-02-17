@@ -6,14 +6,14 @@ import Box from "@material-ui/core/Box";
 
 import useUsuario from "../hooks/useUsuario";
 
-export default function FilmesPage() {
+export default function FilmesPage({ favoritos }) {
   const { seNaoLogadoIrParaLogin } = useUsuario();
   useEffect(seNaoLogadoIrParaLogin, []);
   return (
     <Filmes.Container>
       <Header />
       <Box>
-        <FilmesMain />
+        <FilmesMain favoritos={favoritos} />
       </Box>
     </Filmes.Container>
   );

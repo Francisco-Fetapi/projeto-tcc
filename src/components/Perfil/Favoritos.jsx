@@ -5,9 +5,12 @@ import Button from "@material-ui/core/Button";
 import { Text } from "~/styles";
 import Favorito from "./Favorito";
 import { useNavigate } from "react-router-dom";
+import { selectAppState } from "~/store/App.selectors";
+import { useSelector } from "react-redux";
 
 export default function Favoritos() {
   const navigate = useNavigate();
+  const usuario = useSelector(selectAppState("usuario"));
   useEffect(() => {
     const favoritos = document.querySelector(".favoritos");
     const parent_favoritos = favoritos.parentElement;
@@ -49,7 +52,10 @@ export default function Favoritos() {
         ))}
       </Box>
       <Box mt={1} display="flex" justifyContent="center">
-        <Button color="primary" onClick={() => navigate("/movies-favoritos")}>
+        <Button
+          color="primary"
+          onClick={() => navigate("/movies-favoritos/" + usuario.id)}
+        >
           Visualizar todos
         </Button>
       </Box>

@@ -34,6 +34,7 @@ export default function routes() {
       <Route path="/videos" element={<Videos />} />
       <Route path="/atores" element={<Atores />} />
       <Route path="/publicacoes-guardadas" element={<PostSaveds />} />
+      <Route path="/movies-favoritos/:id_usuario" element={<Filmes favoritos={true}/>} />
       <Route path="/minha-linha-do-tempo" element={<LinhaDoTempo />} />
       <Route path="/usuario/:id" element={<Perfil alheio={true} />} />
 

@@ -489,7 +489,9 @@ export default function InfoUsuario() {
             Amigos
           </LinkPerfil>
           <LinkPerfil
-            to={id ? `/movies-favoritos/${id}` : "/movies-favoritos"}
+            to={
+              id ? `/movies-favoritos/${id}` : `/movies-favoritos/${usuario.id}`
+            }
             icon={<FaTv />}
           >
             Favoritos

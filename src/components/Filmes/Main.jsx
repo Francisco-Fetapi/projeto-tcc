@@ -4,12 +4,12 @@ import MenuLeft from "../MenuLeft.jsx";
 import MenuRight from "../MenuRIght.jsx";
 import MainContent from "./MainContent";
 
-export default function Main() {
+export default function Main({ favoritos }) {
   return (
     <MainContainer>
       <MenuLeft />
       <div>
-        <MainContent />
+        <MainContent favoritos={favoritos} />
       </div>
       <MenuRight />
     </MainContainer>
