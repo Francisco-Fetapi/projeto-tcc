@@ -19,6 +19,7 @@ import { FaBell } from "react-icons/fa";
 import { MdGroup } from "react-icons/md";
 import SerieIcon from "@material-ui/icons/OndemandVideo";
 import FilmeIcon from "@material-ui/icons/Videocam";
+import Close from "@material-ui/icons/Close";
 
 import { selectAppState } from "~/store/App.selectors";
 import { useSelector } from "react-redux";
@@ -60,7 +61,19 @@ export default function MenuMobile({ info }) {
         }}
       >
         <Box p={2}>
-          <MenuHeaderInfo usuario={usuario} fechar={handleDrawerToggle} />
+          <Box
+            style={{
+              position: "absolute",
+              top: 10,
+              right: 10,
+              zIndex: 999999999999,
+            }}
+          >
+            <IconButton onClick={handleDrawerToggle}>
+              <Close />
+            </IconButton>
+          </Box>
+          <MenuHeaderInfo usuario={usuario} />
         </Box>
         <Divider />
         <List>
