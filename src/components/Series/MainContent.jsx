@@ -12,7 +12,11 @@ export default function MainContent() {
   }
   return (
     <Movie.Content>
-      <MoviesHeader pagina="Series" />
+      <MoviesHeader pagina="Series">
+        Veja as informações das séries que mais gostas e interaja com outros
+        usuários acerca delas. Além de ver, você também pode guardar e marcar
+        uma série como favorita.
+      </MoviesHeader>
       <Box my={2}>
         <FormSearch
           placeholder="Procure séries"
