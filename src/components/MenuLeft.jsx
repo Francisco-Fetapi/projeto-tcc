@@ -18,7 +18,7 @@ import { useSelector } from "react-redux";
 import { selectAppState } from "../store/App.selectors";
 
 import Skeleton from "@material-ui/lab/Skeleton";
-import { primeiroEUltimoNome } from "../helpers";
+import { primeiroEUltimoNome, mostrarXCharOntText } from "../helpers";
 import { MdGroup } from "react-icons/md";
 import { useLocation, useNavigate } from "react-router-dom";
 import useTheme from "@material-ui/core/styles/useTheme";
@@ -61,6 +61,7 @@ export default function MenuLeft() {
   const fotoPerfil = usuario.foto_perfil;
   const [maisItens, setMaisItens] = useState(false);
   const { pathname } = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const rotas_de_baixo = ["/atores", "/minha-linha-do-tempo"];
@@ -74,7 +75,11 @@ export default function MenuLeft() {
       <div />
       <div className="menu-left">
         <List>
-          <ListItem button className={a_carregar ? "" : "item-usuario"}>
+          <ListItem
+            onClick={() => navigate("/perfil")}
+            button
+            className={a_carregar ? "" : "item-usuario"}
+          >
             <ListItemAvatar>
               <>
                 {a_carregar && (
@@ -97,6 +102,9 @@ export default function MenuLeft() {
                 ) : (
                   primeiroEUltimoNome(usuario)
                 )
+              }
+              secondary={
+                a_carregar ? null : mostrarXCharOntText(usuario.email, 20)
               }
             />
           </ListItem>

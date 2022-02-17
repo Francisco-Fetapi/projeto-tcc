@@ -155,7 +155,7 @@ export default function Amigos() {
             </Text>
           )}
 
-          {!id && (
+          {/* {!id && (
             <Button
               variant="text"
               color="secondary"
@@ -163,7 +163,7 @@ export default function Amigos() {
             >
               Adicionar amigos
             </Button>
-          )}
+          )} */}
         </Box>
       )}
     </Paper>
