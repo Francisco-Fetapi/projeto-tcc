@@ -9,6 +9,7 @@ import Typography from "@material-ui/core/Typography";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import FormatListBulleted from "@material-ui/icons/FormatListBulleted";
 import { Text } from "~/styles";
+import { mostrarXCharOntText } from "~/helpers";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,7 +32,9 @@ export default function MovieCard({ movie }) {
         title={movie.title}
       />
       <CardContent>
-        <Text variant="body2">{movie.title}</Text>
+        <abbr title={movie.nome}>
+          <Text variant="h6">{mostrarXCharOntText(movie.nome, 20)}</Text>
+        </abbr>
         <Typography variant="body2" color="textSecondary" component="p">
           This impressive paella is a perfect party dish and a fun meal to cook
           together with your guests. Add 1 cup of frozen peas along with the
