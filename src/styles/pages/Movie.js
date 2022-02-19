@@ -99,5 +99,16 @@ export const Movie = {
         }
       }
       
+  `,
+  Elenco:styled.div`
+    padding:20px;
+    .card-ator{
+      width:150px;
+
+      img{
+        width:100%;
+        height:120px;
+      }
+    }
   `
 };
