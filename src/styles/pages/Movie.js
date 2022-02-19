@@ -13,7 +13,21 @@ export const Movie = {
     background-position:center center;
     height:100vh;
     width: 100vw;
+    position:relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
+    .fundo-preto{
+      background-color: rgba(0,0,0,.5);
+      position:absolute;
+    }
+    .info{
+      height:90%;
+      width:90%;
+      position:relative;
+      z-index:1;
+    }
     & > div{
       width:100%;
       height: 100%;
@@ -22,12 +36,43 @@ export const Movie = {
 
       figure{
         margin:0px;
+        height: 100%;
       }
 
       img{
-        width:300px;
-        height:450px;
+        width:100%;
+        height:100%;
+        max-width:300px;
+        max-height:450px;
         object-fit:cover;
+        border-radius: 8px;
+      }
+    }
+  `,
+  Info:styled.div`
+    padding:0px 10px;
+
+    .header-info1{
+      margin: 8px 0px;
+      .MuiChip-root{
+        margin-right:8px;
+        opacity:.9;
+
+        svg{
+          font-size: 14px;
+        }
+      }
+    }
+    .header-info2{
+      margin-top:5px;
+      display:flex;
+      align-items:center;
+      & > *{
+        margin-right:8px;
+      }
+      .MuiChip-root{
+        border-radius:0px;
+        border-width:2px;
       }
     }
   `
