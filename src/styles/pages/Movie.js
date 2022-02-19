@@ -11,7 +11,7 @@ export const Movie = {
     background:url('/img/back-aranha.jpg');
     background-size: cover;
     background-position:center center;
-    height:100vh;
+    min-height:100vh;
     width: 100vw;
     position:relative;
     display: flex;
@@ -85,8 +85,19 @@ export const Movie = {
       }
       .btn-actions{
         .MuiButtonBase-root{
-          background:rgba(0,0,0,.5) !important;
+          /* background:rgba(0,0,0,.5) !important; */
         }
       }
+      .card-elenco-container{
+          display:grid;
+          grid-template-columns: repeat(auto-fit,minmax(100px,150px));
+          gap:10px;
+          .card-elenco{
+          padding:8px;
+          background:rgba(0,0,0,.7);
+          border-radius: 10px;
+        }
+      }
+      
   `
 };

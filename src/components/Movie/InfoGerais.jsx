@@ -59,6 +59,28 @@ export default function InfoGerais() {
           <Button startIcon={<FaEye />}>Ver trailer</Button>
         </ButtonGroup>
       </Box>
+
+      <Box mt={2} className="card-elenco-container">
+        <CardElenco nome="Stan Lee" elenco="Characters" />
+        <CardElenco nome="Steve Ditko" elenco="Characters" />
+        <CardElenco nome="Erik Sommers" elenco="Writers" />
+        <CardElenco nome="Chris McKenna" elenco="Writers" />
+      </Box>
     </Movie.Info>
+  );
+}
+
+function CardElenco({ nome, elenco }) {
+  return (
+    <Box className="card-elenco" display="flex" flexDirection="column">
+      <Box>
+        <Text>{nome}</Text>
+      </Box>
+      <Box mt={0.7}>
+        <Text variant="subtitle2" style={{ fontSize: 12 }}>
+          {elenco}
+        </Text>
+      </Box>
+    </Box>
   );
 }
