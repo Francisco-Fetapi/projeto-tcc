@@ -19,7 +19,7 @@ export const Movie = {
     justify-content: center;
 
     .fundo-preto{
-      background-color: rgba(0,0,0,.5);
+      background-color: rgba(0,0,0,.7);
       position:absolute;
     }
     .info{
@@ -75,5 +75,18 @@ export const Movie = {
         border-width:2px;
       }
     }
+    .lista-generos{
+        .MuiChip-root{
+          margin-right: 8px;
+          border-width:3px;
+          color:#D0D0D0;
+          border-color:currentColor;
+        }
+      }
+      .btn-actions{
+        .MuiButtonBase-root{
+          background:rgba(0,0,0,.5) !important;
+        }
+      }
   `
 };
