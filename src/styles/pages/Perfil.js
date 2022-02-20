@@ -209,6 +209,16 @@ export const Perfil = {
       }
 
     }
+    .btn-action-mobile{
+      @media(max-width:500px){
+        display:flex !important;
+      }
+    }
+    .btn-action-desktop{
+      @media(max-width:500px){
+        display:none;
+      }
+    }
     @media (max-width: 890px) {
       & {
         grid-template-columns: 1fr;

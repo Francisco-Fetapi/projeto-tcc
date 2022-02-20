@@ -126,6 +126,104 @@ export default function InfoUsuario() {
   function removerAmizade() {
     Amigo.rejeitar({ LoadingLinear, setUsuario, setConfirm }, usuario.id);
   }
+  function BotoesDeAcao(props) {
+    return (
+      <Box {...props} mt={3} display="flex" justifyContent="center">
+        {!a_carregar && !perfil_alheio && (
+          <Button
+            color="default"
+            startIcon={<FaPencilAlt />}
+            variant="outlined"
+            onClick={abrirModal1}
+          >
+            Editar biografia
+          </Button>
+        )}
+        {!a_carregar && perfil_alheio && usuario.status_amizade === undefined && (
+          <Box>
+            <Button
+              color="default"
+              startIcon={<FaPlus />}
+              variant="outlined"
+              onClick={() =>
+                Amigo.adicionar({ LoadingLinear, setUsuario }, usuario.id)
+              }
+            >
+              Adicionar amigo
+            </Button>
+          </Box>
+        )}
+        {!a_carregar && perfil_alheio && usuario.status_amizade === 1 && (
+          <Box>
+            <Button
+              color="default"
+              startIcon={<Close />}
+              variant="outlined"
+              onClick={() => setConfirm(true)}
+            >
+              Remover amizade
+            </Button>
+            <Button
+              color="default"
+              startIcon={<FaEnvelope />}
+              variant="outlined"
+              onClick={() => Amigo.mensagens(usuario.id)}
+            >
+              Mensagens
+            </Button>
+          </Box>
+        )}
+        {!a_carregar &&
+          perfil_alheio &&
+          usuario.status_amizade === 0 &&
+          !usuario.eu_enviei && (
+            <Box>
+              <Button
+                color="default"
+                startIcon={<Close />}
+                variant="outlined"
+                onClick={() =>
+                  Amigo.aceitar({ LoadingLinear, setUsuario }, usuario.id)
+                }
+              >
+                Aceitar pedido
+              </Button>
+              <Button
+                color="default"
+                startIcon={<Done />}
+                variant="outlined"
+                onClick={() =>
+                  Amigo.rejeitar({ LoadingLinear, setUsuario }, usuario.id)
+                }
+              >
+                Rejeitar pedido
+              </Button>
+            </Box>
+          )}
+        {!a_carregar &&
+          perfil_alheio &&
+          usuario.status_amizade === 0 &&
+          usuario.eu_enviei && (
+            <Box>
+              <Button
+                color="default"
+                startIcon={<Close />}
+                variant="outlined"
+                onClick={() =>
+                  Amigo.cancelarPedido(
+                    { LoadingLinear, setUsuario },
+                    usuario.id
+                  )
+                }
+              >
+                Cancelar pedido
+              </Button>
+            </Box>
+          )}
+        {a_carregar && <Skeleton variant="rect" width={183} height={36} />}
+      </Box>
+    );
+  }
 
   return (
     <Box mb={5}>
@@ -279,113 +377,13 @@ export default function InfoUsuario() {
             </Box>
 
             <div style={{ flexGrow: 1 }} />
-
-            <Box mt={3} display="flex" justifyContent="center">
-              {!a_carregar && !perfil_alheio && (
-                <Button
-                  color="default"
-                  startIcon={<FaPencilAlt />}
-                  variant="outlined"
-                  onClick={abrirModal1}
-                >
-                  Editar biografia
-                </Button>
-              )}
-              {!a_carregar &&
-                perfil_alheio &&
-                usuario.status_amizade === undefined && (
-                  <Box>
-                    <Button
-                      color="default"
-                      startIcon={<FaPlus />}
-                      variant="outlined"
-                      onClick={() =>
-                        Amigo.adicionar(
-                          { LoadingLinear, setUsuario },
-                          usuario.id
-                        )
-                      }
-                    >
-                      Adicionar amigo
-                    </Button>
-                  </Box>
-                )}
-              {!a_carregar && perfil_alheio && usuario.status_amizade === 1 && (
-                <Box>
-                  <Button
-                    color="default"
-                    startIcon={<Close />}
-                    variant="outlined"
-                    onClick={() => setConfirm(true)}
-                  >
-                    Remover amizade
-                  </Button>
-                  <Button
-                    color="default"
-                    startIcon={<FaEnvelope />}
-                    variant="outlined"
-                    onClick={() => Amigo.mensagens(usuario.id)}
-                  >
-                    Mensagens
-                  </Button>
-                </Box>
-              )}
-              {!a_carregar &&
-                perfil_alheio &&
-                usuario.status_amizade === 0 &&
-                !usuario.eu_enviei && (
-                  <Box>
-                    <Button
-                      color="default"
-                      startIcon={<Close />}
-                      variant="outlined"
-                      onClick={() =>
-                        Amigo.aceitar({ LoadingLinear, setUsuario }, usuario.id)
-                      }
-                    >
-                      Aceitar pedido
-                    </Button>
-                    <Button
-                      color="default"
-                      startIcon={<Done />}
-                      variant="outlined"
-                      onClick={() =>
-                        Amigo.rejeitar(
-                          { LoadingLinear, setUsuario },
-                          usuario.id
-                        )
-                      }
-                    >
-                      Rejeitar pedido
-                    </Button>
-                  </Box>
-                )}
-              {!a_carregar &&
-                perfil_alheio &&
-                usuario.status_amizade === 0 &&
-                usuario.eu_enviei && (
-                  <Box>
-                    <Button
-                      color="default"
-                      startIcon={<Close />}
-                      variant="outlined"
-                      onClick={() =>
-                        Amigo.cancelarPedido(
-                          { LoadingLinear, setUsuario },
-                          usuario.id
-                        )
-                      }
-                    >
-                      Cancelar pedido
-                    </Button>
-                  </Box>
-                )}
-              {a_carregar && (
-                <Skeleton variant="rect" width={183} height={36} />
-              )}
-            </Box>
+            <BotoesDeAcao className="btn-action-desktop" />
           </Box>
         </Box>
+        <BotoesDeAcao
+          className="btn-action-mobile"
+          style={{ display: "none" }}
+        />
         <Box className="mais_info_perfil">
           <List style={{ zoom: 0.9 }}>
             <ListItemWithSkeleton
