@@ -1,7 +1,7 @@
 import React from "react";
 // import { Text } from "~/styles";
 import { Movie } from "~/styles/pages/Movie";
-// import Box from "@material-ui/core/Box";
+
 import Banner from "./Banner";
 import Elenco from "./Elenco";
 import Galeria from "./Galeria";
@@ -9,6 +9,7 @@ import Keywords from "./Keywords";
 import ListaFilmes from "./ListaFilmes";
 
 import movies from "~/mock/series.json";
+import Footer from "./Footer";
 
 export default function MainContent() {
   const elenco = [1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8];
@@ -27,7 +28,7 @@ export default function MainContent() {
       <Galeria />
       <ListaFilmes title="Filmes similares" filmes={filmes} />
       <ListaFilmes title="Filmes recomendados" filmes={filmes} />
-      {/* <Text>Movie</Text> */}
+      <Footer />
     </Movie.Main>
   );
 }
