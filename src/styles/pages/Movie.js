@@ -114,7 +114,7 @@ export const Movie = {
     }
     .card-ator{
       /* width:100px; */
-      flex:1 0 140px;
+      flex:1 0 120px;
       margin:10px;
       transition: transform .5s ease-in-out;
       :hover{
@@ -125,7 +125,6 @@ export const Movie = {
         opacity: .8;
       }
       
-
       img{
         width:100%;
         height:140px;
