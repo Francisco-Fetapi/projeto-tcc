@@ -538,6 +538,12 @@ export const Perfil = {
             opacity: 0.8;
           }
         }
+        @media(max-width:475px){
+          padding-top:20px;
+        }
+        @media(max-width:370px){
+          padding-top:35px;
+        }
       }
       .msg-sem-amigos {
         @media (max-width: 990px) {
