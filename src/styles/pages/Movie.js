@@ -5,7 +5,6 @@ export const Movie = {
     overflow: hidden;
   `,
   Main:styled.div`
-    /* padding:20px; */
   `,
   Banner:styled.div`
     background:url('/img/back-aranha.jpg');
@@ -218,5 +217,19 @@ export const Movie = {
         border-radius: 15px;
       }
     }
+  `,
+  Discussoes:styled.div`
+    padding:0px 30px; 
+    width:100%;
+    max-width:600px;
+    margin: 0 auto;
+
+    /* .posts-movie-container{
+      width:100%;
+      display: flex;
+      justify-content:center;
+    } */
+  
+    
   `
 };

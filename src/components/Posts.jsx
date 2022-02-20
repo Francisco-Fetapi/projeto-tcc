@@ -4,7 +4,7 @@ import Post from "./Post";
 import usePosts from "../hooks/usePosts";
 import useUsuario from "~/hooks/useUsuario";
 
-export default function Posts() {
+export default function Posts(props) {
   const { carregar } = usePosts();
   const { logado } = useUsuario();
   useEffect(() => {
@@ -19,7 +19,7 @@ export default function Posts() {
   const movie = ["invasion", "TWD", "spider-man", "matrix", "Lucifer"];
 
   return (
-    <div>
+    <div {...props}>
       {[1, 2, 0, 3, 4].map((item) => (
         <Post
           key={item}

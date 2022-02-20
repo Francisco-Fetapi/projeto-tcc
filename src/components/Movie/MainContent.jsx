@@ -9,7 +9,10 @@ import Keywords from "./Keywords";
 import ListaFilmes from "./ListaFilmes";
 
 import movies from "~/mock/series.json";
-import Footer from "./Footer";
+// import Footer from "./Footer";
+import ListaDiscussoes from "./ListaDiscussoes";
+
+import Box from "@material-ui/core/Box";
 
 export default function MainContent() {
   const elenco = [1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8];
@@ -28,7 +31,10 @@ export default function MainContent() {
       <Galeria />
       <ListaFilmes title="Filmes similares" filmes={filmes} />
       <ListaFilmes title="Filmes recomendados" filmes={filmes} />
-      <Footer />
+      <Box className="discussoes_e_infos">
+        <ListaDiscussoes />
+      </Box>
+      {/* <Footer /> */}
     </Movie.Main>
   );
 }
