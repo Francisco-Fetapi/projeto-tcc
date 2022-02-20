@@ -2,14 +2,25 @@ import React from "react";
 import { Text } from "~/styles";
 import { Movie } from "~/styles/pages/Movie";
 import Box from "@material-ui/core/Box";
+import Button from "@material-ui/core/Button";
 import { useNavigate } from "react-router-dom";
 
-export default function Elenco() {
+export default function Elenco({ title, items }) {
   return (
     <Movie.Elenco>
-      <Text variant="h5">Elenco principal</Text>
+      <Box display="flex" justifyContent="space-between" alignItems="center">
+        <Text variant="h5">{title}</Text>
+        <Button
+          variant="outlined"
+          size="small"
+          color="default"
+          disableElevation
+        >
+          Ver mais
+        </Button>
+      </Box>
       <Box mt={2} className="slider-elenco">
-        {[1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8].map((item, key) => (
+        {items.map((item, key) => (
           <CardAtor
             nome1={`Ator ${item}`}
             nome2={`Protagonista ${item}`}

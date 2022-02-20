@@ -104,10 +104,13 @@ export const Movie = {
     padding:20px;
     overflow: auto;
     width:100%;
+    max-width: 1300px;
+    margin:0 auto;
 
     .slider-elenco{
       display: flex; 
       overflow: auto;
+      user-select:none;
     }
     .card-ator{
       /* width:100px; */
