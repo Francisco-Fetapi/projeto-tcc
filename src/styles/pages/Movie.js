@@ -102,12 +102,31 @@ export const Movie = {
   `,
   Elenco:styled.div`
     padding:20px;
+    overflow: auto;
+    width:100%;
+
+    .slider-elenco{
+      display: flex; 
+      overflow: auto;
+    }
     .card-ator{
-      width:150px;
+      /* width:100px; */
+      flex:1 0 140px;
+      margin:10px;
+      transition: transform .5s ease-in-out;
+      :hover{
+        cursor:pointer;
+        transform: scale(1.05);
+      }
+      :active{
+        opacity: .8;
+      }
+      
 
       img{
         width:100%;
-        height:120px;
+        height:140px;
+        border-radius:5%;
       }
     }
   `
