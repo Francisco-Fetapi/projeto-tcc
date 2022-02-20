@@ -171,5 +171,53 @@ export const Movie = {
         }
       }
     }
+  `,
+  Lista:styled.div`
+    width:100%;
+    max-width: 1300px;
+    margin:20px auto;
+    padding:20px;  
+
+    .filmes{
+      display:flex;
+      /* grid-template-columns: repeat(auto-fit,minmax(200px,220px)); */
+      max-width:1200px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+    }
+
+    .filme{
+      flex:0 0 220px;
+      height:300px;
+      margin-right:10px;
+      position:relative;
+      cursor:pointer;
+
+      figcaption{
+        position:absolute;
+        bottom:0;
+        right:0;
+        left:0;
+        padding:12px;
+        background:rgba(0,0,0,.5);
+        color:#F0F0F0;
+        text-align:center;
+        font-size: 17px;
+        font-weight:bold;
+        opacity:0;
+        transition:all .5s ease-in-out;
+      }
+      :hover{
+        figcaption{
+          opacity:1;
+        }
+      }
+
+      img{
+        width: 100%;
+        height:100%;
+        border-radius: 15px;
+      }
+    }
   `
 };
