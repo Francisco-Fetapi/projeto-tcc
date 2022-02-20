@@ -9,7 +9,12 @@ export default function Elenco({ title, items }) {
   return (
     <Movie.Elenco>
       <Box display="flex" justifyContent="space-between" alignItems="center">
-        <Text variant="h5">{title}</Text>
+        <Text
+          variant="h6"
+          style={{ fontWeight: "bolder", textTransform: "uppercase" }}
+        >
+          {title}
+        </Text>
         <Button
           variant="outlined"
           size="small"

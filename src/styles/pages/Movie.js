@@ -132,5 +132,20 @@ export const Movie = {
         border-radius:5%;
       }
     }
+  `,
+  Keywords:styled.div`
+    background:url('/img/back-aranha.jpg');
+    background-size: cover;
+    background-position:center center;
+    height:300px; 
+    display:flex;
+    align-items:center;
+
+    padding:0px 40px;
+
+    .MuiChip-root{
+        margin-right: 8px;
+        margin-bottom: 8px;
+      }
   `
 };
