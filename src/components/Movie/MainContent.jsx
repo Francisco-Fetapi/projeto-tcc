@@ -4,6 +4,7 @@ import { Movie } from "~/styles/pages/Movie";
 // import Box from "@material-ui/core/Box";
 import Banner from "./Banner";
 import Elenco from "./Elenco";
+import Galeria from "./Galeria";
 import Keywords from "./Keywords";
 
 export default function MainContent() {
@@ -19,6 +20,7 @@ export default function MainContent() {
       <Elenco title="Elenco principal" items={elenco} />
       <Elenco title="Equipe Técnica" items={elenco.reverse()} />
       <Keywords keywords={keywords} />
+      <Galeria />
       {/* <Text>Movie</Text> */}
     </Movie.Main>
   );

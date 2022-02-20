@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Movie = {
   Container: styled.div`
-    overflow-x: hidden;
+    overflow: hidden;
   `,
   Main:styled.div`
     /* padding:20px; */
@@ -102,14 +102,14 @@ export const Movie = {
   `,
   Elenco:styled.div`
     padding:20px;
-    overflow: auto;
+    overflow-x: auto;
     width:100%;
     max-width: 1300px;
     margin:0 auto;
 
     .slider-elenco{
       display: flex; 
-      overflow: auto;
+      overflow-x: auto;
       user-select:none;
     }
     .card-ator{
@@ -147,5 +147,29 @@ export const Movie = {
         margin-right: 8px;
         margin-bottom: 8px;
       }
+  `,
+  Galeria:styled.div`
+    width:100%;
+    max-width: 1300px;
+    margin:0 auto;
+    padding:20px;    
+
+    .fotos{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(270px,300px));
+      height:300px;
+      gap:10px;
+      margin:20px 0px;
+
+      img{
+        width:100%;
+        height:100%;
+        transition: all .5s ease-in-out;
+        cursor:pointer;
+        :hover{
+          transform: scale(1.05);
+        }
+      }
+    }
   `
 };
