@@ -11,7 +11,8 @@ export const Atores = {
   `,
   Item:styled.figure`
     width:100%;
-    height:150px;
+    height:140px;
+    
     display:flex;
     justify-content: center;
     align-items: center;
@@ -29,6 +30,7 @@ export const Atores = {
       width:100%;
       height:100%;
       border-radius: 50%;
+      object-fit:cover;
     }
     figcaption{
       margin-top: 10px;
