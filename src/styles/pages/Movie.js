@@ -115,16 +115,17 @@ export const Movie = {
         }
       }
       .btn-actions{
-        .MuiButtonBase-root{
-          /* background:rgba(0,0,0,.5) !important; */
-        }
+        zoom: .85;
+        display: flex;
+        justify-content: flex-end;
       }
       .card-elenco-container{
-          display:grid;
-          grid-template-columns: repeat(auto-fit,minmax(100px,150px));
-          gap:10px;
+          display:flex;
+          overflow-x:auto;
           .card-elenco{
+          flex:1 0 150px;
           padding:8px;
+          margin:0px 2px;
           background:rgba(0,0,0,.7);
           border-radius: 10px;
         }

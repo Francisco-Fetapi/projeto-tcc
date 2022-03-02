@@ -9,6 +9,7 @@ import CalendarToday from "@material-ui/icons/CalendarToday";
 import StarIcon from "@material-ui/icons/Star";
 
 import { FaHeart, FaList, FaEye } from "react-icons/fa";
+import IconButton from "@material-ui/core/IconButton";
 
 export default function InfoGerais() {
   return (
@@ -53,11 +54,16 @@ export default function InfoGerais() {
       </Box>
 
       <Box mt={2} className="btn-actions">
-        <ButtonGroup size="small" color="default" variant="outlined">
-          <Button startIcon={<FaHeart />}>Favoritar</Button>
-          <Button startIcon={<FaList />}>Ver mais tarde</Button>
-          <Button startIcon={<FaEye />}>Ver trailer</Button>
-        </ButtonGroup>
+        <IconButton title="Favoritar">
+          <FaHeart />
+        </IconButton>
+
+        <IconButton title="Ver mais tarde">
+          <FaList />
+        </IconButton>
+        <IconButton title="Ver trailer">
+          <FaEye />
+        </IconButton>
       </Box>
 
       <Box mt={2} className="card-elenco-container">
