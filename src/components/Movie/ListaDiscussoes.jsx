@@ -27,11 +27,11 @@ export default function ListaDiscussoes() {
         </Box>
       </Box>
       <Box className="lista-card">
-        {[1, 2, 3, 4, 5].map(() => (
+        {[1, 2, 3, 4].map(() => (
           <CardDiscussao {...dados} />
         ))}
       </Box>
-      <Box mt={2.3} className="paginate" display="flex" justifyContent="center">
+      <Box my={3} className="paginate" display="flex" justifyContent="center">
         <Pagination count={9} page={3} variant="outlined" shape="rounded" />
       </Box>
     </Movie.Discussoes>

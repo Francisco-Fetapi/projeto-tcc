@@ -24,7 +24,7 @@ import { useSelector } from "react-redux";
 
 import Skeleton from "@material-ui/lab/Skeleton";
 
-function SubHeader({ tempo, publico }) {
+export function SubHeader({ tempo, publico }) {
   return (
     <Box display="flex" alignItems="center">
       <Box display="flex" alignItems="center">

@@ -9,6 +9,7 @@ import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import { red } from "@material-ui/core/colors";
 import { mostrarXCharOntText } from "~/helpers";
+import { SubHeader } from "../Post";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,7 +43,7 @@ export default function CardDiscussao({ usuario, post }) {
             </Avatar>
           }
           title={usuario.nome}
-          subheader={post.data}
+          subheader={<SubHeader tempo="Ha 3 meses" publico="publico" />}
         />
       </CardActionArea>
       <CardActionArea>
