@@ -261,7 +261,12 @@ export const Movie = {
   Discussoes:styled.div`
     padding:0px 30px; 
 
-  
+    .lista-card{
+      display:grid;
+      grid-template-columns: repeat(auto-fit,minmax(450px,1fr));
+      gap:10px;
+      margin-top:15px;
+    }
     
   `
 };
