@@ -22,6 +22,11 @@ export const Movie = {
     display: flex;
     align-items: center;
     justify-content: center;
+    
+    .MuiTypography-root:not(.header-info2 h6),.MuiButtonBase-root,.MuiChip-root:not(.header-info1 .MuiChip-root){
+      color:#F0F0F0 !important;
+      border-color:currentColor;
+    }
 
     .fundo-preto{
       background-color: rgba(0,0,0,.7);
@@ -168,6 +173,9 @@ export const Movie = {
     align-items:center;
 
     padding:0px 40px;
+    .MuiTypography-root{
+      color:#F0F0F0 !important;
+    }
 
     .MuiChip-root{
         margin-right: 8px;
