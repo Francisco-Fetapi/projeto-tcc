@@ -188,7 +188,9 @@ export const Perfil = {
       }
     }
   `,
-  Main: styled.div``,
+  Main: styled.div`
+   
+  `,
   Info: styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
