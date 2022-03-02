@@ -2,7 +2,7 @@ import React from "react";
 import { Text } from "~/styles";
 import { Movie } from "~/styles/pages/Movie";
 import Box from "@material-ui/core/Box";
-import Chip from "@material-ui/core/Chip";
+// import Chip from "@material-ui/core/Chip";
 // import Button from "@material-ui/core/Button";
 // import { useNavigate } from "react-router-dom";
 
@@ -11,7 +11,8 @@ export default function Galeria() {
     <Movie.Galeria>
       <Box>
         <Text
-          variant="h6"
+          variant="h5"
+          align="center"
           style={{ fontWeight: "bolder", textTransform: "uppercase" }}
         >
           Galeria

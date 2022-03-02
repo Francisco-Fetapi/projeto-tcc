@@ -8,21 +8,28 @@ import { useNavigate } from "react-router-dom";
 export default function Elenco({ title, items }) {
   return (
     <Movie.Elenco>
-      <Box display="flex" justifyContent="space-between" alignItems="center">
+      <Box
+        display="flex"
+        // justifyContent="space-between"
+        alignItems="center"
+        // pr={7}
+      >
         <Text
           variant="h6"
           style={{ fontWeight: "bolder", textTransform: "uppercase" }}
         >
           {title}
         </Text>
-        <Button
-          variant="outlined"
-          size="small"
-          color="default"
-          disableElevation
-        >
-          Ver mais
-        </Button>
+        <Box ml={1} style={{ zoom: 0.7 }} position="relative" bottom={-12}>
+          <Button
+            variant="outlined"
+            size="small"
+            color="default"
+            disableElevation
+          >
+            Ver mais
+          </Button>
+        </Box>
       </Box>
       <Box mt={2} className="slider-elenco">
         {items.map((item, key) => (

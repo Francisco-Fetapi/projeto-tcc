@@ -15,7 +15,7 @@ import ListaDiscussoes from "./ListaDiscussoes";
 import Box from "@material-ui/core/Box";
 
 export default function MainContent() {
-  const elenco = [1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8];
+  const elenco = [1, 2, 3, 4, 5, 6];
   const keywords =
     `mother​,based on novel or book​, beach​, greece​, daughter​, vacation​, doll​, motherhood​, woman, director`.split(
       ","

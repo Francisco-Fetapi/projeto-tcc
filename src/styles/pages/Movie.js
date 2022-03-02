@@ -5,6 +5,12 @@ export const Movie = {
     overflow: hidden;
   `,
   Main:styled.div`
+  @media (max-width: 1140px) {
+      transform:translateX(-30px);
+    }
+  @media (max-width: 615px) {
+      transform:translateY(-10px) translateX(-30px);
+    }
   `,
   Banner:styled.div`
     background:url('/img/back-aranha.jpg');
@@ -27,6 +33,11 @@ export const Movie = {
       padding:30px;
       position:relative;
       z-index:1;
+      @media(max-width:890px){
+        figure{
+          display:none;
+        }
+      }
     }
     & > div{
       width:100%;
@@ -47,6 +58,21 @@ export const Movie = {
         object-fit:cover;
         border-radius: 8px;
       }
+      @media(max-width:1040px){
+        
+          h4{
+            font-size:25px;
+          }
+          .header-info2{
+            zoom:.85;
+          }
+      }
+      @media(max-width:470px){
+        .header-info1,.header-info2{
+          zoom:.75;
+        }
+      }
+      
     }
   `,
   Info:styled.div`
@@ -102,19 +128,20 @@ export const Movie = {
   `,
   Elenco:styled.div`
     padding:20px;
-    overflow-x: auto;
+    /* overflow-x: auto;
     width:100%;
     max-width: 1300px;
-    margin:0 auto;
+    margin:0 auto; */
 
     .slider-elenco{
       display: flex; 
-      overflow-x: auto;
+      flex-wrap:wrap;
+      /* overflow-x: auto; */
       user-select:none;
     }
     .card-ator{
       /* width:100px; */
-      flex:1 0 120px;
+      flex:0 0 120px;
       margin:10px;
       transition: transform .5s ease-in-out;
       :hover{
@@ -151,12 +178,14 @@ export const Movie = {
     width:100%;
     max-width: 1300px;
     margin:0 auto;
-    padding:20px;    
+    margin-top:20px;
+    padding:0px 20px;    
 
     .fotos{
       display:grid;
       grid-template-columns:repeat(auto-fit,minmax(270px,300px));
-      height:300px;
+      /* height:300px; */
+      justify-content: center;
       gap:10px;
       margin:20px 0px;
 
@@ -174,7 +203,7 @@ export const Movie = {
   Lista:styled.div`
     width:100%;
     max-width: 1300px;
-    margin:20px auto;
+    margin:2px auto;
     padding:20px;  
 
     .filmes{
