@@ -22,8 +22,9 @@ export const Movie = {
       position:absolute;
     }
     .info{
-      height:90%;
-      width:90%;
+      height:100%;
+      width:100%;
+      padding:30px;
       position:relative;
       z-index:1;
     }
@@ -220,15 +221,7 @@ export const Movie = {
   `,
   Discussoes:styled.div`
     padding:0px 30px; 
-    width:100%;
-    max-width:600px;
-    margin: 0 auto;
 
-    /* .posts-movie-container{
-      width:100%;
-      display: flex;
-      justify-content:center;
-    } */
   
     
   `
