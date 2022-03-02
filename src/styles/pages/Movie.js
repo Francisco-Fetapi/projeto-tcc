@@ -126,6 +126,7 @@ export const Movie = {
           flex:1 0 150px;
           padding:8px;
           margin:0px 2px;
+          margin-bottom: 5px;
           background:rgba(0,0,0,.7);
           border-radius: 10px;
         }
@@ -224,8 +225,8 @@ export const Movie = {
     }
 
     .filme{
-      flex:0 0 220px;
-      height:300px;
+      flex:0 0 140px;
+      height:200px;
       margin-right:10px;
       position:relative;
       cursor:pointer;
