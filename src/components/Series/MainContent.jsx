@@ -18,19 +18,19 @@ export default function MainContent() {
   }
   const TMDB = useTMDB();
   const movies = useSelector(selectAppState("trending_series"));
-  const [paginate, setPaginate] = useState({
-    page: 1,
-    total_results: 1,
-    total_pages: 0,
-    results: [],
-  });
+  // const [movies, setmovies] = useState({
+  //   page: 1,
+  //   total_results: 1,
+  //   total_pages: 0,
+  //   results: [],
+  // });
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    TMDB.getSeries({ setLoading, setPaginate });
+    TMDB.getSeries({ setLoading }, movies.page);
   }, []);
 
   function carregarMais() {
-    TMDB.getSeries({ setLoading, setPaginate }, paginate.page + 1);
+    TMDB.getSeries({ setLoading }, movies.page + 1);
   }
   return (
     <Movie.Content>
@@ -46,17 +46,17 @@ export default function MainContent() {
           procurar={procurar}
         />
       </Box>
-      {movies.length > 0 && <MoviesList movies={movies} />}
+      {movies.results.length > 0 && <MoviesList movies={movies.results} />}
       {loading && (
         <Box display="flex" my={2} justifyContent="center">
           <CircularProgress color="inherit" />
         </Box>
       )}
-      {paginate.current_page < paginate.last_page && !loading && (
-        <Box mt={2} display="flex" justifyContent="center">
+      {movies.page < movies.total_pages && !loading && (
+        <Box my={2} display="flex" justifyContent="center">
           <Button
             startIcon={<CircularProgress size="small" />}
-            color="secondary"
+            color="primary"
             variant="text"
             onClick={carregarMais}
           >

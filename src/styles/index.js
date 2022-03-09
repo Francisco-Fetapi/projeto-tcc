@@ -7,14 +7,17 @@ export const ContainerBase = styled.main`
   min-height: 100vh;
 `;
 export const Link = styled(LinkRrd)`
-${({nostyle})=>!nostyle && css`
-  color: #4baeb9 !important;
-`}
-${({nostyle})=>nostyle && css`
-  color: inherit;
-  text-decoration:none;
-`}
-  
+  ${({ nostyle }) =>
+    !nostyle &&
+    css`
+      color: #4baeb9 !important;
+    `}
+  ${({ nostyle }) =>
+    nostyle &&
+    css`
+      color: inherit;
+      text-decoration: none;
+    `}
 `;
 export const HeaderContainer = styled.div`
   background: #fff;
@@ -225,27 +228,31 @@ export const MenuItemMobileStyled = styled.div`
 `;
 
 export const Movie = {
-  Container:styled.div`
-  margin: 20px 0px;
-  p {
-    font-weight: bold;
-  }`,
-  List:styled.div`
-    display: grid;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
-    zoom:.85;
-    padding:10px 0px;
-    @media(max-width:530px){
-        grid-template-columns: 1fr;
-        zoom:1;
-      }
+  Container: styled.div`
+    margin: 20px 0px;
+    p {
+      font-weight: bold;
+    }
   `,
-  Content:styled.div`
-      margin: 0 50px;
-      @media(max-width:705px){
-        margin: 0;
-        transform:translateX(-15px);
-      }
-  `
-}
+  List: styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    zoom: 0.85;
+    padding: 10px 0px;
+    @media (max-width: 530px) {
+      grid-template-columns: 1fr;
+      zoom: 1;
+    }
+    .card_movie_content {
+      height: 140px !important;
+    }
+  `,
+  Content: styled.div`
+    margin: 0 50px;
+    @media (max-width: 705px) {
+      margin: 0;
+      transform: translateX(-15px);
+    }
+  `,
+};

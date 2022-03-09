@@ -1,7 +1,14 @@
 import axios from "axios";
 
+const on_internet = navigator.onLine;
+// const on_production = true;
+
+export const BASE_URL = on_internet
+  ? "https://api.themoviedb.org/3"
+  : "http://localhost:8000/api";
+
 const api = axios.create({
-  baseURL: "https://api.themoviedb.org/3",
+  baseURL: BASE_URL,
 });
 
 api.interceptors.request.use(
@@ -33,9 +40,6 @@ const TMDB = {
         page,
       },
     });
-    // let { data } = await axios.get(
-    //     `https://api.themoviedb.org/3/trending/all/day?api_key=fd9aab7cf8e6e54164eb4b91420fe091&page=5&language=pt-PT`
-    //   );
 
     return data;
   },

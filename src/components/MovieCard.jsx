@@ -31,18 +31,17 @@ export default function MovieCard({ movie }) {
     <Card>
       <CardMedia
         className={classes.media}
-        image={`/img/${movie.img}`}
-        title={movie.title}
+        image={movie.backdrop_path}
+        title={movie.name}
       />
       <CardActionArea onClick={() => navigate(`/movie/${movie.id}`)}>
-        <CardContent>
-          <abbr title={movie.nome}>
-            <Text variant="h6">{mostrarXCharOntText(movie.nome, 20)}</Text>
+        <CardContent className="card_movie_content">
+          <abbr title={movie.name}>
+            <Text variant="h6">{mostrarXCharOntText(movie.name, 20)}</Text>
           </abbr>
           <Typography variant="body2" color="textSecondary" component="p">
-            This impressive paella is a perfect party dish and a fun meal to
-            cook together with your guests. Add 1 cup of frozen peas along with
-            the mussels, if you like.
+            {mostrarXCharOntText(movie.overview, 120) ||
+              `Sinopse não disponivel`}
           </Typography>
         </CardContent>
       </CardActionArea>
