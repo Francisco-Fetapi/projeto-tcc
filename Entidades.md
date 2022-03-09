@@ -30,3 +30,70 @@ id
 id_usuario
 id_amigo
 **timestamps**
+
+# Movies_Favoritos
+
+id
+id_usuario
+id_movie
+media_type
+**timestamps**
+
+# Movies_Guardados
+
+id
+id_usuario
+id_movie
+media_type
+**timestamps**
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||
+
+# Publicacao
+
+id
+id_usuario
+id_movie (pode ser null)
+media_type (pode ser null)
+publico (amigos,publico)
+conteudo
+**timestamps**
+
+# Publicacao_Fotos
+
+id
+id_publicacao
+foto
+**timestamps**
+
+# Publicao_Guardada
+
+id
+id_usuario
+id_publicacao
+**timestamps**
+
+# Reacoes
+
+id
+id_object
+id_usuario
+type_object (post 1,comentario 2,resposta 3...)
+tipo_reacao
+**timestamps**
+
+# Comentarios
+
+id
+id_comentario
+id_object
+id_usuario
+type_object (post 1, comentario 2)
+conteudo
+**timestamps**
+
+# Falta
+
+**Mensagens**
+**Notificacoes**
+**Registo de atividade**
