@@ -20,7 +20,7 @@ export default function Keywords({ keywords }) {
         </Box>
         <Box maxWidth={500}>
           {keywords.map((item) => (
-            <Chip label={item} clickable />
+            <Chip label={item} clickable key={item} />
           ))}
         </Box>
       </Box>

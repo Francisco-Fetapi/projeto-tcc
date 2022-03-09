@@ -19,8 +19,8 @@ export default function ListaFilmes({ title, filmes }) {
       </Box>
 
       <Box mt={3} className="filmes">
-        {filmes.map((filme) => (
-          <Filme img={filme.img} nome={filme.nome} />
+        {filmes.map((filme, key) => (
+          <Filme img={filme.img} nome={filme.nome} key={key} />
         ))}
       </Box>
     </Movie.Lista>
