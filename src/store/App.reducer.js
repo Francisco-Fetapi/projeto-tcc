@@ -2,7 +2,12 @@ const initialState = {
   usuario: {},
   series: [],
   filmes: [],
-  trending_filmes: {},
+  trending_filmes: {
+    page: 1,
+    total_results: 1,
+    total_pages: 0,
+    results: [],
+  },
   trending_series: {
     page: 1,
     total_results: 1,

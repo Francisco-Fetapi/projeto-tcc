@@ -27,8 +27,8 @@ export default function ListaDiscussoes() {
         </Box>
       </Box>
       <Box className="lista-card">
-        {[1, 2, 3, 4].map(() => (
-          <CardDiscussao {...dados} />
+        {[1, 2, 3, 4].map((item) => (
+          <CardDiscussao {...dados} key={item} />
         ))}
       </Box>
       <Box my={3} className="paginate" display="flex" justifyContent="center">

@@ -37,7 +37,7 @@ const TMDB = {
     //time (day,week)
     let { data } = await api.get(`/trending/${media_type}/${time}`, {
       params: {
-        page,
+        page: Math.max(1, page),
       },
     });
 

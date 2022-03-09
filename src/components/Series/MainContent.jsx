@@ -26,7 +26,7 @@ export default function MainContent() {
   // });
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    TMDB.getSeries({ setLoading }, movies.page);
+    TMDB.getSeries({ setLoading }, 0);
   }, []);
 
   function carregarMais() {

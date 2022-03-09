@@ -11,7 +11,7 @@ import FormatListBulleted from "@material-ui/icons/FormatListBulleted";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import { Text } from "~/styles";
 import { mostrarXCharOntText } from "~/helpers";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,18 +26,21 @@ const useStyles = makeStyles((theme) => ({
 export default function MovieCard({ movie }) {
   const classes = useStyles();
   const navigate = useNavigate();
+  const { pathname } = useLocation();
 
   return (
     <Card>
       <CardMedia
         className={classes.media}
         image={movie.backdrop_path}
-        title={movie.name}
+        title={movie.name || movie.title}
       />
-      <CardActionArea onClick={() => navigate(`/movie/${movie.id}`)}>
+      <CardActionArea onClick={() => navigate(`${pathname}/${movie.id}`)}>
         <CardContent className="card_movie_content">
-          <abbr title={movie.name}>
-            <Text variant="h6">{mostrarXCharOntText(movie.name, 20)}</Text>
+          <abbr title={movie.name || movie.title}>
+            <Text variant="h6">
+              {mostrarXCharOntText(movie.name || movie.title, 20)}
+            </Text>
           </abbr>
           <Typography variant="body2" color="textSecondary" component="p">
             {mostrarXCharOntText(movie.overview, 120) ||

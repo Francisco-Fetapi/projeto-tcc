@@ -13,7 +13,7 @@ import Atores from "./pages/Atores";
 import LinhaDoTempo from "./pages/LinhaDoTempo";
 import PostSaveds from "./pages/PostSaveds";
 
-import Movie from './pages/Movie';
+import Movie from "./pages/Movie";
 
 import NotFound from "./pages/NotFound";
 
@@ -29,17 +29,21 @@ export default function routes() {
       />
       <Route path="/confirmar-email" element={<ConfirmarEmail />} />
       <Route path="/mais-sobre-voce" element={<MaisSobreVoce />} />
-      <Route path="/perfil" element={<Perfil alheio={false}/>} />
+      <Route path="/perfil" element={<Perfil alheio={false} />} />
       <Route path="/amigos" element={<Amigos />} />
       <Route path="/series" element={<Series />} />
       <Route path="/filmes" element={<Filmes />} />
       <Route path="/videos" element={<Videos />} />
       <Route path="/atores" element={<Atores />} />
       <Route path="/publicacoes-guardadas" element={<PostSaveds />} />
-      <Route path="/movies-favoritos/:id_usuario" element={<Filmes favoritos={true}/>} />
+      <Route
+        path="/movies-favoritos/:id_usuario"
+        element={<Filmes favoritos={true} />}
+      />
       <Route path="/minha-linha-do-tempo" element={<LinhaDoTempo />} />
       <Route path="/usuario/:id" element={<Perfil alheio={true} />} />
-      <Route path="/movie/:id" element={<Movie />} />
+      <Route path="/filmes/:id" element={<Movie media_type="movie" />} />
+      <Route path="/series/:id" element={<Movie media_type="tv" />} />
 
       <Route path="*" element={<NotFound />} />
     </Routes>
