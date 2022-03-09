@@ -49,7 +49,7 @@ media_type
 
 |||||||||||||||||||||||||||||||||||||||||||||||||||
 
-# Publicacao
+# Post
 
 id
 id_usuario
@@ -59,23 +59,24 @@ publico (amigos,publico)
 conteudo
 **timestamps**
 
-# Publicacao_Fotos
+# Post_Fotos \*\*\*\*
 
 id
-id_publicacao
-foto
+id_post
+foto_resized
+foto_original
 **timestamps**
 
-# Publicao_Guardada
+# Post_Guardado
 
 id
 id_usuario
-id_publicacao
+id_post
 **timestamps**
 
 # Reacoes
 
-id
+`id
 id_object
 id_usuario
 type_object (post 1,comentario 2,resposta 3...)
