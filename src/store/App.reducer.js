@@ -2,6 +2,8 @@ const initialState = {
   usuario: {},
   series: [],
   filmes: [],
+  trending_filmes: {},
+  trending_series: {},
   posts: [],
   dark: JSON.parse(localStorage.getItem("dark")) || false,
 };
