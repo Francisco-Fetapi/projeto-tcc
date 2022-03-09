@@ -3,7 +3,12 @@ const initialState = {
   series: [],
   filmes: [],
   trending_filmes: {},
-  trending_series: {},
+  trending_series: {
+    page: 1,
+    total_results: 1,
+    total_pages: 0,
+    results: [],
+  },
   posts: [],
   dark: JSON.parse(localStorage.getItem("dark")) || false,
 };
