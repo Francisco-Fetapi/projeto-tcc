@@ -32,7 +32,7 @@ export default function MovieCard({ movie }) {
     <Card>
       <CardMedia
         className={classes.media}
-        image={movie.backdrop_path}
+        image={movie.poster_path}
         title={movie.name || movie.title}
       />
       <CardActionArea onClick={() => navigate(`${pathname}/${movie.id}`)}>

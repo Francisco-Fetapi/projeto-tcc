@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import movies from "~/mock/series.json";
 const on_internet = navigator.onLine;
 // const on_production = true;
 
@@ -10,7 +10,23 @@ export const BASE_URL = on_internet
 const api = axios.create({
   baseURL: BASE_URL,
 });
+const images_uri = "http://image.tmdb.org/t/p/";
+function rand(min, max) {
+  return Math.floor(Math.random() * max + 1) - min;
+}
+function path_local(movie) {
+  let indice_rand = rand(1, movies.length);
+  let url = movies[indice_rand]["img"];
+  movie.backdrop_path = `/img/${url}`;
+  movie.poster_path = `/img/${url}`;
+  return movie;
+}
 
+function path_tmdb(movie) {
+  movie.backdrop_path = images_uri + "original" + movie.backdrop_path;
+  movie.poster_path = images_uri + "w300" + movie.poster_path;
+  return movie;
+}
 api.interceptors.request.use(
   function (config) {
     config.params.api_key = "fd9aab7cf8e6e54164eb4b91420fe091";
@@ -23,7 +39,14 @@ api.interceptors.request.use(
 );
 api.interceptors.response.use(
   function (response) {
-    console.log(response);
+    const new_data = response.data.results.map((movie) => {
+      if (on_internet) {
+        return path_tmdb(movie);
+      }
+      return path_local(movie);
+    });
+    response.data.results = new_data;
+    console.log(response.data);
     return response;
   },
   function (error) {
