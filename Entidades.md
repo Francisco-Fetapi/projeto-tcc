@@ -74,19 +74,18 @@ id_usuario
 id_post
 **timestamps**
 
-# Reacoes
+# Reacts
 
 `id
 id_object
 id_usuario
-type_object (post 1,comentario 2,resposta 3...)
+type_object (post 1,comentario 2)
 tipo_reacao
 **timestamps**
 
 # Comentarios
 
 id
-id_comentario
 id_object
 id_usuario
 type_object (post 1, comentario 2)
