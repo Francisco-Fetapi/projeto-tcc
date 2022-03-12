@@ -10,11 +10,11 @@ export const MainContainer = styled.div`
   .item-usuario {
     /* background: linear-gradient(150deg, #c5f0f2, #0e257f); */
     background: linear-gradient(150deg, #2196f3, #4796f9);
-    .MuiListItemText-primary{
+    .MuiListItemText-primary {
       color: white !important;
     }
-    .MuiListItemText-secondary{
-      color: #F4F4F4 !important;
+    .MuiListItemText-secondary {
+      color: #f4f4f4 !important;
     }
   }
 
@@ -44,6 +44,7 @@ export const MainContainer = styled.div`
         height: 64px;
         margin-right: 10px;
         border-radius: 50%;
+        object-fit: cover;
       }
     }
     /* .MuiAvatar-root:not(.atvidade-icon, .skeleton) {
@@ -71,7 +72,6 @@ export const MainContainer = styled.div`
       background: linear-gradient(121deg, #ff5af5, #0e257f);
     }
     .lista-atividades {
-      
       .MuiListItem-root {
         align-items: flex-start;
       }

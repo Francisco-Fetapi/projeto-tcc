@@ -9,6 +9,24 @@ export default function useTMDB() {
   const Dispatch = useDispatch();
   const trending_series = useSelector(selectAppState("trending_series"));
   const trending_filmes = useSelector(selectAppState("trending_filmes"));
+  const discover_series = useSelector(selectAppState("discover_series"));
+  const discover_filmes = useSelector(selectAppState("discover_filmes"));
+
+  async function getDiscover(discover, setLoading, page) {
+    if (page === 0 && discover.data.results.length > 0) {
+      setLoading(false);
+      return;
+    }
+    setLoading(true);
+    const res = await TMDB.getDiscover(discover.type, page);
+    Dispatch(
+      SET_STATE(discover.store_name, {
+        ...res,
+        results: [...discover.data.results, ...res.results],
+      })
+    );
+    setLoading(false);
+  }
 
   return {
     async getSeries({ setLoading }, page) {
@@ -42,6 +60,28 @@ export default function useTMDB() {
       );
 
       setLoading(false);
+    },
+    getDiscoverFilmes(setLoading, page) {
+      getDiscover(
+        {
+          data: discover_filmes,
+          store_name: "discover_filmes",
+          type: "movie",
+        },
+        setLoading,
+        page
+      );
+    },
+    getDiscoverSeries(setLoading, page) {
+      getDiscover(
+        {
+          data: discover_series,
+          store_name: "discover_series",
+          type: "tv",
+        },
+        setLoading,
+        page
+      );
     },
   };
 }

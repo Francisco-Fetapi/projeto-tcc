@@ -19,7 +19,7 @@ function useMovies(tipo) {
   }, []);
 
   const dados = {
-    async carregar() {
+    async getDiscover(type) {
       const data = await get();
       Disparar(SET_STATE(tipo, data));
     },

@@ -66,6 +66,16 @@ const TMDB = {
 
     return data;
   },
+  async getDiscover(media_type, page = 1) {
+    //media_type -> movie/tv/all
+    let { data } = await api.get(`/discover/${media_type}`, {
+      params: {
+        page: Math.max(1, page),
+      },
+    });
+
+    return data;
+  },
 };
 
 export default TMDB;
