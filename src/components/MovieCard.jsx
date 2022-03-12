@@ -34,6 +34,9 @@ export default function MovieCard({ movie }) {
         className={classes.media}
         image={movie.poster_path}
         title={movie.name || movie.title}
+        style={{
+          backgroundPosition: "top",
+        }}
       />
       <CardActionArea onClick={() => navigate(`${pathname}/${movie.id}`)}>
         <CardContent className="card_movie_content">
