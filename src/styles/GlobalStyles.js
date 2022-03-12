@@ -12,6 +12,9 @@ export const GlobalStyles = createGlobalStyle`
         width:100vh;
         height:100vh;
     } */
+    img{
+        object-fit:cover;
+    }
     *{
         &::-webkit-scrollbar {
         width: 8px;
