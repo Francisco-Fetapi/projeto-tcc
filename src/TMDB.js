@@ -26,11 +26,21 @@ function path_local(movie) {
   movie.poster_path = `/img/${url}`;
   return movie;
 }
+function path_local_2(person) {
+  let indice_rand = rand(1, 8);
+  let url = "ator" + indice_rand + ".jpg";
+  person.profile_path = `/img/${url}`;
+  return person;
+}
 
 function path_tmdb(movie) {
   movie.backdrop_path = images_uri + "original" + movie.backdrop_path;
   movie.poster_path = images_uri + "w300" + movie.poster_path;
   return movie;
+}
+function path_tmdb_2(person) {
+  person.profile_path = images_uri + "original" + person.profile_path;
+  return person;
 }
 api.interceptors.request.use(
   function (config) {
@@ -52,6 +62,30 @@ api.interceptors.response.use(
         return path_local(movie);
       });
       response.data.results = new_data;
+    } else if (response.data.cast) {
+      let new_data = {};
+      new_data.cast = response.data.cast.filter((person) => {
+        return person.known_for_department === "Acting";
+      });
+      new_data.crew = response.data.crew.filter((person) => {
+        return ["Production", "Writing", "Directing"].includes(
+          person.known_for_department
+        );
+      });
+
+      new_data.cast = new_data.cast.map((movie) => {
+        if (on_internet) {
+          return path_tmdb_2(movie);
+        }
+        return path_local_2(movie);
+      });
+      new_data.crew = new_data.crew.map((movie) => {
+        if (on_internet) {
+          return path_tmdb_2(movie);
+        }
+        return path_local_2(movie);
+      });
+      response.data = new_data;
     } else {
       let new_data = {};
       if (on_internet) {
@@ -95,6 +129,16 @@ const TMDB = {
   },
   async getTv(id_movie) {
     let { data } = await api.get(`/tv/${id_movie}`);
+
+    return data;
+  },
+  async getCreditsMovie(id_movie) {
+    let { data } = await api.get(`/movie/${id_movie}/credits`);
+
+    return data;
+  },
+  async getCreditsTv(id_movie) {
+    let { data } = await api.get(`/tv/${id_movie}/credits`);
 
     return data;
   },

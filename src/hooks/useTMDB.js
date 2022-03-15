@@ -95,5 +95,17 @@ export default function useTMDB() {
       setMovie(res);
       setLoading(false);
     },
+    async getCreditsMovie({ setLoading, setElenco }, id_movie) {
+      setLoading(true);
+      const res = await TMDB.getCreditsMovie(id_movie);
+      setElenco(res);
+      setLoading(false);
+    },
+    async getCreditsTv({ setLoading, setElenco }, id_movie) {
+      setLoading(true);
+      const res = await TMDB.getCreditsTv(id_movie);
+      setElenco(res);
+      setLoading(false);
+    },
   };
 }

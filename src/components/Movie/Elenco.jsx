@@ -1,11 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Text } from "~/styles";
 import { Movie } from "~/styles/pages/Movie";
 import Box from "@material-ui/core/Box";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import Button from "@material-ui/core/Button";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
+import useTMDB from "~/hooks/useTMDB";
 
 export default function Elenco({ title, items }) {
+  const [elenco, setElenco] = useState(true);
+  const [loading, setLoading] = useState(true);
+  const { id } = useParams();
+  const TMDB = useTMDB();
+  const { pathname } = useLocation();
+  const eh_filme = pathname.includes("filmes");
+
+  useEffect(() => {
+    if (eh_filme) {
+      TMDB.getCreditsMovie({ setLoading, setElenco }, id);
+    } else {
+      TMDB.getCreditsTv({ setLoading, setElenco }, id);
+    }
+  }, []);
+  console.log(elenco);
+
   return (
     <Movie.Elenco>
       <Box
@@ -31,17 +49,20 @@ export default function Elenco({ title, items }) {
           </Button>
         </Box>
       </Box>
-      <Box mt={2} className="slider-elenco">
-        {items.map((item, key) => (
-          <CardAtor
-            nome1={`Ator ${item}`}
-            nome2={`Protagonista ${item}`}
-            img={`ator${item}.jpg`}
-            id_ator={key}
-            key={key}
-          />
-        ))}
-      </Box>
+      {loading && <Loading />}
+      {!loading && (
+        <Box mt={2} className="slider-elenco">
+          {items.map((item, key) => (
+            <CardAtor
+              nome1={`Ator ${item}`}
+              nome2={`Protagonista ${item}`}
+              img={`ator${item}.jpg`}
+              id_ator={key}
+              key={key}
+            />
+          ))}
+        </Box>
+      )}
     </Movie.Elenco>
   );
 }
@@ -59,6 +80,20 @@ function CardAtor({ nome1, nome2, img, id_ator }) {
           </Text>
         </Box>
       </Box>
+    </Box>
+  );
+}
+
+function Loading() {
+  return (
+    <Box
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+      height="50px"
+      p={3}
+    >
+      <CircularProgress />
     </Box>
   );
 }

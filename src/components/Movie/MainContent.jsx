@@ -48,8 +48,8 @@ export default function MainContent() {
       ) : (
         <MovieContext.Provider value={{ movie }}>
           <Banner />
-          <Elenco title="Elenco principal" items={elenco} />
-          <Elenco title="Equipe Técnica" items={elenco} />
+          <Elenco title="Elenco principal" items={elenco} type="atores" />
+          <Elenco title="Equipe Técnica" items={elenco} type="equipe_tecnica" />
           <Keywords keywords={keywords} />
           <Galeria />
           <ListaFilmes title="Filmes similares" filmes={filmes} />
@@ -64,7 +64,7 @@ export default function MainContent() {
   );
 }
 
-function Loading({ loading }) {
+function Loading() {
   return (
     <Box
       height="90vh"
