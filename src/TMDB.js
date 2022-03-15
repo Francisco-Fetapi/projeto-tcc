@@ -7,8 +7,13 @@ export const BASE_URL = on_internet
   ? "https://api.themoviedb.org/3"
   : "http://localhost:8000/api";
 
+console.log(BASE_URL);
 const api = axios.create({
   baseURL: BASE_URL,
+  params: {
+    language: null,
+    api_key: null,
+  },
 });
 const images_uri = "http://image.tmdb.org/t/p/";
 function rand(min, max) {
@@ -19,6 +24,11 @@ function path_local(movie) {
   let url = movies[indice_rand]["img"];
   movie.backdrop_path = `/img/${url}`;
   movie.poster_path = `/img/${url}`;
+  return movie;
+}
+function path_local_2(movie) {
+  movie.backdrop_path = `/img/${movie.backdrop_path}`;
+  movie.poster_path = `/img/${movie.poster_path}`;
   return movie;
 }
 
@@ -39,13 +49,22 @@ api.interceptors.request.use(
 );
 api.interceptors.response.use(
   function (response) {
-    const new_data = response.data.results.map((movie) => {
+    if (response.data.results) {
+      const new_data = response.data.results.map((movie) => {
+        if (on_internet) {
+          return path_tmdb(movie);
+        }
+        return path_local(movie);
+      });
+      response.data.results = new_data;
+    } else {
+      let new_data = {};
       if (on_internet) {
-        return path_tmdb(movie);
+        new_data = path_tmdb(response.data);
+        new_data = path_tmdb(new_data);
+        response.data = new_data;
       }
-      return path_local(movie);
-    });
-    response.data.results = new_data;
+    }
     console.log(response.data);
     return response;
   },
@@ -73,6 +92,15 @@ const TMDB = {
         page: Math.max(1, page),
       },
     });
+
+    return data;
+  },
+  async getMovie(id_movie) {
+    let { data } = await api.get(`/movie/${id_movie}`);
+    return data;
+  },
+  async getTv(id_movie) {
+    let { data } = await api.get(`/tv/${id_movie}`);
 
     return data;
   },

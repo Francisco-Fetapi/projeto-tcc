@@ -83,5 +83,11 @@ export default function useTMDB() {
         page
       );
     },
+    async getMovie({ setLoading, setMovie }, id_movie) {
+      setLoading(true);
+      const res = await TMDB.getMovie(id_movie);
+      setMovie(res);
+      setLoading(false);
+    },
   };
 }

@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Movie } from "~/styles/pages/Movie";
 import Box from "@material-ui/core/Box";
 import InfoGerais from "./InfoGerais";
 
+import { MovieContext } from "./MainContent";
+
 export default function Banner() {
+  const { movie } = useContext(MovieContext);
+  const on_internet = navigator.onLine;
+  console.log(movie);
   return (
     <Movie.Banner>
       <div className="fundo-preto"></div>

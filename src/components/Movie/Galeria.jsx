@@ -20,8 +20,8 @@ export default function Galeria() {
       </Box>
 
       <Box className="fotos">
-        {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
-          <img src={`/img/galeria${item}.jpg`} alt={item} />
+        {[1, 2, 3, 4, 5, 6, 7, 8].map((item, key) => (
+          <img src={`/img/galeria${item}.jpg`} key={key} alt={item} />
         ))}
       </Box>
     </Movie.Galeria>
