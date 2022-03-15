@@ -31,7 +31,7 @@ export const Movie = {
     }
 
     .fundo-preto {
-      background-color: rgba(0, 0, 0, 0.7);
+      background-color: rgba(0, 0, 0, 0.8);
       position: absolute;
     }
     .info {
@@ -167,7 +167,7 @@ export const Movie = {
     }
   `,
   Keywords: styled.div`
-    background: url("/img/back-aranha.jpg");
+    background: url(${({ imagem }) => imagem});
     background-size: cover;
     background-position: center center;
     height: 300px;

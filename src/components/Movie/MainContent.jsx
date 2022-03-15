@@ -15,7 +15,7 @@ import ListaDiscussoes from "./ListaDiscussoes";
 import Box from "@material-ui/core/Box";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import useTMDB from "~/hooks/useTMDB";
-import { useParams } from "react-router";
+import { useLocation, useParams } from "react-router-dom";
 
 export const MovieContext = createContext();
 
@@ -30,9 +30,15 @@ export default function MainContent() {
   const [loading, setLoading] = useState(true);
   const filmes = movies.concat({ img: "spider-man.jpg", nome: "Spider man 2" });
   const { id } = useParams();
+  const { pathname } = useLocation();
+  const eh_filme = pathname.includes("filmes");
 
   useEffect(() => {
-    TMDB.getMovie({ setLoading, setMovie }, id);
+    if (eh_filme) {
+      TMDB.getMovie({ setLoading, setMovie }, id);
+    } else {
+      TMDB.getTv({ setLoading, setMovie }, id);
+    }
   }, []);
 
   return (

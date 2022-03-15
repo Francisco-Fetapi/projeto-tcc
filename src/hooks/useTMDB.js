@@ -89,5 +89,11 @@ export default function useTMDB() {
       setMovie(res);
       setLoading(false);
     },
+    async getTv({ setLoading, setMovie }, id_movie) {
+      setLoading(true);
+      const res = await TMDB.getTv(id_movie);
+      setMovie(res);
+      setLoading(false);
+    },
   };
 }

@@ -1,36 +1,48 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Text } from "~/styles";
 import { Movie } from "~/styles/pages/Movie";
 import Chip from "@material-ui/core/Chip";
 import Box from "@material-ui/core/Box";
-import ButtonGroup from "@material-ui/core/ButtonGroup";
-import Button from "@material-ui/core/Button";
 import CalendarToday from "@material-ui/icons/CalendarToday";
 import StarIcon from "@material-ui/icons/Star";
 
 import { FaHeart, FaList, FaEye } from "react-icons/fa";
 import IconButton from "@material-ui/core/IconButton";
+import { MovieContext } from "./MainContent";
+import { useLocation } from "react-router-dom";
 
 export default function InfoGerais() {
+  const { movie } = useContext(MovieContext);
+  const { pathname } = useLocation();
+  const eh_filme = pathname.includes("filmes");
   return (
     <Movie.Info>
       <Box className="header-info1">
-        <Chip label="Filme" />
-        <Chip label="Released" />
-        <Chip label="22/12/2021" icon={<CalendarToday />} />
+        <Chip label={eh_filme ? "Filme" : "Série"} />
+        <Chip label={movie.status} />
+        <Chip
+          label={new Date(
+            movie.release_date || movie.first_air_date
+          ).toLocaleDateString()}
+          icon={<CalendarToday />}
+        />
       </Box>
-      <Text variant="h4">Homem-Aranha: Sem Volta a Casa (2021)</Text>
+      <Text variant="h4">{movie.title || movie.name}</Text>
       <Box className="header-info2">
-        <Chip label="EN" variant="outlined" />
+        <Chip
+          label={movie.original_language}
+          variant="outlined"
+          style={{ textTransform: "uppercase" }}
+        />
         <Text variant="h6" color="primary">
-          Spider Man - No Way Home
+          {movie.original_title || movie.original_name}
         </Text>
         <Box ml={2} display="flex" alignItems="center">
           <Box>
             <StarIcon style={{ color: "rgb(204, 204, 50)" }} />
           </Box>
           <Box ml={0.25}>
-            <Text>7/10</Text>
+            <Text>{movie.vote_average}/10</Text>
           </Box>
         </Box>
       </Box>
@@ -39,18 +51,15 @@ export default function InfoGerais() {
         <Text variant="h6">Sinopse</Text>
         <Box mt={1}>
           <Text variant="body2" color="textSecondary">
-            Peter Parker is unmasked and no longer able to separate his normal
-            life from the high-stakes of being a Super Hero. When he asks for
-            help from Doctor Strange the stakes become even more dangerous,
-            forcing him to discover what it truly means to be Spider-Man.
+            {movie.overview}
           </Text>
         </Box>
       </Box>
 
       <Box mt={2} className="lista-generos">
-        <Chip variant="outlined" label="Ação" />
-        <Chip variant="outlined" label="Aventura" />
-        <Chip variant="outlined" label="Ficção Cientifica" />
+        {movie.genres?.map((genre) => (
+          <Chip variant="outlined" key={genre.id} label={genre.name} />
+        ))}
       </Box>
 
       <Box mt={2} className="btn-actions">
