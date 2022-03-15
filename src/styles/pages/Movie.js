@@ -13,7 +13,7 @@ export const Movie = {
     }
   `,
   Banner: styled.div`
-    background: url("/img/back-aranha.jpg");
+    background: url(${({ imagem }) => imagem});
     background-size: cover;
     background-position: center center;
     min-height: 100vh;
