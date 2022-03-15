@@ -26,11 +26,6 @@ function path_local(movie) {
   movie.poster_path = `/img/${url}`;
   return movie;
 }
-function path_local_2(movie) {
-  movie.backdrop_path = `/img/${movie.backdrop_path}`;
-  movie.poster_path = `/img/${movie.poster_path}`;
-  return movie;
-}
 
 function path_tmdb(movie) {
   movie.backdrop_path = images_uri + "original" + movie.backdrop_path;
@@ -61,7 +56,6 @@ api.interceptors.response.use(
       let new_data = {};
       if (on_internet) {
         new_data = path_tmdb(response.data);
-        new_data = path_tmdb(new_data);
         response.data = new_data;
       }
     }
