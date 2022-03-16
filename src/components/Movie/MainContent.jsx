@@ -23,13 +23,11 @@ export default function MainContent() {
   // const elenco = [1, 2, 3, 4, 5, 6];
   const [movie, setMovie] = useState({});
   const TMDB = useTMDB();
-  const keywords =
-    `mother​,based on novel or book​, beach​, greece​, daughter​, vacation​, doll​, motherhood​, woman, director`.split(
-      ","
-    );
   const [loading, setLoading] = useState(true);
   const [loading2, setLoading2] = useState(true);
+  const [loading3, setLoading3] = useState(true);
   const [elenco, setElenco] = useState([]);
+  const [keywords, setKeywords] = useState([]);
   const filmes = movies.concat({ img: "spider-man.jpg", nome: "Spider man 2" });
   const { id } = useParams();
   const { pathname } = useLocation();
@@ -49,6 +47,13 @@ export default function MainContent() {
       TMDB.getCreditsTv({ setLoading: setLoading2, setElenco }, id);
     }
   }, []);
+  useEffect(() => {
+    if (eh_filme) {
+      TMDB.getKeywordsMovie({ setLoading: setLoading3, setKeywords }, id);
+    } else {
+      TMDB.getKeywordsTv({ setLoading: setLoading3, setKeywords }, id);
+    }
+  }, []);
 
   return (
     <Movie.Main>
@@ -56,7 +61,13 @@ export default function MainContent() {
         <Loading loading={loading} />
       ) : (
         <MovieContext.Provider
-          value={{ movie, elenco, loadingElenco: loading2 }}
+          value={{
+            movie,
+            elenco,
+            loadingElenco: loading2,
+            loadingKeywords: loading3,
+            keywords,
+          }}
         >
           <Banner />
           <Elenco title="Elenco principal" elenco={elenco.cast} type="atores" />

@@ -174,7 +174,9 @@ export const Movie = {
     display: flex;
     align-items: center;
 
-    padding: 0px 40px;
+    .container {
+      padding: 0px 40px;
+    }
     .MuiTypography-root {
       color: #f0f0f0 !important;
     }

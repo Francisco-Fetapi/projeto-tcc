@@ -142,6 +142,16 @@ const TMDB = {
 
     return data;
   },
+  async getKeywordsMovie(id_movie) {
+    let { data } = await api.get(`/movie/${id_movie}/keywords`);
+
+    return data;
+  },
+  async getKeywordsTv(id_movie) {
+    let { data } = await api.get(`/tv/${id_movie}/keywords`);
+
+    return data;
+  },
 };
 
 export default TMDB;

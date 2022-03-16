@@ -64,7 +64,7 @@ export default function Elenco({ title, elenco }) {
               />
             ))}
           </Box>
-          <Box display="flex" justifyContent="center" my={2}>
+          <Box display="flex" justifyContent="center">
             <Pagination
               page={paginate.page}
               count={Math.floor(elenco.length / per_page)}
