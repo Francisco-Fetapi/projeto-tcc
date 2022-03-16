@@ -27,7 +27,7 @@ function path_local(movie) {
   return movie;
 }
 function path_local_2(person) {
-  let indice_rand = rand(1, 8);
+  let indice_rand = Math.max(1, rand(2, 8));
   let url = "ator" + indice_rand + ".jpg";
   person.profile_path = `/img/${url}`;
   return person;

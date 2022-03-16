@@ -20,7 +20,7 @@ import { useLocation, useParams } from "react-router-dom";
 export const MovieContext = createContext();
 
 export default function MainContent() {
-  const elenco = [1, 2, 3, 4, 5, 6];
+  // const elenco = [1, 2, 3, 4, 5, 6];
   const [movie, setMovie] = useState({});
   const TMDB = useTMDB();
   const keywords =
@@ -28,6 +28,8 @@ export default function MainContent() {
       ","
     );
   const [loading, setLoading] = useState(true);
+  const [loading2, setLoading2] = useState(true);
+  const [elenco, setElenco] = useState([]);
   const filmes = movies.concat({ img: "spider-man.jpg", nome: "Spider man 2" });
   const { id } = useParams();
   const { pathname } = useLocation();
@@ -40,16 +42,29 @@ export default function MainContent() {
       TMDB.getTv({ setLoading, setMovie }, id);
     }
   }, []);
+  useEffect(() => {
+    if (eh_filme) {
+      TMDB.getCreditsMovie({ setLoading: setLoading2, setElenco }, id);
+    } else {
+      TMDB.getCreditsTv({ setLoading: setLoading2, setElenco }, id);
+    }
+  }, []);
 
   return (
     <Movie.Main>
       {loading ? (
         <Loading loading={loading} />
       ) : (
-        <MovieContext.Provider value={{ movie }}>
+        <MovieContext.Provider
+          value={{ movie, elenco, loadingElenco: loading2 }}
+        >
           <Banner />
-          <Elenco title="Elenco principal" items={elenco} type="atores" />
-          <Elenco title="Equipe Técnica" items={elenco} type="equipe_tecnica" />
+          <Elenco title="Elenco principal" elenco={elenco.cast} type="atores" />
+          <Elenco
+            title="Equipe Técnica"
+            elenco={elenco.crew}
+            type="equipe_tecnica"
+          />
           <Keywords keywords={keywords} />
           <Galeria />
           <ListaFilmes title="Filmes similares" filmes={filmes} />

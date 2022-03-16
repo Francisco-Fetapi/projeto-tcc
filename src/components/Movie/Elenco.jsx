@@ -1,29 +1,30 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Text } from "~/styles";
 import { Movie } from "~/styles/pages/Movie";
 import Box from "@material-ui/core/Box";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import Button from "@material-ui/core/Button";
-import { useNavigate, useParams, useLocation } from "react-router-dom";
-import useTMDB from "~/hooks/useTMDB";
+import { useNavigate } from "react-router-dom";
+import { MovieContext } from "./MainContent";
+import Pagination from "@material-ui/lab/Pagination";
 
-export default function Elenco({ title, items }) {
-  const [elenco, setElenco] = useState(true);
-  const [loading, setLoading] = useState(true);
-  const { id } = useParams();
-  const TMDB = useTMDB();
-  const { pathname } = useLocation();
-  const eh_filme = pathname.includes("filmes");
+export default function Elenco({ title, elenco }) {
+  const { loadingElenco } = useContext(MovieContext);
+  const per_page = 9;
+  const [paginate, setPaginate] = useState({
+    start: 0,
+    ends: per_page,
+    page: 1,
+  });
 
-  useEffect(() => {
-    if (eh_filme) {
-      TMDB.getCreditsMovie({ setLoading, setElenco }, id);
-    } else {
-      TMDB.getCreditsTv({ setLoading, setElenco }, id);
-    }
-  }, []);
-  console.log(elenco);
-
+  function handleChange(event, page) {
+    setPaginate((paginate_) => {
+      return {
+        start: page * per_page,
+        ends: page * per_page + per_page,
+        page,
+      };
+    });
+  }
   return (
     <Movie.Elenco>
       <Box
@@ -38,7 +39,7 @@ export default function Elenco({ title, items }) {
         >
           {title}
         </Text>
-        <Box ml={1} style={{ zoom: 0.7 }} position="relative" bottom={-12}>
+        {/* <Box ml={1} style={{ zoom: 0.7 }} position="relative" bottom={-12}>
           <Button
             variant="outlined"
             size="small"
@@ -47,21 +48,32 @@ export default function Elenco({ title, items }) {
           >
             Ver mais
           </Button>
-        </Box>
+        </Box> */}
       </Box>
-      {loading && <Loading />}
-      {!loading && (
-        <Box mt={2} className="slider-elenco">
-          {items.map((item, key) => (
-            <CardAtor
-              nome1={`Ator ${item}`}
-              nome2={`Protagonista ${item}`}
-              img={`ator${item}.jpg`}
-              id_ator={key}
-              key={key}
+      {loadingElenco && <Loading />}
+      {!loadingElenco && (
+        <>
+          <Box mt={2} className="slider-elenco">
+            {elenco.slice(paginate.start, paginate.ends).map((person, key) => (
+              <CardAtor
+                nome1={person.name}
+                nome2={person.character || person.department}
+                img={person.profile_path}
+                id_ator={person.id}
+                key={key}
+              />
+            ))}
+          </Box>
+          <Box display="flex" justifyContent="center" my={2}>
+            <Pagination
+              page={paginate.page}
+              count={Math.floor(elenco.length / per_page)}
+              onChange={handleChange}
+              variant="outlined"
+              shape="rounded"
             />
-          ))}
-        </Box>
+          </Box>
+        </>
       )}
     </Movie.Elenco>
   );
@@ -71,11 +83,11 @@ function CardAtor({ nome1, nome2, img, id_ator }) {
   const navigate = useNavigate();
   return (
     <Box className="card-ator" onClick={() => navigate(`/ator/${id_ator}`)}>
-      <img src={`/img/${img}`} alt={`${nome1} como ${nome2}`} />
+      <img src={img} alt={`${nome1} como ${nome2}`} />
       <Box mt={0.5} component="figcaption">
         <Text align="center">{nome1}</Text>
         <Box>
-          <Text align="center" color="textSecondary" fontSize={12}>
+          <Text align="center" color="textSecondary" style={{ fontSize: 12 }}>
             {nome2}
           </Text>
         </Box>
