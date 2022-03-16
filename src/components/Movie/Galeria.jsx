@@ -20,6 +20,10 @@ export default function Galeria() {
     page: 1,
   });
 
+  if (loadingImages) {
+    return <div />;
+  }
+
   function handleChange(event, page) {
     let start = page * per_page;
     let ends = page * per_page + per_page;
