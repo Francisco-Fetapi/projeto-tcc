@@ -28,7 +28,6 @@ export default function MainContent({ favoritos }) {
       return;
     }
     TMDB.getMovieBySearch({ setLoading }, search, 1);
-    console.log(search);
   }, [search]);
 
   function carregarMais() {

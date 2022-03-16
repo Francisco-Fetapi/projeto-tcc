@@ -27,7 +27,6 @@ export default function MainContent() {
       return;
     }
     TMDB.getTvBySearch({ setLoading }, search, 1);
-    console.log(search);
   }, [search]);
 
   function carregarMais() {
