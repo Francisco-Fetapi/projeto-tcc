@@ -210,6 +210,22 @@ const TMDB = {
 
     return data;
   },
+  async getMovieBySearch(query, page = 0) {
+    let { data } = await api.get(`/search/movie`, {
+      query,
+      page: Math.max(1, page),
+    });
+
+    return data;
+  },
+  async getTvBySearch(query, page = 0) {
+    let { data } = await api.get(`/search/tv`, {
+      query,
+      page: Math.max(1, page),
+    });
+
+    return data;
+  },
 };
 
 export default TMDB;

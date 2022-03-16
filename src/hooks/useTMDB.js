@@ -36,12 +36,21 @@ export default function useTMDB() {
       }
       setLoading(true);
       const res = await TMDB.getTrending("tv", "day", page);
-      Dispatch(
-        SET_STATE("trending_series", {
-          ...res,
-          results: [...trending_series.results, ...res.results],
-        })
-      );
+
+      if (page === 1) {
+        Dispatch(
+          SET_STATE("trending_series", {
+            ...res,
+          })
+        );
+      } else {
+        Dispatch(
+          SET_STATE("trending_series", {
+            ...res,
+            results: [...trending_series.results, ...res.results],
+          })
+        );
+      }
 
       setLoading(false);
     },
@@ -52,12 +61,20 @@ export default function useTMDB() {
       }
       setLoading(true);
       const res = await TMDB.getTrending("movie", "day", page);
-      Dispatch(
-        SET_STATE("trending_filmes", {
-          ...res,
-          results: [...trending_filmes.results, ...res.results],
-        })
-      );
+      if (page === 1) {
+        Dispatch(
+          SET_STATE("trending_filmes", {
+            ...res,
+          })
+        );
+      } else {
+        Dispatch(
+          SET_STATE("trending_filmes", {
+            ...res,
+            results: [...trending_filmes.results, ...res.results],
+          })
+        );
+      }
 
       setLoading(false);
     },
@@ -157,6 +174,36 @@ export default function useTMDB() {
       setLoading(true);
       const res = await TMDB.getTvSimilar(id_movie, page);
       setSimilars(res.results);
+      setLoading(false);
+    },
+    async getMovieBySearch({ setLoading }, query, page) {
+      if (!query) {
+        setLoading(false);
+        return;
+      }
+      setLoading(true);
+      const res = await TMDB.getMovieBySearch(query, page);
+
+      if (page === 1) {
+        Dispatch(
+          SET_STATE("trending_filmes", {
+            ...res,
+          })
+        );
+      } else {
+        Dispatch(
+          SET_STATE("trending_filmes", {
+            ...res,
+            results: [...trending_filmes.results, ...res.results],
+          })
+        );
+      }
+      setLoading(false);
+    },
+    async getTvBySearch({ setLoading, setPaginateMovie }, query, page) {
+      setLoading(true);
+      const res = await TMDB.getTvBySearch(query, page);
+      setPaginateMovie(res);
       setLoading(false);
     },
   };
