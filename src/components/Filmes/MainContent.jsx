@@ -37,7 +37,7 @@ export default function MainContent({ favoritos }) {
       <>
         {movies.results.length > 0 && <MoviesList movies={movies.results} />}
         {loading && (
-          <Box display="flex" my={2} justifyContent="center">
+          <Box display="flex" my={8} justifyContent="center">
             <CircularProgress color="inherit" />
           </Box>
         )}
