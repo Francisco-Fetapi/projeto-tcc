@@ -57,10 +57,9 @@ export default function useTMDB() {
     async getFilmes({ setLoading }, page) {
       if (page === 0 && trending_filmes.results.length > 0) {
         setLoading(false);
-        console.log("nao carregou");
         return;
       }
-      console.log("carregou");
+
       setLoading(true);
       const res = await TMDB.getTrending("movie", "day", page);
       if (page === 1) {
@@ -202,10 +201,27 @@ export default function useTMDB() {
       }
       setLoading(false);
     },
-    async getTvBySearch({ setLoading, setPaginateMovie }, query, page) {
+    async getTvBySearch({ setLoading }, query, page) {
+      if (!query) {
+        setLoading(false);
+        return;
+      }
       setLoading(true);
       const res = await TMDB.getTvBySearch(query, page);
-      setPaginateMovie(res);
+      if (page === 1) {
+        Dispatch(
+          SET_STATE("trending_series", {
+            ...res,
+          })
+        );
+      } else {
+        Dispatch(
+          SET_STATE("trending_series", {
+            ...res,
+            results: [...trending_series.results, ...res.results],
+          })
+        );
+      }
       setLoading(false);
     },
   };
