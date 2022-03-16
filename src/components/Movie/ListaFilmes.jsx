@@ -6,7 +6,10 @@ import { mostrarXCharOntText } from "~/helpers";
 // import Button from "@material-ui/core/Button";
 // import { useNavigate } from "react-router-dom";
 
-export default function ListaFilmes({ title, movies }) {
+export default function ListaFilmes({ title, movies, loading }) {
+  if (loading) {
+    return <div />;
+  }
   return (
     <Movie.Lista>
       <Box>

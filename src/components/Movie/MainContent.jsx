@@ -121,6 +121,7 @@ export default function MainContent() {
           <ListaFilmes
             title={(eh_filme ? "Filmes " : "Séries ") + "Similares"}
             movies={similars}
+            loading={loading6}
           />
           <ListaFilmes
             title={
@@ -128,6 +129,7 @@ export default function MainContent() {
               (eh_filme ? "recomendados" : "recomendadas")
             }
             movies={recomendados}
+            loading={loading5}
           />
           <Box className="discussoes_e_infos">
             <ListaDiscussoes />

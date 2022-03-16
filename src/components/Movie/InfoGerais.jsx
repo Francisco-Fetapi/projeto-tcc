@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Text } from "~/styles";
 import { Movie } from "~/styles/pages/Movie";
 import Chip from "@material-ui/core/Chip";
@@ -12,9 +12,24 @@ import { MovieContext } from "./MainContent";
 import { useLocation } from "react-router-dom";
 
 export default function InfoGerais() {
-  const { movie } = useContext(MovieContext);
+  const { movie, elenco } = useContext(MovieContext);
   const { pathname } = useLocation();
   const eh_filme = pathname.includes("filmes");
+  const [elencoP, setElencoP] = useState([]);
+  useEffect(() => {
+    const escritor = elenco.crew.find(
+      (person) => person.known_for_department === "Writing"
+    );
+    const produtor = elenco.crew.find(
+      (person) => person.known_for_department === "Production"
+    );
+    const diretor = elenco.crew.find(
+      (person) => person.known_for_department === "Directing"
+    );
+
+    setElencoP([escritor, produtor, diretor]);
+  }, []);
+
   return (
     <Movie.Info>
       <Box className="header-info1">
@@ -49,7 +64,7 @@ export default function InfoGerais() {
 
       <Box mt={3} maxWidth={550}>
         <Text variant="h6">Sinopse</Text>
-        <Box mt={1}>
+        <Box mt={1} style={{ maxHeight: 110, overflow: "auto" }}>
           <Text variant="body2" color="textSecondary">
             {movie.overview}
           </Text>
@@ -76,10 +91,9 @@ export default function InfoGerais() {
       </Box>
 
       <Box mt={2} className="card-elenco-container">
-        <CardElenco nome="Stan Lee" elenco="Characters" />
-        <CardElenco nome="Steve Ditko" elenco="Characters" />
-        <CardElenco nome="Erik Sommers" elenco="Writers" />
-        <CardElenco nome="Chris McKenna" elenco="Writers" />
+        {elencoP.map((person) => (
+          <CardElenco nome={person.name} elenco={person.known_for_department} />
+        ))}
       </Box>
     </Movie.Info>
   );
