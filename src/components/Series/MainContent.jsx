@@ -13,24 +13,31 @@ import { selectAppState } from "~/store/App.selectors";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 export default function MainContent() {
-  function procurar(values) {
-    console.log(values);
-  }
   const TMDB = useTMDB();
   const movies = useSelector(selectAppState("trending_series"));
-  // const [movies, setmovies] = useState({
-  //   page: 1,
-  //   total_results: 1,
-  //   total_pages: 0,
-  //   results: [],
-  // });
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(movies.results.length > 0);
+  const [search, setSearch] = useState("");
   useEffect(() => {
     TMDB.getSeries({ setLoading }, 0);
   }, []);
+  useEffect(() => {
+    if (search) {
+      TMDB.getTvBySearch({ setLoading }, search, 1);
+    } else {
+      TMDB.getSeries({ setLoading }, 1);
+    }
+    console.log(search);
+  }, [search]);
 
   function carregarMais() {
-    TMDB.getSeries({ setLoading }, movies.page + 1);
+    if (search) {
+      TMDB.getTvBySearch({ setLoading }, search, movies.page + 1);
+    } else {
+      TMDB.getSeries({ setLoading }, movies.page + 1);
+    }
+  }
+  function procurar(values) {
+    setSearch(values.search);
   }
   return (
     <Movie.Content>
@@ -46,12 +53,12 @@ export default function MainContent() {
           procurar={procurar}
         />
       </Box>
-      {movies.results.length > 0 && <MoviesList movies={movies.results} />}
       {loading && (
         <Box display="flex" my={8} justifyContent="center">
           <CircularProgress color="inherit" />
         </Box>
       )}
+      {movies.results.length > 0 && <MoviesList movies={movies.results} />}
       {movies.page < movies.total_pages && !loading && (
         <Box my={2} display="flex" justifyContent="center">
           <Button

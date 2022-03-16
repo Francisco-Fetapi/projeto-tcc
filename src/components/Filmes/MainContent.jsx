@@ -15,32 +15,31 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 export default function MainContent({ favoritos }) {
   const TMDB = useTMDB();
   const movies = useSelector(selectAppState("trending_filmes"));
-  // const [movies, setmovies] = useState({
-  //   page: 1,
-  //   total_results: 1,
-  //   total_pages: 0,
-  //   results: [],
-  // });
   const [loading, setLoading] = useState(true);
-  const [search, setSearch] = useState("");
+  const [loading2, setLoading2] = useState(false);
+  const [search, setSearch] = useState(null);
   useEffect(() => {
     TMDB.getFilmes({ setLoading }, 0);
   }, []);
 
   useEffect(() => {
-    if (search) {
-      TMDB.getMovieBySearch({ setLoading }, search, 1);
-    } else {
+    if (search === "") {
       TMDB.getFilmes({ setLoading }, 1);
+      return;
     }
+    TMDB.getMovieBySearch({ setLoading }, search, 1);
     console.log(search);
   }, [search]);
 
   function carregarMais() {
     if (search) {
-      TMDB.getMovieBySearch({ setLoading }, search, movies.page + 1);
+      TMDB.getMovieBySearch(
+        { setLoading: setLoading2 },
+        search,
+        movies.page + 1
+      );
     } else {
-      TMDB.getFilmes({ setLoading }, movies.page + 1);
+      TMDB.getFilmes({ setLoading: setLoading2 }, movies.page + 1);
     }
   }
   function procurar(values) {
@@ -54,17 +53,19 @@ export default function MainContent({ favoritos }) {
             <CircularProgress color="inherit" />
           </Box>
         )}
-        {movies.results.length > 0 && <MoviesList movies={movies.results} />}
-        {movies.page < movies.total_pages && !loading && (
+        {movies.results.length > 0 && !loading && (
+          <MoviesList movies={movies.results} />
+        )}
+        {movies.page < movies.total_pages && !loading2 && !loading && (
           <Box my={2} display="flex" justifyContent="center">
-            <Button
-              startIcon={<CircularProgress size="small" />}
-              color="primary"
-              variant="text"
-              onClick={carregarMais}
-            >
+            <Button color="primary" variant="text" onClick={carregarMais}>
               Carregar mais
             </Button>
+          </Box>
+        )}
+        {loading2 && (
+          <Box display="flex" my={2} justifyContent="center">
+            <CircularProgress color="inherit" />
           </Box>
         )}
       </>

@@ -57,8 +57,10 @@ export default function useTMDB() {
     async getFilmes({ setLoading }, page) {
       if (page === 0 && trending_filmes.results.length > 0) {
         setLoading(false);
+        console.log("nao carregou");
         return;
       }
+      console.log("carregou");
       setLoading(true);
       const res = await TMDB.getTrending("movie", "day", page);
       if (page === 1) {
