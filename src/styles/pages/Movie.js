@@ -242,7 +242,7 @@ export const Movie = {
         background: rgba(0, 0, 0, 0.5);
         color: #f0f0f0;
         text-align: center;
-        font-size: 17px;
+        font-size: 12px;
         font-weight: bold;
         opacity: 0;
         transition: all 0.5s ease-in-out;

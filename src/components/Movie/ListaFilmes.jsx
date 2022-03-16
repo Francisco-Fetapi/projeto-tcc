@@ -35,7 +35,7 @@ function Filme({ img, nome }) {
   return (
     <Box className="filme">
       <img src={img} alt={nome} />
-      <Box component="figcaption">{mostrarXCharOntText(nome, 12)}</Box>
+      <Box component="figcaption">{mostrarXCharOntText(nome, 15)}</Box>
     </Box>
   );
 }

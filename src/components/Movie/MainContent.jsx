@@ -77,7 +77,7 @@ export default function MainContent() {
         id
       );
     } else {
-      TMDB.getMovieRecomendations(
+      TMDB.getTvRecomendations(
         { setLoading: setLoading5, setRecomendados },
         id
       );
@@ -87,7 +87,7 @@ export default function MainContent() {
     if (eh_filme) {
       TMDB.getMovieSimilar({ setLoading: setLoading6, setSimilars }, id);
     } else {
-      TMDB.getMovieSimilar({ setLoading: setLoading6, setSimilars }, id);
+      TMDB.getTvSimilar({ setLoading: setLoading6, setSimilars }, id);
     }
   }, []);
 

@@ -147,5 +147,17 @@ export default function useTMDB() {
       setSimilars(res.results);
       setLoading(false);
     },
+    async getTvRecomendations({ setLoading, setRecomendados }, id_movie, page) {
+      setLoading(true);
+      const res = await TMDB.getTvRecomendations(id_movie, page);
+      setRecomendados(res.results);
+      setLoading(false);
+    },
+    async getTvSimilar({ setLoading, setSimilars }, id_movie, page) {
+      setLoading(true);
+      const res = await TMDB.getTvSimilar(id_movie, page);
+      setSimilars(res.results);
+      setLoading(false);
+    },
   };
 }
