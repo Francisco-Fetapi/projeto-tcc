@@ -29,7 +29,10 @@ export default function MainContent() {
   const [loading4, setLoading4] = useState(true);
   const [loading5, setLoading5] = useState(true);
   const [loading6, setLoading6] = useState(true);
-  const [elenco, setElenco] = useState([]);
+  const [elenco, setElenco] = useState({
+    cast: [],
+    crew: [],
+  });
   const [recomendados, setRecomendados] = useState([]);
   const [similars, setSimilars] = useState([]);
   const [images, setImages] = useState({

@@ -26,9 +26,10 @@ export default function InfoGerais() {
     const diretor = elenco.crew.find(
       (person) => person.known_for_department === "Directing"
     );
-
-    setElencoP([escritor, produtor, diretor]);
-  }, []);
+    if (escritor && produtor && diretor) {
+      setElencoP([escritor, produtor, diretor]);
+    }
+  }, [elenco, window.location.href]);
 
   return (
     <Movie.Info>
@@ -92,7 +93,11 @@ export default function InfoGerais() {
 
       <Box mt={2} className="card-elenco-container">
         {elencoP.map((person) => (
-          <CardElenco nome={person.name} elenco={person.known_for_department} />
+          <CardElenco
+            key={person.id}
+            nome={person.name}
+            elenco={person.known_for_department}
+          />
         ))}
       </Box>
     </Movie.Info>

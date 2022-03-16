@@ -1,5 +1,5 @@
 import React from "react";
-import { Text } from "~/styles";
+import { Text, Link } from "~/styles";
 import { Movie } from "~/styles/pages/Movie";
 import Box from "@material-ui/core/Box";
 import { mostrarXCharOntText } from "~/helpers";
@@ -22,23 +22,23 @@ export default function ListaFilmes({ title, movies, loading }) {
       </Box>
 
       <Box mt={3} className="filmes">
-        {movies.map((movie, key) => (
-          <Filme
-            img={movie.poster_path}
-            nome={movie.name || movie.title}
-            key={key}
-          />
+        {movies.map((movie) => (
+          <Filme movie={movie} key={movie.id} />
         ))}
       </Box>
     </Movie.Lista>
   );
 }
 
-function Filme({ img, nome }) {
+function Filme({ movie }) {
+  const name = movie.name || movie.title;
+  const eh_filme = movie.title !== undefined;
   return (
     <Box className="filme">
-      <img src={img} alt={nome} />
-      <Box component="figcaption">{mostrarXCharOntText(nome, 15)}</Box>
+      <Link to={eh_filme ? `/filmes/${movie.id}` : `/series/${movie.id}`}>
+        <img src={movie.poster_path} alt={name} />
+        <Box component="figcaption">{mostrarXCharOntText(name, 15)}</Box>
+      </Link>
     </Box>
   );
 }
