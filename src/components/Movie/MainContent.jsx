@@ -26,7 +26,12 @@ export default function MainContent() {
   const [loading, setLoading] = useState(true);
   const [loading2, setLoading2] = useState(true);
   const [loading3, setLoading3] = useState(true);
+  const [loading4, setLoading4] = useState(true);
   const [elenco, setElenco] = useState([]);
+  const [images, setImages] = useState({
+    posters: [],
+    backdrops: [],
+  });
   const [keywords, setKeywords] = useState([]);
   const filmes = movies.concat({ img: "spider-man.jpg", nome: "Spider man 2" });
   const { id } = useParams();
@@ -54,6 +59,13 @@ export default function MainContent() {
       TMDB.getKeywordsTv({ setLoading: setLoading3, setKeywords }, id);
     }
   }, []);
+  useEffect(() => {
+    if (eh_filme) {
+      TMDB.getImagesMovie({ setLoading: setLoading4, setImages }, id);
+    } else {
+      TMDB.getImagesTv({ setLoading: setLoading4, setImages }, id);
+    }
+  }, []);
 
   return (
     <Movie.Main>
@@ -64,9 +76,11 @@ export default function MainContent() {
           value={{
             movie,
             elenco,
+            keywords,
+            images,
             loadingElenco: loading2,
             loadingKeywords: loading3,
-            keywords,
+            loadingImages: loading4,
           }}
         >
           <Banner />

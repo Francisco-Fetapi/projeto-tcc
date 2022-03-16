@@ -32,6 +32,12 @@ function path_local_2(person) {
   person.profile_path = `/img/${url}`;
   return person;
 }
+function path_local_3(image) {
+  let indice_rand = Math.max(1, rand(2, 8));
+  let url = "galeria" + indice_rand + ".jpg";
+  image.file_path = `/img/${url}`;
+  return image;
+}
 
 function path_tmdb(movie) {
   movie.backdrop_path = images_uri + "original" + movie.backdrop_path;
@@ -41,6 +47,10 @@ function path_tmdb(movie) {
 function path_tmdb_2(person) {
   person.profile_path = images_uri + "original" + person.profile_path;
   return person;
+}
+function path_tmdb_3(image) {
+  image.file_path = images_uri + "original" + image.file_path;
+  return image;
 }
 api.interceptors.request.use(
   function (config) {
@@ -84,6 +94,16 @@ api.interceptors.response.use(
           return path_tmdb_2(movie);
         }
         return path_local_2(movie);
+      });
+      response.data = new_data;
+    } else if (response.data.backdrops || response.data.posters) {
+      let new_data = {};
+      const path = on_internet ? path_tmdb_3 : path_local_3;
+      new_data.backdrops = response.data.backdrops.map((image) => {
+        return path(image);
+      });
+      new_data.posters = response.data.posters.map((image) => {
+        return path(image);
       });
       response.data = new_data;
     } else {
@@ -149,6 +169,16 @@ const TMDB = {
   },
   async getKeywordsTv(id_movie) {
     let { data } = await api.get(`/tv/${id_movie}/keywords`);
+
+    return data;
+  },
+  async getImagesMovie(id_movie) {
+    let { data } = await api.get(`/movie/${id_movie}/images`);
+
+    return data;
+  },
+  async getImagesTv(id_movie) {
+    let { data } = await api.get(`/tv/${id_movie}/images`);
 
     return data;
   },

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Text } from "~/styles";
 import { Movie } from "~/styles/pages/Movie";
 import Box from "@material-ui/core/Box";
@@ -17,7 +17,7 @@ export default function Elenco({ title, elenco }) {
   });
 
   function handleChange(event, page) {
-    setPaginate((paginate_) => {
+    setPaginate(() => {
       return {
         start: page * per_page,
         ends: page * per_page + per_page,
@@ -64,6 +64,13 @@ export default function Elenco({ title, elenco }) {
               />
             ))}
           </Box>
+          {elenco.slice(paginate.start, paginate.ends).length === 0 && (
+            <Box mb={2}>
+              <Text align="center" variant="subtitle2" color="textSecondary">
+                Sem mais itens a apresentar
+              </Text>
+            </Box>
+          )}
           <Box display="flex" justifyContent="center">
             <Pagination
               page={paginate.page}

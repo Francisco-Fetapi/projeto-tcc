@@ -119,5 +119,17 @@ export default function useTMDB() {
       setKeywords(res.keywords);
       setLoading(false);
     },
+    async getImagesMovie({ setLoading, setImages }, id_movie) {
+      setLoading(true);
+      const res = await TMDB.getImagesMovie(id_movie);
+      setImages(res);
+      setLoading(false);
+    },
+    async getImagesTv({ setLoading, setImages }, id_movie) {
+      setLoading(true);
+      const res = await TMDB.getImagesTv(id_movie);
+      setImages(res);
+      setLoading(false);
+    },
   };
 }
