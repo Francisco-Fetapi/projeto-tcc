@@ -27,7 +27,11 @@ export default function MainContent() {
   const [loading2, setLoading2] = useState(true);
   const [loading3, setLoading3] = useState(true);
   const [loading4, setLoading4] = useState(true);
+  const [loading5, setLoading5] = useState(true);
+  const [loading6, setLoading6] = useState(true);
   const [elenco, setElenco] = useState([]);
+  const [recomendados, setRecomendados] = useState([]);
+  const [similars, setSimilars] = useState([]);
   const [images, setImages] = useState({
     posters: [],
     backdrops: [],
@@ -66,6 +70,26 @@ export default function MainContent() {
       TMDB.getImagesTv({ setLoading: setLoading4, setImages }, id);
     }
   }, []);
+  useEffect(() => {
+    if (eh_filme) {
+      TMDB.getMovieRecomendations(
+        { setLoading: setLoading5, setRecomendados },
+        id
+      );
+    } else {
+      TMDB.getMovieRecomendations(
+        { setLoading: setLoading5, setRecomendados },
+        id
+      );
+    }
+  }, []);
+  useEffect(() => {
+    if (eh_filme) {
+      TMDB.getMovieSimilar({ setLoading: setLoading6, setSimilars }, id);
+    } else {
+      TMDB.getMovieSimilar({ setLoading: setLoading6, setSimilars }, id);
+    }
+  }, []);
 
   return (
     <Movie.Main>
@@ -78,6 +102,8 @@ export default function MainContent() {
             elenco,
             keywords,
             images,
+            recomendados,
+            similars,
             loadingElenco: loading2,
             loadingKeywords: loading3,
             loadingImages: loading4,
@@ -92,8 +118,17 @@ export default function MainContent() {
           />
           <Keywords keywords={keywords} />
           <Galeria />
-          <ListaFilmes title="Filmes similares" filmes={filmes} />
-          <ListaFilmes title="Filmes recomendados" filmes={filmes} />
+          <ListaFilmes
+            title={(eh_filme ? "Filmes " : "Séries ") + "Similares"}
+            movies={similars}
+          />
+          <ListaFilmes
+            title={
+              (eh_filme ? "Filmes " : "Séries ") +
+              (eh_filme ? "recomendados" : "recomendadas")
+            }
+            movies={recomendados}
+          />
           <Box className="discussoes_e_infos">
             <ListaDiscussoes />
           </Box>

@@ -131,5 +131,21 @@ export default function useTMDB() {
       setImages(res);
       setLoading(false);
     },
+    async getMovieRecomendations(
+      { setLoading, setRecomendados },
+      id_movie,
+      page
+    ) {
+      setLoading(true);
+      const res = await TMDB.getMovieRecomendations(id_movie, page);
+      setRecomendados(res.results);
+      setLoading(false);
+    },
+    async getMovieSimilar({ setLoading, setSimilars }, id_movie, page) {
+      setLoading(true);
+      const res = await TMDB.getMovieSimilar(id_movie, page);
+      setSimilars(res.results);
+      setLoading(false);
+    },
   };
 }

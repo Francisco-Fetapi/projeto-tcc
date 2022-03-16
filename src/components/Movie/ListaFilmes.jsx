@@ -6,7 +6,7 @@ import { mostrarXCharOntText } from "~/helpers";
 // import Button from "@material-ui/core/Button";
 // import { useNavigate } from "react-router-dom";
 
-export default function ListaFilmes({ title, filmes }) {
+export default function ListaFilmes({ title, movies }) {
   return (
     <Movie.Lista>
       <Box>
@@ -19,8 +19,12 @@ export default function ListaFilmes({ title, filmes }) {
       </Box>
 
       <Box mt={3} className="filmes">
-        {filmes.map((filme, key) => (
-          <Filme img={filme.img} nome={filme.nome} key={key} />
+        {movies.map((movie, key) => (
+          <Filme
+            img={movie.poster_path}
+            nome={movie.name || movie.title}
+            key={key}
+          />
         ))}
       </Box>
     </Movie.Lista>
@@ -30,7 +34,7 @@ export default function ListaFilmes({ title, filmes }) {
 function Filme({ img, nome }) {
   return (
     <Box className="filme">
-      <img src={`/img/${img}`} alt={nome} />
+      <img src={img} alt={nome} />
       <Box component="figcaption">{mostrarXCharOntText(nome, 12)}</Box>
     </Box>
   );

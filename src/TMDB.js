@@ -182,6 +182,20 @@ const TMDB = {
 
     return data;
   },
+  async getMovieRecomendations(id_movie, page = 0) {
+    let { data } = await api.get(`/movie/${id_movie}/recommendations`, {
+      page: Math.max(1, page),
+    });
+
+    return data;
+  },
+  async getMovieSimilar(id_movie, page = 0) {
+    let { data } = await api.get(`/movie/${id_movie}/similar`, {
+      page: Math.max(1, page),
+    });
+
+    return data;
+  },
 };
 
 export default TMDB;
