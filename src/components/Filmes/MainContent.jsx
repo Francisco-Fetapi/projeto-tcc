@@ -47,7 +47,7 @@ export default function MainContent({ favoritos }) {
   const Corpo = () => {
     return (
       <>
-        {loading && (
+        {(loading || movies.results.length === 0) && (
           <Box display="flex" my={5} justifyContent="center">
             <CircularProgress color="inherit" />
           </Box>

@@ -54,7 +54,7 @@ export default function MainContent() {
           procurar={procurar}
         />
       </Box>
-      {loading && (
+      {(loading || movies.results.length === 0) && (
         <Box display="flex" my={8} justifyContent="center">
           <CircularProgress color="inherit" />
         </Box>
