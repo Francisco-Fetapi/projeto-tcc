@@ -48,7 +48,7 @@ export default function MainContent({ favoritos }) {
     return (
       <>
         {loading && (
-          <Box display="flex" my={8} justifyContent="center">
+          <Box display="flex" my={5} justifyContent="center">
             <CircularProgress color="inherit" />
           </Box>
         )}

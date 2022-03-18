@@ -67,7 +67,7 @@ export default function InfoGerais() {
         <Text variant="h6">Sinopse</Text>
         <Box mt={1} style={{ maxHeight: 110, overflow: "auto" }}>
           <Text variant="body2" color="textSecondary">
-            {movie.overview}
+            {movie.overview || "Sinopse não disponivel"}
           </Text>
         </Box>
       </Box>
