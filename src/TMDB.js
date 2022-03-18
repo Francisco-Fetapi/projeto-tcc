@@ -60,7 +60,10 @@ function path_tmdb_3(image) {
 api.interceptors.request.use(
   function (config) {
     config.params.api_key = "fd9aab7cf8e6e54164eb4b91420fe091";
-    config.params.language = "pt-PT";
+    if (!config.url.includes("images")) {
+      config.params.language = "pt-PT";
+    }
+    console.log(config.url);
     return config;
   },
   function (error) {
