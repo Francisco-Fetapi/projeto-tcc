@@ -72,13 +72,15 @@ export default function Elenco({ title, elenco }) {
             </Box>
           )}
           <Box display="flex" justifyContent="center">
-            <Pagination
-              page={paginate.page}
-              count={Math.floor(elenco.length / per_page)}
-              onChange={handleChange}
-              variant="outlined"
-              shape="rounded"
-            />
+            {elenco.length > per_page && (
+              <Pagination
+                page={paginate.page}
+                count={Math.floor(elenco.length / per_page)}
+                onChange={handleChange}
+                variant="outlined"
+                shape="rounded"
+              />
+            )}
           </Box>
         </>
       )}
