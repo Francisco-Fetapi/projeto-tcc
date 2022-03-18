@@ -113,12 +113,20 @@ export default function MainContent() {
           }}
         >
           <Banner />
-          <Elenco title="Elenco principal" elenco={elenco.cast} type="atores" />
-          <Elenco
-            title="Equipe Técnica"
-            elenco={elenco.crew}
-            type="equipe_tecnica"
-          />
+          {!loading2 && elenco.cast.length !== 0 && (
+            <Elenco
+              title="Elenco principal"
+              elenco={elenco.cast}
+              type="atores"
+            />
+          )}
+          {!loading2 && elenco.crew.length !== 0 && (
+            <Elenco
+              title="Equipe Técnica"
+              elenco={elenco.crew}
+              type="equipe_tecnica"
+            />
+          )}
           <Keywords keywords={keywords} />
           <Galeria />
           <ListaFilmes
