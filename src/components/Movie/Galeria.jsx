@@ -13,7 +13,7 @@ export default function Galeria() {
     loadingImages,
     images: { posters },
   } = useContext(MovieContext);
-  const per_page = 8;
+  const per_page = 3;
   const [paginate, setPaginate] = useState({
     start: 0,
     ends: per_page,
