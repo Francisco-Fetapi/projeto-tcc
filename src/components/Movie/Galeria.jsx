@@ -60,13 +60,15 @@ export default function Galeria() {
         </Box>
       )}
       <Box display="flex" justifyContent="center">
-        <Pagination
-          page={paginate.page}
-          count={Math.floor(posters.length / per_page)}
-          onChange={handleChange}
-          variant="outlined"
-          shape="rounded"
-        />
+        {posters.length > per_page && (
+          <Pagination
+            page={paginate.page}
+            count={Math.floor(posters.length / per_page)}
+            onChange={handleChange}
+            variant="outlined"
+            shape="rounded"
+          />
+        )}
       </Box>
     </Movie.Galeria>
   );
