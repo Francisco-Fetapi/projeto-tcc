@@ -128,13 +128,13 @@ export default function useTMDB() {
     async getKeywordsMovie({ setLoading, setKeywords }, id_movie) {
       setLoading(true);
       const res = await TMDB.getKeywordsMovie(id_movie);
-      setKeywords(res.keywords);
+      setKeywords(res.keywords || []);
       setLoading(false);
     },
     async getKeywordsTv({ setLoading, setKeywords }, id_movie) {
       setLoading(true);
       const res = await TMDB.getKeywordsTv(id_movie);
-      setKeywords(res.keywords);
+      setKeywords(res.keywords || []);
       setLoading(false);
     },
     async getImagesMovie({ setLoading, setImages }, id_movie) {

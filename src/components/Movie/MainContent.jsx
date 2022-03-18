@@ -40,7 +40,6 @@ export default function MainContent() {
     backdrops: [],
   });
   const [keywords, setKeywords] = useState([]);
-  const filmes = movies.concat({ img: "spider-man.jpg", nome: "Spider man 2" });
   const { id } = useParams();
   const { pathname } = useLocation();
   const eh_filme = pathname.includes("filmes");

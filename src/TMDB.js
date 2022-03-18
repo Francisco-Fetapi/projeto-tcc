@@ -45,11 +45,16 @@ function path_tmdb(movie) {
   return movie;
 }
 function path_tmdb_2(person) {
-  person.profile_path = images_uri + "original" + person.profile_path;
+  if (person.profile_path) {
+    person.profile_path = images_uri + "w300" + person.profile_path;
+  } else {
+    person.profile_path = "/img/no-photo.png";
+  }
+
   return person;
 }
 function path_tmdb_3(image) {
-  image.file_path = images_uri + "original" + image.file_path;
+  image.file_path = images_uri + "w300" + image.file_path;
   return image;
 }
 api.interceptors.request.use(
