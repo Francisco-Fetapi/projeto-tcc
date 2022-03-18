@@ -44,6 +44,7 @@ export default function MainContent() {
   const { id } = useParams();
   const { pathname } = useLocation();
   const eh_filme = pathname.includes("filmes");
+  const url = window.location.href;
 
   useEffect(() => {
     if (eh_filme) {
@@ -51,28 +52,28 @@ export default function MainContent() {
     } else {
       TMDB.getTv({ setLoading, setMovie }, id);
     }
-  }, []);
+  }, [url]);
   useEffect(() => {
     if (eh_filme) {
       TMDB.getCreditsMovie({ setLoading: setLoading2, setElenco }, id);
     } else {
       TMDB.getCreditsTv({ setLoading: setLoading2, setElenco }, id);
     }
-  }, []);
+  }, [url]);
   useEffect(() => {
     if (eh_filme) {
       TMDB.getKeywordsMovie({ setLoading: setLoading3, setKeywords }, id);
     } else {
       TMDB.getKeywordsTv({ setLoading: setLoading3, setKeywords }, id);
     }
-  }, []);
+  }, [url]);
   useEffect(() => {
     if (eh_filme) {
       TMDB.getImagesMovie({ setLoading: setLoading4, setImages }, id);
     } else {
       TMDB.getImagesTv({ setLoading: setLoading4, setImages }, id);
     }
-  }, []);
+  }, [url]);
   useEffect(() => {
     if (eh_filme) {
       TMDB.getMovieRecomendations(
@@ -85,14 +86,14 @@ export default function MainContent() {
         id
       );
     }
-  }, []);
+  }, [url]);
   useEffect(() => {
     if (eh_filme) {
       TMDB.getMovieSimilar({ setLoading: setLoading6, setSimilars }, id);
     } else {
       TMDB.getTvSimilar({ setLoading: setLoading6, setSimilars }, id);
     }
-  }, []);
+  }, [url]);
 
   return (
     <Movie.Main>
