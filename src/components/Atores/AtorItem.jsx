@@ -5,10 +5,10 @@ import { Text } from "~/styles";
 export default function AtorItem({ ator }) {
   return (
     <Atores.Item>
-      <img src={`/img/${ator.img}`} alt={ator.nome} />
+      <img src={ator.profile_path} alt={ator.name} />
       <figcaption>
         <Text color="textSecondary" variant="body2">
-          {ator.nome}
+          {ator.name}
         </Text>
       </figcaption>
     </Atores.Item>

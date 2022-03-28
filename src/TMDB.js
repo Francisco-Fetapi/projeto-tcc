@@ -24,6 +24,7 @@ function path_local(movie) {
   let url = movies[indice_rand]["img"];
   movie.backdrop_path = `/img/${url}`;
   movie.poster_path = `/img/${url}`;
+  movie.profile_path = path_local_2(movie).profile_path;
   return movie;
 }
 function path_local_2(person) {
@@ -42,6 +43,7 @@ function path_local_3(image) {
 function path_tmdb(movie) {
   movie.backdrop_path = images_uri + "original" + movie.backdrop_path;
   movie.poster_path = images_uri + "w300" + movie.poster_path;
+  movie.profile_path = images_uri + "w300" + movie.profile_path;
   return movie;
 }
 function path_tmdb_2(person) {
@@ -234,6 +236,14 @@ const TMDB = {
         query,
         page: Math.max(1, page),
       },
+    });
+
+    return data;
+  },
+  async getAtores(query, page = 0) {
+    let { data } = await api.get(`/search/person`, {
+      page: Math.max(1, page),
+      query,
     });
 
     return data;

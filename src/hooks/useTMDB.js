@@ -224,5 +224,21 @@ export default function useTMDB() {
       }
       setLoading(false);
     },
+    async getAtores({ setLoading, setAtores }, query, page) {
+      setLoading(true);
+      let res = await TMDB.getAtores(query, page);
+      // const atores = res.results.filter((person) => {
+      //   return person.known_for_department === "Acting";
+      // });
+
+      setLoading(false);
+      setAtores((prev) => {
+        if (page > 1) {
+          return { ...res, results: [...prev.results, ...res.results] };
+        } else {
+          return res;
+        }
+      });
+    },
   };
 }
