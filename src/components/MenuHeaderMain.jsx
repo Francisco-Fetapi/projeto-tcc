@@ -50,7 +50,7 @@ export default function MenuHeaderMain() {
           </ListItemAvatar>
           <ListItemText>Modo escuro</ListItemText>
           <ListItemSecondaryAction>
-            <Switch color="primary" checked={dark} />
+            <Switch color="primary" checked={dark} onClick={mudarTema} />
           </ListItemSecondaryAction>
         </ListItem>
         <Divider />
