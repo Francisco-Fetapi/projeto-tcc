@@ -8,6 +8,8 @@ import Button from "@material-ui/core/Button";
 import AtoresList from "./AtoresList";
 import useTMDB from "~/hooks/useTMDB";
 import { AtoresContext } from "~/pages/Atores";
+import useModal from "~/hooks/useModal";
+import ModalAtor from "~/components/Modals/ModalAtor";
 
 export default function MainContent() {
   const [loading, setLoading] = useState(false);
@@ -22,6 +24,7 @@ export default function MainContent() {
   const [search, setSearch] = useState(null);
   const TMDB = useTMDB();
   const { perfil } = useContext(AtoresContext);
+  const [modalPerfilAtor, abrirPA, fecharPA] = useModal();
 
   useEffect(() => {
     if (search) {
@@ -29,6 +32,13 @@ export default function MainContent() {
       return;
     }
   }, [search]);
+  useEffect(() => {
+    if (perfil) {
+      abrirPA();
+    } else {
+      fecharPA();
+    }
+  }, [perfil]);
 
   function carregarMais() {
     TMDB.getAtores(
@@ -44,7 +54,7 @@ export default function MainContent() {
 
   return (
     <Movie.Content>
-      {perfil && <AtorPerfil />}
+      <ModalAtor open={modalPerfilAtor} />
       <MoviesHeader pagina="Atores">
         Encontre aqui informações das maiores celebridades dos filmes e seriados
         que tens visto. <br />

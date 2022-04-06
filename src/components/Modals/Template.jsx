@@ -75,15 +75,17 @@ export default function FormDialog({
     setModal(false);
   }
   useEffect(() => {
-    function alterarLargura() {
-      alterarLarguraDoModal(setPropsModal, 500);
+    if (setPropsModal) {
+      function alterarLargura() {
+        alterarLarguraDoModal(setPropsModal, 500);
+      }
+      window.addEventListener("resize", alterarLargura);
+      window.addEventListener("load", alterarLargura);
+      return () => {
+        window.removeEventListener("resize", alterarLargura);
+        window.removeEventListener("load", alterarLargura);
+      };
     }
-    window.addEventListener("resize", alterarLargura);
-    window.addEventListener("load", alterarLargura);
-    return () => {
-      window.removeEventListener("resize", alterarLargura);
-      window.removeEventListener("load", alterarLargura);
-    };
   }, []);
 
   return (
