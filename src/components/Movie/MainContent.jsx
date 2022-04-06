@@ -1,5 +1,4 @@
 import React, { createContext, useEffect, useState } from "react";
-// import { Text } from "~/styles";
 import { Movie } from "~/styles/pages/Movie";
 
 import Banner from "./Banner";
@@ -8,8 +7,6 @@ import Galeria from "./Galeria";
 import Keywords from "./Keywords";
 import ListaFilmes from "./ListaFilmes";
 
-import movies from "~/mock/series.json";
-// import Footer from "./Footer";
 import ListaDiscussoes from "./ListaDiscussoes";
 
 import Box from "@material-ui/core/Box";
@@ -20,7 +17,6 @@ import { useLocation, useParams } from "react-router-dom";
 export const MovieContext = createContext();
 
 export default function MainContent() {
-  // const elenco = [1, 2, 3, 4, 5, 6];
   const [movie, setMovie] = useState({});
   const TMDB = useTMDB();
   const [loading, setLoading] = useState(true);

@@ -36,12 +36,16 @@ export default function InfoGerais() {
       <Box className="header-info1">
         <Chip label={eh_filme ? "Filme" : "Série"} />
         <Chip label={movie.status} />
+
         <Chip
           label={new Date(
             movie.release_date || movie.first_air_date
           ).toLocaleDateString()}
           icon={<CalendarToday />}
         />
+        {movie.number_of_seasons && (
+          <Chip label={movie.number_of_seasons + " temporadas"} />
+        )}
       </Box>
       <Text variant="h4">{movie.title || movie.name}</Text>
       <Box className="header-info2">

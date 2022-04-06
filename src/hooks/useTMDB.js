@@ -201,6 +201,18 @@ export default function useTMDB() {
       }
       setLoading(false);
     },
+    async getMovieBySearch2({ setLoading, setFilmes }, query, page) {
+      setLoading(true);
+      const res = await TMDB.getMovieBySearch(query, page);
+      setFilmes(res);
+      setLoading(false);
+    },
+    async getTvBySearch2({ setLoading, setSeries }, query, page) {
+      setLoading(true);
+      const res = await TMDB.getTvBySearch(query, page);
+      setSeries(res);
+      setLoading(false);
+    },
     async getTvBySearch({ setLoading }, query, page) {
       if (!query) {
         setLoading(false);
