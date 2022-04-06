@@ -121,6 +121,9 @@ api.interceptors.response.use(
       if (on_internet) {
         new_data = path_tmdb(response.data);
         response.data = new_data;
+      } else {
+        new_data = path_local(response.data);
+        response.data = new_data;
       }
     }
     console.log(response.data);
