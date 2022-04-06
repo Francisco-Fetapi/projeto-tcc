@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Movie } from "~/styles/pages/Movie";
+import { Text } from "~/styles";
 import ListaFilmes from "../Movie/ListaFilmes";
 import Box from "@material-ui/core/Box";
 import CircularProgress from "@material-ui/core/CircularProgress";
@@ -35,6 +36,11 @@ export default function MainContent() {
             loadingSeries: loading2,
           }}
         >
+          <Box mt={3} ml={2.3}>
+            <Text variant="h5" color="textPrimary">
+              RESULTADOS PARA <b>"{search}"</b>
+            </Text>
+          </Box>
           <ListaFilmes
             title="Filmes"
             movies={filmes.results}

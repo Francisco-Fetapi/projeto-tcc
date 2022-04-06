@@ -4,11 +4,11 @@ import Search from "@material-ui/icons/Search";
 
 import { Formik, Form } from "formik";
 
-export default function FormSearch({ procurar, ...props }) {
+export default function FormSearch({ procurar, defaultValue, ...props }) {
   return (
     <Formik
       initialValues={{
-        search: "",
+        search: defaultValue,
       }}
       onSubmit={procurar}
     >

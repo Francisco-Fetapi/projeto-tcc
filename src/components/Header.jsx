@@ -15,7 +15,7 @@ import LinearProgress from "./Progress/Linear.jsx";
 import useLinearProgress from "../hooks/useLinearProgress";
 
 import useTheme from "@material-ui/core/styles/useTheme";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 export default function Header() {
   const [header, setHeader] = useState({});
@@ -23,6 +23,9 @@ export default function Header() {
   const LoadingLinear = useLinearProgress();
   const navigate = useNavigate();
   const theme = useTheme();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const search = searchParams.get("termo_de_pesquisa") || "";
+
   useEffect(() => {
     getInfoHeader(setHeader);
   }, []);
@@ -30,7 +33,7 @@ export default function Header() {
     () => getInfoHeader(setHeader, LoadingLinear),
     []
   );
-  function procurar(values) {
+  function procurar(values, actions) {
     console.log(values);
     navigate(`/procurar?termo_de_pesquisa=${values.search}`);
   }
@@ -67,6 +70,7 @@ export default function Header() {
               placeholder="procurar filmes e series"
               id="search"
               procurar={procurar}
+              defaultValue={search}
             />
           </Box>
         </Box>
