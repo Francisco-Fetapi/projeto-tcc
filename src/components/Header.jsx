@@ -15,11 +15,13 @@ import LinearProgress from "./Progress/Linear.jsx";
 import useLinearProgress from "../hooks/useLinearProgress";
 
 import useTheme from "@material-ui/core/styles/useTheme";
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
   const [header, setHeader] = useState({});
   const { getInfoHeader } = useUsuario();
   const LoadingLinear = useLinearProgress();
+  const navigate = useNavigate();
   const theme = useTheme();
   useEffect(() => {
     getInfoHeader(setHeader);
@@ -30,6 +32,7 @@ export default function Header() {
   );
   function procurar(values) {
     console.log(values);
+    navigate(`/procurar?termo_de_pesquisa=${values.search}`);
   }
   return (
     <>
