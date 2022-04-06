@@ -29,11 +29,11 @@ export default function InfoAtor() {
           }}
         />
         <Text variant="subtitle2" style={{ fontWeight: 300 }}>
-          {biography.map((paragrafo) => (
-            <>
+          {biography.map((paragrafo, key) => (
+            <React.Fragment key={key}>
               {paragrafo}
               <br />
-            </>
+            </React.Fragment>
           ))}
         </Text>
       </Box>

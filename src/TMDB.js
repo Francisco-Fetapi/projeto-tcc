@@ -122,6 +122,8 @@ api.interceptors.response.use(
         new_data = path_tmdb(response.data);
         response.data = new_data;
       } else {
+        if (window.location.href.includes("/series")) return response;
+        if (window.location.href.includes("/filmes")) return response;
         new_data = path_local(response.data);
         response.data = new_data;
       }
