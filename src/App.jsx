@@ -15,6 +15,7 @@ function App() {
   const usuario = useSelector(selectAppState("usuario"));
   const { pathname } = useLocation();
   const routes_not_user = ["/login", "/signup"];
+  const routes_not_scroll = ["/ator/"];
   useEffect(() => {
     if (logado && !usuario.id) {
       if (!routes_not_user.includes(pathname)) {
@@ -24,6 +25,7 @@ function App() {
   }, [token]);
 
   useEffect(() => {
+    if (pathname.includes(routes_not_scroll[0])) return;
     window.scrollTo(0, 0);
   }, [pathname]);
 

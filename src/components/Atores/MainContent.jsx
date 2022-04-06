@@ -72,7 +72,7 @@ export default function MainContent() {
     <PerfilAtorContext.Provider value={{ ator }}>
       <LoadingCircular
         aberto={loading3}
-        mensagem="Carregando informções do ator"
+        mensagem="Carregando informações do ator"
       />
       <Movie.Content>
         <ModalAtor open={modalPerfilAtor && !loading3} />
@@ -141,6 +141,7 @@ const useStyles = makeStyles((theme) => ({
     bottom: 0,
     position: "fixed",
     flexDirection: "column",
+    background: "rgba(0,0,0,0.8)",
   },
 }));
 
