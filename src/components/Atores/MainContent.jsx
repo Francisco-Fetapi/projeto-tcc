@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Box from "@material-ui/core/Box";
 import MoviesHeader from "~/components/MoviesHeader";
 import { Movie, Text } from "~/styles";
@@ -7,6 +7,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import Button from "@material-ui/core/Button";
 import AtoresList from "./AtoresList";
 import useTMDB from "~/hooks/useTMDB";
+import { AtoresContext } from "~/pages/Atores";
 
 export default function MainContent() {
   const [loading, setLoading] = useState(false);
@@ -20,6 +21,7 @@ export default function MainContent() {
   });
   const [search, setSearch] = useState(null);
   const TMDB = useTMDB();
+  const { perfil } = useContext(AtoresContext);
 
   useEffect(() => {
     if (search) {
@@ -42,6 +44,7 @@ export default function MainContent() {
 
   return (
     <Movie.Content>
+      {perfil && <AtorPerfil />}
       <MoviesHeader pagina="Atores">
         Encontre aqui informações das maiores celebridades dos filmes e seriados
         que tens visto. <br />
@@ -94,4 +97,8 @@ function MessageInit() {
       </Text>
     </Box>
   );
+}
+
+function AtorPerfil() {
+  return <h1>Ola Mundo</h1>;
 }

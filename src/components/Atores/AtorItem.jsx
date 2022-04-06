@@ -4,7 +4,7 @@ import { Text } from "~/styles";
 
 export default function AtorItem({ ator }) {
   return (
-    <Atores.Item>
+    <Atores.Item to={`/ator/${ator.id}`}>
       <img src={ator.profile_path} alt={ator.name} />
       <figcaption>
         <Text color="textSecondary" variant="body2">

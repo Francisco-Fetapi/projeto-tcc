@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "~/styles";
 
 export const Atores = {
   Container: styled.div``,
@@ -9,7 +10,7 @@ export const Atores = {
     justify-content: center;
     margin-top: 50px;
   `,
-  Item: styled.figure`
+  Item: styled(Link)`
     width: 100%;
     height: 140px;
 
@@ -37,4 +38,8 @@ export const Atores = {
       text-align: center;
     }
   `,
+};
+
+Atores.Item.defaultProps = {
+  nostyle: "false",
 };
