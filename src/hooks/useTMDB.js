@@ -240,5 +240,12 @@ export default function useTMDB() {
         }
       });
     },
+    async getAtor({ setLoading, setAtor }, id_person) {
+      setLoading(true);
+      let res = await TMDB.getAtor(id_person);
+
+      setLoading(false);
+      setAtor(res);
+    },
   };
 }

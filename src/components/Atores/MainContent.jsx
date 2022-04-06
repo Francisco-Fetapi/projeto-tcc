@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import Box from "@material-ui/core/Box";
 import Backdrop from "@material-ui/core/Backdrop";
 import { makeStyles } from "@material-ui/core/styles";
@@ -12,6 +12,9 @@ import useTMDB from "~/hooks/useTMDB";
 import { AtoresContext } from "~/pages/Atores";
 import useModal from "~/hooks/useModal";
 import ModalAtor from "~/components/Modals/ModalAtor";
+import { useParams } from "react-router-dom";
+
+export const PerfilAtorContext = createContext();
 
 export default function MainContent() {
   const [loading, setLoading] = useState(false);
@@ -29,6 +32,8 @@ export default function MainContent() {
   const { perfil } = useContext(AtoresContext);
   const [modalPerfilAtor, abrirPA, fecharPA] = useModal();
   const [loading3, setLoading3] = useState(true);
+  const [ator, setAtor] = useState({});
+  const { id_ator } = useParams();
 
   useEffect(() => {
     if (search) {
@@ -45,6 +50,12 @@ export default function MainContent() {
     setLoading3(perfil);
   }, [perfil]);
 
+  useEffect(() => {
+    if (perfil) {
+      TMDB.getAtor({ setLoading: setLoading3, setAtor }, id_ator);
+    }
+  }, [perfil]);
+
   function carregarMais() {
     TMDB.getAtores(
       { setLoading: setLoading2, setAtores },
@@ -58,7 +69,7 @@ export default function MainContent() {
   }
 
   return (
-    <>
+    <PerfilAtorContext.Provider value={{ ator }}>
       <LoadingCircular
         aberto={loading3}
         mensagem="Carregando informções do ator"
@@ -97,7 +108,7 @@ export default function MainContent() {
           </Box>
         )}
       </Movie.Content>
-    </>
+    </PerfilAtorContext.Provider>
   );
 }
 

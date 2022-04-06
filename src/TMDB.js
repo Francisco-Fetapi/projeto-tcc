@@ -248,6 +248,11 @@ const TMDB = {
 
     return data;
   },
+  async getAtor(id_person) {
+    let { data } = await api.get(`/person/${id_person}`);
+
+    return data;
+  },
 };
 
 export default TMDB;
