@@ -64,7 +64,7 @@ export default function Header() {
           </svg>
           <Box ml={5} className="header-form-search">
             <FormSearch
-              placeholder="procurar filmes,series e pessoas"
+              placeholder="procurar filmes e series"
               id="search"
               procurar={procurar}
             />

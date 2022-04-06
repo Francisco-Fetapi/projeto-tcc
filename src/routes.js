@@ -12,6 +12,7 @@ import Videos from "./pages/Videos";
 import Atores from "./pages/Atores";
 import LinhaDoTempo from "./pages/LinhaDoTempo";
 import PostSaveds from "./pages/PostSaveds";
+import Search from "./pages/Search";
 
 import Movie from "./pages/Movie";
 
@@ -45,6 +46,7 @@ export default function routes() {
       <Route path="/usuario/:id" element={<Perfil alheio={true} />} />
       <Route path="/filmes/:id" element={<Movie media_type="movie" />} />
       <Route path="/series/:id" element={<Movie media_type="tv" />} />
+      <Route path="/procurar" element={<Search />} />
 
       <Route path="*" element={<NotFound />} />
     </Routes>

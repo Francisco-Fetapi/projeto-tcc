@@ -1,31 +1,21 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Movie } from "~/styles/pages/Movie";
-
-import Banner from "./Banner";
-import Elenco from "./Elenco";
-
-import ListaFilmes from "./ListaFilmes";
-
+import ListaFilmes from "../Movie/ListaFilmes";
 import Box from "@material-ui/core/Box";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import useTMDB from "~/hooks/useTMDB";
 import { useSearchParams } from "react-router-dom";
-
-export const MovieContext = createContext();
+import { MovieContext } from "../Movie/MainContent";
 
 export default function MainContent() {
   const [filmes, setFilmes] = useState({});
-  const [elenco, setElenco] = useState({
-    cast: [],
-    crew: [],
-  });
   const [series, setSeries] = useState({});
 
   const TMDB = useTMDB();
   const [loading, setLoading] = useState(true);
   const [loading2, setLoading2] = useState(true);
-  const [loading3, setLoading3] = useState(true);
-  const { termo_de_pesquisa: search } = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const search = searchParams.get("termo_de_pesquisa");
 
   useEffect(() => {
     TMDB.getMovieBySearch2({ setLoading, setFilmes }, search, 1);
@@ -33,15 +23,6 @@ export default function MainContent() {
   useEffect(() => {
     TMDB.getTvBySearch2({ setLoading: setLoading2, setSeries }, search, 1);
   }, [search]);
-  useEffect(() => {
-    TMDB.getAtores(
-      { setLoading: setLoading3, setAtores: setElenco },
-      search,
-      1
-    );
-  }, [search]);
-
-  console.log(search);
 
   return (
     <Movie.Main>
@@ -52,24 +33,8 @@ export default function MainContent() {
           value={{
             loadingFilmes: loading,
             loadingSeries: loading2,
-            loadingElenco: loading3,
           }}
         >
-          <Banner />
-          {!loading3 && elenco.cast.length !== 0 && (
-            <Elenco
-              title="Elenco principal"
-              elenco={elenco.cast}
-              type="atores"
-            />
-          )}
-          {!loading3 && elenco.crew.length !== 0 && (
-            <Elenco
-              title="Equipe Técnica"
-              elenco={elenco.crew}
-              type="equipe_tecnica"
-            />
-          )}
           <ListaFilmes
             title="Filmes"
             movies={filmes.results}
