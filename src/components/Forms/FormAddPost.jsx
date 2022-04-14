@@ -12,7 +12,7 @@ import { Formik, Form } from "formik";
 
 import { useSelector } from "react-redux";
 import { selectAppState } from "~/store/App.selectors";
-
+import ModalAssistindo from "../Modals/ModalAssistindo";
 import Skeleton from "@material-ui/lab/Skeleton";
 import { Text } from "~/styles";
 
@@ -21,6 +21,7 @@ export default function FormAddPost() {
   const fotoPerfil = usuario.foto_perfil;
   const inputFile = useRef();
   const [imgsPreview, setImgsPreview] = useState([]);
+  const [modalAssistindo, setModalAssistindo] = useState(false);
 
   function escolherFoto() {
     const file = inputFile.current;
@@ -30,8 +31,6 @@ export default function FormAddPost() {
       file.onchange = (e) => {
         setImgsPreview(e.target.files);
       };
-    } else {
-      console.log("file null");
     }
   }
 
@@ -124,13 +123,19 @@ export default function FormAddPost() {
                   ref={inputFile}
                   multiple
                 />
-                <Button startIcon={<FaEye />}>A Assistir</Button>
+                <Button
+                  startIcon={<FaEye />}
+                  onClick={() => setModalAssistindo(true)}
+                >
+                  A Assistir
+                </Button>
                 {/* <Button startIcon={<AddCircle />}>Mais</Button> */}
               </ButtonGroup>
             )}
           </Box>
         </Form>
       </Formik>
+      <ModalAssistindo open={modalAssistindo} setModal={setModalAssistindo} />
     </Paper>
   );
 }
