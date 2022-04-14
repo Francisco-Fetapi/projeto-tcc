@@ -1,13 +1,12 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import Paper from "@material-ui/core/Paper";
 import Button from "@material-ui/core/Button";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import TextField1 from "../TextField1";
 import Divider from "@material-ui/core/Divider";
 import Box from "@material-ui/core/Box";
-import { FaVideo, FaPhotoVideo, FaEye } from "react-icons/fa";
+import { FaPhotoVideo, FaEye } from "react-icons/fa";
 import Send from "@material-ui/icons/Send";
-import AddCircle from "@material-ui/icons/AddCircle";
 
 import { Formik, Form } from "formik";
 
@@ -15,10 +14,26 @@ import { useSelector } from "react-redux";
 import { selectAppState } from "~/store/App.selectors";
 
 import Skeleton from "@material-ui/lab/Skeleton";
+import { Text } from "~/styles";
 
 export default function FormAddPost() {
   const usuario = useSelector(selectAppState("usuario"));
   const fotoPerfil = usuario.foto_perfil;
+  const inputFile = useRef();
+  const [imgsPreview, setImgsPreview] = useState([]);
+
+  function escolherFoto() {
+    const file = inputFile.current;
+    if (file) {
+      console.log(file);
+      file.click();
+      file.onchange = (e) => {
+        setImgsPreview(e.target.files);
+      };
+    } else {
+      console.log("file null");
+    }
+  }
 
   const a_carregar = !usuario.id;
   return (
@@ -69,31 +84,27 @@ export default function FormAddPost() {
               </Button>
             )}
           </Box>
+
+          <Box mt={1}>
+            {imgsPreview.length > 0 && (
+              <Text color="textSecondary" variant="subtitle2">
+                {imgsPreview.length} imagem(s) selecionada(s)
+              </Text>
+            )}
+          </Box>
           <Box mt={1}>{!a_carregar && <Divider />}</Box>
           <Box className="button-group">
             {a_carregar && (
               <Box display="flex" alignItems="center" justifyContent="center">
                 <Skeleton
                   variant="rect"
-                  width="100%"
+                  width="50%"
                   height={22}
                   style={{ margin: 7 }}
                 />
                 <Skeleton
                   variant="rect"
-                  width="100%"
-                  height={22}
-                  style={{ margin: 7 }}
-                />
-                <Skeleton
-                  variant="rect"
-                  width="100%"
-                  height={22}
-                  style={{ margin: 7 }}
-                />
-                <Skeleton
-                  variant="rect"
-                  width="100%"
+                  width="50%"
                   height={22}
                   style={{ margin: 7 }}
                 />
@@ -104,9 +115,17 @@ export default function FormAddPost() {
                 {/* <Button startIcon={<FaVideo />} className="buttons-post-videos">
                   Videos
                 </Button> */}
-                <Button startIcon={<FaPhotoVideo />}>Foto</Button>
+                <Button startIcon={<FaPhotoVideo />} onClick={escolherFoto}>
+                  Foto
+                </Button>
+                <input
+                  type="file"
+                  style={{ display: "none" }}
+                  ref={inputFile}
+                  multiple
+                />
                 <Button startIcon={<FaEye />}>A Assistir</Button>
-                <Button startIcon={<AddCircle />}>Mais</Button>
+                {/* <Button startIcon={<AddCircle />}>Mais</Button> */}
               </ButtonGroup>
             )}
           </Box>
