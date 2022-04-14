@@ -81,6 +81,24 @@ export const MenuContainer = styled.div`
       display: none !important;
     }
   }
+  @media (max-width: 840px) {
+    .menuItem-hide-on-tablet {
+      display: none !important;
+    }
+  }
+  .menuItem-show-on-tablet {
+    display: none;
+  }
+  @media (max-width: 840px) {
+    .menuItem-show-on-tablet {
+      display: flex !important;
+    }
+  }
+  @media (max-width: 615px) {
+    .menuItem-show-on-tablet {
+      display: none !important;
+    }
+  }
 `;
 export const MenuItemContainer = styled.div`
   height: 100%;

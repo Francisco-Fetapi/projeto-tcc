@@ -7,7 +7,7 @@ import { FaUser } from "react-icons/fa";
 import { FaUsers } from "react-icons/fa";
 import { FaTv } from "react-icons/fa";
 import { FaEnvelope } from "react-icons/fa";
-import { FaBell } from "react-icons/fa";
+import { FaBell, FaChevronDown } from "react-icons/fa";
 import { MdGroup } from "react-icons/md";
 
 import { useLocation } from "react-router-dom";
@@ -60,7 +60,14 @@ export default function Menu({ info }) {
         rota="/atores"
         active={"/atores" === pathname}
         icon={<MdGroup />}
-        className="menuItem-hide-on-mobile"
+        className="menuItem-hide-on-mobile menuItem-hide-on-tablet"
+      />
+      <MenuItem
+        rota="/mais"
+        onClick={() => false}
+        active={"/main" === pathname}
+        icon={<FaChevronDown />}
+        className="menuItem-hide-on-mobile menuItem-show-on-tablet"
       />
     </MenuContainer>
   );
