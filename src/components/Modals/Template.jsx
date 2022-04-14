@@ -106,13 +106,12 @@ export default function FormDialog({
           }
           component="div"
         >
-          <Text
-            variant="h5"
-            style={{ fontWeight: "bold", marginRight: "60px" }}
-          >
+          <Text variant="h5" style={{ marginRight: "60px" }}>
             {titulo}
           </Text>
-          <Text variant="subtitle2">{subtitulo}</Text>
+          <Text variant="subtitle2" color="textSecondary">
+            {subtitulo}
+          </Text>
         </DialogTitle>
         <DialogContent dividers>{children}</DialogContent>
       </Dialog>
