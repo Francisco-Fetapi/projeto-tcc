@@ -7,7 +7,7 @@ import { FaUser } from "react-icons/fa";
 import { FaUsers } from "react-icons/fa";
 import { FaTv } from "react-icons/fa";
 import { FaEnvelope } from "react-icons/fa";
-import { FaBell, FaChevronDown } from "react-icons/fa";
+import { FaBell } from "react-icons/fa";
 import { MdGroup } from "react-icons/md";
 
 import { useLocation } from "react-router-dom";

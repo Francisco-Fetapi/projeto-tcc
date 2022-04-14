@@ -275,6 +275,8 @@ export const GlobalStyles = createGlobalStyle`
             left:915px;
             min-width:420px;
         }
+
+        
     }
     .fab-button{
         position: fixed;
@@ -302,4 +304,23 @@ export const GlobalStyles = createGlobalStyle`
       abbr{
           text-decoration:none;
       }
+
+      @media (max-width: 840px) {
+      .menuItem-hide-on-tablet {
+        display: none !important;
+      }
+    }
+    .menuItem-show-on-tablet {
+      display: none;
+    }
+    @media (max-width: 840px) {
+      .menuItem-show-on-tablet {
+        display: flex !important;
+      }
+    }
+    @media (max-width: 615px) {
+      .menuItem-show-on-tablet {
+        display: none !important;
+      }
+    }
 `;
