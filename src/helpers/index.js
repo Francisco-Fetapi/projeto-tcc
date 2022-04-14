@@ -1,4 +1,5 @@
 export function formatarData(data) {
+  if (!data) return "Data indisponivel";
   const date = new Date(data);
   return date.toLocaleDateString();
 }

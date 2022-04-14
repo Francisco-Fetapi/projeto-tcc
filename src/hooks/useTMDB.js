@@ -11,6 +11,7 @@ export default function useTMDB() {
   const trending_filmes = useSelector(selectAppState("trending_filmes"));
   const discover_series = useSelector(selectAppState("discover_series"));
   const discover_filmes = useSelector(selectAppState("discover_filmes"));
+  const searches_to_post = useSelector(selectAppState("searches_to_post"));
 
   async function getDiscover(discover, setLoading, page) {
     if (page === 0 && discover.data.results.length > 0) {
@@ -258,6 +259,20 @@ export default function useTMDB() {
 
       setLoading(false);
       setAtor(res);
+    },
+    async searchAll({ setLoading }, search, page) {
+      // if (page === 1 && searches_to_post.results.length > 0) return;
+      setLoading(true);
+      let res = await TMDB.searchAll(search, page);
+
+      setLoading(false);
+
+      Dispatch(
+        SET_STATE("searches_to_post", {
+          ...res,
+          results: [...res.results],
+        })
+      );
     },
   };
 }

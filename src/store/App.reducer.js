@@ -24,6 +24,12 @@ const initialState = {
     total_pages: 0,
     results: [],
   },
+  searches_to_post: {
+    page: 0,
+    total_results: 1,
+    total_pages: 0,
+    results: [],
+  },
   posts: [],
   dark: JSON.parse(localStorage.getItem("dark")) || false,
 };

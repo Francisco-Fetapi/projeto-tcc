@@ -2,7 +2,7 @@ import React from "react";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-import { mostrarXCharOntText } from "~/helpers";
+import { formatarData, mostrarXCharOntText } from "~/helpers";
 import { useNavigate } from "react-router-dom";
 import { Link } from "~/styles";
 
@@ -15,15 +15,13 @@ export default function MenuRightMovie({ movie }) {
       nostyle="true"
       to={eh_filme ? `/filmes/${movie.id}` : `/series/${movie.id}`}
     >
-      <ListItem button>
+      <ListItem button style={{ paddingLeft: "0" }}>
         <ListItemAvatar>
           <img src={movie.poster_path} alt={movie.title || movie.name} />
         </ListItemAvatar>
         <ListItemText
           primary={mostrarXCharOntText(movie.title || movie.name, 16)}
-          secondary={new Date(
-            movie.release_date || movie.first_air_date
-          ).toLocaleDateString()}
+          secondary={formatarData(movie.release_date || movie.first_air_date)}
           style={{ marginTop: -15, zoom: 0.95 }}
         />
       </ListItem>

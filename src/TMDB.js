@@ -258,6 +258,14 @@ const TMDB = {
 
     return data;
   },
+  async searchAll(query, page) {
+    let { data } = await api.get(`/search/multi`, {
+      query,
+      page: Math.max(1, page),
+    });
+
+    return data;
+  },
 };
 
 export default TMDB;

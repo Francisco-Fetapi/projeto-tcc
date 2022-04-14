@@ -9,8 +9,8 @@ export default function ModalPerfilAtor(props) {
   return (
     <TemplateModal
       nomeModal="modalAssistindo"
-      titulo={`Qual filme/série estás assistindo?`}
-      subtitulo="Selecione o item pretendido"
+      titulo={`O que estás assistindo?`}
+      subtitulo="Selecione algum filme/série na lista abaixo"
       {...props}
       fullScreen
       style={{ maxWidth: "500px" }}
