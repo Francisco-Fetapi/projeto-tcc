@@ -60,14 +60,7 @@ export default function Menu({ info }) {
         rota="/atores"
         active={"/atores" === pathname}
         icon={<MdGroup />}
-        className="menuItem-hide-on-mobile menuItem-hide-on-tablet"
-      />
-      <MenuItem
-        rota="/mais"
-        onClick={() => false}
-        active={"/main" === pathname}
-        icon={<FaChevronDown />}
-        className="menuItem-hide-on-mobile menuItem-show-on-tablet"
+        className="menuItem-hide-on-mobile"
       />
     </MenuContainer>
   );
