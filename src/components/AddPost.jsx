@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Text } from "../styles";
 import Box from "@material-ui/core/Box";
 import { FaChevronDown } from "react-icons/fa";
@@ -14,6 +14,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 export default function AddPost() {
   const usuario = useSelector(selectAppState("usuario"));
   const a_carregar = !usuario.id;
+  const [publico, setPublico] = useState(true);
 
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -24,12 +25,13 @@ export default function AddPost() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  useEffect(handleClose, [publico]);
   return (
     <Box className="AddPost" mb={8}>
       {!a_carregar && (
         <Box display="flex" alignItems="center">
           <Text variant="body1" color="textSecondary">
-            Publique algo para:
+            Publicar para:
           </Text>
           <Box
             className="publico"
@@ -39,7 +41,7 @@ export default function AddPost() {
             onClick={handleClick}
           >
             <Text variant="body1" color="primary">
-              Amigos
+              {publico ? "Público" : "Amigos"}
             </Text>
             <Box ml={0.5} display="flex" alignItems="center">
               <FaChevronDown />
@@ -58,8 +60,8 @@ export default function AddPost() {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose}>Amigos</MenuItem>
-        <MenuItem onClick={handleClose}>Público</MenuItem>
+        <MenuItem onClick={() => setPublico(false)}>Amigos</MenuItem>
+        <MenuItem onClick={() => setPublico(true)}>Público</MenuItem>
       </Menu>
     </Box>
   );

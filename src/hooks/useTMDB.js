@@ -264,13 +264,15 @@ export default function useTMDB() {
       // if (page === 1 && searches_to_post.results.length > 0) return;
       setLoading(true);
       let res = await TMDB.searchAll(search, page);
-
+      let results = res.results.filter(
+        (movie) => movie.media_type !== "person"
+      );
       setLoading(false);
 
       Dispatch(
         SET_STATE("searches_to_post", {
           ...res,
-          results: [...res.results],
+          results,
         })
       );
     },

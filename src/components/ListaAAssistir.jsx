@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import ListItem from "@material-ui/core/ListItem";
 import List from "@material-ui/core/List";
 import Box from "@material-ui/core/Box";
@@ -13,11 +13,13 @@ import { selectAppState } from "~/store/App.selectors";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { formatarData } from "~/helpers";
 
+import { AddPostContext } from "./Forms/FormAddPost";
 export default function ListaAAsistir() {
   const TMDB = useTMDB();
   const [search, setSearch] = useState(null);
   const [loading, setLoading] = useState(false);
   const searches = useSelector(selectAppState("searches_to_post"));
+
   function searchAll() {
     if (search) {
       TMDB.searchAll({ setLoading }, search, 1);
@@ -79,8 +81,13 @@ export default function ListaAAsistir() {
 }
 
 function Movie({ movie }) {
+  const { setMovie, setModalAssistindo } = useContext(AddPostContext);
+  function escolherMovie() {
+    setModalAssistindo(false);
+    setMovie(movie);
+  }
   return (
-    <ListItem button style={{ paddingLeft: "0" }}>
+    <ListItem button style={{ paddingLeft: "0" }} onClick={escolherMovie}>
       <ListItemAvatar style={{ width: 60, height: 60 }}>
         <img
           src={movie.poster_path}
