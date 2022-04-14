@@ -21,6 +21,7 @@ import { Text } from "~/styles";
 import { useNavigate } from "react-router-dom";
 import SerieIcon from "@material-ui/icons/OndemandVideo";
 import FilmeIcon from "@material-ui/icons/Videocam";
+import { FaClock } from "react-icons/fa";
 
 export default function MenuHeaderMain() {
   const Disparar = useDispatch();
@@ -67,6 +68,12 @@ export default function MenuHeaderMain() {
               <SerieIcon />
             </ListItemAvatar>
             <ListItemText>Series</ListItemText>
+          </ListItem>
+          <ListItem onClick={() => navigate("/minha-linha-do-tempo")}>
+            <ListItemAvatar>
+              <FaClock style={{ fontSize: 20 }} />
+            </ListItemAvatar>
+            <ListItemText>Linha do tempo</ListItemText>
           </ListItem>
         </Collapse>
         <Divider />
