@@ -41,12 +41,6 @@ export default function MovieCard({ movie }) {
     getMovieInfo({ setInfo, setLoading }, movie.id, movie.media_type);
   }, []);
 
-  useEffect(() => {
-    if (info.favoritei) {
-      console.log(`favoritei ${movie.id} - ${movie.name || movie.title}`);
-    }
-  }, [info]);
-
   return (
     <Card>
       <CardMedia
