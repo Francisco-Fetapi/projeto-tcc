@@ -124,9 +124,9 @@ const API = {
     const { data } = await api.post("/usuario/galeria/add", formData);
     return data;
   },
-  async getFotosDaGaleria(page = 0,id_usuario) {
+  async getFotosDaGaleria(page = 0, id_usuario) {
     const { data } = await api.get("/usuario/galeria", {
-      params: { page,id_usuario },
+      params: { page, id_usuario },
     });
     return data;
   },
@@ -134,9 +134,9 @@ const API = {
     const { data } = await api.post("/usuario/galeria/eliminar", { id_foto });
     return data;
   },
-  async getAmigos(page = 0, search,id_usuario) {
+  async getAmigos(page = 0, search, id_usuario) {
     const { data } = await api.get("/usuario/amigos", {
-      params: { page, search,id_usuario },
+      params: { page, search, id_usuario },
     });
     return data;
   },
@@ -162,6 +162,14 @@ const API = {
   },
   async getUsuarioById(id) {
     const { data } = await api.get(`/usuario/${id}`);
+    return data;
+  },
+  async getMovieInfo(id, media_type) {
+    const { data } = await api.get(`/filme/${id}`, {
+      params: {
+        media_type,
+      },
+    });
     return data;
   },
 };

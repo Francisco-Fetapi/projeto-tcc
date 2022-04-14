@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
@@ -12,6 +12,7 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import { Text } from "~/styles";
 import { mostrarXCharOntText } from "~/helpers";
 import { useNavigate, useLocation } from "react-router-dom";
+import useMovie from "~/hooks/useMovie";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,6 +28,24 @@ export default function MovieCard({ movie }) {
   const classes = useStyles();
   const navigate = useNavigate();
   const { pathname } = useLocation();
+  const { getMovieInfo } = useMovie();
+  const [loading, setLoading] = useState(false);
+  const [info, setInfo] = useState({
+    favoritei: 0,
+    quantos_favoritaram: 0,
+    guardei: 0,
+    quantos_guardaram: 0,
+  });
+
+  useEffect(() => {
+    getMovieInfo({ setInfo, setLoading }, movie.id, movie.media_type);
+  }, []);
+
+  useEffect(() => {
+    if (info.favoritei) {
+      console.log(`favoritei ${movie.id} - ${movie.name || movie.title}`);
+    }
+  }, [info]);
 
   return (
     <Card>
@@ -53,10 +72,12 @@ export default function MovieCard({ movie }) {
       </CardActionArea>
       <CardActions disableSpacing>
         <IconButton aria-label="Adicionar aos favoritos">
-          <FavoriteIcon />
+          <FavoriteIcon style={{ color: info.favoritei ? "#e41e3f" : null }} />
         </IconButton>
         <IconButton aria-label="Guardar">
-          <FormatListBulleted />
+          <FormatListBulleted
+            style={{ color: info.guardei ? "#2196f3" : null }}
+          />
         </IconButton>
       </CardActions>
     </Card>

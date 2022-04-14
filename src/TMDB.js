@@ -247,8 +247,10 @@ const TMDB = {
   },
   async getAtores(query, page = 0) {
     let { data } = await api.get(`/search/person`, {
-      page: Math.max(1, page),
-      query,
+      params: {
+        page: Math.max(1, page),
+        query,
+      },
     });
 
     return data;
@@ -260,8 +262,10 @@ const TMDB = {
   },
   async searchAll(query, page) {
     let { data } = await api.get(`/search/multi`, {
-      query,
-      page: Math.max(1, page),
+      params: {
+        query,
+        page: Math.max(1, page),
+      },
     });
 
     return data;
