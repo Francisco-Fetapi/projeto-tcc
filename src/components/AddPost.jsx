@@ -52,7 +52,7 @@ export default function AddPost() {
       {a_carregar && <Skeleton variant="rect" width="60%" height={20} />}
 
       <Box mt={1}>
-        <FormAddPost />
+        <FormAddPost publico={publico} />
       </Box>
       <Menu
         anchorEl={anchorEl}

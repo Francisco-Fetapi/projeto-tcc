@@ -19,7 +19,7 @@ import { mostrarXCharOntText } from "~/helpers";
 
 export const AddPostContext = createContext();
 
-export default function FormAddPost() {
+export default function FormAddPost({ publico }) {
   const usuario = useSelector(selectAppState("usuario"));
   const fotoPerfil = usuario.foto_perfil;
   const inputFile = useRef();
@@ -31,6 +31,12 @@ export default function FormAddPost() {
     tv: "series",
   };
 
+  const dadosAEnviar = {
+    publico,
+    movie,
+    files: inputFile.current?.files,
+  };
+
   function escolherFoto() {
     const file = inputFile.current;
     if (file) {
@@ -40,6 +46,10 @@ export default function FormAddPost() {
         setImgsPreview(e.target.files);
       };
     }
+  }
+  function postar(values) {
+    const data = { ...dadosAEnviar, ...values };
+    console.log(data);
   }
 
   const a_carregar = !usuario.id;
@@ -55,6 +65,7 @@ export default function FormAddPost() {
           initialValues={{
             post: "",
           }}
+          onSubmit={postar}
         >
           <Form autoComplete="off">
             <Box display="flex" alignItems="flex-start">
@@ -94,7 +105,12 @@ export default function FormAddPost() {
                 <Skeleton variant="rect" width={124.83} height={36.5} />
               )}
               {!a_carregar && (
-                <Button endIcon={<Send />} variant="contained" color="primary">
+                <Button
+                  type="submit"
+                  endIcon={<Send />}
+                  variant="contained"
+                  color="primary"
+                >
                   Publicar
                 </Button>
               )}
