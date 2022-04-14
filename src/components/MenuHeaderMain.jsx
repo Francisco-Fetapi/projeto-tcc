@@ -21,7 +21,6 @@ import { Text } from "~/styles";
 import { useNavigate } from "react-router-dom";
 import SerieIcon from "@material-ui/icons/OndemandVideo";
 import FilmeIcon from "@material-ui/icons/Videocam";
-import { MdGroup } from "react-icons/md";
 
 export default function MenuHeaderMain() {
   const Disparar = useDispatch();
@@ -68,12 +67,6 @@ export default function MenuHeaderMain() {
               <SerieIcon />
             </ListItemAvatar>
             <ListItemText>Series</ListItemText>
-          </ListItem>
-          <ListItem onClick={() => navigate("/atores")}>
-            <ListItemAvatar>
-              <MdGroup style={{ fontSize: 23 }} />
-            </ListItemAvatar>
-            <ListItemText>Atores</ListItemText>
           </ListItem>
         </Collapse>
         <Divider />
