@@ -39,11 +39,19 @@ export default function MovieCard({ movie }) {
 
   function guardar() {
     normalizarMediaType(movie);
-    toggleGuardarMovie({ setInfo, setLoading }, movie.id, movie.media_type);
+    toggleGuardarMovie(
+      { setInfo, setLoading, movie },
+      movie.id,
+      movie.media_type
+    );
   }
   function favoritar() {
     normalizarMediaType(movie);
-    toggleFavoritarMovie({ setInfo, setLoading }, movie.id, movie.media_type);
+    toggleFavoritarMovie(
+      { setInfo, setLoading, movie },
+      movie.id,
+      movie.media_type
+    );
   }
 
   return (

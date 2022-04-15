@@ -25,3 +25,16 @@ export function normalizarMediaType(movie) {
     else movie.media_type = "tv";
   }
 }
+
+export function getDadosEssencias(movie) {
+  normalizarMediaType(movie);
+  const outros_dados = {
+    id: movie.id,
+    media_type: movie.media_type,
+    name: movie.name || movie.title,
+    poster_path: movie.poster_path,
+    original_language: movie.original_language,
+    first_air_date: movie.release_date || movie.first_air_date,
+  };
+  return JSON.stringify(outros_dados);
+}

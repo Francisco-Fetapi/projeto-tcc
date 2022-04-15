@@ -12,15 +12,15 @@ export default function useMovie() {
       setInfo(res.data);
       setLoading(false);
     },
-    async toggleFavoritarMovie({ setInfo, setLoading }, id, media_type) {
+    async toggleFavoritarMovie({ setInfo, setLoading, movie }, id, media_type) {
       setLoading(true);
-      let res = await API.toggleFavoritarMovie(id, media_type);
+      let res = await API.toggleFavoritarMovie(id, media_type, movie);
       setInfo((info) => ({ ...info, ...res.data }));
       setLoading(false);
     },
-    async toggleGuardarMovie({ setInfo, setLoading }, id, media_type) {
+    async toggleGuardarMovie({ setInfo, setLoading, movie }, id, media_type) {
       setLoading(true);
-      let res = await API.toggleGuardarMovie(id, media_type);
+      let res = await API.toggleGuardarMovie(id, media_type, movie);
       setInfo((info) => ({ ...info, ...res.data }));
       setLoading(false);
     },

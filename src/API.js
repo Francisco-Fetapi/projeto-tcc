@@ -1,4 +1,5 @@
 import axios from "axios";
+import { getDadosEssencias } from "./helpers";
 
 const on_production = process.env.NODE_ENV === "production";
 // const on_production = true;
@@ -188,15 +189,20 @@ const API = {
     });
     return data;
   },
-  async toggleFavoritarMovie(id, media_type) {
+  async toggleFavoritarMovie(id, media_type, movie) {
+    const dados_movie = getDadosEssencias(movie);
+
     const { data } = await api.post(`/usuario/movies_favoritos/${id}`, {
       media_type,
+      dados_movie,
     });
     return data;
   },
-  async toggleGuardarMovie(id, media_type) {
+  async toggleGuardarMovie(id, media_type, movie) {
+    const dados_movie = getDadosEssencias(movie);
     const { data } = await api.post(`/usuario/movies_guardados/${id}`, {
       media_type,
+      dados_movie,
     });
     return data;
   },

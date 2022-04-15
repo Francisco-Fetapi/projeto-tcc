@@ -27,10 +27,18 @@ export default function InfoGerais() {
     quantos_guardaram: 0,
   });
   function guardar() {
-    toggleGuardarMovie({ setInfo, setLoading }, movie.id, movie.media_type);
+    toggleGuardarMovie(
+      { setInfo, setLoading, movie },
+      movie.id,
+      movie.media_type
+    );
   }
   function favoritar() {
-    toggleFavoritarMovie({ setInfo, setLoading }, movie.id, movie.media_type);
+    toggleFavoritarMovie(
+      { setInfo, setLoading, movie },
+      movie.id,
+      movie.media_type
+    );
   }
   const [elencoP, setElencoP] = useState([]);
   useEffect(() => {
