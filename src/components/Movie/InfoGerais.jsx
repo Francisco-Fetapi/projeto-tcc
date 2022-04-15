@@ -92,13 +92,11 @@ export default function InfoGerais() {
           </Text>
         </Box>
       </Box>
-
       <Box mt={2} className="lista-generos">
         {movie.genres?.map((genre) => (
           <Chip variant="outlined" key={genre.id} label={genre.name} />
         ))}
       </Box>
-
       <Box
         mt={2}
         className="btn-actions"
