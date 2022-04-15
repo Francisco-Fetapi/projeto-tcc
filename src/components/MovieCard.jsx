@@ -28,18 +28,24 @@ export default function MovieCard({ movie }) {
   const classes = useStyles();
   const navigate = useNavigate();
   const { pathname } = useLocation();
-  const { getMovieInfo } = useMovie();
+  const { toggleFavoritarMovie, toggleGuardarMovie } = useMovie();
   const [loading, setLoading] = useState(false);
   const [info, setInfo] = useState({
-    favoritei: 0,
+    favoritei: movie.favoritei,
     quantos_favoritaram: 0,
-    guardei: 0,
+    guardei: movie.guardei,
     quantos_guardaram: 0,
   });
 
-  useEffect(() => {
-    getMovieInfo({ setInfo, setLoading }, movie.id, movie.media_type);
-  }, []);
+  // useEffect(() => {
+  //   getMovieInfo({ setInfo, setLoading }, movie.id, movie.media_type);
+  // }, []);
+  function guardar() {
+    toggleGuardarMovie({ setInfo, setLoading }, movie.id, movie.media_type);
+  }
+  function favoritar() {
+    toggleFavoritarMovie({ setInfo, setLoading }, movie.id, movie.media_type);
+  }
 
   return (
     <Card>
@@ -65,12 +71,12 @@ export default function MovieCard({ movie }) {
         </CardContent>
       </CardActionArea>
       <CardActions disableSpacing>
-        <IconButton aria-label="Adicionar aos favoritos">
+        <IconButton onClick={favoritar} aria-label="Adicionar aos favoritos">
           <FavoriteIcon style={{ color: info.favoritei ? "#e41e3f" : null }} />
         </IconButton>
-        <IconButton aria-label="Guardar">
+        <IconButton onClick={guardar} aria-label="Guardar">
           <FormatListBulleted
-            style={{ color: info.guardei ? "#2196f3" : null }}
+            style={{ color: info.guardei ? "#435fec" : null }}
           />
         </IconButton>
       </CardActions>

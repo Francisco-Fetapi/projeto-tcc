@@ -172,6 +172,34 @@ const API = {
     });
     return data;
   },
+  async getMoviesFavoritos(id_movies) {
+    const { data } = await api.get(`/usuario/movies_favoritos`, {
+      params: {
+        id_movies,
+      },
+    });
+    return data;
+  },
+  async getMoviesGuardados(id_movies) {
+    const { data } = await api.get(`/usuario/movies_guardados`, {
+      params: {
+        id_movies,
+      },
+    });
+    return data;
+  },
+  async toggleFavoritarMovie(id, media_type) {
+    const { data } = await api.post(`/usuario/movies_favoritos/${id}`, {
+      media_type,
+    });
+    return data;
+  },
+  async toggleGuardarMovie(id, media_type) {
+    const { data } = await api.post(`/usuario/movies_guardados/${id}`, {
+      media_type,
+    });
+    return data;
+  },
 };
 
 export default API;
