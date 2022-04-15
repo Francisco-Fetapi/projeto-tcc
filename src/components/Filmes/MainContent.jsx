@@ -11,6 +11,7 @@ import { useSelector } from "react-redux";
 import { selectAppState } from "~/store/App.selectors";
 
 import CircularProgress from "@material-ui/core/CircularProgress";
+import useMovie from "~/hooks/useMovie";
 
 export default function MainContent({ favoritos }) {
   const TMDB = useTMDB();
@@ -18,9 +19,16 @@ export default function MainContent({ favoritos }) {
   const [loading, setLoading] = useState(true);
   const [loading2, setLoading2] = useState(false);
   const [search, setSearch] = useState(null);
+  const { atualizarInfo } = useMovie();
+
   useEffect(() => {
     TMDB.getFilmes({ setLoading }, 0);
   }, []);
+  useEffect(() => {
+    if (movies.results.length > 0) {
+      atualizarInfo(movies, "trending_filmes");
+    }
+  }, [window.location.href]);
 
   useEffect(() => {
     if (search === "") {

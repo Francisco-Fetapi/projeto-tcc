@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
@@ -38,17 +38,13 @@ export default function MovieCard({ movie }) {
   });
 
   function guardar() {
+    normalizarMediaType(movie);
     toggleGuardarMovie({ setInfo, setLoading }, movie.id, movie.media_type);
   }
   function favoritar() {
     normalizarMediaType(movie);
-    console.log(movie.id, movie.media_type);
     toggleFavoritarMovie({ setInfo, setLoading }, movie.id, movie.media_type);
   }
-
-  useEffect(() => {
-    console.log(info);
-  }, [info]);
 
   return (
     <Card>

@@ -6,15 +6,32 @@ import Box from "@material-ui/core/Box";
 import CalendarToday from "@material-ui/icons/CalendarToday";
 import StarIcon from "@material-ui/icons/Star";
 
-import { FaHeart, FaList, FaEye } from "react-icons/fa";
+import { FaEye } from "react-icons/fa";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import FormatListBulleted from "@material-ui/icons/FormatListBulleted";
 import IconButton from "@material-ui/core/IconButton";
 import { MovieContext } from "./MainContent";
 import { useLocation } from "react-router-dom";
+import useMovie from "~/hooks/useMovie";
 
 export default function InfoGerais() {
   const { movie, elenco } = useContext(MovieContext);
   const { pathname } = useLocation();
   const eh_filme = pathname.includes("filmes");
+  const { toggleFavoritarMovie, toggleGuardarMovie } = useMovie();
+  const [loading, setLoading] = useState(false);
+  const [info, setInfo] = useState({
+    favoritei: movie.favoritei,
+    quantos_favoritaram: 0,
+    guardei: movie.guardei,
+    quantos_guardaram: 0,
+  });
+  function guardar() {
+    toggleGuardarMovie({ setInfo, setLoading }, movie.id, movie.media_type);
+  }
+  function favoritar() {
+    toggleFavoritarMovie({ setInfo, setLoading }, movie.id, movie.media_type);
+  }
   const [elencoP, setElencoP] = useState([]);
   useEffect(() => {
     const escritor = elenco.crew.find(
@@ -82,13 +99,22 @@ export default function InfoGerais() {
         ))}
       </Box>
 
-      <Box mt={2} className="btn-actions">
-        <IconButton title="Favoritar">
-          <FaHeart />
+      <Box
+        mt={2}
+        className="btn-actions"
+        style={{
+          opacity: loading ? 0.7 : 1,
+          pointerEvents: loading ? "none" : "initial",
+        }}
+      >
+        <IconButton title="Favoritar" onClick={favoritar}>
+          <FavoriteIcon style={{ color: info.favoritei ? "#e41e3f" : null }} />
         </IconButton>
 
-        <IconButton title="Ver mais tarde">
-          <FaList />
+        <IconButton title="Ver mais tarde" onClick={guardar}>
+          <FormatListBulleted
+            style={{ color: info.guardei ? "#435fec" : null }}
+          />
         </IconButton>
         <IconButton title="Ver trailer">
           <FaEye />

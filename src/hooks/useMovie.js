@@ -1,6 +1,10 @@
 import API from "~/API";
+import { normalizarMediaType } from "~/helpers";
+import { useDispatch } from "react-redux";
+import { SET_STATE } from "~/store/App.actions";
 
 export default function useMovie() {
+  const Dispatch = useDispatch();
   return {
     async getMovieInfo({ setInfo, setLoading }, id, media_type) {
       setLoading(true);
@@ -20,10 +24,19 @@ export default function useMovie() {
       setInfo((info) => ({ ...info, ...res.data }));
       setLoading(false);
     },
+    async atualizarInfo(movies, alvo) {
+      const movies_ = await setFavoritosEGuardadosOnMovies(movies.results);
+      Dispatch(
+        SET_STATE(alvo, {
+          ...movies,
+          results: [...movies_],
+        })
+      );
+    },
   };
 }
 
-export const setFavoritosEGuardadosOnMovie = async (movies) => {
+export const setFavoritosEGuardadosOnMovies = async (movies) => {
   const id_movies = movies.map((movie) => movie.id);
   let id_favoritados = await API.getMoviesFavoritos(id_movies);
   let id_guardados = await API.getMoviesGuardados(id_movies);
@@ -36,4 +49,10 @@ export const setFavoritosEGuardadosOnMovie = async (movies) => {
     return { ...movie, favoritei, guardei };
   });
   return new_data;
+};
+
+export const setFavoritosEGuardadosOnMovie = async (movie) => {
+  normalizarMediaType(movie);
+  let res = await API.getMovieInfo(movie.id, movie.media_type);
+  return { ...movie, ...res.data };
 };

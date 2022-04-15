@@ -1,6 +1,9 @@
 import axios from "axios";
 import movies from "~/mock/series.json";
-import { setFavoritosEGuardadosOnMovie } from "./hooks/useMovie";
+import {
+  setFavoritosEGuardadosOnMovies,
+  setFavoritosEGuardadosOnMovie,
+} from "./hooks/useMovie";
 const on_internet = navigator.onLine;
 // const on_production = true;
 
@@ -146,7 +149,7 @@ const TMDB = {
         page: Math.max(1, page),
       },
     });
-    const new_data = await setFavoritosEGuardadosOnMovie(data.results);
+    const new_data = await setFavoritosEGuardadosOnMovies(data.results);
     data.results = new_data;
 
     console.log(data.results);
@@ -165,12 +168,15 @@ const TMDB = {
   },
   async getMovie(id_movie) {
     let { data } = await api.get(`/movie/${id_movie}`);
-    return data;
+    const res = await setFavoritosEGuardadosOnMovie(data);
+    console.log(res);
+    return res;
   },
   async getTv(id_movie) {
     let { data } = await api.get(`/tv/${id_movie}`);
+    const res = await setFavoritosEGuardadosOnMovie(data);
 
-    return data;
+    return res;
   },
   async getCreditsMovie(id_movie) {
     let { data } = await api.get(`/movie/${id_movie}/credits`);
@@ -237,7 +243,7 @@ const TMDB = {
         page: Math.max(1, page),
       },
     });
-    const new_data = await setFavoritosEGuardadosOnMovie(data.results);
+    const new_data = await setFavoritosEGuardadosOnMovies(data.results);
     data.results = new_data;
 
     return data;
@@ -249,7 +255,7 @@ const TMDB = {
         page: Math.max(1, page),
       },
     });
-    const new_data = await setFavoritosEGuardadosOnMovie(data.results);
+    const new_data = await setFavoritosEGuardadosOnMovies(data.results);
     data.results = new_data;
 
     return data;

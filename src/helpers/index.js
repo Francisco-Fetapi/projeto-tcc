@@ -21,7 +21,7 @@ export function mostrarXCharOntText(texto, qtdAMostrar = 10) {
 export function normalizarMediaType(movie) {
   const path = window.location.pathname;
   if (!movie.media_type) {
-    if (path === "/filmes") movie.media_type = "movie";
+    if (path.includes("/filmes")) movie.media_type = "movie";
     else movie.media_type = "tv";
   }
 }

@@ -9,7 +9,7 @@ import FormSearch from "../Forms/FormSearch";
 import useTMDB from "~/hooks/useTMDB";
 import { useSelector } from "react-redux";
 import { selectAppState } from "~/store/App.selectors";
-
+import useMovie from "~/hooks/useMovie";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 export default function MainContent() {
@@ -18,6 +18,7 @@ export default function MainContent() {
   const [loading, setLoading] = useState(true);
   const [loading2, setLoading2] = useState(false);
   const [search, setSearch] = useState(null);
+  const { atualizarInfo } = useMovie();
   useEffect(() => {
     TMDB.getSeries({ setLoading }, 0);
   }, []);
@@ -28,6 +29,12 @@ export default function MainContent() {
     }
     TMDB.getTvBySearch({ setLoading }, search, 1);
   }, [search]);
+
+  useEffect(() => {
+    if (movies.results.length > 0) {
+      atualizarInfo(movies, "trending_series");
+    }
+  }, [window.location.href]);
 
   function carregarMais() {
     if (search) {
