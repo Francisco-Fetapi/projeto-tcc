@@ -17,3 +17,11 @@ export function mostrarXCharOntText(texto, qtdAMostrar = 10) {
   if (texto.length <= qtdAMostrar) return texto;
   return texto.substring(0, qtdAMostrar) + "...";
 }
+
+export function normalizarMediaType(movie) {
+  const path = window.location.pathname;
+  if (!movie.media_type) {
+    if (path === "/filmes") movie.media_type = "movie";
+    else movie.media_type = "tv";
+  }
+}

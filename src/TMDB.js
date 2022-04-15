@@ -1,6 +1,6 @@
 import axios from "axios";
 import movies from "~/mock/series.json";
-import API from "./API";
+import { setFavoritosEGuardadosOnMovie } from "./hooks/useMovie";
 const on_internet = navigator.onLine;
 // const on_production = true;
 
@@ -146,18 +146,7 @@ const TMDB = {
         page: Math.max(1, page),
       },
     });
-    const id_movies = data.results.map((movie) => movie.id);
-    let id_favoritados = await API.getMoviesFavoritos(id_movies);
-    let id_guardados = await API.getMoviesGuardados(id_movies);
-    id_favoritados = id_favoritados.data.map((movie2) => movie2.id_movie);
-    id_guardados = id_guardados.data.map((movie2) => movie2.id_movie);
-
-    let new_data = data.results.map((movie) => {
-      let favoritei = id_favoritados.includes(movie.id);
-      let guardei = id_guardados.includes(movie.id);
-      return { ...movie, favoritei, guardei };
-    });
-
+    const new_data = await setFavoritosEGuardadosOnMovie(data.results);
     data.results = new_data;
 
     console.log(data.results);
@@ -248,6 +237,8 @@ const TMDB = {
         page: Math.max(1, page),
       },
     });
+    const new_data = await setFavoritosEGuardadosOnMovie(data.results);
+    data.results = new_data;
 
     return data;
   },
@@ -258,6 +249,8 @@ const TMDB = {
         page: Math.max(1, page),
       },
     });
+    const new_data = await setFavoritosEGuardadosOnMovie(data.results);
+    data.results = new_data;
 
     return data;
   },

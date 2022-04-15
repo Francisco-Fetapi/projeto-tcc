@@ -10,7 +10,7 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import FormatListBulleted from "@material-ui/icons/FormatListBulleted";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import { Text } from "~/styles";
-import { mostrarXCharOntText } from "~/helpers";
+import { mostrarXCharOntText, normalizarMediaType } from "~/helpers";
 import { useNavigate, useLocation } from "react-router-dom";
 import useMovie from "~/hooks/useMovie";
 
@@ -37,15 +37,18 @@ export default function MovieCard({ movie }) {
     quantos_guardaram: 0,
   });
 
-  // useEffect(() => {
-  //   getMovieInfo({ setInfo, setLoading }, movie.id, movie.media_type);
-  // }, []);
   function guardar() {
     toggleGuardarMovie({ setInfo, setLoading }, movie.id, movie.media_type);
   }
   function favoritar() {
+    normalizarMediaType(movie);
+    console.log(movie.id, movie.media_type);
     toggleFavoritarMovie({ setInfo, setLoading }, movie.id, movie.media_type);
   }
+
+  useEffect(() => {
+    console.log(info);
+  }, [info]);
 
   return (
     <Card>
@@ -70,7 +73,13 @@ export default function MovieCard({ movie }) {
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions disableSpacing>
+      <CardActions
+        disableSpacing
+        style={{
+          opacity: loading ? 0.7 : 1,
+          pointerEvents: loading ? "none" : "initial",
+        }}
+      >
         <IconButton onClick={favoritar} aria-label="Adicionar aos favoritos">
           <FavoriteIcon style={{ color: info.favoritei ? "#e41e3f" : null }} />
         </IconButton>
