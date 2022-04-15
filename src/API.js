@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getDadosEssencias } from "./helpers";
+import { getDadosEssencias, parsearMoviesInfo } from "./helpers";
 
 const on_production = process.env.NODE_ENV === "production";
 // const on_production = true;
@@ -179,7 +179,14 @@ const API = {
         id_movies,
       },
     });
-    return data;
+    let res = data;
+    if (!id_movies) {
+      res = data.map((movie) => {
+        return parsearMoviesInfo(movie);
+      });
+    }
+
+    return res;
   },
   async getMoviesGuardados(id_movies) {
     const { data } = await api.get(`/usuario/movies_guardados`, {
@@ -187,7 +194,14 @@ const API = {
         id_movies,
       },
     });
-    return data;
+    let res = data;
+    if (!id_movies) {
+      res = data.map((movie) => {
+        return parsearMoviesInfo(movie);
+      });
+    }
+
+    return res;
   },
   async toggleFavoritarMovie(id, media_type, movie) {
     const dados_movie = getDadosEssencias(movie);

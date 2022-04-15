@@ -117,8 +117,8 @@ export const Perfil = {
       cursor: grabbing;
     }
     .movie {
-      /* width: 150px; */
-      height: 190px;
+      /* width: 190px; */
+      height: 230px;
       position: relative;
       margin: 5px;
 
@@ -127,6 +127,7 @@ export const Perfil = {
         height: 100%;
         object-fit: cover;
         border-radius: 4px;
+        pointer-events: none;
       }
       figcaption {
         position: absolute;
@@ -188,9 +189,7 @@ export const Perfil = {
       }
     }
   `,
-  Main: styled.div`
-   
-  `,
+  Main: styled.div``,
   Info: styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -198,27 +197,26 @@ export const Perfil = {
     width: 90%;
     margin: 0 auto;
     margin-bottom: 30px;
-    .perfil-biografia{
-      @media(max-width:965px){
-        margin-left:-100px;
+    .perfil-biografia {
+      @media (max-width: 965px) {
+        margin-left: -100px;
       }
-      @media(max-width:890px){
-        margin-left:0px;
-        max-width:500px;
+      @media (max-width: 890px) {
+        margin-left: 0px;
+        max-width: 500px;
       }
-      @media(max-width:500px){
-        margin-left:-100px;
-      }
-
-    }
-    .btn-action-mobile{
-      @media(max-width:500px){
-        display:flex !important;
+      @media (max-width: 500px) {
+        margin-left: -100px;
       }
     }
-    .btn-action-desktop{
-      @media(max-width:500px){
-        display:none;
+    .btn-action-mobile {
+      @media (max-width: 500px) {
+        display: flex !important;
+      }
+    }
+    .btn-action-desktop {
+      @media (max-width: 500px) {
+        display: none;
       }
     }
     @media (max-width: 890px) {
@@ -309,9 +307,9 @@ export const Perfil = {
       }
     }
     .mais_info_perfil {
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       .MuiListItemIcon-root {
         min-width: auto;
         margin-right: 10px;
@@ -540,11 +538,11 @@ export const Perfil = {
             opacity: 0.8;
           }
         }
-        @media(max-width:475px){
-          padding-top:20px;
+        @media (max-width: 475px) {
+          padding-top: 20px;
         }
-        @media(max-width:370px){
-          padding-top:35px;
+        @media (max-width: 370px) {
+          padding-top: 35px;
         }
       }
       .msg-sem-amigos {

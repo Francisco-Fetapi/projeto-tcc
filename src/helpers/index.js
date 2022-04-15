@@ -38,3 +38,8 @@ export function getDadosEssencias(movie) {
   };
   return JSON.stringify(outros_dados);
 }
+
+export function parsearMoviesInfo(movie) {
+  const dados_movie = JSON.parse(movie.dados_movie);
+  return { ...movie, ...dados_movie };
+}

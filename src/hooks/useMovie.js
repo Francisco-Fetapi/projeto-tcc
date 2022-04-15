@@ -33,6 +33,13 @@ export default function useMovie() {
         })
       );
     },
+    async getMoviesGuardados({ setLoading, setMovies }) {
+      setLoading(true);
+      let res = await API.getMoviesGuardados();
+      setMovies(res);
+
+      setLoading(false);
+    },
   };
 }
 
