@@ -10,13 +10,19 @@ import { useSelector } from "react-redux";
 import { makeFavoritosFixedOnScroll } from "~/helpers";
 import useMovie from "~/hooks/useMovie";
 
+import CircularProgress from "@material-ui/core/CircularProgress";
+
 export default function Favoritos() {
   const navigate = useNavigate();
   const usuario = useSelector(selectAppState("usuario"));
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const { getMoviesFavoritos, eliminarMovieDeMoviesFavoritos } = useMovie();
-  useEffect(makeFavoritosFixedOnScroll, []);
+  useEffect(() => {
+    if (movies.length > 0) {
+      makeFavoritosFixedOnScroll();
+    }
+  }, [movies]);
   useEffect(buscarMovies, []);
 
   function buscarMovies() {
@@ -44,10 +50,14 @@ export default function Favoritos() {
       </Box>
       {movies.length === 0 && (
         <Box mt="30vh" display="flex" justifyContent="center">
-          <Text color="textSecondary" align="center" variant="subtitle2">
-            Sem favoritos. <br /> Veja os Filmes e séries que você favoritou
-            aqui.
-          </Text>
+          {loading ? (
+            <CircularProgress />
+          ) : (
+            <Text color="textSecondary" align="center" variant="subtitle2">
+              Sem favoritos. <br /> Veja os Filmes e séries que você favoritou
+              aqui.
+            </Text>
+          )}
         </Box>
       )}
       {movies.length >= 6 && (
