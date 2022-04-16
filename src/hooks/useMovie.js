@@ -40,6 +40,13 @@ export default function useMovie() {
 
       setLoading(false);
     },
+    async getMoviesFavoritos({ setLoading, setMovies }) {
+      setLoading(true);
+      let res = await API.getMoviesFavoritos();
+      setMovies(res);
+
+      setLoading(false);
+    },
   };
 }
 

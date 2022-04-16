@@ -44,6 +44,11 @@ export function parsearMoviesInfo(movie) {
   const dados_movie = JSON.parse(movie.dados_movie);
   return { ...movie, ...dados_movie };
 }
+export function stringificarMovie(config) {
+  if (!config.data?.dados_movie) return;
+  config.data.dados_movie = getDadosEssencias(config.data.dados_movie);
+  console.log(config.data.dados_movie);
+}
 
 export function makeFavoritosFixedOnScroll() {
   const favoritos = document.querySelector(".favoritos");

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Box from "@material-ui/core/Box";
 import List from "@material-ui/core/List";
 import Button from "@material-ui/core/Button";
@@ -8,11 +8,15 @@ import { useNavigate } from "react-router-dom";
 import { selectAppState } from "~/store/App.selectors";
 import { useSelector } from "react-redux";
 import { makeFavoritosFixedOnScroll } from "~/helpers";
+import useMovie from "~/hooks/useMovie";
 
 export default function Favoritos() {
   const navigate = useNavigate();
   const usuario = useSelector(selectAppState("usuario"));
-  const movies = [
+  const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const { getMoviesFavoritos } = useMovie();
+  const movies_ = [
     {
       name: "Homem-Aranha: Sem Volta a Casa",
       poster_path: "./img/matrix.jpg",
@@ -23,6 +27,12 @@ export default function Favoritos() {
     },
   ];
   useEffect(makeFavoritosFixedOnScroll, []);
+  useEffect(() => {
+    getMoviesFavoritos({ setLoading, setMovies });
+  }, []);
+  useEffect(() => {
+    console.log(movies);
+  }, [movies]);
 
   return (
     <List mt={3} className="favoritos">
@@ -35,7 +45,7 @@ export default function Favoritos() {
         <Text variant="h6">FAVORITOS</Text>
       </Box>
       <Box>
-        {movies.map((item, key) => (
+        {movies_.map((item, key) => (
           <Favorito key={key} movie={item} />
         ))}
       </Box>
