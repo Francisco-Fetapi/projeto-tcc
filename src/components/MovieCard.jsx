@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
@@ -55,7 +55,7 @@ export default function MovieCard({ movie }) {
   }
 
   return (
-    <Card>
+    <Card style={{ display: movie.hidden ? "none" : "initial" }}>
       <CardMedia
         className={classes.media}
         image={movie.poster_path}

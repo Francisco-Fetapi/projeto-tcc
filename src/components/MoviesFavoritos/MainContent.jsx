@@ -3,7 +3,7 @@ import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import MoviesHeader from "~/components/MoviesHeader";
 import MoviesList from "~/components/MoviesList";
-import { Movie } from "~/styles";
+import { Movie, Text } from "~/styles";
 
 import CircularProgress from "@material-ui/core/CircularProgress";
 import useMovie from "~/hooks/useMovie";
@@ -32,19 +32,18 @@ export default function MainContent() {
       movies.current_page + 1
     );
   }
-  console.log(movies);
 
   const Corpo = () => {
     return (
       <>
-        {(loading || movies.data.length === 0) && (
+        {loading && (
           <Box display="flex" my={5} justifyContent="center">
             <CircularProgress color="inherit" />
           </Box>
         )}
         {movies.data.length > 0 && !loading && (
           <MoviesList
-            movies={movies.data.map((movie) => ({ ...movie, favoritei: true }))}
+            movies={movies.data.map((movie) => ({ favoritei: true, ...movie }))}
           />
         )}
         {movies.current_page < movies.last_page && !loading2 && !loading && (
@@ -57,6 +56,13 @@ export default function MainContent() {
         {loading2 && (
           <Box display="flex" my={2} justifyContent="center">
             <CircularProgress color="inherit" />
+          </Box>
+        )}
+        {!loading2 && !loading && movies.data.length === 0 && (
+          <Box mt={8}>
+            <Text align="center" color="textSecondary" variant="subtitle2">
+              Nenhum filme favoritado ainda
+            </Text>
           </Box>
         )}
       </>
