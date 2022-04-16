@@ -16,12 +16,13 @@ export default function Favorito({ movie }) {
         </Text>
         <Box>
           <Text variant="subtitle2" color="textSecondary">
-            {mostrarXCharOntText(movie.overview, 40)}
+            {mostrarXCharOntText(movie.overview, 40) ||
+              "Sinopse não disponivel"}
           </Text>
         </Box>
-        <Box mt={0.5}>
+        <Box mt={0.5} style={{ zoom: "0.9" }}>
           <Text align="right" variant="subtitle2" color="textSecondary">
-            Favoritado em {formatarData(movie.favoritado_em)}
+            Favoritado em {formatarData(movie.created_at)}
           </Text>
         </Box>
 

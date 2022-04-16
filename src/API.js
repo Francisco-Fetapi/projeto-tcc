@@ -1,5 +1,5 @@
 import axios from "axios";
-import { parsearMoviesInfo, stringificarMovie } from "./helpers";
+import { parsearAllMoviesInfo, stringificarMovie } from "./helpers";
 
 const on_production = process.env.NODE_ENV === "production";
 // const on_production = true;
@@ -35,6 +35,7 @@ api.interceptors.response.use(
     if (response.data.token) {
       localStorage.setItem("token", response.data.token);
     }
+    parsearAllMoviesInfo(response);
     return response;
   },
   function (error) {
@@ -181,14 +182,8 @@ const API = {
         id_movies,
       },
     });
-    let res = data;
-    if (!id_movies) {
-      res = data.map((movie) => {
-        return parsearMoviesInfo(movie);
-      });
-    }
 
-    return res;
+    return data;
   },
   async getMoviesGuardados(id_movies) {
     const { data } = await api.get(`/usuario/movies_guardados`, {
@@ -196,14 +191,8 @@ const API = {
         id_movies,
       },
     });
-    let res = data;
-    if (!id_movies) {
-      res = data.map((movie) => {
-        return parsearMoviesInfo(movie);
-      });
-    }
 
-    return res;
+    return data;
   },
   async toggleFavoritarMovie(id, media_type, movie) {
     const { data } = await api.post(`/usuario/movies_favoritos/${id}`, {

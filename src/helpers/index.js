@@ -40,14 +40,25 @@ export function getDadosEssencias(movie) {
   return JSON.stringify(outros_dados);
 }
 
-export function parsearMoviesInfo(movie) {
+export function parsearMovieInfo(movie) {
   const dados_movie = JSON.parse(movie.dados_movie);
   return { ...movie, ...dados_movie };
+}
+export function parsearAllMoviesInfo(response) {
+  if (Array.isArray(response.data)) {
+    const new_data = response.data.map((movie) => {
+      if (!movie.dados_movie) return movie;
+      return parsearMovieInfo(movie);
+    });
+    response.data = new_data;
+    return;
+  } else if ("dados_movie" in response.data) {
+    response.data = parsearMovieInfo(response.data);
+  }
 }
 export function stringificarMovie(config) {
   if (!config.data?.dados_movie) return;
   config.data.dados_movie = getDadosEssencias(config.data.dados_movie);
-  console.log(config.data.dados_movie);
 }
 
 export function makeFavoritosFixedOnScroll() {
