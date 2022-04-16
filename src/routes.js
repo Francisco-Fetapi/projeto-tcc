@@ -17,6 +17,7 @@ import Search from "./pages/Search";
 import Movie from "./pages/Movie";
 
 import NotFound from "./pages/NotFound";
+import MoviesFavoritos from "./pages/MoviesFavoritos";
 
 export default function routes() {
   return (
@@ -40,7 +41,7 @@ export default function routes() {
       <Route path="/publicacoes-guardadas" element={<PostSaveds />} />
       <Route
         path="/movies-favoritos/:id_usuario"
-        element={<Filmes favoritos={true} />}
+        element={<MoviesFavoritos />}
       />
       <Route path="/minha-linha-do-tempo" element={<LinhaDoTempo />} />
       <Route path="/usuario/:id" element={<Perfil alheio={true} />} />

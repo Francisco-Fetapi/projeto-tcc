@@ -1,19 +1,19 @@
 import React, { useEffect } from "react";
 import { Filmes } from "../styles/pages/Filmes";
 import Header from "../components/Header";
-import FilmesMain from "../components/Filmes/Main";
+import MoviesMain from "../components/MoviesFavoritos/Main";
 import Box from "@material-ui/core/Box";
 
 import useUsuario from "../hooks/useUsuario";
 
-export default function FilmesPage() {
+export default function MoviesFavoritos() {
   const { seNaoLogadoIrParaLogin } = useUsuario();
   useEffect(seNaoLogadoIrParaLogin, []);
   return (
     <Filmes.Container>
       <Header />
       <Box>
-        <FilmesMain />
+        <MoviesMain />
       </Box>
     </Filmes.Container>
   );
