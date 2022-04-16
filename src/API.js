@@ -214,6 +214,14 @@ const API = {
     const { data } = await api.post(`/post`, dados);
     return data;
   },
+  async getPosts(page) {
+    const { data } = await api.get(`/post`, {
+      params: {
+        page: Math.max(1, page),
+      },
+    });
+    return data;
+  },
 };
 
 export default API;

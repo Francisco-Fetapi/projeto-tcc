@@ -30,7 +30,12 @@ const initialState = {
     total_pages: 0,
     results: [],
   },
-  posts: [],
+  posts: {
+    current_page: 1,
+    last_page: 1,
+    total: 0,
+    data: [],
+  },
   dark: JSON.parse(localStorage.getItem("dark")) || false,
 };
 

@@ -17,12 +17,10 @@ import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 
 import { Text } from "../styles";
-
 import { FaClock, FaGlobe, FaUsers } from "react-icons/fa";
-import { selectAppState } from "../store/App.selectors";
-import { useSelector } from "react-redux";
 
 import Skeleton from "@material-ui/lab/Skeleton";
+import { primeiroEUltimoNome } from "~/helpers";
 
 export function SubHeader({ tempo, publico }) {
   return (
@@ -51,10 +49,11 @@ export default function Post({
   publico,
   children,
   img,
+  post,
+  posts,
 }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const posts = useSelector(selectAppState("posts"));
-  const a_carregar = !posts.length;
+  const a_carregar = !posts.data.length;
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -63,6 +62,7 @@ export default function Post({
   const handleClose = () => {
     setAnchorEl(null);
   };
+
   return (
     <Box my={2}>
       <Card className="post">
@@ -71,7 +71,7 @@ export default function Post({
             !a_carregar ? (
               <img
                 className="foto-user"
-                src={user.foto}
+                src={post?.usuario.foto_perfil}
                 alt="foto do usuario"
               />
             ) : (
@@ -87,14 +87,17 @@ export default function Post({
           }
           title={
             !a_carregar ? (
-              <Text>{user.nome}</Text>
+              <Text>{primeiroEUltimoNome(post.usuario)}</Text>
             ) : (
               <Skeleton variant="text" width="40%" />
             )
           }
           subheader={
             !a_carregar ? (
-              <SubHeader tempo={tempo} publico={publico} />
+              <SubHeader
+                tempo={post.tempo}
+                publico={post.publico ? "publico" : "amigos"}
+              />
             ) : (
               <Skeleton variant="text" width="20%" />
             )
@@ -108,15 +111,15 @@ export default function Post({
           ) : (
             <Skeleton variant="rect" width="90%" height="95px" />
           )}
-          {img && !a_carregar && (
+          {!a_carregar && post.imagens?.length && (
             <Box mt={3} className="imagem-post">
-              <img src={`/img/${img}`} alt="imagem" />
+              <img src={`/img/matrix.jpg`} alt="imagem" />
             </Box>
           )}
         </CardContent>
         <Box className="post-acoes">
           <Box ml={2} mt={2} display="flex" justifyContent="space-between">
-            {reacoes > 0 && !a_carregar && (
+            {!a_carregar && post.num_reacoes > 0 && (
               <Box display="flex" alignItems="center">
                 <Box>
                   <img
@@ -131,14 +134,14 @@ export default function Post({
                   />
                 </Box>
                 <Box ml={0.5}>
-                  <Text>{reacoes}</Text>
+                  <Text>{post.num_reacoes}</Text>
                 </Box>
               </Box>
             )}
-            {comentarios > 0 && !a_carregar && (
+            {!a_carregar && post.num_comentarios > 0 && (
               <Box mr={2}>
                 <Text color="textSecondary" variant="subtitle2">
-                  {comentarios} comentarios
+                  {post.num_comentarios} comentarios
                 </Text>
               </Box>
             )}
