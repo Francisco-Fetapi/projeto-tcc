@@ -176,10 +176,12 @@ const API = {
     });
     return data;
   },
-  async getMoviesFavoritos(id_movies) {
+  async getMoviesFavoritos(id_movies, paginar, page) {
     const { data } = await api.get(`/usuario/movies_favoritos`, {
       params: {
         id_movies,
+        paginar,
+        page,
       },
     });
 

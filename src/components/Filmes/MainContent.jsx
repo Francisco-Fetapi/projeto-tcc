@@ -28,7 +28,7 @@ export default function MainContent() {
     if (movies.results.length > 0) {
       atualizarInfo(movies, "trending_filmes");
     }
-  }, [window.location.href]);
+  }, [window.location.href, movies.data]);
 
   useEffect(() => {
     if (search === "") {

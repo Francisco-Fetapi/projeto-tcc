@@ -45,15 +45,25 @@ export function parsearMovieInfo(movie) {
   return { ...movie, ...dados_movie };
 }
 export function parsearAllMoviesInfo(response) {
-  if (Array.isArray(response.data)) {
-    const new_data = response.data.map((movie) => {
+  function parse(array_, fromObjectWithData) {
+    const new_data = array_.map((movie) => {
       if (!movie.dados_movie) return movie;
       return parsearMovieInfo(movie);
     });
-    response.data = new_data;
+    if (fromObjectWithData) {
+      response.data.data = new_data;
+    } else {
+      response.data = new_data;
+    }
+  }
+
+  if (Array.isArray(response.data)) {
+    parse(response.data);
     return;
   } else if ("dados_movie" in response.data) {
     response.data = parsearMovieInfo(response.data);
+  } else if (Array.isArray(response.data.data)) {
+    parse(response.data.data, true);
   }
 }
 export function stringificarMovie(config) {

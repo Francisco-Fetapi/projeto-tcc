@@ -45,11 +45,21 @@ export default function useMovie() {
 
       setLoading(false);
     },
-    async getMoviesFavoritos({ setLoading, setMovies }) {
+    async getMoviesFavoritos(
+      { setLoading, setMovies },
+      id_movies,
+      paginar,
+      page
+    ) {
       setLoading(true);
-      let res = await API.getMoviesFavoritos();
-      setMovies(res);
-
+      let res = await API.getMoviesFavoritos(id_movies, paginar, page);
+      if (page > 1) {
+        setMovies((prev) => {
+          return { ...res, data: [...prev.data, ...res.data] };
+        });
+      } else {
+        setMovies(res);
+      }
       setLoading(false);
     },
   };
