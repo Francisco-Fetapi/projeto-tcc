@@ -210,6 +210,10 @@ const API = {
     });
     return data;
   },
+  async salvarPost(dados) {
+    const { data } = await api.post(`/post`, dados);
+    return data;
+  },
 };
 
 export default API;

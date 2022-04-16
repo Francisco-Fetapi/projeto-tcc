@@ -72,7 +72,7 @@ export default function ListaAAsistir() {
       {!loading && (
         <List>
           {searches.results.map((movie, key) => (
-            <Movie key={movie.key} movie={movie} />
+            <Movie key={movie.id} movie={movie} />
           ))}
         </List>
       )}

@@ -11,8 +11,8 @@ const useStyles = makeStyles((theme) => ({
     right: 0,
     bottom: 0,
     // minWidth: "100vw",
-    // minHeight: "100vh",
-    zIndex: "9999999999999",
+    minHeight: "100vh",
+    zIndex: 9999999999999999,
   },
 }));
 

@@ -24,10 +24,6 @@ export default function MarcadosParaMaisTarde() {
   }, []);
   const movies_por_slide = 3;
 
-  useEffect(() => {
-    console.log(movies);
-  }, [movies]);
-
   if (movies.length === 0) {
     return <div style={{ marginBottom: -64 }} />;
   }

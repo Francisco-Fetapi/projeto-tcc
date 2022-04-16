@@ -16,6 +16,7 @@ import ModalAssistindo from "../Modals/ModalAssistindo";
 import Skeleton from "@material-ui/lab/Skeleton";
 import { Text, Link } from "~/styles";
 import { mostrarXCharOntText } from "~/helpers";
+import usePost from "~/hooks/usePost";
 
 export const AddPostContext = createContext();
 
@@ -26,14 +27,18 @@ export default function FormAddPost({ publico }) {
   const [imgsPreview, setImgsPreview] = useState([]);
   const [modalAssistindo, setModalAssistindo] = useState(false);
   const [movie, setMovie] = useState({});
+  const [loading, setLoading] = useState(false);
+  const { salvarPost } = usePost();
   const link = {
     movie: "filmes",
     tv: "series",
   };
 
   const dadosAEnviar = {
+    id_movie: movie.id,
     publico,
-    movie,
+    dados_movie: movie,
+    media_type: movie.media_type,
     files: inputFile.current?.files,
   };
 
@@ -47,14 +52,29 @@ export default function FormAddPost({ publico }) {
       };
     }
   }
-  function postar(values) {
-    const data = { ...dadosAEnviar, ...values };
-    console.log(data);
+  function postar(values, actions) {
+    if (values.post) {
+      const dados = { ...dadosAEnviar, conteudo: values.post };
+      salvarPost({ setLoading, resetarAll, actions }, dados);
+    } else {
+      actions.setErrors({ post: "Campo obrigatorio" });
+    }
+  }
+  function resetarAll() {
+    setImgsPreview([]);
+    setMovie({});
   }
 
   const a_carregar = !usuario.id;
   return (
-    <Paper className="paper" elevation={!a_carregar ? 3 : 0}>
+    <Paper
+      className="paper"
+      elevation={!a_carregar ? 3 : 0}
+      style={{
+        opacity: loading ? ".8" : "1",
+        pointerEvents: loading ? "none" : "initial",
+      }}
+    >
       <AddPostContext.Provider
         value={{
           setMovie,
