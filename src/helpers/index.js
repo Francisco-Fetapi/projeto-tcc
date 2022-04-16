@@ -35,6 +35,7 @@ export function getDadosEssencias(movie) {
     poster_path: movie.poster_path,
     original_language: movie.original_language,
     first_air_date: movie.release_date || movie.first_air_date,
+    overview: movie.overview,
   };
   return JSON.stringify(outros_dados);
 }
@@ -42,4 +43,29 @@ export function getDadosEssencias(movie) {
 export function parsearMoviesInfo(movie) {
   const dados_movie = JSON.parse(movie.dados_movie);
   return { ...movie, ...dados_movie };
+}
+
+export function makeFavoritosFixedOnScroll() {
+  const favoritos = document.querySelector(".favoritos");
+  const parent_favoritos = favoritos.parentElement;
+
+  document.onscroll = function () {
+    const favoritos_visivel =
+      window.pageYOffset >= parent_favoritos.offsetTop - 80;
+
+    if (favoritos_visivel) {
+      favoritos.classList.add("fixed");
+    } else {
+      favoritos.classList.remove("fixed");
+    }
+  };
+  window.onresize = function () {
+    if (window.innerWidth <= 915) {
+      favoritos.classList.remove("fixed");
+    }
+  };
+  return () => {
+    document.onscroll = null;
+    window.onresize = null;
+  };
 }

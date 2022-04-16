@@ -7,34 +7,22 @@ import Favorito from "./Favorito";
 import { useNavigate } from "react-router-dom";
 import { selectAppState } from "~/store/App.selectors";
 import { useSelector } from "react-redux";
+import { makeFavoritosFixedOnScroll } from "~/helpers";
 
 export default function Favoritos() {
   const navigate = useNavigate();
   const usuario = useSelector(selectAppState("usuario"));
-  useEffect(() => {
-    const favoritos = document.querySelector(".favoritos");
-    const parent_favoritos = favoritos.parentElement;
-
-    document.onscroll = function () {
-      const favoritos_visivel =
-        window.pageYOffset >= parent_favoritos.offsetTop - 80;
-
-      if (favoritos_visivel) {
-        favoritos.classList.add("fixed");
-      } else {
-        favoritos.classList.remove("fixed");
-      }
-    };
-    window.onresize = function () {
-      if (window.innerWidth <= 915) {
-        favoritos.classList.remove("fixed");
-      }
-    };
-    return () => {
-      document.onscroll = null;
-      window.onresize = null;
-    };
-  }, []);
+  const movies = [
+    {
+      name: "Homem-Aranha: Sem Volta a Casa",
+      poster_path: "./img/matrix.jpg",
+      favoritado_em: "2021-11-02",
+      media_type: "movie",
+      original_language: "EN",
+      overview: `Pela primeira vez na história cinematográfica do Homem-Aranha, a identidade do nosso herói amigo da vizinhança é revelada, colocando as suas responsabilidades de super-herói em conflito com a sua vida pessoal/normal e colocando em risco aqueles com quem se preocupa. Quando Peter pede ajuda ao Doutor Estranho para restaurar o seu segredo, o feitiço abre um buraco no seu mundo, libertando os vilões mais poderosos que já lutaram contra o Homem-Aranha em qualquer universo. Agora, Peter terá que superar o seu maior desafio até hoje, que não alterará apenas o seu próprio futuro para sempre, mas também o futuro do Multiverso.`,
+    },
+  ];
+  useEffect(makeFavoritosFixedOnScroll, []);
 
   return (
     <List mt={3} className="favoritos">
@@ -47,8 +35,8 @@ export default function Favoritos() {
         <Text variant="h6">FAVORITOS</Text>
       </Box>
       <Box>
-        {["matrix.jpg", "TWD.jpg", "lucifer.jpg"].map((item) => (
-          <Favorito key={item} imgMovie={item} />
+        {movies.map((item, key) => (
+          <Favorito key={key} movie={item} />
         ))}
       </Box>
       <Box mt={1} display="flex" justifyContent="center">
