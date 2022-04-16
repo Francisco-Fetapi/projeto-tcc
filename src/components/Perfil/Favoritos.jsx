@@ -19,7 +19,7 @@ export default function Favoritos() {
   const [loading, setLoading] = useState(true);
   const { getMoviesFavoritos, eliminarMovieDeMoviesFavoritos } = useMovie();
   useEffect(() => {
-    if (movies.length > 0) {
+    if (movies.length > 0 || (!loading && movies.length === 0)) {
       makeFavoritosFixedOnScroll();
     }
   }, [movies]);
