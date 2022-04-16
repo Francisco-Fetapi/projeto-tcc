@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import Box from "@material-ui/core/Box";
 import VerERemover from "./VerERemover";
 import { Text } from "~/styles";
 import { formatarData, mostrarXCharOntText } from "~/helpers";
 
-export default function Favorito({ movie }) {
+export default function Favorito({ movie, removerMovie }) {
+  const [removido, setRemovido] = useState(false);
   return (
-    <Box className="favorito-grid" mt={3.3}>
+    <Box
+      className="favorito-grid"
+      mt={0.3}
+      style={{
+        opacity: removido ? "0.5" : "1",
+        pointerEvents: removido ? "none" : "initial",
+      }}
+    >
       <Box className="img">
         <img src={movie.poster_path} alt={movie.name} />
       </Box>
@@ -26,8 +34,13 @@ export default function Favorito({ movie }) {
           </Text>
         </Box>
 
-        <Box width="100%" display="flex" justifyContent="flex-end">
-          <VerERemover />
+        <Box width="100%" mt={0.5} display="flex" justifyContent="flex-end">
+          <VerERemover
+            movie={movie}
+            remover={removerMovie}
+            setRemovido={setRemovido}
+            removido={removido}
+          />
         </Box>
       </Box>
     </Box>

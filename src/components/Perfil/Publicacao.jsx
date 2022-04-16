@@ -13,7 +13,7 @@ export default function Publicacao({ nomeUsuario, children }) {
       />
 
       <Box width="100%" display="flex" justifyContent="flex-end">
-        <VerERemover />
+        <VerERemover remover={null} setRemovido={() => null} removido={false} />
       </Box>
     </ListItem>
   );

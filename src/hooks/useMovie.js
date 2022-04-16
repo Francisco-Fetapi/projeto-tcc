@@ -18,6 +18,11 @@ export default function useMovie() {
       setInfo((info) => ({ ...info, ...res.data }));
       setLoading(false);
     },
+    async eliminarMovieDeMoviesFavoritos(movie, callback1, callback2) {
+      await API.toggleFavoritarMovie(movie.id, movie.media_type, movie);
+      callback1();
+      callback2();
+    },
     async toggleGuardarMovie({ setInfo, setLoading, movie }, id, media_type) {
       setLoading(true);
       let res = await API.toggleGuardarMovie(id, media_type, movie);
