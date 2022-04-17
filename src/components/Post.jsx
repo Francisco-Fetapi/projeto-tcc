@@ -21,7 +21,7 @@ import { Text, Link } from "../styles";
 import { FaClock, FaGlobe, FaUsers } from "react-icons/fa";
 
 import Skeleton from "@material-ui/lab/Skeleton";
-import { primeiroEUltimoNome } from "~/helpers";
+import { mostrarXCharOntText, primeiroEUltimoNome } from "~/helpers";
 
 export function SubHeader({ tempo, publico }) {
   return (
@@ -50,8 +50,6 @@ export default function Post({ children, post, posts }) {
     movie: "filmes",
     tv: "series",
   };
-
-  console.log(post?.id_post, post);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -102,7 +100,7 @@ export default function Post({ children, post, posts }) {
                         style={{ textDecoration: "none" }}
                         to={`${link[post.media_type]}/${post.id_movie}`}
                       >
-                        {post.name}
+                        {mostrarXCharOntText(post.name, 20)}
                       </Link>
                     </Text>
                   )}
@@ -199,7 +197,7 @@ export default function Post({ children, post, posts }) {
           {!a_carregar && <Divider />}
           {!a_carregar ? (
             <ButtonGroup size="small" fullWidth>
-              <Button startIcon={<ThumbUpIcon />}>Gostar</Button>
+              <Button startIcon={<ThumbUpIcon />}>Gosto</Button>
 
               <Button startIcon={<ModeCommentIcon />}>Comentar</Button>
 

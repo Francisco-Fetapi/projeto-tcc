@@ -214,13 +214,21 @@ const API = {
     const { data } = await api.post(`/post`, dados);
     return data;
   },
-  async getPosts(page) {
-    const { data } = await api.get(`/post`, {
-      params: {
-        page: Math.max(1, page),
+  async getPosts(page, target) {
+    const funcs = {
+      async meus() {},
+      async meusGuardados() {},
+      async todos() {
+        const { data } = await api.get(`/post`, {
+          params: {
+            page: Math.max(1, page),
+          },
+        });
+        return data;
       },
-    });
-    return data;
+    };
+    console.log(target);
+    return funcs[target]();
   },
 };
 

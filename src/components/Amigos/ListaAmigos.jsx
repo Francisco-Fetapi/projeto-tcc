@@ -116,12 +116,7 @@ export default function ListaAmigos() {
         )}
         {paginate.current_page < paginate.last_page && (
           <Box mt={2} display="flex" justifyContent="center">
-            <Button
-              startIcon={<CircularProgress size="small" />}
-              color="default"
-              variant="text"
-              onClick={carregarMais}
-            >
+            <Button color="default" variant="text" onClick={carregarMais}>
               Carregar mais
             </Button>
           </Box>

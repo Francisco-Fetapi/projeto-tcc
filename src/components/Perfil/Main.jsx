@@ -59,6 +59,7 @@ export default function Main() {
               </Box>
             )}
             <Box>
+              {/* <Posts target="meus"/> */}
               <Posts />
             </Box>
           </Box>

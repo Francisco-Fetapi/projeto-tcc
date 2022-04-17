@@ -5,22 +5,55 @@ import { selectAppState } from "~/store/App.selectors";
 
 export default function usePost() {
   const Dispatch = useDispatch();
-  const posts = useSelector(selectAppState("posts"));
+  const posts_1 = useSelector(selectAppState("posts"));
+  const posts_2 = useSelector(selectAppState("meus_posts"));
+  const posts_3 = useSelector(selectAppState("meus_guardados"));
+
+  const options1 = {
+    todos: "posts",
+    meus: "meus_posts",
+    meusGuardados: "meus_guardados",
+  };
+  const options2 = {
+    todos: posts_1,
+    meus: posts_2,
+    meusGuardados: posts_3,
+  };
   return {
-    async salvarPost({ setLoading, resetarAll, actions }, dados) {
+    async salvarPost(
+      { setLoading, resetarAll, actions },
+      dados,
+      target = "todos"
+    ) {
       setLoading(true);
       let res = await API.salvarPost(dados);
       Dispatch(
-        SET_STATE("posts", { ...posts, data: [...res.data, ...posts.data] })
+        SET_STATE(options1[target], {
+          ...options2[target],
+          data: [...res.data, ...options2[target].data],
+        })
       );
       resetarAll();
       actions.resetForm();
       setLoading(false);
     },
-    async getPosts(page) {
-      let res = await API.getPosts(page);
+    async getPosts({ setLoading }, page, target = "todos") {
+      console.log(target);
+      setLoading(true);
+      let res = await API.getPosts(page, target);
       console.log(res);
-      Dispatch(SET_STATE("posts", res));
+
+      if (page === 1) {
+        Dispatch(SET_STATE(options1[target], res));
+      } else {
+        Dispatch(
+          SET_STATE(options1[target], {
+            ...res,
+            data: [...options2[target].data, ...res.data],
+          })
+        );
+      }
+      setLoading(false);
     },
   };
 }

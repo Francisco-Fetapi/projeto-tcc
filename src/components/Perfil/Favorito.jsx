@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import Box from "@material-ui/core/Box";
 import VerERemover from "./VerERemover";
 import { Text } from "~/styles";
-import { formatarData, mostrarXCharOntText } from "~/helpers";
+import { mostrarXCharOntText } from "~/helpers";
 
 export default function Favorito({ movie, removerMovie }) {
   const [removido, setRemovido] = useState(false);
+
   return (
     <Box
       className="favorito-grid"

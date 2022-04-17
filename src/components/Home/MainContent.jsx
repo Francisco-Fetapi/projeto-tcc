@@ -6,7 +6,7 @@ export default function MainContent() {
   return (
     <div className="main-content">
       <AddPost />
-      <Posts />
+      <Posts target="todos" />
     </div>
   );
 }

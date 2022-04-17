@@ -27,7 +27,7 @@ export default function AddPost() {
   };
   useEffect(handleClose, [publico]);
   return (
-    <Box className="AddPost" mb={8}>
+    <Box className="AddPost" mb={4}>
       {!a_carregar && (
         <Box display="flex" alignItems="center">
           <Text variant="body1" color="textSecondary">
