@@ -30,7 +30,7 @@ export default function Favorito({ movie, removerMovie }) {
         </Box>
         <Box mt={0.5} style={{ zoom: "0.9" }}>
           <Text align="right" variant="subtitle2" color="textSecondary">
-            Favoritado em {formatarData(movie.created_at)}
+            Favoritado {movie.tempo}
           </Text>
         </Box>
 

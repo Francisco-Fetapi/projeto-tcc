@@ -41,17 +41,7 @@ export function SubHeader({ tempo, publico }) {
   );
 }
 
-export default function Post({
-  user,
-  reacoes,
-  comentarios,
-  tempo,
-  publico,
-  children,
-  img,
-  post,
-  posts,
-}) {
+export default function Post({ children, post, posts }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const a_carregar = !posts.data.length;
 

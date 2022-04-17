@@ -10,7 +10,9 @@ export default function usePost() {
     async salvarPost({ setLoading, resetarAll, actions }, dados) {
       setLoading(true);
       let res = await API.salvarPost(dados);
-      Dispatch(SET_STATE("posts", { ...res, data: [...posts.data, ...res] }));
+      Dispatch(
+        SET_STATE("posts", { ...posts, data: [...res.data, ...posts.data] })
+      );
       resetarAll();
       actions.resetForm();
       setLoading(false);

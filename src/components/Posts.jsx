@@ -1,11 +1,10 @@
 import React, { useEffect } from "react";
-import { IMG_USER_PADRAO } from "~/API";
 import Post from "./Post";
-import usePosts from "../hooks/usePosts";
 import useUsuario from "~/hooks/useUsuario";
 import usePost from "~/hooks/usePost";
 import { useSelector } from "react-redux";
 import { selectAppState } from "~/store/App.selectors";
+import Box from "@material-ui/core/Box";
 
 export default function Posts(props) {
   const { getPosts } = usePost();
@@ -26,9 +25,9 @@ export default function Posts(props) {
             .split("\n")
             .map((linha) => {
               return (
-                <span>
+                <>
                   {linha} <br />
-                </span>
+                </>
               );
             })}
         </Post>
