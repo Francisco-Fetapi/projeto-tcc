@@ -24,6 +24,7 @@ export default function Posts({ target, ...props }) {
       getPosts({ setLoading }, 1, target);
     }
   }, []);
+  console.log(posts);
 
   function carregarMais() {
     getPosts({ setLoading }, posts.current_page + 1, target);

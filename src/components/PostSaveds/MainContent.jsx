@@ -14,7 +14,7 @@ export default function MainContent() {
         Gerencie as publicações que guardaste pra ver mais tarde.
       </Text>
       <Box>
-        <Posts />
+        <Posts target="meusGuardados" />
       </Box>
     </PostSaveds.Main>
   );
