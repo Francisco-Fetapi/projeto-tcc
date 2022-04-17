@@ -10,7 +10,12 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 
 export default function Posts({ target, ...props }) {
   const { getPosts } = usePost();
-  const posts = useSelector(selectAppState("posts"));
+  const options1 = {
+    todos: "posts",
+    meus: "meus_posts",
+    meusGuardados: "meus_guardados",
+  };
+  const posts = useSelector(selectAppState(options1[target]));
   const { logado } = useUsuario();
   const [loading, setLoading] = useState(true);
 

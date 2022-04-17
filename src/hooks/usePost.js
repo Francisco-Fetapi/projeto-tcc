@@ -38,10 +38,8 @@ export default function usePost() {
       setLoading(false);
     },
     async getPosts({ setLoading }, page, target = "todos") {
-      console.log(target);
       setLoading(true);
       let res = await API.getPosts(page, target);
-      console.log(res);
 
       if (page === 1) {
         Dispatch(SET_STATE(options1[target], res));

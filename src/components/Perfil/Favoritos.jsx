@@ -15,14 +15,21 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 export default function Favoritos() {
   const navigate = useNavigate();
   const usuario = useSelector(selectAppState("usuario"));
+  const meus_posts = useSelector(selectAppState("meus_posts"));
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const { getMoviesFavoritos, eliminarMovieDeMoviesFavoritos } = useMovie();
   useEffect(() => {
-    if (movies.length > 0 || (!loading && movies.length === 0)) {
+    if (
+      (movies.length > 0 && meus_posts.data.length > 0) ||
+      (!loading && movies.length === 0 && meus_posts.data.length > 0)
+    ) {
       makeFavoritosFixedOnScroll();
+    } else {
+      document.onscroll = null;
+      window.onresize = null;
     }
-  }, [movies]);
+  }, [movies, meus_posts.data]);
   useEffect(buscarMovies, []);
 
   function buscarMovies() {

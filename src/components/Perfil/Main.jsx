@@ -59,8 +59,7 @@ export default function Main() {
               </Box>
             )}
             <Box>
-              {/* <Posts target="meus"/> */}
-              <Posts />
+              <Posts target="meus" />
             </Box>
           </Box>
         </Box>
@@ -70,7 +69,7 @@ export default function Main() {
           <AddPost />
         </Box>
         <Box>
-          <Posts />
+          <Posts target="meus" />
         </Box>
       </Box>
     </Perfil.Container>

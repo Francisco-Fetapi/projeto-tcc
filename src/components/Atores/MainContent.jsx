@@ -64,7 +64,6 @@ export default function MainContent() {
     );
   }
   function procurar(values) {
-    console.log(values);
     setSearch(values.search);
   }
 

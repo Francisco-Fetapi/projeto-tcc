@@ -45,7 +45,6 @@ export default function FormAddPost({ publico }) {
   function escolherFoto() {
     const file = inputFile.current;
     if (file) {
-      console.log(file);
       file.click();
       file.onchange = (e) => {
         setImgsPreview(e.target.files);
@@ -53,9 +52,13 @@ export default function FormAddPost({ publico }) {
     }
   }
   function postar(values, actions) {
+    let target = "todos";
+    if (window.location.href.includes("perfil")) {
+      target = "meus";
+    }
     if (values.post) {
       const dados = { ...dadosAEnviar, conteudo: values.post };
-      salvarPost({ setLoading, resetarAll, actions }, dados);
+      salvarPost({ setLoading, resetarAll, actions }, dados, target);
     } else {
       actions.setErrors({ post: "Campo obrigatorio" });
     }

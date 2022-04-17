@@ -216,8 +216,23 @@ const API = {
   },
   async getPosts(page, target) {
     const funcs = {
-      async meus() {},
-      async meusGuardados() {},
+      async meus() {
+        //
+        const { data } = await api.get(`/usuario/meus-posts`, {
+          params: {
+            page: Math.max(1, page),
+          },
+        });
+        return data;
+      },
+      async meusGuardados() {
+        const { data } = await api.get(`/posts_guardados`, {
+          params: {
+            page: Math.max(1, page),
+          },
+        });
+        return data;
+      },
       async todos() {
         const { data } = await api.get(`/post`, {
           params: {
@@ -227,7 +242,6 @@ const API = {
         return data;
       },
     };
-    console.log(target);
     return funcs[target]();
   },
 };
