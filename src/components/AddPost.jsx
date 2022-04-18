@@ -25,7 +25,10 @@ export default function AddPost() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  useEffect(handleClose, [publico]);
+  function togglePublico(value) {
+    setPublico(value);
+    handleClose();
+  }
   return (
     <Box className="AddPost" mb={4}>
       {!a_carregar && (
@@ -60,8 +63,8 @@ export default function AddPost() {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem onClick={() => setPublico(false)}>Amigos</MenuItem>
-        <MenuItem onClick={() => setPublico(true)}>Público</MenuItem>
+        <MenuItem onClick={() => togglePublico(false)}>Amigos</MenuItem>
+        <MenuItem onClick={() => togglePublico(true)}>Público</MenuItem>
       </Menu>
     </Box>
   );
