@@ -1,0 +1,331 @@
+[33mcommit 5b96a3a6360cb373d2df7f704d7ebccdf6144ae4[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: = <=>
+Date:   Mon Apr 18 19:10:49 2022 +0100
+
+    ajustes e mais ajustes
+
+[33mcommit 1ab4f93795b820d6de883fcc12293e5450fd0f4d[m
+Author: = <=>
+Date:   Mon Apr 18 09:40:39 2022 +0100
+
+    Ajustando a lista de guardados em perfil
+
+[33mcommit 1863de8f7d195ea5ab912d24ea6fb6eb35404036[m
+Author: = <=>
+Date:   Sun Apr 17 08:43:54 2022 +0100
+
+    ajustes e mais ajustes
+
+[33mcommit 5746eed4eef420f6dd936bd9ed6f20216edd1837[m
+Author: = <=>
+Date:   Sun Apr 17 08:22:29 2022 +0100
+
+    Exibir os meus posts em perfil
+
+[33mcommit e923a569a08bfae927ae5ad1e94e3610aeb12c27[m
+Author: = <=>
+Date:   Sun Apr 17 06:33:59 2022 +0100
+
+    busca de posts generica
+
+[33mcommit 0b7f4b90e84a683732fb8f17ec9ff486498e2cca[m
+Author: = <=>
+Date:   Sun Apr 17 08:24:41 2022 +0100
+
+    modelando o componente post
+
+[33mcommit 5d861dcaa508200df6ab8ae7c197690012fa8c4d[m
+Author: = <=>
+Date:   Sun Apr 17 07:12:31 2022 +0100
+
+    bugs corrigidos em usePosts
+
+[33mcommit 3d4bedd9d049e3a5d88d9eb29b08b49edb02bbab[m
+Author: = <=>
+Date:   Sat Apr 16 18:42:32 2022 +0100
+
+    criacao e listagem de postagens implementados
+
+[33mcommit 33551ada12a5d78ab93e15dcf9da9be08d073d4f[m
+Author: = <=>
+Date:   Sat Apr 16 16:42:07 2022 +0100
+
+    salvar post adicionado
+
+[33mcommit 93218cbb933e725cf2c8d534bdf2db750fa52593[m
+Author: = <=>
+Date:   Sat Apr 16 15:42:56 2022 +0100
+
+    ajustes em Favoritos
+
+[33mcommit e69576e3a0199f880731b35527ab8c6e7e8406e7[m
+Author: = <=>
+Date:   Sat Apr 16 14:53:24 2022 +0100
+
+    listagem de movies favoritados completa 2
+
+[33mcommit cece4ad8f26f899d0d5a7c21e8a271582e0bbfc2[m
+Author: = <=>
+Date:   Sat Apr 16 12:29:31 2022 +0100
+
+    listagem de movies favoritados completa
+
+[33mcommit d4e2119a300d93dc99b4f13a1fca304aa025d29a[m
+Author: = <=>
+Date:   Sat Apr 16 11:03:59 2022 +0100
+
+    Movies Guardados criado
+
+[33mcommit 3b9bead4519f01e55ffd6a7bafde5b23ed8d47de[m
+Author: = <=>
+Date:   Sat Apr 16 10:39:43 2022 +0100
+
+    ajustes e mais ajustes
+
+[33mcommit 75cafe9b41bbaa368b8f66fa7e97d3a06a46baa0[m
+Author: = <=>
+Date:   Sat Apr 16 10:17:05 2022 +0100
+
+    ver e remover um movie favoritado configurado
+
+[33mcommit fc441a72d288e456c26075dfdeaa9b7aeb0724fa[m
+Author: = <=>
+Date:   Sat Apr 16 09:08:35 2022 +0100
+
+    organizacao do perfil quase completo
+
+[33mcommit 841f5e1dd1af7aadceec8ddb0577cf5b043898a2[m
+Author: = <=>
+Date:   Sat Apr 16 07:49:58 2022 +0100
+
+    stringificar dados do movie  antes do request refatorado
+
+[33mcommit ef3d2f20345a42e643f66d96037286ad1b91dfd9[m
+Author: = <=>
+Date:   Sat Apr 16 07:27:38 2022 +0100
+
+    Modelando o componente Favoritos
+
+[33mcommit 4473754bd70b5183a316768aae19688b678733cd[m
+Author: = <=>
+Date:   Fri Apr 15 16:28:50 2022 +0100
+
+    ajustes e mais ajustes
+
+[33mcommit 79d95f192a460d3f3a2a8cf6edb4a3dc150d1bd1[m
+Author: = <=>
+Date:   Fri Apr 15 12:25:05 2022 +0100
+
+    Adicionado mais um campo ao favoritar/guardar um movie
+
+[33mcommit c8b73b9a254350329e0e3b3bbdc8e3cfd185a2a4[m
+Author: = <=>
+Date:   Fri Apr 15 11:53:44 2022 +0100
+
+    ajustes e mais ajustes
+
+[33mcommit 871a0b67196cf306684567e9bc7f7b20875cd238[m
+Author: = <=>
+Date:   Fri Apr 15 11:17:32 2022 +0100
+
+    Favoritar e guardar implementados com sucesso
+
+[33mcommit 15bbe0a004b9699db9205a0c5fc69009fee82121[m
+Author: = <=>
+Date:   Fri Apr 15 09:37:47 2022 +0100
+
+    bug corrigido ao favoritar/guardar um movie depois do search
+
+[33mcommit 4165f244313da7ca4ac64d43ebaf0e5af1df6cc7[m
+Author: = <=>
+Date:   Fri Apr 15 08:41:04 2022 +0100
+
+    Funcao guardar e favoritar integrados ao front-end
+
+[33mcommit a103efa805f5074bfbaf90330022eb87a9ec3d01[m
+Author: = <=>
+Date:   Thu Apr 14 17:28:09 2022 +0100
+
+    ajustes
+
+[33mcommit 292991bea14ba02990001b56feabe9558612e379[m
+Author: = <=>
+Date:   Thu Apr 14 17:27:02 2022 +0100
+
+    ajustes em MovieCard e integracao com o back-end
+
+[33mcommit 9647f5ae523ede953e8505b41cf493052cbcf6fd[m
+Author: = <=>
+Date:   Thu Apr 14 16:35:12 2022 +0100
+
+    Form addPost preparado
+
+[33mcommit 1e92407bcda80a126e53d43cbe03a1eb0d6ae0a6[m
+Author: = <=>
+Date:   Thu Apr 14 16:17:24 2022 +0100
+
+    Form addPost preparado
+
+[33mcommit 3144f7a104248e4d59961d575e61ecb7a2afa6c0[m
+Author: = <=>
+Date:   Thu Apr 14 15:42:04 2022 +0100
+
+    addPost escolher filme/serie associado
+
+[33mcommit 320d6f09f614e3e5c482d8c3c7705f4b8c699468[m
+Author: = <=>
+Date:   Thu Apr 14 13:28:36 2022 +0100
+
+    modal lista de filmes em AddPost criado
+
+[33mcommit f794203904bb5c34126969c7503179c61a83b18e[m
+Author: = <=>
+Date:   Thu Apr 14 13:26:46 2022 +0100
+
+    modal lista de filmes em AddPost criado
+
+[33mcommit 9db067f7b68829ce9c888ba0f62fb2cbe4cb58c2[m
+Author: = <=>
+Date:   Thu Apr 14 13:12:32 2022 +0100
+
+    adicionar imagens em AddPost
+
+[33mcommit e343297dcd7f86de2ed99094173fbd9abce1681d[m
+Author: = <=>
+Date:   Thu Apr 14 07:48:36 2022 +0100
+
+    minha-linha-do-tempo adicionado em menu tablet
+
+[33mcommit ed7295bfba10a24eecc2ab4d90e218a53e59e3c8[m
+Author: = <=>
+Date:   Thu Apr 14 07:44:03 2022 +0100
+
+    atores eliminados em menu tablet
+
+[33mcommit 0835371f606d9e46b8194c854d067b0a1d5bbaa1[m
+Author: = <=>
+Date:   Thu Apr 14 07:41:40 2022 +0100
+
+    More items adicionados em Menu tablet
+
+[33mcommit 27483a58cca6ac3ee9d110d4742dda3ada0b9330[m
+Author: = <=>
+Date:   Thu Apr 14 06:51:27 2022 +0100
+
+    resetadas alterações em menu tablet
+
+[33mcommit 7e9d0f903471477b6b5f44267a993fc191f61e98[m
+Author: = <=>
+Date:   Thu Apr 14 06:49:00 2022 +0100
+
+    mais itens em menu-tablet
+
+[33mcommit 10aed7df665afac6c8ff36025317f9dfd2ba1fe1[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: = <=>
+Date:   Wed Apr 6 19:06:54 2022 +0100
+
+    procura generica melhorada
+
+[33mcommit 16dc30d565de450f61cc5b82c325519d5958d54e[m
+Author: = <=>
+Date:   Wed Apr 6 18:32:06 2022 +0100
+
+    procura generica implementada
+
+[33mcommit 1063e889d3e1e5f693eb26ce9a6561cba1197318[m
+Author: = <=>
+Date:   Wed Apr 6 18:00:52 2022 +0100
+
+    pagina results de busca generica criada
+
+[33mcommit c16126edf39fe0ba7a46708be59646e26c5b090b[m
+Author: = <=>
+Date:   Wed Apr 6 17:58:26 2022 +0100
+
+    pagina results de busca generica criada
+
+[33mcommit a776e4c8dc07706ff99fce9a71d3e02846c88136[m
+Author: = <=>
+Date:   Wed Apr 6 17:16:12 2022 +0100
+
+    ajustes e mais ajustes
+
+[33mcommit 24314d064f1e725e5e20d6824e0edce38a4dd583[m
+Author: = <=>
+Date:   Wed Apr 6 15:45:56 2022 +0100
+
+    Pagina ator perfil criada
+
+[33mcommit b4c0cf6d204cfd2d8b82eeff4163fca53a287fa9[m
+Author: = <=>
+Date:   Wed Apr 6 14:43:08 2022 +0100
+
+    Ajustes em Perfil do ator
+
+[33mcommit 271be0d323208bc201406913bd56134991f07fc2[m
+Author: = <=>
+Date:   Wed Apr 6 12:24:55 2022 +0100
+
+    mostrar info do perfil
+
+[33mcommit 9a410645ae22a180fb5ed1b80435c4283c71c6b4[m
+Author: = <=>
+Date:   Wed Apr 6 09:43:10 2022 +0100
+
+    Loading em perfil do ator
+
+[33mcommit 1334912298e13db22c7f03164d7c5f1a8eb55807[m
+Author: = <=>
+Date:   Wed Apr 6 09:17:56 2022 +0100
+
+    Modal ator perfil criado
+
+[33mcommit 5d898400c7976b17de7d8280957fe10a5b77ea89[m
+Author: = <=>
+Date:   Wed Apr 6 08:26:22 2022 +0100
+
+    Construindo pagina Ator/id
+
+[33mcommit 6bdb10e06135d3120bc07a4127a8fe1ef0790969[m
+Author: = <=>
+Date:   Wed Apr 6 07:52:55 2022 +0100
+
+    gitignore modificado
+
+[33mcommit 9f60ea09c85abfaca5f8aed56f0f73c95ee42d36[m
+Author: = <=>
+Date:   Mon Mar 28 18:22:44 2022 +0100
+
+    ajustes e mais ajustes
+
+[33mcommit 3f0456bfe1ed746cc7c489f95b829669aa845e44[m
+Author: = <=>
+Date:   Mon Mar 28 14:49:20 2022 +0100
+
+    Search em Atores
+
+[33mcommit a26ad1b386cfcd8d376c94b6029eec907b5dbfd7[m
+Author: = <=>
+Date:   Mon Mar 28 12:36:38 2022 +0100
+
+    Switch event adicionado
+
+[33mcommit 7118c9aca1a7242cedccd3252714f52b80b280dd[m
+Author: = <=>
+Date:   Fri Mar 18 09:49:04 2022 +0000
+
+    Ajustes e mais ajustes e use TMDB api
+
+[33mcommit 475ca1d4d79eb627567e4a843cc8d07a8bd02767[m
+Author: = <=>
+Date:   Fri Mar 18 09:41:48 2022 +0000
+
+    Bugs corrigidos no mock
+
+[33mcommit b21d1e8c8f2053ec26518456c86cb1da94abe051[m
+Author: = <=>
+Date:   Fri Mar 18 09:32:57 2022 +0000
+
+    Search api tmdb bug resolvido
+
+[33mcommit 

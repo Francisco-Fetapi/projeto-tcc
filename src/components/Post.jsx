@@ -70,7 +70,7 @@ export default function Post({ children, post, posts }) {
               !a_carregar ? (
                 <img
                   className="foto-user"
-                  src={post?.usuario.foto_perfil}
+                  src={post?.usuario?.foto_perfil}
                   alt="foto do usuario"
                 />
               ) : (
