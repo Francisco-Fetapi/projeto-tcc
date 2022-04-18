@@ -66,6 +66,7 @@ export const Perfil = {
       .favorito-grid {
         display: grid;
         grid-template-columns: auto 1fr;
+        margin-bottom: 20px;
         img {
           width: 100%;
           height: 100%;
@@ -96,6 +97,9 @@ export const Perfil = {
       overflow-y: auto;
       padding-top: 90px;
       padding-right: 30px;
+      /* @media (max-width: 700px) {
+        max-width: 330px;
+      } */
     }
     .movies {
       width: 100%;

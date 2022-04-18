@@ -23,7 +23,8 @@ import { FaClock, FaGlobe, FaUsers } from "react-icons/fa";
 import Skeleton from "@material-ui/lab/Skeleton";
 import { mostrarXCharOntText, primeiroEUltimoNome } from "~/helpers";
 
-export function SubHeader({ tempo, publico }) {
+export function SubHeader({ post }) {
+  const { tempo, publico } = post;
   return (
     <Box display="flex" alignItems="center" style={{ zoom: 0.85 }}>
       <Box display="flex" alignItems="center">
@@ -33,9 +34,9 @@ export function SubHeader({ tempo, publico }) {
         </Text>
       </Box>
       <Box ml={3} display="flex" alignItems="center">
-        {publico === "amigos" ? <FaUsers /> : <FaGlobe />}
+        {publico ? <FaGlobe /> : <FaUsers />}
         <Text variant="subtitle2" style={{ paddingLeft: 5 }}>
-          {publico}
+          {publico ? "público" : "amigos"}
         </Text>
       </Box>
     </Box>
@@ -111,10 +112,7 @@ export default function Post({ children, post, posts }) {
             }
             subheader={
               !a_carregar ? (
-                <SubHeader
-                  tempo={post.tempo}
-                  publico={post.publico ? "publico" : "amigos"}
-                />
+                <SubHeader post={post} />
               ) : (
                 <Skeleton variant="text" width="20%" />
               )

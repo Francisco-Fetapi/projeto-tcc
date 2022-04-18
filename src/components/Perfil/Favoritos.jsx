@@ -51,7 +51,7 @@ export default function Favoritos() {
         <Text variant="h6">FAVORITOS</Text>
       </Box>
       <Box>
-        {movies.map((movie, key) => (
+        {movies.map((movie) => (
           <Favorito key={movie.id} movie={movie} removerMovie={removerMovie} />
         ))}
       </Box>
