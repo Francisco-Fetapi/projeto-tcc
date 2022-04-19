@@ -14,7 +14,8 @@ export default function ListaDiscussoes() {
       img: IMG_USER_PADRAO,
     },
     post: {
-      data: "há 2 meses ",
+      tempo: "há 2 meses ",
+      publico: true,
       content:
         "This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of frozen peas along with the mussels, if you like...",
     },

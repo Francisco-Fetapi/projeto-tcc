@@ -43,7 +43,7 @@ export default function CardDiscussao({ usuario, post }) {
             </Avatar>
           }
           title={usuario.nome}
-          subheader={<SubHeader tempo="Ha 3 meses" publico="publico" />}
+          subheader={<SubHeader post={post} />}
         />
       </CardActionArea>
       <CardActionArea>
