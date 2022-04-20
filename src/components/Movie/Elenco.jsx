@@ -27,28 +27,13 @@ export default function Elenco({ title, elenco }) {
   }
   return (
     <Movie.Elenco>
-      <Box
-        display="flex"
-        // justifyContent="space-between"
-        alignItems="center"
-        // pr={7}
-      >
+      <Box display="flex" alignItems="center">
         <Text
           variant="h6"
           style={{ fontWeight: "bolder", textTransform: "uppercase" }}
         >
           {title}
         </Text>
-        {/* <Box ml={1} style={{ zoom: 0.7 }} position="relative" bottom={-12}>
-          <Button
-            variant="outlined"
-            size="small"
-            color="default"
-            disableElevation
-          >
-            Ver mais
-          </Button>
-        </Box> */}
       </Box>
       {loadingElenco && <Loading />}
       {!loadingElenco && (
