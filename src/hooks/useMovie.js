@@ -61,8 +61,10 @@ export default function useMovie() {
       setLoading(true);
       let id = undefined;
       let esta_no_perfil_alheio = window.location.href.includes("usuario");
-      if (esta_no_perfil_alheio) {
-        id = params.id;
+      let esta_em_movies_favoritos =
+        window.location.href.includes("movies-favoritos");
+      if (esta_no_perfil_alheio || esta_em_movies_favoritos) {
+        id = params.id || params.id_usuario;
       }
       let res = await API.getMoviesFavoritos(id_movies, paginar, page, id);
       if (page > 1) {
@@ -70,11 +72,12 @@ export default function useMovie() {
           return { ...res, data: [...prev.data, ...res.data] };
         });
       } else {
-        if (esta_no_perfil_alheio) {
-          setMovies(res.data);
-        } else {
-          setMovies(res);
-        }
+        // if (esta_no_perfil_alheio) {
+        //   setMovies(res.data);
+        // } else {
+
+        // }
+        setMovies(res);
       }
       setLoading(false);
     },

@@ -14,6 +14,7 @@ export default function VerERemover({
   removido,
 }) {
   const navigate = useNavigate();
+  const perfil_alheio = window.location.href.includes("usuario");
 
   let url_final = null;
   if (movie) {
@@ -49,13 +50,15 @@ export default function VerERemover({
       <Button onClick={ver} className="ver" startIcon={<Eye />}>
         Ver
       </Button>
-      <Button
-        className="remover"
-        onClick={() => setRemovido(true)}
-        startIcon={<Delete />}
-      >
-        Remover
-      </Button>
+      {!perfil_alheio && (
+        <Button
+          className="remover"
+          onClick={() => setRemovido(true)}
+          startIcon={<Delete />}
+        >
+          Remover
+        </Button>
+      )}
     </ButtonGroup>
   );
 }

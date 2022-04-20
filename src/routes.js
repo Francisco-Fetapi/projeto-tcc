@@ -38,7 +38,10 @@ export default function routes() {
       <Route path="/videos" element={<Videos />} />
       <Route path="/atores" element={<Atores />} />
       <Route path="/ator/:id_ator" element={<Atores perfil={true} />} />
-      <Route path="/publicacoes-guardadas" element={<PostSaveds />} />
+      <Route
+        path="/publicacoes-guardadas/:id_usuario"
+        element={<PostSaveds />}
+      />
       <Route
         path="/movies-favoritos/:id_usuario"
         element={<MoviesFavoritos />}

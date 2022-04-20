@@ -96,6 +96,7 @@ export default function InfoUsuario() {
   const { pathname } = useLocation();
   const [confirm, setConfirm] = useState(false);
   const { id } = useParams();
+  const estou_no_meu_perfil = window.location.href.includes("perfil");
   useEffect(() => {
     if (Perfil_Context.alheio) {
       setUsuario(Perfil_Context.usuario);
@@ -494,12 +495,18 @@ export default function InfoUsuario() {
           >
             Favoritos
           </LinkPerfil>
-          <LinkPerfil
-            to={id ? `/publicacoes-guardadas/${id}` : "/publicacoes-guardadas"}
-            icon={<FaSave />}
-          >
-            Publicações guardadas
-          </LinkPerfil>
+          {(!id || estou_no_meu_perfil) && (
+            <LinkPerfil
+              to={
+                id
+                  ? `/publicacoes-guardadas/${id}`
+                  : `/publicacoes-guardadas/${usuario.id}`
+              }
+              icon={<FaSave />}
+            >
+              Publicações guardadas
+            </LinkPerfil>
+          )}
         </Box>
       )}
       <Divider />

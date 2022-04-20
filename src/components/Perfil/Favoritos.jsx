@@ -16,24 +16,31 @@ export default function Favoritos() {
   const navigate = useNavigate();
   const usuario = useSelector(selectAppState("usuario"));
   const meus_posts = useSelector(selectAppState("meus_posts"));
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState({
+    current_page: 1,
+    last_page: 1,
+    per_page: 8,
+    next_page_url: null,
+    total: 0,
+    data: [],
+  });
   const [loading, setLoading] = useState(true);
   const { getMoviesFavoritos, eliminarMovieDeMoviesFavoritos } = useMovie();
   useEffect(() => {
     if (
-      (movies.length > 0 && meus_posts.data.length > 0) ||
-      (!loading && movies.length === 0 && meus_posts.data.length > 0)
+      (movies.data.length > 0 && meus_posts.data.length > 0) ||
+      (!loading && movies.data.length === 0 && meus_posts.data.length > 0)
     ) {
       makeFavoritosFixedOnScroll();
     } else {
       document.onscroll = null;
       window.onresize = null;
     }
-  }, [movies, meus_posts.data]);
+  }, [movies.data, meus_posts.data]);
   useEffect(buscarMovies, [window.location.href]);
 
   function buscarMovies() {
-    getMoviesFavoritos({ setLoading, setMovies });
+    getMoviesFavoritos({ setLoading, setMovies }, null, true);
   }
 
   function removerMovie(movie, callback) {
@@ -51,11 +58,11 @@ export default function Favoritos() {
         <Text variant="h6">FAVORITOS</Text>
       </Box>
       <Box>
-        {movies.map((movie) => (
+        {movies.data.map((movie) => (
           <Favorito key={movie.id} movie={movie} removerMovie={removerMovie} />
         ))}
       </Box>
-      {movies.length === 0 && (
+      {movies.data.length === 0 && (
         <Box mt="30vh" display="flex" justifyContent="center">
           {loading ? (
             <CircularProgress />
@@ -67,7 +74,7 @@ export default function Favoritos() {
           )}
         </Box>
       )}
-      {movies.length >= 6 && (
+      {movies.data.length >= 6 && (
         <Box mt={1} display="flex" justifyContent="center">
           <Button
             color="primary"

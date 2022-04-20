@@ -42,9 +42,7 @@ export default function MainContent() {
           </Box>
         )}
         {movies.data.length > 0 && !loading && (
-          <MoviesList
-            movies={movies.data.map((movie) => ({ favoritei: true, ...movie }))}
-          />
+          <MoviesList movies={movies.data} />
         )}
         {movies.current_page < movies.last_page && !loading2 && !loading && (
           <Box my={2} display="flex" justifyContent="center">

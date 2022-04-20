@@ -233,6 +233,7 @@ const API = {
         const { data } = await api.get(`/posts_guardados`, {
           params: {
             page: Math.max(1, page),
+            id_usuario,
           },
         });
         return data;

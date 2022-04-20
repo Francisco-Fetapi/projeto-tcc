@@ -8,6 +8,7 @@ import useUsuario from "../hooks/useUsuario";
 
 export default function PostSavedsPage() {
   const { seNaoLogadoIrParaLogin } = useUsuario();
+
   useEffect(seNaoLogadoIrParaLogin, []);
   return (
     <PostSaveds.Container>

@@ -22,7 +22,7 @@ export default function PublicacoesGuardadas({ id_usuario }) {
     if (!alheio) {
       getPosts({ setLoading, id_usuario }, 1, "meusGuardados");
     }
-  }, []);
+  }, [window.location.href]);
   const children1 = (
     <>
       <Box
