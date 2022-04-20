@@ -57,7 +57,7 @@ export default function Elenco({ title, elenco }) {
             {elenco.slice(paginate.start, paginate.ends).map((person, key) => (
               <CardAtor
                 nome1={person.name}
-                nome2={person.character || person.department}
+                nome2={person.character || person.known_for_department}
                 img={person.profile_path}
                 id_ator={person.id}
                 key={key}

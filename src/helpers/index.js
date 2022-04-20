@@ -96,3 +96,19 @@ export function makeFavoritosFixedOnScroll() {
     window.onresize = null;
   };
 }
+
+export function departamento(known_for_department) {
+  const departamentos = {
+    Acting: "Ator/Atriz",
+    Production: "Produtor",
+    Writing: "Escritor",
+    Directing: "Direção",
+    Sound: "Som",
+    Art: "Arte",
+    Editing: "Edição",
+  };
+  if (known_for_department in departamentos) {
+    return departamentos[known_for_department];
+  }
+  return known_for_department;
+}

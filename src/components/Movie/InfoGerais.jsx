@@ -13,6 +13,7 @@ import IconButton from "@material-ui/core/IconButton";
 import { MovieContext } from "./MainContent";
 import { useLocation } from "react-router-dom";
 import useMovie from "~/hooks/useMovie";
+import { departamento } from "~/helpers";
 
 export default function InfoGerais() {
   const { movie, elenco } = useContext(MovieContext);
@@ -43,13 +44,13 @@ export default function InfoGerais() {
   const [elencoP, setElencoP] = useState([]);
   useEffect(() => {
     const escritor = elenco.crew.find(
-      (person) => person.known_for_department === "Writing"
+      (person) => person.known_for_department === departamento("Writing")
     );
     const produtor = elenco.crew.find(
-      (person) => person.known_for_department === "Production"
+      (person) => person.known_for_department === departamento("Production")
     );
     const diretor = elenco.crew.find(
-      (person) => person.known_for_department === "Directing"
+      (person) => person.known_for_department === departamento("Directing")
     );
     if (escritor && produtor && diretor) {
       setElencoP([escritor, produtor, diretor]);

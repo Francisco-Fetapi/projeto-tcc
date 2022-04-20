@@ -1,5 +1,6 @@
 import axios from "axios";
 import movies from "~/mock/series.json";
+import { departamento } from "~/helpers";
 import {
   setFavoritosEGuardadosOnMovies,
   setFavoritosEGuardadosOnMovie,
@@ -19,6 +20,7 @@ const api = axios.create({
     api_key: null,
   },
 });
+const URL_NO_PHOTO = "/img/no-photo.png";
 const images_uri = "http://image.tmdb.org/t/p/";
 function rand(min, max) {
   return Math.floor(Math.random() * max + 1) - min;
@@ -31,10 +33,19 @@ function path_local(movie) {
   movie.profile_path = path_local_2(movie).profile_path;
   return movie;
 }
+function parseDepartamento(person) {
+  person.known_for_department = departamento(person.known_for_department);
+  return person;
+}
 function path_local_2(person) {
   let indice_rand = Math.max(1, rand(2, 8));
   let url = "ator" + indice_rand + ".jpg";
-  person.profile_path = `/img/${url}`;
+  if (person.profile_path) {
+    person.profile_path = `/img/${url}`;
+    parseDepartamento(person);
+  } else {
+    person.profile_path = URL_NO_PHOTO;
+  }
   return person;
 }
 function path_local_3(image) {
@@ -47,16 +58,17 @@ function path_local_3(image) {
 function path_tmdb(movie) {
   movie.backdrop_path = images_uri + "original" + movie.backdrop_path;
   movie.poster_path = images_uri + "w300" + movie.poster_path;
-  movie.profile_path = images_uri + "w300" + movie.profile_path;
+  // movie.profile_path = images_uri + "w300" + movie.profile_path;
+  movie.profile.path = path_tmdb_2(movie).profile_path;
   return movie;
 }
 function path_tmdb_2(person) {
   if (person.profile_path) {
     person.profile_path = images_uri + "w300" + person.profile_path;
   } else {
-    person.profile_path = "/img/no-photo.png";
+    person.profile_path = URL_NO_PHOTO;
   }
-
+  parseDepartamento(person);
   return person;
 }
 function path_tmdb_3(image) {
@@ -88,14 +100,18 @@ api.interceptors.response.use(
       response.data.results = new_data;
     } else if (response.data.cast) {
       let new_data = {};
-      new_data.cast = response.data.cast.filter((person) => {
-        return person.known_for_department === "Acting";
-      });
-      new_data.crew = response.data.crew.filter((person) => {
-        return ["Production", "Writing", "Directing"].includes(
-          person.known_for_department
-        );
-      });
+      new_data.cast = response.data.cast
+        .filter((person) => {
+          return person.known_for_department === "Acting";
+        })
+        .map((person) => parseDepartamento(person));
+      new_data.crew = response.data.crew
+        .filter((person) => {
+          return ["Production", "Writing", "Directing"].includes(
+            person.known_for_department
+          );
+        })
+        .map((person) => parseDepartamento(person));
 
       new_data.cast = new_data.cast.map((movie) => {
         if (on_internet) {
