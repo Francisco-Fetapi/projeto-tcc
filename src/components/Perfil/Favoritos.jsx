@@ -30,7 +30,7 @@ export default function Favoritos() {
       window.onresize = null;
     }
   }, [movies, meus_posts.data]);
-  useEffect(buscarMovies, []);
+  useEffect(buscarMovies, [window.location.href]);
 
   function buscarMovies() {
     getMoviesFavoritos({ setLoading, setMovies });
@@ -61,8 +61,8 @@ export default function Favoritos() {
             <CircularProgress />
           ) : (
             <Text color="textSecondary" align="center" variant="subtitle2">
-              Sem favoritos. <br /> Veja os Filmes e séries que você favoritou
-              aqui.
+              Sem favoritos. <br /> Veja os Filmes e séries marcados como
+              favoritos aqui.
             </Text>
           )}
         </Box>

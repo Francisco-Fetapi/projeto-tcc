@@ -176,21 +176,25 @@ const API = {
     });
     return data;
   },
-  async getMoviesFavoritos(id_movies, paginar, page) {
+  async getMoviesFavoritos(id_movies, paginar, page, id_usuario) {
+    console.log("na request favoritos", id_usuario);
     const { data } = await api.get(`/usuario/movies_favoritos`, {
       params: {
         id_movies,
-        paginar,
+        paginar: id_usuario ? true : paginar,
         page,
+        id_usuario,
       },
     });
 
     return data;
   },
-  async getMoviesGuardados(id_movies) {
+  async getMoviesGuardados(id_movies, id_usuario) {
+    console.log("na request guardados", id_usuario);
     const { data } = await api.get(`/usuario/movies_guardados`, {
       params: {
         id_movies,
+        id_usuario,
       },
     });
 
@@ -217,7 +221,6 @@ const API = {
   async getPosts(page, target, id_usuario) {
     const funcs = {
       async meus() {
-        console.log(id_usuario);
         const { data } = await api.get(`/usuario/meus-posts`, {
           params: {
             page: Math.max(1, page),

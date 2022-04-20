@@ -19,7 +19,9 @@ export default function PublicacoesGuardadas({ id_usuario }) {
   const { getPosts } = usePost();
 
   useEffect(() => {
-    getPosts({ setLoading, id_usuario }, 1, "meusGuardados");
+    if (!alheio) {
+      getPosts({ setLoading, id_usuario }, 1, "meusGuardados");
+    }
   }, []);
   const children1 = (
     <>

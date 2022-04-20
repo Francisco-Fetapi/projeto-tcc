@@ -71,7 +71,7 @@ export default function MainContent() {
   return (
     <Movie.Content>
       <MoviesHeader pagina="Movies Favoritos">
-        Veja os filmes e séries que você marcou como favoritos.
+        Veja os filmes e séries marcados como favoritos aqui.
       </MoviesHeader>
       <Corpo />
     </Movie.Content>

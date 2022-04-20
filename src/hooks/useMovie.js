@@ -2,9 +2,11 @@ import API from "~/API";
 import { normalizarMediaType } from "~/helpers";
 import { useDispatch } from "react-redux";
 import { SET_STATE } from "~/store/App.actions";
+import { useParams } from "react-router-dom";
 
 export default function useMovie() {
   const Dispatch = useDispatch();
+  const params = useParams();
   return {
     async getMovieInfo({ setInfo, setLoading }, id, media_type) {
       setLoading(true);
@@ -52,13 +54,22 @@ export default function useMovie() {
       page
     ) {
       setLoading(true);
-      let res = await API.getMoviesFavoritos(id_movies, paginar, page);
+      let id = undefined;
+      let esta_no_perfil_alheio = window.location.href.includes("usuario");
+      if (esta_no_perfil_alheio) {
+        id = params.id;
+      }
+      let res = await API.getMoviesFavoritos(id_movies, paginar, page, id);
       if (page > 1) {
         setMovies((prev) => {
           return { ...res, data: [...prev.data, ...res.data] };
         });
       } else {
-        setMovies(res);
+        if (esta_no_perfil_alheio) {
+          setMovies(res.data);
+        } else {
+          setMovies(res);
+        }
       }
       setLoading(false);
     },
