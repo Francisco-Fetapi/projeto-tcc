@@ -14,12 +14,12 @@ import { selectAppState } from "~/store/App.selectors";
 
 import Skeleton from "@material-ui/lab/Skeleton";
 import { PerfilContext } from "~/pages/Perfil";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 
-function PubsSavedsAndFavoritos({ className }) {
+function PubsSavedsAndFavoritos({ className, id_usuario }) {
   return (
     <Box className={`publicacoes-guardadas ${className}`}>
-      <PublicacoesGuardadas />
+      <PublicacoesGuardadas id_usuario={id_usuario} />
       <Box position="relative">
         <Favoritos />
       </Box>
@@ -31,7 +31,9 @@ export default function Main() {
   const Perfil_Context = useContext(PerfilContext);
   const usuario_logado = useSelector(selectAppState("usuario"));
   const { pathname } = useLocation();
+  const perfil = useParams();
   const [usuario, setUsuario] = useState({});
+
   useEffect(() => {
     if (Perfil_Context.alheio) {
       setUsuario(Perfil_Context.usuario);
@@ -49,7 +51,7 @@ export default function Main() {
       <InfoUsuario />
       <FotosEAmigos />
       <Box className="grid-2">
-        <PubsSavedsAndFavoritos />
+        <PubsSavedsAndFavoritos id_usuario={perfil.id} />
         <Box>
           <MarcadosParaMaisTarde />
           <Box mt={8} className="posts-desktop">
@@ -59,7 +61,8 @@ export default function Main() {
               </Box>
             )}
             <Box>
-              <Posts target="meus" />
+              {!perfil.id && <Posts target="meus" />}
+              {perfil.id && <Posts target="meus" id_usuario={perfil.id} />}
             </Box>
           </Box>
         </Box>
@@ -69,7 +72,8 @@ export default function Main() {
           <AddPost />
         </Box>
         <Box>
-          <Posts target="meus" />
+          {!perfil.id && <Posts target="meus" />}
+          {perfil.id && <Posts target="meus" id_usuario={perfil.id} />}
         </Box>
       </Box>
     </Perfil.Container>

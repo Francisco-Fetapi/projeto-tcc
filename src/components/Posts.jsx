@@ -8,7 +8,7 @@ import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-export default function Posts({ target, ...props }) {
+export default function Posts({ target, id_usuario, ...props }) {
   const { getPosts } = usePost();
   const options1 = {
     todos: "posts",
@@ -16,17 +16,18 @@ export default function Posts({ target, ...props }) {
     meusGuardados: "meus_guardados",
   };
   const posts = useSelector(selectAppState(options1[target]));
+  // const usuario = useSelector(selectAppState("usuario"));
   const { logado } = useUsuario();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (logado) {
-      getPosts({ setLoading }, 1, target);
+      getPosts({ setLoading, id_usuario }, 1, target);
     }
   }, []);
 
   function carregarMais() {
-    getPosts({ setLoading }, posts.current_page + 1, target);
+    getPosts({ setLoading, id_usuario }, posts.current_page + 1, target);
   }
 
   return (

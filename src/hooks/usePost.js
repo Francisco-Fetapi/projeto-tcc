@@ -40,9 +40,9 @@ export default function usePost() {
       actions.resetForm();
       setLoading(false);
     },
-    async getPosts({ setLoading }, page, target = "todos") {
+    async getPosts({ setLoading, id_usuario }, page, target = "todos") {
       setLoading(true);
-      let res = await API.getPosts(page, target);
+      let res = await API.getPosts(page, target, id_usuario);
 
       if (page === 1) {
         Dispatch(SET_STATE(options1[target], res));

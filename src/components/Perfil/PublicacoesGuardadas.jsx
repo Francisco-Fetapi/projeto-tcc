@@ -11,7 +11,7 @@ import { selectAppState } from "~/store/App.selectors";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import usePost from "~/hooks/usePost";
 
-export default function PublicacoesGuardadas() {
+export default function PublicacoesGuardadas({ id_usuario }) {
   const navigate = useNavigate();
   const { alheio } = useContext(PerfilContext);
   const [loading, setLoading] = useState(true);
@@ -19,7 +19,7 @@ export default function PublicacoesGuardadas() {
   const { getPosts } = usePost();
 
   useEffect(() => {
-    getPosts({ setLoading }, 1, "meusGuardados");
+    getPosts({ setLoading, id_usuario }, 1, "meusGuardados");
   }, []);
   const children1 = (
     <>

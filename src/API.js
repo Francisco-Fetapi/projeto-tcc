@@ -214,13 +214,14 @@ const API = {
     const { data } = await api.post(`/post`, dados);
     return data;
   },
-  async getPosts(page, target) {
+  async getPosts(page, target, id_usuario) {
     const funcs = {
       async meus() {
-        //
+        console.log(id_usuario);
         const { data } = await api.get(`/usuario/meus-posts`, {
           params: {
             page: Math.max(1, page),
+            id_usuario,
           },
         });
         return data;
