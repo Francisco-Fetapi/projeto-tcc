@@ -21,7 +21,7 @@ export default function MarcadosParaMaisTarde() {
   const { getMoviesGuardados } = useMovie();
   useEffect(() => {
     getMoviesGuardados({ setLoading, setMovies });
-  }, []);
+  }, [window.location.href]);
   const movies_por_slide = 3;
 
   if (movies.length === 0) {

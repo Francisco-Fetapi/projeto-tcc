@@ -41,8 +41,13 @@ export default function useMovie() {
       );
     },
     async getMoviesGuardados({ setLoading, setMovies }) {
+      let id = undefined;
+      let esta_no_perfil_alheio = window.location.href.includes("usuario");
+      if (esta_no_perfil_alheio) {
+        id = params.id;
+      }
       setLoading(true);
-      let res = await API.getMoviesGuardados();
+      let res = await API.getMoviesGuardados(null, id);
       setMovies(res);
 
       setLoading(false);
