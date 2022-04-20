@@ -6,8 +6,14 @@ import VerERemover from "./VerERemover";
 import { primeiroEUltimoNome, mostrarXCharOntText } from "~/helpers";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import { SubHeader } from "../Post";
+import { useSelector } from "react-redux";
+import { selectAppState } from "~/store/App.selectors";
+import usePost from "~/hooks/usePost";
 
 export default function Publicacao({ post }) {
+  const usuario = useSelector(selectAppState("usuario"));
+  const o_post_eh_meu = post?.id_usuario === usuario.id;
+  const { irParaPerfil } = usePost();
   const children = (
     <>
       <SubHeader post={post} />
@@ -18,16 +24,23 @@ export default function Publicacao({ post }) {
     <>
       <ListItem style={{ alignItems: "flex-start" }}>
         <Box display="flex">
-          <ListItemAvatar>
+          <ListItemAvatar onClick={() => irParaPerfil(o_post_eh_meu, post)}>
             <img
-              style={{ borderRadius: "50%" }}
+              style={{ borderRadius: "50%", cursor: "pointer" }}
               src={post.usuario.foto_perfil}
-              alt={post.usuario.foto_perfil}
+              alt={post.usuario.nome}
             />
           </ListItemAvatar>
           <ListItemText
             style={{ marginLeft: 10 }}
-            primary={primeiroEUltimoNome(post.usuario)}
+            primary={
+              <div
+                style={{ cursor: "pointer" }}
+                onClick={() => irParaPerfil(o_post_eh_meu, post)}
+              >
+                {primeiroEUltimoNome(post.usuario)}
+              </div>
+            }
             secondary={children}
           />
         </Box>

@@ -24,7 +24,7 @@ import Skeleton from "@material-ui/lab/Skeleton";
 import { mostrarXCharOntText, primeiroEUltimoNome } from "~/helpers";
 import { useSelector } from "react-redux";
 import { selectAppState } from "~/store/App.selectors";
-import { useNavigate } from "react-router-dom";
+import usePost from "~/hooks/usePost";
 
 export function SubHeader({ post }) {
   const { tempo, publico } = post;
@@ -59,7 +59,7 @@ export default function Post({ children, post, posts }) {
   const usuario = useSelector(selectAppState("usuario"));
   const a_carregar = !posts.data.length;
   const tem_movie_relacionado = post?.id_movie !== 0;
-  const navigate = useNavigate();
+  const { irParaPerfil } = usePost();
   const link = {
     movie: "filmes",
     tv: "series",
@@ -73,20 +73,13 @@ export default function Post({ children, post, posts }) {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  function irparaPerfil() {
-    if (o_post_eh_meu) {
-      navigate("/perfil");
-    } else {
-      navigate(`/usuario/${post.id_usuario}`);
-    }
-  }
 
   return (
     <Box my={2}>
       <Card className="post">
         <CardActionAreaCustom
           o_post_eh_meu={o_post_eh_meu}
-          onClick={irparaPerfil}
+          onClick={() => irParaPerfil(o_post_eh_meu, post)}
         >
           <CardHeader
             // style={{ marginRight: 8 }}
@@ -96,7 +89,11 @@ export default function Post({ children, post, posts }) {
                   className="foto-user"
                   src={post?.usuario?.foto_perfil}
                   alt="foto do usuario"
-                  onClick={o_post_eh_meu ? irparaPerfil : null}
+                  onClick={
+                    o_post_eh_meu
+                      ? () => irParaPerfil(o_post_eh_meu, post)
+                      : null
+                  }
                   style={o_post_eh_meu ? { cursor: "pointer" } : null}
                 />
               ) : (
@@ -118,7 +115,11 @@ export default function Post({ children, post, posts }) {
                 <Box display="flex" alignItems="center">
                   <Text
                     variant="subtitle2"
-                    onClick={o_post_eh_meu ? irparaPerfil : null}
+                    onClick={
+                      o_post_eh_meu
+                        ? () => irParaPerfil(o_post_eh_meu, post)
+                        : null
+                    }
                     style={o_post_eh_meu ? { cursor: "pointer" } : null}
                   >
                     {primeiroEUltimoNome(post.usuario)}

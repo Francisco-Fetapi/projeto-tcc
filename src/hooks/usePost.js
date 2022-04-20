@@ -2,12 +2,15 @@ import API from "~/API";
 import { useDispatch, useSelector } from "react-redux";
 import { SET_STATE } from "~/store/App.actions";
 import { selectAppState } from "~/store/App.selectors";
+import { useNavigate } from "react-router-dom";
 
 export default function usePost() {
   const Dispatch = useDispatch();
   const posts_1 = useSelector(selectAppState("posts"));
   const posts_2 = useSelector(selectAppState("meus_posts"));
   const posts_3 = useSelector(selectAppState("meus_guardados"));
+
+  const navigate = useNavigate();
 
   const options1 = {
     todos: "posts",
@@ -52,6 +55,13 @@ export default function usePost() {
         );
       }
       setLoading(false);
+    },
+    irParaPerfil(o_post_eh_meu, post) {
+      if (o_post_eh_meu) {
+        navigate("/perfil");
+      } else {
+        navigate(`/usuario/${post.id_usuario}`);
+      }
     },
   };
 }
