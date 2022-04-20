@@ -38,14 +38,24 @@ export default function InfoAtor() {
         </Text>
       </Box>
 
-      <Box component="ul" mt={2}>
+      <Box component="ul" mt={2} style={{ listStyle: "none" }}>
         {ator.homepage && (
           <ListItem
             title="Homepage"
             value={
-              <Link to={ator.homepage} target="__blank">
-                Página oficial
-              </Link>
+              // <Link to={`/${ator.homepage}`} target="__blank">
+              //   Página oficial
+              // </Link>
+              <a
+                style={{
+                  color: "#4baeb9",
+                  textDecoration: "none",
+                }}
+                href={ator.homepage}
+                target="__blank"
+              >
+                Pagina oficial
+              </a>
             }
           />
         )}
