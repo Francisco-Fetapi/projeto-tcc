@@ -7,6 +7,7 @@ import { selectAppState } from "~/store/App.selectors";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import { Text } from "~/styles";
 
 export default function Posts({ target, id_usuario, ...props }) {
   const { getPosts } = usePost();
@@ -15,6 +16,7 @@ export default function Posts({ target, id_usuario, ...props }) {
     meus: "meus_posts",
     meusGuardados: "meus_guardados",
   };
+
   const posts = useSelector(selectAppState(options1[target]));
   // const usuario = useSelector(selectAppState("usuario"));
   const { logado } = useUsuario();
@@ -63,6 +65,13 @@ export default function Posts({ target, id_usuario, ...props }) {
           <Button color="default" variant="text" onClick={carregarMais}>
             Carregar mais
           </Button>
+        </Box>
+      )}
+      {!loading && posts.total === 0 && (
+        <Box mt={4} display="flex" justifyContent="center">
+          <Text color="textSecondary" variant="subtitle2">
+            No momento não há nenhum post a ser demonstrado
+          </Text>
         </Box>
       )}
     </div>

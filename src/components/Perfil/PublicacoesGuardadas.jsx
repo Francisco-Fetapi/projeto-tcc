@@ -17,6 +17,7 @@ export default function PublicacoesGuardadas({ id_usuario }) {
   const [loading, setLoading] = useState(true);
   const posts_guardados = useSelector(selectAppState("meus_guardados"));
   const { getPosts } = usePost();
+  const usuario = useSelector(selectAppState("usuario"));
 
   useEffect(() => {
     if (!alheio) {
@@ -64,7 +65,7 @@ export default function PublicacoesGuardadas({ id_usuario }) {
           <Box mt={1} display="flex" justifyContent="center">
             <Button
               color="primary"
-              onClick={() => navigate("/publicacoes-guardadas")}
+              onClick={() => navigate("/publicacoes-guardadas/" + usuario.id)}
             >
               Visualizar todas
             </Button>
