@@ -323,4 +323,11 @@ export const GlobalStyles = createGlobalStyle`
         display: none !important;
       }
     }
+    .MuiPopover-root:not(#menu-header){
+        .MuiPaper-root{
+            .MuiList-root{
+                zoom:.8;
+            }
+        }
+    }
 `;
