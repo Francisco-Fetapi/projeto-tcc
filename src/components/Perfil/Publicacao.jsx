@@ -22,11 +22,16 @@ export default function Publicacao({ post }) {
   );
   return (
     <>
-      <ListItem style={{ alignItems: "flex-start" }}>
+      <ListItem style={{ alignItems: "flex-start" }} className="post-guardado">
         <Box display="flex">
           <ListItemAvatar onClick={() => irParaPerfil(o_post_eh_meu, post)}>
             <img
-              style={{ borderRadius: "50%", cursor: "pointer" }}
+              style={{
+                borderRadius: "50%",
+                cursor: "pointer",
+                width: 50,
+                height: 50,
+              }}
               src={post.usuario.foto_perfil}
               alt={post.usuario.nome}
             />
@@ -37,6 +42,7 @@ export default function Publicacao({ post }) {
               <div
                 style={{ cursor: "pointer" }}
                 onClick={() => irParaPerfil(o_post_eh_meu, post)}
+                className="post-subheader"
               >
                 {primeiroEUltimoNome(post.usuario)}
               </div>

@@ -12,8 +12,8 @@ export const Perfil = {
     .grid-2 {
       margin-top: 50px;
       display: grid;
-      grid-template-columns: auto 1fr;
-      column-gap: 30px;
+      grid-template-columns: minmax(200px, 300px) 1fr;
+      column-gap: 10px;
 
       @media (max-width: 915px) {
         & {
@@ -60,6 +60,13 @@ export const Perfil = {
       }
       .MuiListItem-root {
         flex-direction: column;
+      }
+      .post-guardado {
+        @media (max-width: 990px) {
+          .MuiListItemText-secondary:not(.post-subheader) {
+            zoom: 0.9;
+          }
+        }
       }
     }
     .favoritos {
