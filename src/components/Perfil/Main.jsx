@@ -52,7 +52,7 @@ export default function Main() {
       <FotosEAmigos />
       <Box className="grid-2">
         <PubsSavedsAndFavoritos id_usuario={perfil.id} />
-        <Box>
+        <Box pl={2.5}>
           <MarcadosParaMaisTarde />
           <Box mt={8} className="posts-desktop">
             {!Perfil_Context.alheio && (

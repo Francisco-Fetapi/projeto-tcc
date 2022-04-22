@@ -97,6 +97,7 @@ export const Perfil = {
       overflow-y: auto;
       padding-top: 90px;
       padding-right: 30px;
+      max-width: 340px;
       /* @media (max-width: 700px) {
         max-width: 330px;
       } */
@@ -115,7 +116,8 @@ export const Perfil = {
     }
     .lista-movies {
       display: grid !important;
-      padding: 0 20px;
+      padding: 0;
+      /* padding: 0 20px; */
       grid-template-columns: repeat(3, 1fr);
 
       cursor: grabbing;
@@ -167,10 +169,10 @@ export const Perfil = {
     }
     .posts-desktop {
       display: block;
-      padding: 0 30px;
+      /* padding: 0 30px; */
 
-      @media (max-width: 965px) {
-        padding: 0 70px;
+      @media (max-width: 985px) {
+        padding: 0 50px;
       }
       @media (max-width: 615px) {
         padding: 0 30px;
