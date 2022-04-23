@@ -59,7 +59,7 @@ function path_tmdb(movie) {
   movie.backdrop_path = images_uri + "original" + movie.backdrop_path;
   movie.poster_path = images_uri + "w300" + movie.poster_path;
   // movie.profile_path = images_uri + "w300" + movie.profile_path;
-  movie.profile.path = path_tmdb_2(movie).profile_path;
+  movie.profile_path = path_tmdb_2(movie).profile_path;
   return movie;
 }
 function path_tmdb_2(person) {
