@@ -104,7 +104,7 @@ export default function Post({ children, post, posts }) {
               !a_carregar && o_post_eh_meu ? (
                 <IconButton
                   onClick={handleClick}
-                  style={{ position: "relative", zIndex: 2 }}
+                  style={{ position: "relative" }}
                 >
                   <MoreVertIcon />
                 </IconButton>
