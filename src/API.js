@@ -218,7 +218,7 @@ const API = {
     const { data } = await api.post(`/post`, dados);
     return data;
   },
-  async getPosts(page, target, id_usuario) {
+  async getPosts(page, target, id_usuario, id_movie) {
     const funcs = {
       async meus() {
         const { data } = await api.get(`/usuario/meus-posts`, {
@@ -242,6 +242,18 @@ const API = {
         const { data } = await api.get(`/post`, {
           params: {
             page: Math.max(1, page),
+          },
+        });
+        return data;
+      },
+      async movie() {
+        let media_type = window.location.href.includes("series")
+          ? "tv"
+          : "movie";
+        const { data } = await api.get(`/post/movie/${id_movie}`, {
+          params: {
+            page: Math.max(1, page),
+            media_type,
           },
         });
         return data;

@@ -9,6 +9,7 @@ export default function usePost() {
   const posts_1 = useSelector(selectAppState("posts"));
   const posts_2 = useSelector(selectAppState("meus_posts"));
   const posts_3 = useSelector(selectAppState("meus_guardados"));
+  const posts_4 = useSelector(selectAppState("posts_movie"));
 
   const navigate = useNavigate();
 
@@ -16,11 +17,13 @@ export default function usePost() {
     todos: "posts",
     meus: "meus_posts",
     meusGuardados: "meus_guardados",
+    movie: "posts_movie",
   };
   const options2 = {
     todos: posts_1,
     meus: posts_2,
     meusGuardados: posts_3,
+    movie: posts_4,
   };
   return {
     async salvarPost(
@@ -40,9 +43,13 @@ export default function usePost() {
       actions.resetForm();
       setLoading(false);
     },
-    async getPosts({ setLoading, id_usuario }, page, target = "todos") {
+    async getPosts(
+      { setLoading, id_usuario, id_movie },
+      page = 1,
+      target = "todos"
+    ) {
       setLoading(true);
-      let res = await API.getPosts(page, target, id_usuario);
+      let res = await API.getPosts(page, target, id_usuario, id_movie);
 
       if (page === 1) {
         Dispatch(SET_STATE(options1[target], res));

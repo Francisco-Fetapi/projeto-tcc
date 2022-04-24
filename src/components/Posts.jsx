@@ -9,12 +9,13 @@ import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { Text } from "~/styles";
 
-export default function Posts({ target, id_usuario, ...props }) {
+export default function Posts({ target, id_usuario, id_movie, ...props }) {
   const { getPosts } = usePost();
   const options1 = {
     todos: "posts",
     meus: "meus_posts",
     meusGuardados: "meus_guardados",
+    movie: "posts_movie",
   };
 
   const posts = useSelector(selectAppState(options1[target]));
@@ -24,18 +25,19 @@ export default function Posts({ target, id_usuario, ...props }) {
 
   useEffect(() => {
     if (logado) {
-      getPosts({ setLoading, id_usuario }, 1, target);
+      getPosts({ setLoading, id_usuario, id_movie }, 1, target);
     }
   }, []);
 
   function carregarMais() {
     getPosts({ setLoading, id_usuario }, posts.current_page + 1, target);
   }
+  console.log(target, posts.data);
 
   return (
     <div {...props}>
       {posts.data.map((post, item) => (
-        <Post key={post.id} post={post} posts={posts}>
+        <Post key={post.id_post} post={post} posts={posts}>
           {post.conteudo
             .trim()
             .split("\n")
@@ -68,7 +70,7 @@ export default function Posts({ target, id_usuario, ...props }) {
         </Box>
       )}
       {!loading && posts.total === 0 && (
-        <Box mt={4} display="flex" justifyContent="center">
+        <Box my={4} display="flex" justifyContent="center">
           <Text color="textSecondary" variant="subtitle2">
             No momento não há nenhum post a ser demonstrado
           </Text>

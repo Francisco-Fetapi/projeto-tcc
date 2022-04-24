@@ -54,6 +54,14 @@ const initialState = {
     total: 0,
     data: [],
   },
+  posts_movie: {
+    current_page: 1,
+    last_page: 1,
+    per_page: 8,
+    next_page_url: null,
+    total: 0,
+    data: [],
+  },
   dark: JSON.parse(localStorage.getItem("dark")) || false,
 };
 

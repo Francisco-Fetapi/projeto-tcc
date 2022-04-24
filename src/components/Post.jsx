@@ -77,10 +77,7 @@ export default function Post({ children, post, posts }) {
   return (
     <Box my={2}>
       <Card className="post">
-        <CardActionAreaCustom
-          o_post_eh_meu={o_post_eh_meu}
-          onClick={() => irParaPerfil(o_post_eh_meu, post)}
-        >
+        <CardActionAreaCustom o_post_eh_meu={o_post_eh_meu}>
           <CardHeader
             // style={{ marginRight: 8 }}
             avatar={
@@ -89,11 +86,7 @@ export default function Post({ children, post, posts }) {
                   className="foto-user"
                   src={post?.usuario?.foto_perfil}
                   alt="foto do usuario"
-                  onClick={
-                    o_post_eh_meu
-                      ? () => irParaPerfil(o_post_eh_meu, post)
-                      : null
-                  }
+                  onClick={() => irParaPerfil(o_post_eh_meu, post)}
                   style={o_post_eh_meu ? { cursor: "pointer" } : null}
                 />
               ) : (
@@ -115,11 +108,7 @@ export default function Post({ children, post, posts }) {
                 <Box display="flex" alignItems="center">
                   <Text
                     variant="subtitle2"
-                    onClick={
-                      o_post_eh_meu
-                        ? () => irParaPerfil(o_post_eh_meu, post)
-                        : null
-                    }
+                    onClick={() => irParaPerfil(o_post_eh_meu, post)}
                     style={o_post_eh_meu ? { cursor: "pointer" } : null}
                   >
                     {primeiroEUltimoNome(post.usuario)}
@@ -130,7 +119,7 @@ export default function Post({ children, post, posts }) {
                       <Link
                         // nostyle
                         style={{ textDecoration: "none" }}
-                        to={`${link[post.media_type]}/${post.id_movie}`}
+                        to={`/${link[post.media_type]}/${post.id_movie}`}
                       >
                         {mostrarXCharOntText(post.name, 20)}
                       </Link>
