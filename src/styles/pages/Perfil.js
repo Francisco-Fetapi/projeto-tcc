@@ -13,7 +13,7 @@ export const Perfil = {
       margin-top: 50px;
       display: grid;
       grid-template-columns: minmax(200px, 300px) 1fr;
-      column-gap: 10px;
+      column-gap: 30px;
 
       @media (max-width: 915px) {
         & {
@@ -27,6 +27,10 @@ export const Perfil = {
           column-gap: 0px;
         }
       }
+      @media (max-width: 945px) {
+        column-gap:130px;
+      }
+    }
 
       .MuiListItem-gutters {
         padding-left: 0px;
@@ -50,8 +54,8 @@ export const Perfil = {
       }
     }
     .publicacoes-guardadas {
-      width: 100%;
-      max-width: 400px;
+      width: 350px;
+      /* max-width: 400px; */
       padding-left: 10px;
       @media (max-width: 915px) {
         &:not(.mobile) {
@@ -96,6 +100,14 @@ export const Perfil = {
           padding-left: 30px;
         }
       }
+      /* Favoritos */
+      /* max-width: 340px; */
+      padding-right: 10px;
+      width:320px;
+      /* @media (max-width: 980px) {
+        width: 400px;
+        padding-right: 30px;
+      } */
     }
     .favoritos.fixed {
       position: fixed;
@@ -103,12 +115,15 @@ export const Perfil = {
       height: 100%;
       overflow-y: auto;
       padding-top: 90px;
-      padding-right: 30px;
-      max-width: 340px;
-      /* @media (max-width: 700px) {
-        max-width: 330px;
-      } */
+      
+
     }
+    /* .favoritos_e_posts{
+      padding-left:50px;
+      @media(max-width:970px){
+        padding-left:180px;
+      }
+    } */
     .movies {
       width: 100%;
       max-width: 600px;
@@ -176,14 +191,6 @@ export const Perfil = {
     }
     .posts-desktop {
       display: block;
-      /* padding: 0 30px; */
-
-      @media (max-width: 985px) {
-        padding: 0 50px;
-      }
-      @media (max-width: 615px) {
-        padding: 0 30px;
-      }
     }
     .posts-mobile {
       display: none;
