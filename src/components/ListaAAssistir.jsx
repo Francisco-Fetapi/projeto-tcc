@@ -42,7 +42,7 @@ export default function ListaAAsistir() {
           procurar={procurar}
         />
       </Box>
-      {searches.results.length === 0 && (
+      {searches.results.length === 0 && !loading && (
         <Box
           height="65vh"
           width="100%"
