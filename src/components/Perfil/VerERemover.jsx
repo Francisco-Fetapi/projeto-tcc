@@ -31,11 +31,12 @@ export default function VerERemover({
     if (url_final) navigate(url_final);
   }
   function remover_() {
-    if (movie) {
-      if (removido === true) {
+    if (movie || post) {
+      if (removido) {
         // o 2o param eh uma funcao que sera executada
         // depois do item ter sido eliminado
-        remover(movie, () => {});
+        if (movie) remover(movie, () => {});
+        if (post) remover(post, () => {});
       }
     }
   }
