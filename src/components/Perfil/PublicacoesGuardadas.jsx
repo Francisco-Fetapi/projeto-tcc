@@ -46,6 +46,7 @@ export default function PublicacoesGuardadas({ id_usuario }) {
               }
             : null
         }
+        className="posts-lista"
       >
         {posts_guardados.data.slice(0, 4).map((post) => (
           <Publicacao key={post.id_post} post={post} />

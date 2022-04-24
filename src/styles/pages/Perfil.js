@@ -62,6 +62,9 @@ export const Perfil = {
           display: none;
         }
       }
+      .posts-lista{
+        padding-right:40px;
+      }
       .MuiListItem-root {
         flex-direction: column;
       }
@@ -101,13 +104,9 @@ export const Perfil = {
         }
       }
       /* Favoritos */
-      /* max-width: 340px; */
       padding-right: 10px;
       width:320px;
-      /* @media (max-width: 980px) {
-        width: 400px;
-        padding-right: 30px;
-      } */
+      
     }
     .favoritos.fixed {
       position: fixed;
@@ -118,12 +117,7 @@ export const Perfil = {
       
 
     }
-    /* .favoritos_e_posts{
-      padding-left:50px;
-      @media(max-width:970px){
-        padding-left:180px;
-      }
-    } */
+
     .movies {
       width: 100%;
       max-width: 600px;
