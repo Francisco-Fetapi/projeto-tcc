@@ -218,6 +218,10 @@ const API = {
     const { data } = await api.post(`/post`, dados);
     return data;
   },
+  async toggleSalvarPost(id_post) {
+    const { data } = await api.post(`/posts_guardados/${id_post}`);
+    return data;
+  },
   async getPosts(page, target, id_usuario, id_movie) {
     const funcs = {
       async meus() {

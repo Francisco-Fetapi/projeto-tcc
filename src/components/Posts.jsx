@@ -27,7 +27,8 @@ export default function Posts({ target, id_usuario, id_movie, ...props }) {
     if (logado) {
       getPosts({ setLoading, id_usuario, id_movie }, 1, target);
     }
-  }, []);
+    console.log("posts atualizados");
+  }, [window.location.href]);
 
   function carregarMais() {
     getPosts({ setLoading, id_usuario }, posts.current_page + 1, target);

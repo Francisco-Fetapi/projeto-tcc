@@ -70,5 +70,12 @@ export default function usePost() {
         navigate(`/usuario/${post.id_usuario}`);
       }
     },
+    async setPostEmGuardados({ setLoading, post, setGuardei }) {
+      setLoading(true);
+      const res = await API.toggleSalvarPost(post.id_post);
+      setGuardei(res.ja_existe);
+      console.log(res);
+      setLoading(false);
+    },
   };
 }

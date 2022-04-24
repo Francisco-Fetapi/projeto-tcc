@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Box from "@material-ui/core/Box";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -59,7 +59,9 @@ export default function Post({ children, post, posts }) {
   const usuario = useSelector(selectAppState("usuario"));
   const a_carregar = !posts.data.length;
   const tem_movie_relacionado = post?.id_movie !== 0;
-  const { irParaPerfil } = usePost();
+  const { irParaPerfil, setPostEmGuardados } = usePost();
+  const [guardei, setGuardei] = useState(post?.guardei);
+  const [loading, setLoading] = useState(false);
   const link = {
     movie: "filmes",
     tv: "series",
@@ -73,6 +75,12 @@ export default function Post({ children, post, posts }) {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  function guardarPost() {
+    setPostEmGuardados({ setLoading, post, setGuardei });
+  }
+  useEffect(() => {
+    setGuardei(post.guardei);
+  }, [post]);
 
   return (
     <Box my={2}>
@@ -214,12 +222,22 @@ export default function Post({ children, post, posts }) {
 
           {!a_carregar && <Divider />}
           {!a_carregar ? (
-            <ButtonGroup size="small" fullWidth>
+            <ButtonGroup
+              size="small"
+              fullWidth
+              style={loading ? { opacity: 0.8, pointerEvents: "none" } : null}
+            >
               <Button startIcon={<ThumbUpIcon />}>Gosto</Button>
 
               <Button startIcon={<ModeCommentIcon />}>Comentar</Button>
 
-              <Button startIcon={<SaveAltIcon />}>Guardar</Button>
+              <Button
+                startIcon={<SaveAltIcon />}
+                onClick={guardarPost}
+                color={guardei ? "primary" : null}
+              >
+                {guardei ? "Guardei" : "Guardar"}
+              </Button>
             </ButtonGroup>
           ) : (
             <Box display="flex" height="40px" alignItems="center">
