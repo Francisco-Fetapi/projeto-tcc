@@ -73,7 +73,15 @@ export default function Publicacao({ post }) {
           />
         </Box>
       </ListItem>
-      <Box width="100%" display="flex" justifyContent="flex-end">
+      <Box
+        style={{
+          opacity: removido ? 0.5 : 1,
+          pointerEvents: removido ? "none" : "initial",
+        }}
+        width="100%"
+        display="flex"
+        justifyContent="flex-end"
+      >
         <VerERemover
           post={post}
           remover={remover}
