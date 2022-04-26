@@ -26,10 +26,11 @@ export default function Publicacao({ post }) {
     </>
   );
   async function remover(post) {
-    await API.toggleSalvarPost(post.id);
+    await API.toggleSalvarPost(post.id_post);
     let novos_posts = posts_guardados.data.filter(
-      (_post) => _post.id_post !== post.id
+      (_post) => _post.id_post !== post.id_post
     );
+    console.log(post.id_post, novos_posts);
     Dispatch(
       SET_STATE("meus_guardados", { ...posts_guardados, data: novos_posts })
     );

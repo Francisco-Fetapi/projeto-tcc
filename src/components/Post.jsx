@@ -79,7 +79,9 @@ export default function Post({ children, post, posts }) {
     setPostEmGuardados({ setLoading, post, setGuardei });
   }
   useEffect(() => {
-    setGuardei(post.guardei);
+    if (post) {
+      setGuardei(post.guardei);
+    }
   }, [post]);
 
   return (
