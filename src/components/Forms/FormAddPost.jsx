@@ -186,6 +186,7 @@ export default function FormAddPost({ publico }) {
                     style={{ display: "none" }}
                     ref={inputFile}
                     multiple
+                    accept="image/*"
                   />
                   <Button
                     startIcon={<FaEye />}

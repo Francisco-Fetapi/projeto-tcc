@@ -15,6 +15,7 @@ export function primeiroEUltimoNome(usuario) {
   return `${primeiro} ${ultimo}`;
 }
 export function mostrarXCharOntText(texto, qtdAMostrar = 10) {
+  if (!texto) return "undefined";
   if (texto.length <= qtdAMostrar) return texto;
   return texto.substring(0, qtdAMostrar) + "...";
 }

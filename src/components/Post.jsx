@@ -84,6 +84,8 @@ export default function Post({ children, post, posts }) {
     }
   }, [post]);
 
+  console.log(post.name);
+
   return (
     <Box my={2}>
       <Card className="post">
@@ -121,7 +123,7 @@ export default function Post({ children, post, posts }) {
                     onClick={() => irParaPerfil(o_post_eh_meu, post)}
                     style={o_post_eh_meu ? { cursor: "pointer" } : null}
                   >
-                    {primeiroEUltimoNome(post.usuario)}
+                    {primeiroEUltimoNome(post?.usuario)}
                   </Text>
                   {tem_movie_relacionado && (
                     <Text variant="subtitle2">
@@ -129,9 +131,9 @@ export default function Post({ children, post, posts }) {
                       <Link
                         // nostyle
                         style={{ textDecoration: "none" }}
-                        to={`/${link[post.media_type]}/${post.id_movie}`}
+                        to={`/${link[post?.media_type]}/${post.id_movie}`}
                       >
-                        {mostrarXCharOntText(post.name, 20)}
+                        {mostrarXCharOntText(post?.name, 20)}
                       </Link>
                     </Text>
                   )}
