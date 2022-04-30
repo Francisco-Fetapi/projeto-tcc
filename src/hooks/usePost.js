@@ -33,14 +33,19 @@ export default function usePost() {
     ) {
       setLoading(true);
       let res = await API.salvarPost(dados);
-      Dispatch(
-        SET_STATE(options1[target], {
-          ...options2[target],
-          data: [...res.data, ...options2[target].data],
-        })
-      );
-      resetarAll();
-      actions.resetForm();
+      if (res?.status !== "error") {
+        if (res?.data) {
+          Dispatch(
+            SET_STATE(options1[target], {
+              ...options2[target],
+              data: [...res.data, ...options2[target].data],
+            })
+          );
+          resetarAll();
+          actions.resetForm();
+        }
+      }
+
       setLoading(false);
     },
     async getPosts(
@@ -74,7 +79,6 @@ export default function usePost() {
       setLoading(true);
       const res = await API.toggleSalvarPost(post.id_post);
       setGuardei(res.ja_existe);
-      console.log(res);
       setLoading(false);
     },
   };

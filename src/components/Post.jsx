@@ -84,7 +84,7 @@ export default function Post({ children, post, posts }) {
     }
   }, [post]);
 
-  console.log(post.name);
+  console.log(post?.name);
 
   return (
     <Box my={2}>

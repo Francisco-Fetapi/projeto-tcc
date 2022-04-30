@@ -30,7 +30,6 @@ export default function Publicacao({ post }) {
     let novos_posts = posts_guardados.data.filter(
       (_post) => _post.id_post !== post.id_post
     );
-    console.log(post.id_post, novos_posts);
     Dispatch(
       SET_STATE("meus_guardados", { ...posts_guardados, data: novos_posts })
     );

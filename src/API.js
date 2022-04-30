@@ -214,8 +214,20 @@ const API = {
     });
     return data;
   },
-  async salvarPost(dados) {
-    const { data } = await api.post(`/post`, dados);
+  async salvarPost(values) {
+    const form = new FormData();
+    for (let campo in values) {
+      const valor = values[campo];
+      if (valor) {
+        if (["dados_movie", "movie"].includes(campo)) {
+          form.append(campo, JSON.stringify(valor));
+        } else {
+          form.append(campo, valor);
+        }
+      }
+    }
+    const { data } = await api.post(`/post`, form);
+
     return data;
   },
   async toggleSalvarPost(id_post) {
