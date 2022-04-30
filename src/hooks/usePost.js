@@ -33,18 +33,17 @@ export default function usePost() {
     ) {
       setLoading(true);
       let res = await API.salvarPost(dados);
-      if (res?.status !== "error") {
-        if (res?.data) {
-          Dispatch(
-            SET_STATE(options1[target], {
-              ...options2[target],
-              data: [...res.data, ...options2[target].data],
-            })
-          );
-          resetarAll();
-          actions.resetForm();
-        }
+      if (res.status !== "error") {
+        Dispatch(
+          SET_STATE(options1[target], {
+            ...options2[target],
+            data: [...res.data, ...options2[target].data],
+          })
+        );
+        resetarAll();
+        actions.resetForm();
       }
+      console.log(res);
 
       setLoading(false);
     },
