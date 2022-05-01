@@ -221,6 +221,11 @@ const API = {
       if (valor) {
         if (["dados_movie", "movie"].includes(campo)) {
           form.append(campo, JSON.stringify(valor));
+        } else if (campo === "files") {
+          for (let field in valor) {
+            console.log(valor[field]);
+            form.append("files[]", valor[field]);
+          }
         } else {
           form.append(campo, valor);
         }

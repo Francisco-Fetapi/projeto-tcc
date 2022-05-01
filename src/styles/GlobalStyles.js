@@ -202,13 +202,24 @@ export const GlobalStyles = createGlobalStyle`
           border-radius:50%;
       }
       .imagem-post{
-            width:80%;
-            margin-left:auto;
-            margin-right:auto;
+            /* width:80%; */
+            /* margin-left:auto;
+            margin-right:auto; */
+            text-align:center;
+            padding-bottom:25px;
             img{
                 width:100%;
-                height:210px;
+                max-height:500px;
+                margin-left:auto;
+                margin-right:auto;
                 object-fit: cover;
+                cursor:grabbing;
+            }
+            .slick-dots{
+                zoom:.8;
+                li{
+                    margin:0px;
+                }
             }
         }
       .post-acoes{

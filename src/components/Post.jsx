@@ -13,6 +13,7 @@ import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 import SaveAltIcon from "@material-ui/icons/SaveAlt";
 import ModeCommentIcon from "@material-ui/icons/ModeComment";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
+import Slider from "react-slick";
 
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -58,10 +59,19 @@ export default function Post({ children, post, posts }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const usuario = useSelector(selectAppState("usuario"));
   const a_carregar = !posts.data.length;
-  const tem_movie_relacionado = post?.id_movie !== 0;
+  const tem_movie_relacionado =
+    post?.id_movie !== 0 && (post?.name || post?.title);
   const { irParaPerfil, setPostEmGuardados } = usePost();
   const [guardei, setGuardei] = useState(post?.guardei);
   const [loading, setLoading] = useState(false);
+  const settings = {
+    dots: true,
+    infinite: false,
+    speed: 300,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+  };
   const link = {
     movie: "filmes",
     tv: "series",
@@ -83,8 +93,6 @@ export default function Post({ children, post, posts }) {
       setGuardei(post.guardei);
     }
   }, [post]);
-
-  console.log(post?.name);
 
   return (
     <Box my={2}>
@@ -133,7 +141,7 @@ export default function Post({ children, post, posts }) {
                         style={{ textDecoration: "none" }}
                         to={`/${link[post?.media_type]}/${post.id_movie}`}
                       >
-                        {mostrarXCharOntText(post?.name, 20)}
+                        {mostrarXCharOntText(post?.name || post?.title, 20)}
                       </Link>
                     </Text>
                   )}
@@ -160,13 +168,23 @@ export default function Post({ children, post, posts }) {
             ) : (
               <Skeleton variant="rect" width="90%" height="95px" />
             )}
-            {!a_carregar && post.imagens?.length && (
-              <Box mt={3} className="imagem-post">
-                <img src={`/img/matrix.jpg`} alt="imagem" />
-              </Box>
-            )}
           </CardContent>
         </CardActionArea>
+
+        {!a_carregar && post.fotos?.length > 0 && (
+          <>
+            <Box mt={-2} maxWidth="650px" maxHeight="550px">
+              <Box mt={3} className="imagem-post">
+                <Slider {...settings}>
+                  {post.fotos.map((foto) => (
+                    <img src={foto.foto_resized} alt="Foto do post" />
+                  ))}
+                </Slider>
+              </Box>
+            </Box>
+            {post.fotos.length > 1 && <Box mt={3}></Box>}
+          </>
+        )}
 
         <Box className="post-acoes">
           {/* <CardActionArea style={{ paddingTop: 4, paddingBottom: 4 }}> */}
