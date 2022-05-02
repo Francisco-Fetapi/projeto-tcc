@@ -351,4 +351,8 @@ export const GlobalStyles = createGlobalStyle`
             opacity:.5;
         }
     }
+    .img-reacao{
+        /* filter: hue-rotate(-5deg); */
+        pointer-events:none;
+    }
 `;

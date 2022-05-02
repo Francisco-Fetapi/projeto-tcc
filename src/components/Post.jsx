@@ -151,6 +151,7 @@ export default function Post({ children, post, target, posts }) {
       alt="reacao"
       width={20}
       height={20}
+      className="img-reacao"
     />
   ) : (
     "Gosto"
@@ -270,7 +271,7 @@ export default function Post({ children, post, target, posts }) {
                         <img
                           src={img_reacao}
                           alt={reacoes[grupo.type].replace(".png", "")}
-                          style={{ filter: "hue-rotate(-45deg)" }}
+                          className="img-reacao"
                           width="20px"
                           height="20px"
                           key={grupo.type}
@@ -392,7 +393,11 @@ export default function Post({ children, post, target, posts }) {
               width={30}
               onClick={(e) => reagir_(key, e)}
             >
-              <img src={`/img/${reacoes[key]}`} alt="reacao" />
+              <img
+                src={`/img/${reacoes[key]}`}
+                alt="reacao"
+                className="img-reacao"
+              />
               <Box mt={0.5} style={{ zoom: 0.8, textAlign: "center" }}>
                 <Text
                   color={key == post?.reagi_com ? "primary" : "textSecondary"}
