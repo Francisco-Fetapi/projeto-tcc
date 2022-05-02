@@ -58,6 +58,7 @@ function CardActionAreaCustom({ children, o_post_eh_meu, ...props }) {
 
 export default function Post({ children, post, posts }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl2, setAnchorEl2] = React.useState(null);
   const usuario = useSelector(selectAppState("usuario"));
   const a_carregar = !posts.data.length;
   const tem_movie_relacionado =
@@ -79,13 +80,30 @@ export default function Post({ children, post, posts }) {
     tv: "series",
   };
   const o_post_eh_meu = post?.id_usuario === usuario.id;
+  const texto_reacao = {
+    like: "gosto",
+    love: "adoro",
+    triste: "triste",
+    wow: "surpreso",
+    riso: "riso",
+    ira: "ira",
+  };
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+  const handleClick2 = (event) => {
+    if (event.target) {
+      setAnchorEl2(event.target);
+    }
+  };
+  let interval = null;
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+  const handleClose2 = () => {
+    setAnchorEl2(null);
   };
   function guardarPost() {
     setPostEmGuardados({ setLoading, post, setGuardei });
@@ -97,21 +115,45 @@ export default function Post({ children, post, posts }) {
   }, [post]);
 
   useEffect(() => {
-    const reacoes2 = {
-      ...post.grupo_reacoes,
-      length: Object.keys(post.grupo_reacoes).length,
-    };
-    const reacoes_array = [];
-    for (let campo in reacoes2) {
-      if (campo !== "length") {
-        reacoes_array.push({
-          size: reacoes2[campo],
-          type: campo,
-        });
+    if (post?.grupo_reacoes) {
+      const reacoes2 = {
+        ...post.grupo_reacoes,
+        length: Object.keys(post.grupo_reacoes).length,
+      };
+      const reacoes_array = [];
+      for (let campo in reacoes2) {
+        if (campo !== "length") {
+          reacoes_array.push({
+            size: reacoes2[campo],
+            type: campo,
+          });
+        }
       }
+      setReacoes(reacoes_array);
     }
-    setReacoes(reacoes_array);
-  }, []);
+  }, [post]);
+
+  function mostrarReacoes(event) {
+    console.log("- mouse entrou");
+    handleClose2();
+    hideMenuTimerToShow();
+    interval = setTimeout(() => {
+      showMenuReacoes(event);
+    }, 800);
+  }
+  function hideMenuTimerToShow() {
+    console.log("- mouse saiu");
+    if (!anchorEl2) {
+      clearTimeout(interval);
+    }
+  }
+  function hideMenuReacoes() {
+    console.log("ocultar menu reacoes");
+  }
+  function showMenuReacoes(event) {
+    console.log("mostrar menu reacoes");
+    handleClick2(event);
+  }
 
   return (
     <Box my={2}>
@@ -196,7 +238,11 @@ export default function Post({ children, post, posts }) {
               <Box mt={3} className="imagem-post">
                 <Slider {...settings}>
                   {post.fotos.map((foto) => (
-                    <img src={foto.foto_resized} alt="Foto do post" />
+                    <img
+                      src={foto.foto_resized}
+                      alt="Foto do post"
+                      key={foto.id}
+                    />
                   ))}
                 </Slider>
               </Box>
@@ -226,6 +272,7 @@ export default function Post({ children, post, posts }) {
                           style={{ filter: "hue-rotate(-45deg)" }}
                           width="20px"
                           height="20px"
+                          key={grupo.type}
                         />
                       );
                     })}
@@ -270,7 +317,13 @@ export default function Post({ children, post, posts }) {
               fullWidth
               style={loading ? { opacity: 0.8, pointerEvents: "none" } : null}
             >
-              <Button startIcon={<ThumbUpIcon />}>Gosto</Button>
+              <Button
+                onMouseLeave={hideMenuTimerToShow}
+                onMouseEnter={mostrarReacoes}
+                startIcon={<ThumbUpIcon />}
+              >
+                Gosto
+              </Button>
 
               <Button startIcon={<ModeCommentIcon />}>Comentar</Button>
 
@@ -308,6 +361,40 @@ export default function Post({ children, post, posts }) {
       >
         <MenuItem onClick={handleClose}>Editar</MenuItem>
         <MenuItem onClick={handleClose}>Eliminar</MenuItem>
+      </Menu>
+      <Menu
+        anchorEl={anchorEl2}
+        keepMounted
+        open={Boolean(anchorEl2)}
+        onClose={handleClose2}
+        anchorOrigin={{
+          vertical: "top",
+          horizontal: "left",
+        }}
+        className="not-zoom-out"
+        style={{
+          top: "-10%",
+        }}
+      >
+        <Box display="flex">
+          {Object.keys(reacoes).map((key) => (
+            <Box
+              mx={1}
+              display="flex"
+              flexDirection="column"
+              alignItems="center"
+              key={key}
+              px={0.5}
+              className="btn-reacao"
+              width={30}
+            >
+              <img src={`/img/${reacoes[key]}`} alt="reacao" />
+              <Box mt={0.5} style={{ zoom: 0.8, textAlign: "center" }}>
+                {texto_reacao[reacoes[key].replace(".png", "")]}
+              </Box>
+            </Box>
+          ))}
+        </Box>
       </Menu>
     </Box>
   );

@@ -334,11 +334,21 @@ export const GlobalStyles = createGlobalStyle`
         display: none !important;
       }
     }
-    .MuiPopover-root:not(#menu-header){
+    .MuiPopover-root:not(#menu-header,.not-zoom-out){
         .MuiPaper-root{
             .MuiList-root{
                 zoom:.8;
             }
+        }
+    }
+    .btn-reacao{
+        cursor:pointer;
+        user-select:none;
+        :hover{
+            opacity:.8;
+        }
+        :active{
+            opacity:.5;
         }
     }
 `;
