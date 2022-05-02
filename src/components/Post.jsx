@@ -26,6 +26,7 @@ import { mostrarXCharOntText, primeiroEUltimoNome } from "~/helpers";
 import { useSelector } from "react-redux";
 import { selectAppState } from "~/store/App.selectors";
 import usePost from "~/hooks/usePost";
+import reacoes from "~/mock/reacoes.json";
 
 export function SubHeader({ post }) {
   const { tempo, publico } = post;
@@ -64,6 +65,7 @@ export default function Post({ children, post, posts }) {
   const { irParaPerfil, setPostEmGuardados } = usePost();
   const [guardei, setGuardei] = useState(post?.guardei);
   const [loading, setLoading] = useState(false);
+  const [grupo_reacoes, setReacoes] = useState([]);
   const settings = {
     dots: true,
     infinite: false,
@@ -93,6 +95,23 @@ export default function Post({ children, post, posts }) {
       setGuardei(post.guardei);
     }
   }, [post]);
+
+  useEffect(() => {
+    const reacoes2 = {
+      ...post.grupo_reacoes,
+      length: Object.keys(post.grupo_reacoes).length,
+    };
+    const reacoes_array = [];
+    for (let campo in reacoes2) {
+      if (campo !== "length") {
+        reacoes_array.push({
+          size: reacoes2[campo],
+          type: campo,
+        });
+      }
+    }
+    setReacoes(reacoes_array);
+  }, []);
 
   return (
     <Box my={2}>
@@ -198,16 +217,18 @@ export default function Post({ children, post, posts }) {
               <CardActionArea style={{ paddingTop: 4, paddingBottom: 4 }}>
                 <Box ml={2} display="flex" alignItems="center">
                   <Box>
-                    <img
-                      src="/img/like.png"
-                      alt="like"
-                      style={{ filter: "hue-rotate(-45deg)" }}
-                    />
-                    <img
-                      src="/img/love.png"
-                      alt="love"
-                      style={{ filter: "hue-rotate(35deg)" }}
-                    />
+                    {grupo_reacoes.slice(0, 3).map((grupo) => {
+                      let img_reacao = `/img/${reacoes[grupo.type]}`;
+                      return (
+                        <img
+                          src={img_reacao}
+                          alt={reacoes[grupo.type].replace(".png", "")}
+                          style={{ filter: "hue-rotate(-45deg)" }}
+                          width="20px"
+                          height="20px"
+                        />
+                      );
+                    })}
                   </Box>
                   <Box ml={0.8} mt={-0.35}>
                     <Text>{post.num_reacoes}</Text>
