@@ -36,7 +36,7 @@ export default function Posts({ target, id_usuario, id_movie, ...props }) {
   return (
     <div {...props}>
       {posts.data.map((post, item) => (
-        <Post key={post.id_post} post={post} posts={posts}>
+        <Post key={post.id_post} post={post} posts={posts} target={target}>
           {post.conteudo
             .trim()
             .split("\n")

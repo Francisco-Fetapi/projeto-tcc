@@ -282,6 +282,11 @@ const API = {
     };
     return funcs[target]();
   },
+  async reagir(dados) {
+    // dados (id_object,type_object,tipo_reacao)
+    let { data } = await api.post("/react", dados);
+    return data;
+  },
 };
 
 export default API;

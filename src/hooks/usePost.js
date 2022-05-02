@@ -80,5 +80,27 @@ export default function usePost() {
       setGuardei(res.ja_existe);
       setLoading(false);
     },
+    async reagir({ setLoading, handleClose2, target }, dados) {
+      setLoading(true);
+      let res = await API.reagir(dados);
+      console.log(target);
+      const new_posts = options2[target].data.map((post) => {
+        if (post.id_post === res.data[0].id_post) {
+          console.log("atualizar " + post.id_post);
+          return res.data[0];
+        }
+        return post;
+      });
+      Dispatch(
+        SET_STATE(options1[target], {
+          ...options2[target],
+          data: new_posts,
+        })
+      );
+      console.log(res.data[0]);
+
+      setLoading(false);
+      handleClose2();
+    },
   };
 }

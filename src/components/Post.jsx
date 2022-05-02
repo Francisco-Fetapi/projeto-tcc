@@ -56,14 +56,14 @@ function CardActionAreaCustom({ children, o_post_eh_meu, ...props }) {
   }
 }
 
-export default function Post({ children, post, posts }) {
+export default function Post({ children, post, target, posts }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [anchorEl2, setAnchorEl2] = React.useState(null);
   const usuario = useSelector(selectAppState("usuario"));
   const a_carregar = !posts.data.length;
   const tem_movie_relacionado =
     post?.id_movie !== 0 && (post?.name || post?.title);
-  const { irParaPerfil, setPostEmGuardados } = usePost();
+  const { irParaPerfil, setPostEmGuardados, reagir } = usePost();
   const [guardei, setGuardei] = useState(post?.guardei);
   const [loading, setLoading] = useState(false);
   const [grupo_reacoes, setReacoes] = useState([]);
@@ -134,7 +134,6 @@ export default function Post({ children, post, posts }) {
   }, [post]);
 
   function mostrarReacoes(event) {
-    console.log("- mouse entrou");
     handleClose2();
     hideMenuTimerToShow();
     interval = setTimeout(() => {
@@ -142,18 +141,25 @@ export default function Post({ children, post, posts }) {
     }, 800);
   }
   function hideMenuTimerToShow() {
-    console.log("- mouse saiu");
     if (!anchorEl2) {
       clearTimeout(interval);
     }
-  }
-  function hideMenuReacoes() {
-    console.log("ocultar menu reacoes");
   }
   function showMenuReacoes(event) {
     console.log("mostrar menu reacoes");
     handleClick2(event);
   }
+  function reagir_(tipo_reacao) {
+    const dados = {
+      tipo_reacao,
+      type_object: 1,
+      id_object: post.id_post,
+    };
+    reagir({ setLoading, handleClose2, target }, dados);
+  }
+  const reagi_com = post?.reagi
+    ? texto_reacao[reacoes[post?.reagi_com].replace(".png", "")]
+    : "Gosto";
 
   return (
     <Box my={2}>
@@ -320,9 +326,11 @@ export default function Post({ children, post, posts }) {
               <Button
                 onMouseLeave={hideMenuTimerToShow}
                 onMouseEnter={mostrarReacoes}
-                startIcon={<ThumbUpIcon />}
+                color={post?.reagi ? "primary" : null}
+                startIcon={post?.reagi ? null : <ThumbUpIcon />}
+                onClick={() => reagir_(1)}
               >
-                Gosto
+                {reagi_com}
               </Button>
 
               <Button startIcon={<ModeCommentIcon />}>Comentar</Button>
@@ -373,7 +381,7 @@ export default function Post({ children, post, posts }) {
         }}
         className="not-zoom-out"
         style={{
-          top: "-10%",
+          top: "-15%",
         }}
       >
         <Box display="flex">
@@ -387,6 +395,7 @@ export default function Post({ children, post, posts }) {
               px={0.5}
               className="btn-reacao"
               width={30}
+              onClick={(e) => reagir_(key, e)}
             >
               <img src={`/img/${reacoes[key]}`} alt="reacao" />
               <Box mt={0.5} style={{ zoom: 0.8, textAlign: "center" }}>
