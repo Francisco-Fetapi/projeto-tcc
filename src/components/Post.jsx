@@ -142,7 +142,7 @@ export default function Post({ children, post, target, posts }) {
       type_object: 1,
       id_object: post.id_post,
     };
-
+    console.log("reagindo...");
     reagir({ setLoading, target }, dados);
   }
   const reagi_com = post?.reagi ? (
@@ -319,10 +319,11 @@ export default function Post({ children, post, target, posts }) {
               style={loading ? { opacity: 0.8, pointerEvents: "none" } : null}
             >
               <Button
+                onClick={() => reagir_(post?.reagi ? post?.reagi_com : 1)}
                 onContextMenu={showMenuReacoes}
+                onTouchEnd={showMenuReacoes}
                 color={post?.reagi ? "primary" : null}
                 startIcon={post?.reagi ? null : <ThumbUpIcon />}
-                onClick={() => reagir_(post?.reagi ? post?.reagi_com : 1)}
               >
                 {reagi_com}
               </Button>
