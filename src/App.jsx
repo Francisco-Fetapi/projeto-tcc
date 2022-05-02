@@ -25,6 +25,12 @@ function App() {
   }, [token]);
 
   useEffect(() => {
+    document.oncontextmenu = () => {
+      return false;
+    };
+  }, []);
+
+  useEffect(() => {
     if (pathname.includes(routes_not_scroll[0])) return;
     window.scrollTo(0, 0);
   }, [pathname]);

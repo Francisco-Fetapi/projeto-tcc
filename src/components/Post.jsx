@@ -97,7 +97,6 @@ export default function Post({ children, post, target, posts }) {
       setAnchorEl2(event.target);
     }
   };
-  let interval = null;
 
   const handleClose = () => {
     setAnchorEl(null);
@@ -133,33 +132,29 @@ export default function Post({ children, post, target, posts }) {
     }
   }, [post]);
 
-  function mostrarReacoes(event) {
-    handleClose2();
-    hideMenuTimerToShow();
-    interval = setTimeout(() => {
-      showMenuReacoes(event);
-    }, 800);
-  }
-  function hideMenuTimerToShow() {
-    if (!anchorEl2) {
-      clearTimeout(interval);
-    }
-  }
   function showMenuReacoes(event) {
-    console.log("mostrar menu reacoes");
     handleClick2(event);
   }
   function reagir_(tipo_reacao) {
+    handleClose2();
     const dados = {
       tipo_reacao,
       type_object: 1,
       id_object: post.id_post,
     };
-    reagir({ setLoading, handleClose2, target }, dados);
+
+    reagir({ setLoading, target }, dados);
   }
-  const reagi_com = post?.reagi
-    ? texto_reacao[reacoes[post?.reagi_com].replace(".png", "")]
-    : "Gosto";
+  const reagi_com = post?.reagi ? (
+    <img
+      src={`/img/${reacoes[post?.reagi_com]}`}
+      alt="reacao"
+      width={20}
+      height={20}
+    />
+  ) : (
+    "Gosto"
+  );
 
   return (
     <Box my={2}>
@@ -324,11 +319,10 @@ export default function Post({ children, post, target, posts }) {
               style={loading ? { opacity: 0.8, pointerEvents: "none" } : null}
             >
               <Button
-                onMouseLeave={hideMenuTimerToShow}
-                onMouseEnter={mostrarReacoes}
+                onContextMenu={showMenuReacoes}
                 color={post?.reagi ? "primary" : null}
                 startIcon={post?.reagi ? null : <ThumbUpIcon />}
-                onClick={() => reagir_(1)}
+                onClick={() => reagir_(post?.reagi ? post?.reagi_com : 1)}
               >
                 {reagi_com}
               </Button>
@@ -399,7 +393,11 @@ export default function Post({ children, post, target, posts }) {
             >
               <img src={`/img/${reacoes[key]}`} alt="reacao" />
               <Box mt={0.5} style={{ zoom: 0.8, textAlign: "center" }}>
-                {texto_reacao[reacoes[key].replace(".png", "")]}
+                <Text
+                  color={key == post?.reagi_com ? "primary" : "textSecondary"}
+                >
+                  {texto_reacao[reacoes[key].replace(".png", "")]}
+                </Text>
               </Box>
             </Box>
           ))}

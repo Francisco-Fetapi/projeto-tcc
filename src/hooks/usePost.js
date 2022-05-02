@@ -80,14 +80,13 @@ export default function usePost() {
       setGuardei(res.ja_existe);
       setLoading(false);
     },
-    async reagir({ setLoading, handleClose2, target }, dados) {
+    async reagir({ setLoading, target }, dados) {
       setLoading(true);
       let res = await API.reagir(dados);
       console.log(target);
       const new_posts = options2[target].data.map((post) => {
-        if (post.id_post === res.data[0].id_post) {
-          console.log("atualizar " + post.id_post);
-          return res.data[0];
+        if (post.id_post === res.data.id_post) {
+          return res.data;
         }
         return post;
       });
@@ -97,10 +96,7 @@ export default function usePost() {
           data: new_posts,
         })
       );
-      console.log(res.data[0]);
-
       setLoading(false);
-      handleClose2();
     },
   };
 }
