@@ -1,8 +1,26 @@
 {
-  "1": "like.png",
-  "2": "love.png",
-  "3": "triste.png",
-  "4": "wow.png",
-  "5": "riso.png",
-  "6": "ira.png"
+  "1": {
+    "img": "/img/like.png",
+    "label": "Gosto"
+  },
+  "2": {
+    "img": "/img/love.png",
+    "label": "Adoro"
+  },
+  "3": {
+    "img": "/img/triste.png",
+    "label": "Triste"
+  },
+  "4": {
+    "img": "/img/wow.png",
+    "label": "Surpreso"
+  },
+  "5": {
+    "img": "/img/riso.png",
+    "label": "Riso"
+  },
+  "6": {
+    "img": "/img/ira.png",
+    "label": "Ira"
+  }
 }

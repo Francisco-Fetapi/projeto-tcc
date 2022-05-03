@@ -147,7 +147,7 @@ export default function Post({ children, post, target, posts }) {
   }
   const reagi_com = post?.reagi ? (
     <img
-      src={`/img/${reacoes[post?.reagi_com]}`}
+      src={reacoes[post?.reagi_com].img}
       alt="reacao"
       width={20}
       height={20}
@@ -266,11 +266,11 @@ export default function Post({ children, post, target, posts }) {
                 <Box ml={2} display="flex" alignItems="center">
                   <Box>
                     {grupo_reacoes.slice(0, 3).map((grupo) => {
-                      let img_reacao = `/img/${reacoes[grupo.type]}`;
+                      let img_reacao = reacoes[grupo.type].img;
                       return (
                         <img
                           src={img_reacao}
-                          alt={reacoes[grupo.type].replace(".png", "")}
+                          alt={reacoes[grupo.type].label}
                           className="img-reacao"
                           width="20px"
                           height="20px"
@@ -393,16 +393,12 @@ export default function Post({ children, post, target, posts }) {
               width={30}
               onClick={(e) => reagir_(key, e)}
             >
-              <img
-                src={`/img/${reacoes[key]}`}
-                alt="reacao"
-                className="img-reacao"
-              />
+              <img src={reacoes[key].img} alt="reacao" className="img-reacao" />
               <Box mt={0.5} style={{ zoom: 0.8, textAlign: "center" }}>
                 <Text
                   color={key == post?.reagi_com ? "primary" : "textSecondary"}
                 >
-                  {texto_reacao[reacoes[key].replace(".png", "")]}
+                  {reacoes[key].label}
                 </Text>
               </Box>
             </Box>
