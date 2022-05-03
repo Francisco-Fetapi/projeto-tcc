@@ -27,6 +27,7 @@ import { useSelector } from "react-redux";
 import { selectAppState } from "~/store/App.selectors";
 import usePost from "~/hooks/usePost";
 import reacoes from "~/mock/reacoes.json";
+import useReacao from "~/hooks/useReacao";
 
 export function SubHeader({ post }) {
   const { tempo, publico } = post;
@@ -66,7 +67,7 @@ export default function Post({ children, post, target, posts }) {
   const { irParaPerfil, setPostEmGuardados, reagir } = usePost();
   const [guardei, setGuardei] = useState(post?.guardei);
   const [loading, setLoading] = useState(false);
-  const [grupo_reacoes, setReacoes] = useState([]);
+  const [grupo_reacoes] = useReacao(post);
   const settings = {
     dots: true,
     infinite: false,
@@ -80,14 +81,6 @@ export default function Post({ children, post, target, posts }) {
     tv: "series",
   };
   const o_post_eh_meu = post?.id_usuario === usuario.id;
-  const texto_reacao = {
-    like: "gosto",
-    love: "adoro",
-    triste: "triste",
-    wow: "surpreso",
-    riso: "riso",
-    ira: "ira",
-  };
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -110,25 +103,6 @@ export default function Post({ children, post, target, posts }) {
   useEffect(() => {
     if (post) {
       setGuardei(post.guardei);
-    }
-  }, [post]);
-
-  useEffect(() => {
-    if (post?.grupo_reacoes) {
-      const reacoes2 = {
-        ...post.grupo_reacoes,
-        length: Object.keys(post.grupo_reacoes).length,
-      };
-      const reacoes_array = [];
-      for (let campo in reacoes2) {
-        if (campo !== "length") {
-          reacoes_array.push({
-            size: reacoes2[campo],
-            type: campo,
-          });
-        }
-      }
-      setReacoes(reacoes_array);
     }
   }, [post]);
 
@@ -317,7 +291,7 @@ export default function Post({ children, post, target, posts }) {
             <ButtonGroup
               size="small"
               fullWidth
-              style={loading ? { opacity: 0.8, pointerEvents: "none" } : null}
+              style={loading ? { opacity: 0.5, pointerEvents: "none" } : null}
             >
               <Button
                 onClick={() => reagir_(post?.reagi ? post?.reagi_com : 1)}
@@ -377,18 +351,19 @@ export default function Post({ children, post, target, posts }) {
         }}
         className="not-zoom-out"
         style={{
-          top: "-15%",
+          top: "-85px",
+          left: 0,
         }}
       >
         <Box display="flex">
           {Object.keys(reacoes).map((key) => (
             <Box
-              mx={1}
+              mx={1.5}
               display="flex"
               flexDirection="column"
               alignItems="center"
               key={key}
-              px={0.5}
+              px={1}
               className="btn-reacao"
               width={30}
               onClick={(e) => reagir_(key, e)}
